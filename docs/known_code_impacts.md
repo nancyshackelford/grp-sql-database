@@ -9,6 +9,7 @@ Tracks known dependencies between:
 ---
 
 # Change 001 — Add treatment notes column
+Date: 2026-05-14
 
 ### SQL Change
 Add `notes text` column to `grp.treatment`.
@@ -50,9 +51,27 @@ Need to inspect INSERT statements later.
 - Foreign key check confirmed treatment-detail tables depend on `grp.treatment(treatmentid)`. Because Change 001 only adds `notes text` and does not modify `treatmentid`, no foreign-key relationship impact is expected.
 
 ### Required Testing
-- [ ] Confirm `grp.treatment.notes` column exists
-- [ ] Inspect `full_treatment`
-- [ ] Check whether affected views should expose treatment notes
+- [x] Confirm `grp.treatment.notes` column exists
+- [x] Inspect `full_treatment`
+- [x] Check whether affected views should expose treatment notes
+
+---
+### Actual Outcome
+No foreign key relationship issues observed.
+
+Views updated:
+- `grp.full_treatment`
+- `grp.treatments_by_area`
+
+Views inspected with no update needed:
+- `grp.full_area`
+- `grp.full_seeding`
+- `grp.full_individual`
+
+Remaining code risk:
+- Input → SQL upload code may assume the old `grp.treatment` column count/order.
+- Later inspection should check whether upload code uses explicit column names in `INSERT INTO grp.treatment (...)`.
 
 ### Status
-- Identified
+- Implemented
+- Tested
