@@ -69,9 +69,11 @@ Phase 1 involves making structural changes:
 - Update processing code and metadata
 - Drop deprecated columns
 
-Phase 2 will involve testing and finalizing stages:
+Phase 2 will involve testing and finalizing code:
 - Input format → SQL
 - Excel format → Input format
 
 Phase 3 will be a project-by-project migration of the Excel database to the SQL database
+- ~202 projects
+  
 Phase 4 will be to design access methods for public use
