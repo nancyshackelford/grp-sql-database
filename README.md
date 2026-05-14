@@ -20,6 +20,9 @@ Executable SQL scripts.
 Current contents:
 - `00_phase0_diagnostics.sql`
 - `01_schema_changes.sql`
+- `02_view_updates.sql`
+- `03_dependency_checks.sql`
+- `04_import_tests.sql`
 
 ## docs/
 Project documentation and migration tracking.
@@ -51,3 +54,24 @@ Phase 0 completed:
 - views identified
 - GitHub repository initialized
 - schema tracking infrastructure established
+
+Phase 1 involves making structural changes:
+- Add treatment notes (complete)
+- Fix seed mixes
+- Add import/conversion tracking
+- Separate topsoil age and depth
+- Rework project references
+- Resolve availability
+- Treatment vocabulary and treatment-detail refinements
+- Site variable pruning
+- Species trait simplification
+- Input naming and mapping cleanup
+- Update processing code and metadata
+- Drop deprecated columns
+
+Phase 2 will involve testing and finalizing stages:
+- Input format to SQL
+- Excel format to Input format
+
+Phase 3 will be a project-by-project migration of the Excel database to the SQL database
+Phase 4 will be to design access methods for public use
