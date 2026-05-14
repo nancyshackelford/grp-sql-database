@@ -70,8 +70,8 @@ Phase 1 involves making structural changes:
 - Drop deprecated columns
 
 Phase 2 will involve testing and finalizing stages:
-- Input format to SQL
-- Excel format to Input format
+- Input format → SQL
+- Excel format → Input format
 
 Phase 3 will be a project-by-project migration of the Excel database to the SQL database
 Phase 4 will be to design access methods for public use
