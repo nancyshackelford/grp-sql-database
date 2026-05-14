@@ -10,7 +10,7 @@ For each change:
 
 ---
 
-# Change 001
+# Change 001 - Add treatment notes column
 Date: 2026-05-14
 
 ### Summary
@@ -67,17 +67,37 @@ ADD COLUMN notes text;
 ---
 
 **Required View Updates**
-- [ ] Inspect `full_treatment`
-- [ ] Inspect `treatments_by_area`
-- [ ] Check whether other treatment-related views should expose notes
+- [x] Inspect `full_treatment`
+- [x] Inspect `treatments_by_area`
+- [x] Inspected `full_area`; no update needed. View only aggregates treatment IDs by area and does not expose treatment details.
+- [x] Inspected `full_seeding`; no update needed. View is focused on seeding details and only carries `treatmentid` as a relationship field.
+- [x] Inspected `full_individual`; no update needed. View is focused on individual records and uses `area_treatment` only for project context.
 
-**Testing Performed**
+### Testing Performed
 - [x] View dependency check completed
 - [x] Pre-change treatment structure inspection completed
 - [x] Foreign key relationship inspection completed
-- [ ] Schema change executed
-- [ ] Views updated
-- [ ] Post-change structure validated
+- [x] Schema change executed
+- [x] `full_treatment` updated and validated
+- [x] `treatments_by_area` updated and validated
+- [x] Other flagged views inspected
+- [x] Post-change structure validated
+
+---
+### Actual Outcome
+`notes text` was successfully added to `grp.treatment`.
+
+`grp.full_treatment` was updated to expose:
+- `treatment.notes AS treatment_notes`
+
+`grp.treatments_by_area` was updated to pass through:
+- `full_treatment.treatment_notes`
+
+Other views inspected:
+- `full_area`: no update needed
+- `full_seeding`: no update needed
+- `full_individual`: no update needed
 
 **Status**
-- Planned
+- Implemented
+- Tested
