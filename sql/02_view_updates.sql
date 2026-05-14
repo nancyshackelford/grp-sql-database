@@ -1,4 +1,49 @@
 -- =====================================================
+-- View Update 002
+-- Related Change ID: Change 001
+-- Date: 2026-05-14
+-- Description: Add treatment_notes to grp.treatments_by_area
+-- =====================================================
+
+CREATE OR REPLACE VIEW grp.treatments_by_area AS
+SELECT area_treatment.areaid,
+    area_treatment.treatmentid,
+    full_treatment.year,
+    full_treatment.month,
+    full_treatment.day,
+    full_treatment.weeks_since_restoration,
+    full_treatment.other_treatment,
+    full_treatment.application_method,
+    full_treatment.bed_material,
+    full_treatment.bed_prep,
+    full_treatment.erosion_control,
+    full_treatment.fertilization_type,
+    full_treatment.fertilization_amount,
+    full_treatment.fertilization_units,
+    full_treatment.fertilization_info,
+    full_treatment.grading,
+    full_treatment.grazer,
+    full_treatment.growth_medium,
+    full_treatment.top_soil_age,
+    full_treatment.growth_medium_info,
+    full_treatment.herbicide_type,
+    full_treatment.herbicide_chemical,
+    full_treatment.herbicide_amount,
+    full_treatment.herbicide_units,
+    full_treatment.invasion_control,
+    full_treatment.irrigation_type,
+    full_treatment.irrigation_amount,
+    full_treatment.irrigation_units,
+    full_treatment.irrigation_info,
+    full_treatment.shelter,
+    full_treatment.maintenance_fire,
+    full_treatment.maintenance_mowing,
+    full_treatment.treatment_notes
+FROM (grp.full_treatment
+     RIGHT JOIN grp.area_treatment USING (treatmentid))
+ORDER BY area_treatment.areaid, full_treatment.weeks_since_restoration;
+
+-- =====================================================
 -- View Update 001
 -- Related Change ID: Change 001
 -- Date: 2026-05-14
