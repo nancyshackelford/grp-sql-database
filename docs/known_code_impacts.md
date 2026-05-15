@@ -49,6 +49,11 @@ Change 002 should not modify existing `speciesid`, `cultivarid`, or `seedingid` 
   - create `seed_mix` records
   - assign `seed_mixid`
   - preserve nullable `speciesid`
+- `grp.seeding.seed_mixid` will be required (`NOT NULL`)
+- Input → SQL upload order must ensure:
+  1. treatment exists
+  2. seed_mix record exists
+  3. seed_mixid is assigned before inserting seeding rows
 - `grp.full_seeding` will require restructuring to expose seed mix information
 
 ### Expected Structural Changes
@@ -63,12 +68,12 @@ Change 002 should not modify existing `speciesid`, `cultivarid`, or `seedingid` 
 - Preserve direct linkage between `grp.seeding` and `grp.treatment`
 
 ### Required Testing
-- [ ] Confirm `grp.seed_mix` table exists
-- [ ] Confirm `grp.seed_mix.seed_mixid` is primary key
-- [ ] Confirm `grp.seed_mix.treatmentid` references `grp.treatment(treatmentid)`
-- [ ] Confirm `grp.seeding.seed_mixid` column exists
-- [ ] Confirm `grp.seeding.seed_mixid` references `grp.seed_mix(seed_mixid)`
-- [ ] Confirm `grp.seeding.notes` column exists
+- [x] Confirm `grp.seed_mix` table exists
+- [x] Confirm `grp.seed_mix.seed_mixid` is primary key
+- [x] Confirm `grp.seed_mix.treatmentid` references `grp.treatment(treatmentid)`
+- [x] Confirm `grp.seeding.seed_mixid` column exists
+- [x] Confirm `grp.seeding.seed_mixid` references `grp.seed_mix(seed_mixid)`
+- [x] Confirm `grp.seeding.notes` column exists
 - [ ] Confirm `grp.full_seeding` compiles successfully after view update
 - [ ] Confirm `grp.full_seeding` exposes seed mix fields
 - [ ] Check for orphaned `seeding.seed_mixid` values after future upload
