@@ -10,6 +10,92 @@ For each change:
 
 ---
 
+# Change 002 — Seed mix normalization
+Date: 2026-05-15
+
+### Summary
+Normalize seed mix structure by separating mix-level metadata from species-level seeding records.
+
+### Motivation
+Current seed mix structure stores unknown or partially known seed mixes using fake species-style identifiers (e.g. `mix_5`, `mix_hay`, `mix_unknown`) within species-related workflows.
+
+This structure creates semantic confusion between:
+- actual species records
+- unknown mixes
+- hay/topsoil transfer treatments
+- mix-level metadata
+
+The current design works for fully known species compositions, but does not cleanly represent:
+- unknown mixes
+- partially known mixes
+- combined known + unknown mixes
+- mix richness metadata
+
+### SQL Objects Affected
+- Tables:
+  - `grp.seeding`
+  - `grp.seeding_pretreatment`
+
+- Views:
+  - `grp.full_seeding`
+
+- New tables:
+  - `grp.seed_mix`
+
+- Deprecated tables/columns:
+  - none
+
+### Upload / Code Impacts
+- Excel → Input code:
+  - fake `mix_*` species handling will eventually need revision
+  - mix-level metadata will eventually need dedicated handling
+
+- Input → SQL code:
+  - upload scripts will need to:
+    - create `seed_mix` records
+    - assign `seed_mixid`
+    - preserve nullable `speciesid`
+  - existing INSERT statements likely assume current `grp.seeding` structure
+
+- QA/QC impacts:
+  - future QA should confirm:
+    - no orphaned `seed_mixid` values
+    - no treatment mismatches between `grp.seeding` and `grp.seed_mix`
+    - proper handling of unknown mixes
+
+Foreign key inspection confirmed existing relationships involving:
+- `grp.seeding.speciesid`
+- `grp.seeding.cultivarid`
+- `grp.seeding_pretreatment.seedingid`
+
+Change 002 is intended to preserve existing species/cultivar relationships while adding seed mix normalization as an additive structure.
+
+### SQL Change
+
+```sql
+-- planned SQL to be added after dependency review
+```
+
+**Required View Updates**
+ - [ ] Inspect full_seeding
+ - [ ] Inspect downstream impacts, if any
+
+**Testing Performed**
+- [ ] Seed-related structure inspection completed
+- [ ] Seed/mix column search completed
+- [ ] Seed/mix view definition search completed
+- [ ] Foreign key relationship inspection involving grp.seeding completed
+- [ ] Schema changes executed
+- [ ] View updates completed
+- [ ] Post-change structure validated
+
+**Actual Outcome**
+
+**Status**
+- Planned
+
+---
+
 # Change 001 - Add treatment notes column
 Date: 2026-05-14
 
