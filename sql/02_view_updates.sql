@@ -5,6 +5,9 @@
 -- Description: Reflect seed mix normalization in full_seeding
 -- =====================================================
 
+-- Drop pre-May 2026 view version
+DROP VIEW grp.full_seeding;
+
 CREATE OR REPLACE VIEW grp.full_seeding AS
 SELECT 
     s.treatmentid,
