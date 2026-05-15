@@ -58,8 +58,20 @@ ORDER BY tc.table_name, kcu.column_name;
 -- View validation: grp.full_seeding
 -- =====================================================
 
--- Confirm `grp.full_seeding` compiles successfully after view update
--- Confirm `grp.full_seeding` exposes seed mix fields
+-- Confirm grp.full_seeding exposes new fields
+SELECT 
+    column_name,
+    data_type,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'full_seeding'
+ORDER BY ordinal_position;
+
+-- Confirm grp.full_seeding compiles
+SELECT *
+FROM grp.full_seeding
+LIMIT 5;
 
 -- =====================================================
 -- Change 001 validation tests
