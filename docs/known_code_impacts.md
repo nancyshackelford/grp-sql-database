@@ -57,15 +57,15 @@ Change 002 should not modify existing `speciesid`, `cultivarid`, or `seedingid` 
 - `grp.full_seeding` will require restructuring to expose seed mix information
 
 ### Expected Structural Changes
-- Create dedicated `grp.seed_mix` table
-- Add `seed_mixid` to `grp.seeding`
-- Preserve `treatmentid` in `grp.seeding`
-- Preserve nullable `speciesid`
 - Separate:
   - known species compositions
   - unknown mixes
   - mix-level metadata
-- Preserve direct linkage between `grp.seeding` and `grp.treatment`
+
+- Preserve legacy `grp.seeding.mix` column temporarily for backward compatibility
+- Until `grp.seeding.mix` is deprecated, populate it with the same value as `grp.seed_mix.mix_name` for compatibility with older views/code.
+- Expose legacy mix field in `grp.full_seeding` as `legacy_mix_name`
+- Future migration may deprecate or remove `grp.seeding.mix`
 
 ### Required Testing
 - [x] Confirm `grp.seed_mix` table exists
@@ -74,17 +74,46 @@ Change 002 should not modify existing `speciesid`, `cultivarid`, or `seedingid` 
 - [x] Confirm `grp.seeding.seed_mixid` column exists
 - [x] Confirm `grp.seeding.seed_mixid` references `grp.seed_mix(seed_mixid)`
 - [x] Confirm `grp.seeding.notes` column exists
-- [ ] Confirm `grp.full_seeding` compiles successfully after view update
-- [ ] Confirm `grp.full_seeding` exposes seed mix fields
+- [x] Confirm `grp.full_seeding` compiles successfully after view update
+- [x] Confirm `grp.full_seeding` exposes seed mix fields
 - [ ] Check for orphaned `seeding.seed_mixid` values after future upload
 - [ ] Check for treatment mismatch between `grp.seeding.treatmentid` and `grp.seed_mix.treatmentid` after future upload
 - [ ] Inspect Input → SQL upload code for assumptions about old `grp.seeding` structure
 - [ ] Inspect Excel → Input code for fake `mix_*` species handling
 
 ### Actual Outcome
+`grp.seed_mix` was successfully added as a new relational table for mix-level seed metadata.
+
+`grp.seeding` now requires:
+- `seed_mixid`
+- species-level seeding rows to belong to a seed mix structure
+
+Existing relationships involving:
+- `speciesid`
+- `cultivarid`
+- `seedingid`
+
+were preserved without modification.
+
+`grp.full_seeding` now exposes both:
+- normalized seed mix fields
+- legacy mix information (`legacy_mix_name`)
+
+Current transition structure intentionally preserves:
+- `grp.seeding.mix`
+- duplicated temporary mix naming between:
+  - `grp.seeding.mix`
+  - `grp.seed_mix.mix_name`
+
+This redundancy is temporary and intended to support backward compatibility during upload-code transition.
+
+Remaining future work:
+- inspect Excel → Input code for fake `mix_*` handling
+- inspect Input → SQL upload order and ID assignment logic
+- determine whether legacy `grp.seeding.mix` can eventually be deprecated
 
 ### Status
-- Planned
+- Implemented
 
 ---
 
