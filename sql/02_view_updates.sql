@@ -1,4 +1,45 @@
 -- =====================================================
+-- View Update 003
+-- Related Change ID: Change 002
+-- Date: 2026-05-15
+-- Description: Reflect seed mix normalization in full_seeding
+-- =====================================================
+
+CREATE OR REPLACE VIEW grp.full_seeding AS
+SELECT 
+    s.treatmentid,
+    s.seed_mixid,
+    sm.mix_name,
+    sm.mix_composition_status,
+    sm.treated_richness,
+    s.mix AS legacy_mix_name,
+    sm.notes AS seed_mix_notes,
+    spec.species_code AS species,
+    s.cultivarid,
+    s.type,
+    s.rate,
+    s.unit,
+    s.viability,
+    string_agg(p.type, ', '::text) AS pretreatment,
+    s.origin,
+    s.source,
+    s.seed_distance,
+    s.notes AS seeding_notes
+FROM ((((grp.seeding s
+    LEFT JOIN grp.seeding_pretreatment p USING (seedingid))
+    LEFT JOIN grp.species spec USING (speciesid))
+    LEFT JOIN grp.cultivar cultivar(cultivarid, speciesid_1, name, origin, latitude, longitude) USING (cultivarid))
+    LEFT JOIN grp.seed_mix sm USING (seed_mixid))
+GROUP BY 
+    s.seedingid, 
+    sm.mix_name,
+    sm.mix_composition_status,
+    sm.treated_richness,
+    sm.notes,
+    cultivar.name, 
+    spec.species_code;
+
+-- =====================================================
 -- View Update 002
 -- Related Change ID: Change 001
 -- Date: 2026-05-14
