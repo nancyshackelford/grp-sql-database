@@ -1,4 +1,67 @@
 -- =====================================================
+-- Change 002 validation tests
+-- Purpose: validate normalization of seed mix
+-- Run after executing Change 002 and associated view updates.
+-- =====================================================
+
+-- Confirm `grp.seed_mix` table exists and `grp.seed_mix.seed_mixid` is primary key
+SELECT *
+    FROM grp.seed_mix
+    LIMIT 5;
+
+-- Confirm `grp.seed_mix.treatmentid` references `grp.treatment(treatmentid)`
+SELECT
+    tc.table_schema,
+    tc.table_name,
+    kcu.column_name,
+    ccu.table_schema AS foreign_table_schema,
+    ccu.table_name AS foreign_table_name,
+    ccu.column_name AS foreign_column_name
+FROM information_schema.table_constraints AS tc
+JOIN information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+JOIN information_schema.constraint_column_usage AS ccu
+    ON ccu.constraint_name = tc.constraint_name
+WHERE tc.constraint_type = 'FOREIGN KEY'
+AND (
+    tc.table_name = 'seed_mix'
+    OR ccu.table_name = 'seed_mix'
+)
+ORDER BY tc.table_name, kcu.column_name;
+
+-- Confirm `grp.seeding.seed_mixid` and `grp.seeding.notes` columns exist
+SELECT *
+    FROM grp.seeding
+    LIMIT 5;
+
+-- Confirm `grp.seeding.seed_mixid` references `grp.seed_mix(seed_mixid)`
+SELECT
+    tc.table_schema,
+    tc.table_name,
+    kcu.column_name,
+    ccu.table_schema AS foreign_table_schema,
+    ccu.table_name AS foreign_table_name,
+    ccu.column_name AS foreign_column_name
+FROM information_schema.table_constraints AS tc
+JOIN information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+JOIN information_schema.constraint_column_usage AS ccu
+    ON ccu.constraint_name = tc.constraint_name
+WHERE tc.constraint_type = 'FOREIGN KEY'
+AND (
+    tc.table_name = 'seeding'
+    OR ccu.table_name = 'seeding'
+)
+ORDER BY tc.table_name, kcu.column_name;
+
+-- =====================================================
+-- View validation: grp.full_seeding
+-- =====================================================
+
+-- Confirm `grp.full_seeding` compiles successfully after view update
+-- Confirm `grp.full_seeding` exposes seed mix fields
+
+-- =====================================================
 -- Change 001 validation tests
 -- Purpose: validate treatment notes schema and view updates
 -- Run after executing Change 001 and associated view updates.
