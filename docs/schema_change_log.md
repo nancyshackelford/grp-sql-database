@@ -103,22 +103,48 @@ ADD COLUMN notes text;
 ```
 
 **Required View Updates**
- - [ ] Inspect full_seeding
- - [ ] Inspect downstream impacts, if any
+ - [x] Inspect full_seeding
+ - [x] Inspect downstream impacts, if any
 
 **Testing Performed**
-- [ ] Seed-related structure inspection completed
-- [ ] Seed/mix column search completed
-- [ ] Seed/mix view definition search completed
-- [ ] Foreign key relationship inspection involving grp.seeding completed
-- [ ] Schema changes executed
-- [ ] View updates completed
-- [ ] Post-change structure validated
+- [x] Seed-related structure inspection completed
+- [x] Seed/mix column search completed
+- [x] Seed/mix view definition search completed
+- [x] Foreign key relationship inspection involving grp.seeding completed
+- [x] Schema changes executed
+- [x] View updates completed
+- [x] Post-change structure validated
 
 **Actual Outcome**
+### Actual Outcome
+Created new table:
+- `grp.seed_mix`
+
+New fields added:
+- `grp.seeding.seed_mixid`
+- `grp.seeding.notes`
+
+New relationships added:
+- foreign key from `grp.seed_mix.treatmentid` → `grp.treatment(treatmentid)`
+- foreign key from `grp.seeding.seed_mixid` → `grp.seed_mix(seed_mixid)`
+
+`grp.full_seeding` was rebuilt to expose:
+- `seed_mixid`
+- `mix_name`
+- `mix_composition_status`
+- `treated_richness`
+- `seed_mix_notes`
+- `legacy_mix_name`
+- `seeding_notes`
+
+Legacy structure preserved:
+- `grp.seeding.mix` retained temporarily for backward compatibility and transition support
+
+No additional seed/mix-related views required updating.
 
 **Status**
-- Planned
+- Implemented
+- Tested
 
 ---
 
