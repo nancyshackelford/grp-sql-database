@@ -8,6 +8,81 @@ Tracks known dependencies between:
 
 ---
 
+# Change 002 — Seed mix normalization
+Date: 2026-05-15
+
+### Dependency Notes
+- `grp.seeding` currently stores both:
+  - species-level seeding records
+  - unknown mix placeholders
+- `speciesid` is nullable in `grp.seeding`
+- `mix` is currently stored as free text
+- `grp.full_seeding` is a species-level reporting view built directly from `grp.seeding`
+- `grp.seeding_pretreatment` links pretreatment records to individual seeding rows through `seedingid`
+- `seedingid` appears to represent one species-level seeding row within a treatment event
+
+Column search for `seed` and `mix` found no additional seed mix structures beyond:
+- `grp.seeding`
+- `grp.full_seeding`
+- `grp.seeding_pretreatment`
+The only additional matches were `seed_mass` in species-related views/tables, which is a species trait and not part of seed mix normalization.
+
+View definition search for `seed` or `mix` identified:
+- `grp.full_seeding`
+- `grp.full_species`
+`grp.full_species` appears relevant only because of `seed_mass`, which is a species trait and not part of seed mix normalization.
+Expected view update:
+- `grp.full_seeding`
+
+Foreign key check for `grp.seeding` found existing relationships involving:
+- `grp.seeding.speciesid`
+- `grp.seeding.cultivarid`
+- `grp.seeding_pretreatment.seedingid`
+
+Change 002 should not modify existing `speciesid`, `cultivarid`, or `seedingid` relationships. The planned `seed_mixid` relationship is additive.
+
+### Expected Code Impacts
+- Upload code currently likely assumes:
+  - one-table representation of seed mixes
+  - fake mix identifiers may enter species-related workflows
+- Input → SQL upload scripts will need updating to:
+  - create `seed_mix` records
+  - assign `seed_mixid`
+  - preserve nullable `speciesid`
+- `grp.full_seeding` will require restructuring to expose seed mix information
+
+### Expected Structural Changes
+- Create dedicated `grp.seed_mix` table
+- Add `seed_mixid` to `grp.seeding`
+- Preserve `treatmentid` in `grp.seeding`
+- Preserve nullable `speciesid`
+- Separate:
+  - known species compositions
+  - unknown mixes
+  - mix-level metadata
+- Preserve direct linkage between `grp.seeding` and `grp.treatment`
+
+### Required Testing
+- [ ] Confirm `grp.seed_mix` table exists
+- [ ] Confirm `grp.seed_mix.seed_mixid` is primary key
+- [ ] Confirm `grp.seed_mix.treatmentid` references `grp.treatment(treatmentid)`
+- [ ] Confirm `grp.seeding.seed_mixid` column exists
+- [ ] Confirm `grp.seeding.seed_mixid` references `grp.seed_mix(seed_mixid)`
+- [ ] Confirm `grp.seeding.notes` column exists
+- [ ] Confirm `grp.full_seeding` compiles successfully after view update
+- [ ] Confirm `grp.full_seeding` exposes seed mix fields
+- [ ] Check for orphaned `seeding.seed_mixid` values after future upload
+- [ ] Check for treatment mismatch between `grp.seeding.treatmentid` and `grp.seed_mix.treatmentid` after future upload
+- [ ] Inspect Input → SQL upload code for assumptions about old `grp.seeding` structure
+- [ ] Inspect Excel → Input code for fake `mix_*` species handling
+
+### Actual Outcome
+
+### Status
+- Planned
+
+---
+
 # Change 001 — Add treatment notes column
 Date: 2026-05-14
 
