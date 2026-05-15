@@ -53,7 +53,7 @@ The current design works for fully known species compositions, but does not clea
 - Input → SQL code:
   - upload scripts will need to:
     - create `seed_mix` records
-    - assign `seed_mixid`
+    - assign `seed_mixid`; will be non-nullable in 'grp.seeding'
     - preserve nullable `speciesid`
   - existing INSERT statements likely assume current `grp.seeding` structure
 
@@ -73,7 +73,33 @@ Change 002 is intended to preserve existing species/cultivar relationships while
 ### SQL Change
 
 ```sql
--- planned SQL to be added after dependency review
+-- Create seed mix table for treatment-specific seed/planting mix metadata
+CREATE TABLE grp.seed_mix (
+    seed_mixid integer NOT NULL,
+    treatmentid integer NOT NULL,
+    mix_name text,
+    mix_composition_status text,
+    treated_richness text,
+    notes text,
+    CONSTRAINT seed_mix_pkey PRIMARY KEY (seed_mixid),
+    CONSTRAINT seed_mix_treatmentid_fkey
+        FOREIGN KEY (treatmentid)
+        REFERENCES grp.treatment(treatmentid)
+);
+
+-- Add required seed mix link to species-level seeding rows
+ALTER TABLE grp.seeding
+ADD COLUMN seed_mixid integer NOT NULL;
+
+-- Add seed mix link to species-level seeding rows
+ALTER TABLE grp.seeding
+ADD CONSTRAINT seeding_seed_mixid_fkey
+    FOREIGN KEY (seed_mixid)
+    REFERENCES grp.seed_mix(seed_mixid);
+
+-- Add optional notes field for species-level seeding rows
+ALTER TABLE grp.seeding
+ADD COLUMN notes text;
 ```
 
 **Required View Updates**
