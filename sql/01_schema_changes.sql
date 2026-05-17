@@ -1,4 +1,16 @@
 -- =====================================================
+-- Change 005
+-- Date: 2026-05-18
+-- Description: Add depth to growth medium
+-- =====================================================
+
+-- Add two columns to treatment_medium: depth and units
+ALTER TABLE grp.treatment_medium
+  ADD COLUMN growth_medium_depth numeric,
+  ADD COLUMN growth_medium_depth_units text;
+
+
+-- =====================================================
 -- Change 004
 -- Date: 2026-05-17
 -- Description: Add data dictionary infrastructure

@@ -8,6 +8,43 @@ Tracks known dependencies between:
 
 ---
 
+## Change 005 — Separate topsoil age and growth medium depth
+Date: 2026-05-18
+
+### SQL Change
+Added structured depth fields to `grp.treatment_medium`:
+- `growth_medium_depth`
+- `growth_medium_depth_units`
+
+Updated `grp.full_treatment` view to expose the new fields.
+
+### Likely Affected Code
+- Excel → Input:
+  - Treatment medium import sheets/templates may require new columns for depth and depth units.
+- Input → SQL:
+  - Import scripts inserting into `grp.treatment_medium` may require updates to map the new fields.
+- SQL views:
+  - `grp.full_treatment`
+- QA/QC scripts:
+  - Future validation scripts may need to check for paired value/unit consistency.
+
+### Dependency Notes
+- Existing workflows assume growth medium depth is either absent or stored in notes.
+- `grp.full_treatment` aggregates treatment medium fields using `string_agg()`.
+- Numeric fields in the view currently require explicit casting before aggregation.
+- `top_soil_age` remains conceptually distinct from growth medium depth.
+
+### Required Testing
+- [ ] Confirm ALTER TABLE executes successfully.
+- [ ] Confirm recreated `grp.full_treatment` view compiles successfully.
+- [ ] Confirm new fields appear correctly in `grp.full_treatment`.
+- [ ] Confirm no existing view columns were altered unintentionally.
+
+### Status
+- Identified
+
+---
+
 # Change 004 — Add data dictionary infrastructure
 Date: 2026-05-17
 

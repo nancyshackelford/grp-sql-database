@@ -10,6 +10,64 @@ For each change:
 
 ---
 
+## Change ID:
+Phase 5 — Separate topsoil age and growth medium depth
+
+Date:
+2026-05-17
+
+### Summary
+Added structured fields for growth medium depth and units to `grp.treatment_medium` and updated `grp.full_treatment` to expose them.
+
+### Motivation
+The schema previously stored `top_soil_age` as a structured numeric field but had no equivalent structure for growth medium depth/thickness measurements. This created a risk that depth values would be inconsistently stored in notes or omitted entirely.
+
+The update separates:
+- topsoil age (a material-specific temporal property)
+from
+- growth medium depth (a generalized dimensional property)
+
+This improves queryability and semantic clarity.
+
+### SQL Objects Affected
+- Tables:
+  - `grp.treatment_medium`
+- Views:
+  - `grp.full_treatment`
+- New tables:
+  - None
+- Deprecated tables/columns:
+  - None
+
+### Upload / Code Impacts
+- Excel → Input code:
+  - Treatment medium templates may require new depth and depth-units columns.
+- Input → SQL code:
+  - Import scripts may require updates to insert the new fields.
+- QA/QC impacts:
+  - Future validation may need to confirm value/unit pairing consistency.
+
+### SQL Change
+```sql
+ALTER TABLE grp.treatment_medium
+    ADD COLUMN growth_medium_depth numeric,
+    ADD COLUMN growth_medium_depth_units text;
+```
+
+## Required View Updates
+- [x] `grp.full_treatment`
+
+### Testing Performed
+- [ ] ALTER TABLE executed successfully
+- [ ] full_treatment view recreated successfully
+- [ ] New columns visible in information_schema.columns
+- [ ] New fields query successfully from grp.full_treatment
+
+### Status
+- Planned
+
+---
+
 # Change 004 — Add data dictionary infrastructure
 Date: 2026-05-17
 
@@ -48,10 +106,10 @@ The database needs human-readable metadata that explains not only technical stru
 -- see sql/01_schema_changes.sql Change 004
 ```
 
-## Required View Updates
+### Required View Updates
 - [x] No view updates expected
 
-## Testing Performed
+### Testing Performed
 - [x] Dependency checks completed
 - [x] Schema change executed
 - [x] Metadata rows inserted
@@ -89,7 +147,7 @@ Stored metadata now includes:
 
 No existing ecological backbone tables or views were modified.
 
-## Status
+### Status
 - Implemented
 - Tested
 
@@ -196,7 +254,7 @@ CREATE TABLE grp.import_object_map (
 - [x] Schema changes executed
 - [x] Post-change structure validated
 
-## Actual Outcome
+### Actual Outcome
 Created new administrative tracking tables:
 - `grp.import_batch`
 - `grp.import_object_map`
@@ -213,7 +271,7 @@ Constraints confirmed:
 
 No view updates were required.
 
-## Status
+### Status
 - Implemented
 - Tested
 
@@ -311,11 +369,11 @@ ALTER TABLE grp.seeding
 ADD COLUMN notes text;
 ```
 
-## Required View Updates
+### Required View Updates
  - [x] Inspect full_seeding
  - [x] Inspect downstream impacts, if any
 
-## Testing Performed
+### Testing Performed
 - [x] Seed-related structure inspection completed
 - [x] Seed/mix column search completed
 - [x] Seed/mix view definition search completed
@@ -324,7 +382,7 @@ ADD COLUMN notes text;
 - [x] View updates completed
 - [x] Post-change structure validated
 
-## Actual Outcome
+### Actual Outcome
 Created new table:
 - `grp.seed_mix`
 
@@ -350,7 +408,7 @@ Legacy structure preserved:
 
 No additional seed/mix-related views required updating.
 
-## Status
+### Status
 - Implemented
 - Tested
 
@@ -410,7 +468,7 @@ ALTER TABLE grp.treatment
 ADD COLUMN notes text;
 ```
 
-## Required View Updates
+### Required View Updates
 - [x] Inspect `full_treatment`
 - [x] Inspect `treatments_by_area`
 - [x] Inspected `full_area`; no update needed. View only aggregates treatment IDs by area and does not expose treatment details.

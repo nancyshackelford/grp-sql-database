@@ -1,4 +1,37 @@
 -- =====================================================
+-- Change 005 dependency check
+-- Purpose: Separate topsoil age and depth
+-- Run before executing Change 005 in pgAdmin.
+-- =====================================================
+
+-- Inspect current treatment_medium structure
+SELECT
+  column_name,
+  data_type,
+  is_nullable,
+  column_default,
+  ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'treatment_medium'
+ORDER BY ordinal_position;
+
+-- Find dependent views using treatment_medium
+SELECT
+  table_schema,
+  table_name,
+  view_definition
+FROM information_schema.views
+WHERE view_definition ILIKE '%treatment_medium%';
+
+-- Inspect full_treatment view
+SELECT
+  view_definition
+FROM information_schema.views
+WHERE table_schema = 'grp'
+AND table_name = 'full_treatment';
+
+-- =====================================================
 -- Change 004 dependency check
 -- Purpose: Check dependencies for adding data dictionary infrastructure
 -- Run before executing Change 004 in pgAdmin.
