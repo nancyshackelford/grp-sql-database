@@ -26,8 +26,7 @@ CREATE TABLE grp.import_batch (
 CREATE TABLE grp.import_object_map (
     import_object_mapid integer NOT NULL,
     import_batchid integer NOT NULL,
-    database text NOT NULL
-        CHECK (database IN ('GAZP', 'GRP', 'OM')),
+    database text NOT NULL,
     projectid integer,
     source_layer text,
     source_object_type text,
