@@ -1,4 +1,56 @@
 -- =====================================================
+-- Change 005 import tests
+-- Purpose: Validate addition of growth medium depth
+-- Run after executing Change 005 in pgAdmin.
+-- =====================================================
+
+-- Confirm additional columns
+SELECT
+  column_name,
+  data_type,
+  is_nullable,
+  column_default,
+  ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'treatment_medium'
+ORDER BY ordinal_position;
+
+-- Confirm addition to full_treatment
+SELECT 
+    column_name,
+    data_type,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'full_treatment'
+ORDER BY ordinal_position;
+
+-- Confirm queryable in full_treatment
+SELECT
+    growth_medium_depth,
+    growth_medium_depth_units
+FROM grp.full_treatment
+LIMIT 5;
+
+-- Confirm addition to treatments_by_area
+SELECT 
+    column_name,
+    data_type,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'treatments_by_area'
+ORDER BY ordinal_position;
+
+-- Confirm queryable in treatments_by_area
+SELECT
+    growth_medium_depth,
+    growth_medium_depth_units
+FROM grp.treatments_by_area
+LIMIT 5;
+
+-- =====================================================
 -- Change 004 import tests
 -- Purpose: Validate data dictionary infrastructure
 -- Run after executing Change 004 in pgAdmin.

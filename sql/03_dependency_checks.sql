@@ -24,6 +24,13 @@ SELECT
 FROM information_schema.views
 WHERE view_definition ILIKE '%treatment_medium%';
 
+-- Look at other views dependent on full_treatment
+SELECT
+  view_definition
+FROM information_schema.views
+WHERE table_schema = 'grp'
+  AND table_name = 'treatments_by_area';
+
 -- Inspect full_treatment view
 SELECT
   view_definition

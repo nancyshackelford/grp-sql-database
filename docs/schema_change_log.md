@@ -52,19 +52,36 @@ This improves queryability and semantic clarity.
 ALTER TABLE grp.treatment_medium
     ADD COLUMN growth_medium_depth numeric,
     ADD COLUMN growth_medium_depth_units text;
+
+see 02_view_updates for updates to grp.full_treatment and grp.treatments_by_area
 ```
 
-## Required View Updates
-- [x] `grp.full_treatment`
+### Actual Outcomes
+#### Additional Dependencies Identified During Implementation
+Initial dependency checks identified `grp.full_treatment` as dependent on `grp.treatment_medium`. During implementation, an additional downstream dependency was identified:
+- `grp.treatments_by_area` depends on `grp.full_treatment`
 
-### Testing Performed
-- [ ] ALTER TABLE executed successfully
-- [ ] full_treatment view recreated successfully
-- [ ] New columns visible in information_schema.columns
-- [ ] New fields query successfully from grp.full_treatment
+This required ordered view recreation rather than isolated replacement of `grp.full_treatment`.
 
-### Status
-- Planned
+#### Final SQL Objects Affected
+- Tables:
+  - `grp.treatment_medium`
+- Views:
+  - `grp.full_treatment`
+  - `grp.treatments_by_area`
+
+### Final Testing Performed
+- [x] ALTER TABLE executed successfully
+- [x] Dependent views dropped successfully
+- [x] `grp.full_treatment` recreated successfully
+- [x] `grp.treatments_by_area` recreated successfully
+- [x] New columns visible in `information_schema.columns`
+- [x] New fields accessible from `grp.full_treatment`
+- [x] New fields accessible from `grp.treatments_by_area`
+
+### Final Status
+- Implemented
+- Tested
 
 ---
 

@@ -34,14 +34,37 @@ Updated `grp.full_treatment` view to expose the new fields.
 - Numeric fields in the view currently require explicit casting before aggregation.
 - `top_soil_age` remains conceptually distinct from growth medium depth.
 
-### Required Testing
-- [ ] Confirm ALTER TABLE executes successfully.
-- [ ] Confirm recreated `grp.full_treatment` view compiles successfully.
-- [ ] Confirm new fields appear correctly in `grp.full_treatment`.
-- [ ] Confirm no existing view columns were altered unintentionally.
+### Newly Identified Dependencies
+- `grp.treatments_by_area` depends on `grp.full_treatment`
+- Recreating `grp.full_treatment` therefore required ordered view recreation:
+  1. drop `grp.treatments_by_area`
+  2. drop `grp.full_treatment`
+  3. recreate `grp.full_treatment`
+  4. recreate `grp.treatments_by_area`
+
+### Actual Outcomes
+- Added:
+  - `growth_medium_depth numeric`
+  - `growth_medium_depth_units text`
+  to `grp.treatment_medium`
+- Updated `grp.full_treatment` to expose both new fields.
+- Updated `grp.treatments_by_area` to expose both new fields.
+- Existing view functionality remained intact after recreation.
+
+### Testing Performed
+- [x] ALTER TABLE executed successfully
+- [x] `grp.full_treatment` view dropped successfully
+- [x] `grp.treatments_by_area` view dropped successfully
+- [x] `grp.full_treatment` recreated successfully
+- [x] `grp.treatments_by_area` recreated successfully
+- [x] New columns visible in `information_schema.columns`
+- [x] New fields query successfully from `grp.full_treatment`
+- [x] New fields query successfully from `grp.treatments_by_area`
+- [x] Existing `full_treatment` fields remain accessible
 
 ### Status
-- Identified
+- Implemented
+- Tested
 
 ---
 
