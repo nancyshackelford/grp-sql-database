@@ -1,4 +1,41 @@
 -- =====================================================
+-- Change 004 dependency check
+-- Purpose: Check dependencies for adding data dictionary infrastructure
+-- Run before executing Change 004 in pgAdmin.
+-- =====================================================
+
+-- Check whether data dictionary table already exists
+SELECT 
+    table_schema,
+    table_name,
+    table_type
+FROM information_schema.tables
+WHERE table_schema = 'grp'
+AND table_name = 'data_dictionary';
+
+-- Confirm import tracking tables exist before adding metadata rows for them
+SELECT 
+    table_schema,
+    table_name,
+    table_type
+FROM information_schema.tables
+WHERE table_schema = 'grp'
+AND table_name IN ('import_batch', 'import_object_map')
+ORDER BY table_name;
+
+-- Confirm columns in import tracking tables before documenting them
+SELECT 
+    table_name,
+    column_name,
+    data_type,
+    is_nullable,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name IN ('import_batch', 'import_object_map')
+ORDER BY table_name, ordinal_position;
+
+-- =====================================================
 -- Change 003 dependency check
 -- Purpose: Check dependencies for adding import tracking tables
 -- Run before executing Change 003 in pgAdmin.

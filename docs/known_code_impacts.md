@@ -8,6 +8,55 @@ Tracks known dependencies between:
 
 ---
 
+# Change 004 — Add data dictionary infrastructure
+Date: 2026-05-17
+
+### Dependency Notes
+Change 004 adds an administrative metadata table and does not modify ecological backbone tables.
+
+The first populated metadata records document:
+- `grp.import_batch`
+- `grp.import_object_map`
+
+The data dictionary stores both technical and human-facing metadata, including:
+- data type
+- nullability
+- definitions
+- workflow notes
+- allowed values
+- examples
+- legacy notes
+- QA/QC notes
+- external source notes
+
+### Expected Code Impacts
+- No immediate upload-code impact.
+- Future R tools may query `grp.data_dictionary` to generate user-facing metadata.
+- Future QA/QC scripts may compare `grp.data_dictionary` with `information_schema.columns`.
+
+### Expected Structural Changes
+- Create `grp.data_dictionary`
+- Populate initial metadata for import tracking tables
+- Enforce uniqueness of `table_name` + `column_name`
+- Constrain `is_nullable` to `YES` or `NO`
+
+### Required Testing
+- [ ] Confirm `grp.data_dictionary` table exists
+- [ ] Confirm primary key exists on `dictionaryid`
+- [ ] Confirm unique constraint exists on `table_name` + `column_name`
+- [ ] Confirm `is_nullable` CHECK constraint exists
+- [ ] Confirm metadata rows inserted for `grp.import_batch`
+- [ ] Confirm metadata rows inserted for `grp.import_object_map`
+- [ ] Confirm expected row count is 24
+- [ ] Later: compare data dictionary entries against `information_schema.columns`
+
+### Actual Outcome
+
+### Status
+- Planned
+
+---
+
 # Change 003 — Add import and source-to-GRP object tracking
 Date: 2026-05-16
 

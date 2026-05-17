@@ -10,6 +10,60 @@ For each change:
 
 ---
 
+# Change 004 — Add data dictionary infrastructure
+Date: 2026-05-17
+
+### Summary
+Create an in-database data dictionary table for storing column-level metadata, workflow guidance, allowed values, QA/QC notes, legacy notes, and external-source notes.
+
+### Motivation
+The database needs human-readable metadata that explains not only technical structure, but also ecological meaning and workflow interpretation. This pilot data dictionary begins with the stable import tracking tables.
+
+### SQL Objects Affected
+- Tables:
+  - none modified
+
+- Views:
+  - none expected
+
+- New tables:
+  - `grp.data_dictionary`
+
+- Deprecated tables/columns:
+  - none
+
+### Upload / Code Impacts
+- Excel → Input code:
+  - no immediate impact
+
+- Input → SQL code:
+  - no immediate impact
+
+- QA/QC impacts:
+  - future QA can compare `grp.data_dictionary` against `information_schema.columns` to find undocumented or stale fields
+
+### SQL Change
+
+```sql
+-- see sql/01_schema_changes.sql Change 004
+```
+
+## Required View Updates
+- [x] No view updates expected
+
+## Testing Performed
+- [x] Dependency checks completed
+- [] Schema change executed
+- [] Metadata rows inserted
+- [] Post-change structure validated
+
+## Actual Outcome
+
+## Status
+- Planned
+
+---
+
 # Change 003 — Add import and source-to-GRP object tracking
 Date: 2026-05-16
 
@@ -101,17 +155,17 @@ CREATE TABLE grp.import_object_map (
 );
 ```
 
-**Required View Updates**
- - [x] No view updates expected
+### Required View Updates
+- [x] No view updates expected
 
-**Testing Performed**
+### Testing Performed
 - [x] Checked proposed table names do not already exist
 - [x] Checked referenced grp.project fields
 - [x] Checked existing grp.project database constraints
 - [x] Schema changes executed
 - [x] Post-change structure validated
 
-**Actual Outcome**
+## Actual Outcome
 Created new administrative tracking tables:
 - `grp.import_batch`
 - `grp.import_object_map`
@@ -128,7 +182,7 @@ Constraints confirmed:
 
 No view updates were required.
 
-**Status**
+## Status
 - Implemented
 - Tested
 
@@ -226,11 +280,11 @@ ALTER TABLE grp.seeding
 ADD COLUMN notes text;
 ```
 
-**Required View Updates**
+## Required View Updates
  - [x] Inspect full_seeding
  - [x] Inspect downstream impacts, if any
 
-**Testing Performed**
+## Testing Performed
 - [x] Seed-related structure inspection completed
 - [x] Seed/mix column search completed
 - [x] Seed/mix view definition search completed
@@ -239,7 +293,7 @@ ADD COLUMN notes text;
 - [x] View updates completed
 - [x] Post-change structure validated
 
-**Actual Outcome**
+## Actual Outcome
 Created new table:
 - `grp.seed_mix`
 
@@ -265,7 +319,7 @@ Legacy structure preserved:
 
 No additional seed/mix-related views required updating.
 
-**Status**
+## Status
 - Implemented
 - Tested
 
@@ -325,9 +379,7 @@ ALTER TABLE grp.treatment
 ADD COLUMN notes text;
 ```
 
----
-
-**Required View Updates**
+## Required View Updates
 - [x] Inspect `full_treatment`
 - [x] Inspect `treatments_by_area`
 - [x] Inspected `full_area`; no update needed. View only aggregates treatment IDs by area and does not expose treatment details.
@@ -344,7 +396,6 @@ ADD COLUMN notes text;
 - [x] Other flagged views inspected
 - [x] Post-change structure validated
 
----
 ### Actual Outcome
 `notes text` was successfully added to `grp.treatment`.
 
@@ -359,6 +410,6 @@ Other views inspected:
 - `full_seeding`: no update needed
 - `full_individual`: no update needed
 
-**Status**
+## Status
 - Implemented
 - Tested

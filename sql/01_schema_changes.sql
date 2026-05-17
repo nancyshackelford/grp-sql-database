@@ -1,4 +1,274 @@
 -- =====================================================
+-- Change 004
+-- Date: 2026-05-17
+-- Description: Add data dictionary infrastructure
+-- =====================================================
+
+-- Create table for storing schema metadata and workflow guidance
+CREATE TABLE grp.data_dictionary (
+    dictionaryid integer NOT NULL,
+    table_name text NOT NULL,
+    column_name text NOT NULL,
+    display_order integer,
+    data_type text NOT NULL,
+    is_nullable text NOT NULL,
+    definition text NOT NULL,
+    workflow_notes text,
+    allowed_values text,
+    example text,
+    legacy_notes text,
+    qa_qc_notes text,
+    external_source_notes text,
+    CONSTRAINT data_dictionary_pkey PRIMARY KEY (dictionaryid),
+    CONSTRAINT data_dictionary_unique
+        UNIQUE (table_name, column_name),
+    CONSTRAINT data_dictionary_is_nullable_check
+        CHECK (is_nullable IN ('YES', 'NO'))
+);
+
+-- Populate metadata for import tracking tables
+INSERT INTO grp.data_dictionary (
+    dictionaryid,
+    table_name,
+    column_name,
+    display_order,
+    data_type,
+    is_nullable,
+    definition,
+    workflow_notes,
+    allowed_values,
+    example,
+    legacy_notes,
+    qa_qc_notes,
+    external_source_notes
+)
+VALUES
+
+-- =====================================================
+-- grp.import_batch
+-- =====================================================
+
+(1, 'import_batch', 'import_batchid', 1, 'integer', 'NO',
+ 'Unique identifier for one meaningful processing or upload event.',
+ 'Create one batch when a project undergoes a durable workflow step that future users may need to reconstruct.',
+ NULL,
+ '1',
+ NULL,
+ 'Should be unique and never reused.',
+ NULL),
+
+(2, 'import_batch', 'database', 2, 'text', 'NO',
+ 'Database/workflow family associated with the processing batch.',
+ 'Use this to distinguish historical and current workflow streams.',
+ 'GAZP; GRP; OM',
+ 'OM',
+ 'GAZP = first-generation data; GRP = Emma-era workflow; OM = Oak Meadow redevelopment workflow.',
+ 'Must match allowed database CHECK constraint.',
+ NULL),
+
+(3, 'import_batch', 'projectid', 3, 'integer', 'YES',
+ 'GRP project identifier associated with the batch, if known.',
+ 'May remain blank during early processing stages before a SQL project record exists.',
+ NULL,
+ '14',
+ NULL,
+ 'If populated, should correspond to the correct GRP project.',
+ NULL),
+
+(4, 'import_batch', 'source_folder', 4, 'text', 'YES',
+ 'Folder location or project folder used for the processing batch.',
+ 'Use as a breadcrumb trail to locate source materials later.',
+ NULL,
+ 'OM/raw_files/2026_initial_processing',
+ NULL,
+ 'Should be specific enough to relocate the source material.',
+ NULL),
+
+(5, 'import_batch', 'source_file_list', 5, 'text', 'YES',
+ 'List of source files used in the processing batch.',
+ 'Use semicolon-separated file names when multiple files were involved.',
+ NULL,
+ 'treatments.xlsx; monitoring_2026.csv',
+ NULL,
+ 'Should include all files needed to reconstruct the workflow step.',
+ NULL),
+
+(6, 'import_batch', 'pipeline_stage_start', 6, 'text', 'YES',
+ 'Starting workflow stage for the processing batch.',
+ 'Describes where the data existed before this processing step.',
+ 'contributor_raw; excel_database; input_format; sql_database',
+ 'contributor_raw',
+ NULL,
+ 'Use consistent values across projects.',
+ NULL),
+
+(7, 'import_batch', 'pipeline_stage_end', 7, 'text', 'YES',
+ 'Ending workflow stage for the processing batch.',
+ 'Describes where the data existed after this processing step.',
+ 'excel_database; input_format; sql_database',
+ 'input_format',
+ NULL,
+ 'Use consistent values across projects.',
+ NULL),
+
+(8, 'import_batch', 'processed_by', 8, 'text', 'YES',
+ 'Person responsible for the processing batch.',
+ 'Use a real name or consistent initials.',
+ NULL,
+ 'Nancy',
+ NULL,
+ NULL,
+ NULL),
+
+(9, 'import_batch', 'processed_date', 9, 'date', 'YES',
+ 'Date the processing batch occurred or was recorded.',
+ 'Use the date when the durable processing decision or upload occurred.',
+ NULL,
+ '2026-05-16',
+ NULL,
+ 'Use YYYY-MM-DD format.',
+ NULL),
+
+(10, 'import_batch', 'workflow_version', 10, 'text', 'YES',
+ 'Workflow or script version used during processing.',
+ 'Use readable workflow labels rather than only numeric versions.',
+ NULL,
+ 'v2026_seedmix_revision',
+ NULL,
+ 'Should help future users understand which workflow logic was applied.',
+ NULL),
+
+(11, 'import_batch', 'notes', 11, 'text', 'YES',
+ 'General notes about the processing batch.',
+ 'Use for interpretation decisions, warnings, or unusual workflow details.',
+ NULL,
+ 'Contributor treatment T1 split into four GRP treatment events.',
+ NULL,
+ 'Do not use as a substitute for object-level mapping details.',
+ NULL),
+
+-- =====================================================
+-- grp.import_object_map
+-- =====================================================
+
+(12, 'import_object_map', 'import_object_mapid', 1, 'integer', 'NO',
+ 'Unique identifier for one source-to-GRP object mapping record.',
+ 'Each row represents one mapping between a source object and a GRP SQL object.',
+ NULL,
+ '1',
+ NULL,
+ 'Should be unique and never reused.',
+ NULL),
+
+(13, 'import_object_map', 'import_batchid', 2, 'integer', 'NO',
+ 'Identifier for the processing batch where this mapping was created.',
+ 'Links the mapping record to the relevant import batch.',
+ NULL,
+ '1',
+ NULL,
+ 'Must reference an existing import_batchid.',
+ NULL),
+
+(14, 'import_object_map', 'database', 3, 'text', 'NO',
+ 'Database/workflow family associated with the mapping.',
+ 'Should generally match the database value used in the related import batch.',
+ 'GAZP; GRP; OM',
+ 'OM',
+ NULL,
+ 'Must match allowed database CHECK constraint.',
+ NULL),
+
+(15, 'import_object_map', 'projectid', 4, 'integer', 'YES',
+ 'GRP project identifier associated with the mapping, if known.',
+ 'May remain blank during early workflow stages before SQL project creation.',
+ NULL,
+ '14',
+ NULL,
+ 'If populated, should correspond to the correct GRP project.',
+ NULL),
+
+(16, 'import_object_map', 'source_layer', 5, 'text', 'YES',
+ 'Workflow layer where the source object originated.',
+ 'Distinguishes contributor, Excel, and input-format workflow layers.',
+ 'contributor_raw; excel_database; input_format',
+ 'contributor_raw',
+ NULL,
+ 'Use consistent values across projects.',
+ NULL),
+
+(17, 'import_object_map', 'source_object_type', 6, 'text', 'YES',
+ 'Type of source object being mapped.',
+ 'Use ecological/workflow terms such as treatment, plot, replicate, seed_mix, or veg_record.',
+ NULL,
+ 'contributor_treatment',
+ NULL,
+ 'Should describe the kind of thing represented in the source data.',
+ NULL),
+
+(18, 'import_object_map', 'source_object_id', 7, 'text', 'YES',
+ 'Original source ID or code, if one exists.',
+ 'Preserve contributor or workflow IDs exactly where possible.',
+ NULL,
+ 'T1',
+ NULL,
+ 'Avoid silently changing source identifiers.',
+ NULL),
+
+(19, 'import_object_map', 'source_object_label', 8, 'text', 'YES',
+ 'Human-readable source label.',
+ 'Use when a descriptive source name exists in addition to an ID.',
+ NULL,
+ 'Seeded and mowed treatment',
+ NULL,
+ NULL,
+ NULL),
+
+(20, 'import_object_map', 'source_identifier_text', 9, 'text', 'YES',
+ 'Composite identifier used when no single source ID is sufficient.',
+ 'Build from the fields required to uniquely identify the source object.',
+ NULL,
+ 'treatment=T1; plot=Plot 4; block=B; year=2021',
+ NULL,
+ 'Should remain readable to future restoration researchers.',
+ NULL),
+
+(21, 'import_object_map', 'grp_object_type', 10, 'text', 'YES',
+ 'Type of GRP SQL object created or linked.',
+ 'Use GRP object terms such as treatment, area, seed_mix, seeding, or veg_result.',
+ NULL,
+ 'treatment',
+ NULL,
+ 'Should identify which GRP object/table the mapping references.',
+ NULL),
+
+(22, 'import_object_map', 'grp_object_id', 11, 'integer', 'YES',
+ 'GRP SQL identifier for the mapped object.',
+ 'Stores the relevant SQL identifier for the GRP object.',
+ NULL,
+ '104',
+ NULL,
+ 'Interpret together with grp_object_type.',
+ NULL),
+
+(23, 'import_object_map', 'mapping_type', 12, 'text', 'YES',
+ 'Relationship between the source object and the GRP object.',
+ 'Documents whether objects were preserved, split, combined, derived, or uncertain.',
+ 'one_to_one; split; combined; derived; uncertain',
+ 'split',
+ NULL,
+ 'Use split when one contributor object becomes multiple GRP objects.',
+ NULL),
+
+(24, 'import_object_map', 'mapping_notes', 13, 'text', 'YES',
+ 'Explanation of the mapping decision.',
+ 'Use for ecological interpretation, uncertainty, treatment splitting, or workflow warnings.',
+ NULL,
+ 'Contributor treatment T1 included seeding in 2019 and mowing in 2020-2022, so it was split into multiple GRP treatment events.',
+ NULL,
+ 'Should explain decisions that cannot be reconstructed from IDs alone.',
+ NULL);
+
+-- =====================================================
 -- Change 003
 -- Date: 2026-05-16
 -- Description: Add import and source-to-GRP object tracking
