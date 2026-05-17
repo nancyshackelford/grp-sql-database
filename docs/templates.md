@@ -33,6 +33,7 @@ Examples:
 - Tested
 
 ---
+
 # GRP SQL Schema Change Log
 
 # Change Template
@@ -62,15 +63,13 @@ Why this change was needed.
 -- paste actual SQL here
 ```
 
----
-
-**Required View Updates**
+### Required View Updates
 - [ ]
 
-**Testing Performed**
+### Testing Performed
 - [ ]
 
-**Status**
+### Status
 - Planned
 - Implemented
 - Tested
