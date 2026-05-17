@@ -53,14 +53,45 @@ The database needs human-readable metadata that explains not only technical stru
 
 ## Testing Performed
 - [x] Dependency checks completed
-- [] Schema change executed
-- [] Metadata rows inserted
-- [] Post-change structure validated
+- [x] Schema change executed
+- [x] Metadata rows inserted
+- [x] Post-change structure validated
 
-## Actual Outcome
+### Actual Outcome
+Created new metadata infrastructure table:
+- `grp.data_dictionary`
+
+The table stores:
+- technical schema metadata
+- workflow guidance
+- allowed values
+- examples
+- legacy notes
+- QA/QC notes
+- external source notes
+
+The following constraints were successfully implemented:
+- primary key on `dictionaryid`
+- unique constraint on `(table_name, column_name)`
+- CHECK constraint limiting `is_nullable` to `YES` or `NO`
+
+Initial metadata population inserted 24 rows documenting:
+- `grp.import_batch`
+- `grp.import_object_map`
+
+Stored metadata now includes:
+- data types
+- nullability
+- workflow guidance
+- provenance interpretation guidance
+- mapping interpretation guidance
+- examples and QA/QC expectations
+
+No existing ecological backbone tables or views were modified.
 
 ## Status
-- Planned
+- Implemented
+- Tested
 
 ---
 

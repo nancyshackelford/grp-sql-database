@@ -41,19 +41,55 @@ The data dictionary stores both technical and human-facing metadata, including:
 - Constrain `is_nullable` to `YES` or `NO`
 
 ### Required Testing
-- [ ] Confirm `grp.data_dictionary` table exists
-- [ ] Confirm primary key exists on `dictionaryid`
-- [ ] Confirm unique constraint exists on `table_name` + `column_name`
-- [ ] Confirm `is_nullable` CHECK constraint exists
-- [ ] Confirm metadata rows inserted for `grp.import_batch`
-- [ ] Confirm metadata rows inserted for `grp.import_object_map`
-- [ ] Confirm expected row count is 24
+- [x] Confirm `grp.data_dictionary` table exists
+- [x] Confirm primary key exists on `dictionaryid`
+- [x] Confirm unique constraint exists on `table_name` + `column_name`
+- [x] Confirm `is_nullable` CHECK constraint exists
+- [x] Confirm metadata rows inserted for `grp.import_batch`
+- [x] Confirm metadata rows inserted for `grp.import_object_map`
+- [x] Confirm expected row count is 24
 - [ ] Later: compare data dictionary entries against `information_schema.columns`
 
 ### Actual Outcome
+`grp.data_dictionary` was successfully added as an in-database metadata and workflow documentation system.
+
+Initial implementation documents:
+- `grp.import_batch`
+- `grp.import_object_map`
+
+The metadata system now stores:
+- column definitions
+- technical data types
+- nullability
+- workflow interpretation guidance
+- allowed values
+- examples
+- legacy notes
+- QA/QC expectations
+- external source update notes
+
+Current implementation uses:
+- one row per documented column
+- a unique `(table_name, column_name)` constraint
+- controlled `YES`/`NO` values for nullability tracking
+
+The data dictionary is intended to support:
+- future contributor onboarding
+- future R metadata tools
+- QA/QC automation
+- schema transparency
+- long-term workflow reproducibility
+
+No upload workflows or ecological tables were modified during Change 004.
+
+Future planned work:
+- expand metadata coverage to additional tables after schema stabilization
+- compare `grp.data_dictionary` against `information_schema.columns` for QA/QC
+- potentially generate contributor-facing metadata exports from the SQL database
 
 ### Status
-- Planned
+- Implemented
+- Tested
 
 ---
 

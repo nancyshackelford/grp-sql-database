@@ -1,4 +1,70 @@
 -- =====================================================
+-- Change 004 import tests
+-- Purpose: Validate data dictionary infrastructure
+-- Run after executing Change 004 in pgAdmin.
+-- =====================================================
+
+-- Confirm data_dictionary table exists
+SELECT
+  table_schema,
+  table_name,
+  table_type
+FROM information_schema.tables
+WHERE table_schema = 'grp'
+AND table_name = 'data_dictionary';
+
+-- Confirm expected columns exist in grp.data_dictionary
+SELECT
+  column_name,
+  data_type,
+  is_nullable,
+  ordinal_position
+FROM information_schema.columns
+WHERE table_name = 'data_dictionary'
+ORDER BY ordinal_position;
+
+-- Confirm primary key, unique constraint, and CHECK constraint exist
+SELECT
+    tc.table_name,
+    tc.constraint_name,
+    tc.constraint_type,
+    kcu.column_name,
+    ccu.table_name AS foreign_table_name,
+    ccu.column_name AS foreign_column_name,
+    cc.check_clause
+FROM information_schema.table_constraints AS tc
+LEFT JOIN information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+LEFT JOIN information_schema.constraint_column_usage AS ccu
+    ON tc.constraint_name = ccu.constraint_name
+LEFT JOIN information_schema.check_constraints AS cc
+    ON tc.constraint_name = cc.constraint_name
+WHERE tc.table_schema = 'grp'
+AND tc.table_name = 'data_dictionary'
+ORDER BY tc.table_name, tc.constraint_type, tc.constraint_name;
+
+-- Confirm metadata rows were inserted
+SELECT *
+  FROM grp.data_dictionary
+  LIMIT 5;
+
+-- Confirm expected row count
+SELECT COUNT(*) AS row_count
+  FROM grp.data_dictionary;
+
+-- Inspect inserted metadata rows for import_batch
+SELECT *
+  FROM grp.data_dictionary
+  WHERE table_name = 'import_batch'
+  ORDER BY display_order;
+
+-- Inspect inserted metadata rows for import_object_map
+SELECT *
+  FROM grp.data_dictionary
+  WHERE table_name = 'import_object_map'
+  ORDER BY display_order;
+  
+-- =====================================================
 -- Change 003 validation tests
 -- Purpose: validate addition of import and source-to-GRP object tracking
 -- Run after executing Change 003; no associated view updates.
