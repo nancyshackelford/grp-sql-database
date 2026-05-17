@@ -45,19 +45,55 @@ This does not mean every tiny file edit needs a batch. It means meaningful workf
 - Store source/provenance paths and object mappings as text-based tracking fields
 
 ### Required Testing
-- [ ] Confirm `grp.import_batch` table exists
-- [ ] Confirm `grp.import_object_map` table exists
-- [ ] Confirm primary keys exist on both new tables
-- [ ] Confirm `grp.import_object_map.import_batchid` references `grp.import_batch(import_batchid)`
-- [ ] Confirm database CHECK constraints allow `GAZP`, `GRP`, and `OM`
-- [ ] Confirm no view updates are required
+- [x] Confirm `grp.import_batch` table exists
+- [x] Confirm `grp.import_object_map` table exists
+- [x] Confirm primary keys exist on both new tables
+- [x] Confirm `grp.import_object_map.import_batchid` references `grp.import_batch(import_batchid)`
+- [x] Confirm database CHECK constraints allow `GAZP`, `GRP`, and `OM`
+- [x] Confirm no view updates are required
 - [ ] Later: test sample OM processing batch record
 - [ ] Later: test one-to-many mapping from contributor treatment to multiple GRP treatment IDs
 
 ### Actual Outcome
+`grp.import_batch` and `grp.import_object_map` were successfully added as administrative provenance-tracking tables.
 
+`grp.import_batch` now provides a structured record of meaningful processing/upload events across the workflow:
+
+- contributor/raw source
+- Excel database
+- input format
+- SQL database
+
+`grp.import_object_map` now provides flexible source-to-GRP object mapping capable of representing:
+- one-to-one mappings
+- split mappings
+- combined mappings
+- derived/interpreted mappings
+- uncertain mappings
+
+Current implementation:
+- uses text-based provenance and identifier fields for flexibility
+- allows `GAZP`, `GRP`, and `OM` as controlled database values
+- links object mappings to import batches through `import_batchid`
+
+No ecological backbone tables or views were modified during Change 003.
+
+Future workflow expectation:
+- import/provenance tracking should be updated whenever a processing stage creates durable transformations, reinterpretations, or ID mappings that future uploads may depend on.
+
+Remaining future work:
+- update `project.database_check` before OM project insertion
+- integrate provenance tracking into Excel → Input workflow
+- integrate provenance tracking into Input → SQL upload workflow
+- build metadata documentation defining:
+  - import batches
+  - mapping types
+  - source object rules
+  - identifier construction guidance
+  
 ### Status
-- Planned
+- Implemented
+- Tested
 
 ---
 

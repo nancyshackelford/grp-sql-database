@@ -1,4 +1,52 @@
 -- =====================================================
+-- Change 003 validation tests
+-- Purpose: validate addition of import and source-to-GRP object tracking
+-- Run after executing Change 003; no associated view updates.
+-- =====================================================
+
+-- Confirm `import_batch` and `import_object_map` tables exist
+SELECT 
+  table_schema,
+  table_name,
+  table_type
+FROM information_schema.tables
+WHERE table_schema = 'grp'
+AND table_name IN ('import_batch', 'import_object_map');
+
+-- Confirm `import_batch` and `import_object_map` column names
+SELECT 
+  table_name,
+  column_name,
+  data_type,
+  is_nullable,
+  ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name IN ('import_batch', 'import_object_map')
+ORDER BY table_name, ordinal_position;
+
+-- Check `import_batch` and `import_object_map` constraints
+SELECT
+    tc.table_name,
+    tc.constraint_name,
+    tc.constraint_type,
+    kcu.column_name,
+    ccu.table_name AS foreign_table_name,
+    ccu.column_name AS foreign_column_name,
+    cc.check_clause
+FROM information_schema.table_constraints AS tc
+LEFT JOIN information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+LEFT JOIN information_schema.constraint_column_usage AS ccu
+    ON tc.constraint_name = ccu.constraint_name
+LEFT JOIN information_schema.check_constraints AS cc
+    ON tc.constraint_name = cc.constraint_name
+WHERE tc.table_schema = 'grp'
+AND tc.table_name IN ('import_batch', 'import_object_map')
+ORDER BY tc.table_name, tc.constraint_type, tc.constraint_name;
+
+
+-- =====================================================
 -- Change 002 validation tests
 -- Purpose: validate normalization of seed mix
 -- Run after executing Change 002 and associated view updates.

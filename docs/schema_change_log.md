@@ -59,7 +59,46 @@ Before OM project records are inserted into `grp.project`, the existing `project
 ### SQL Change
 
 ```sql
--- paste final SQL here
+-- Create table for recording meaningful processing/upload events
+CREATE TABLE grp.import_batch (
+    import_batchid integer NOT NULL,
+    database text NOT NULL,
+    projectid integer,
+    source_folder text,
+    source_file_list text,
+    pipeline_stage_start text,
+    pipeline_stage_end text,
+    processed_by text,
+    processed_date date,
+    workflow_version text,
+    notes text,
+    CONSTRAINT import_batch_pkey PRIMARY KEY (import_batchid),
+    CONSTRAINT import_batch_database_check
+      CHECK (database IN ('GAZP', 'GRP', 'OM'))
+);
+
+-- Create table for mapping source/contributor objects to GRP SQL objects
+CREATE TABLE grp.import_object_map (
+    import_object_mapid integer NOT NULL,
+    import_batchid integer NOT NULL,
+    database text NOT NULL,
+    projectid integer,
+    source_layer text,
+    source_object_type text,
+    source_object_id text,
+    source_object_label text,
+    source_identifier_text text,
+    grp_object_type text,
+    grp_object_id integer,
+    mapping_type text,
+    mapping_notes text,
+    CONSTRAINT import_object_map_pkey PRIMARY KEY (import_object_mapid),
+    CONSTRAINT import_object_map_import_batchid_fkey
+        FOREIGN KEY (import_batchid)
+        REFERENCES grp.import_batch(import_batchid),
+    CONSTRAINT import_object_map_database_check
+      CHECK (database IN ('GAZP', 'GRP', 'OM'))
+);
 ```
 
 **Required View Updates**
@@ -69,13 +108,29 @@ Before OM project records are inserted into `grp.project`, the existing `project
 - [x] Checked proposed table names do not already exist
 - [x] Checked referenced grp.project fields
 - [x] Checked existing grp.project database constraints
-- [] Schema changes executed
-- [] Post-change structure validated
+- [x] Schema changes executed
+- [x] Post-change structure validated
 
 **Actual Outcome**
+Created new administrative tracking tables:
+- `grp.import_batch`
+- `grp.import_object_map`
+
+`grp.import_batch` records meaningful processing or upload events across the contributor/raw → Excel → input → SQL workflow.
+
+`grp.import_object_map` records flexible mappings between source/contributor objects and GRP SQL objects.
+
+Constraints confirmed:
+- `grp.import_batch.import_batchid` is primary key
+- `grp.import_object_map.import_object_mapid` is primary key
+- `grp.import_object_map.import_batchid` references `grp.import_batch(import_batchid)`
+- `database` values are limited to `GAZP`, `GRP`, and `OM` in both new tables
+
+No view updates were required.
 
 **Status**
-- Planned
+- Implemented
+- Tested
 
 ---
 
