@@ -10,6 +10,75 @@ For each change:
 
 ---
 
+# Change 003 — Add import and source-to-GRP object tracking
+Date: 2026-05-16
+
+### Summary
+Add administrative tracking tables to document meaningful processing/upload events and source-to-GRP object mappings.
+
+### Motivation
+The GRP workflow has multiple translation stages:
+
+- contributor/raw source → Excel database
+- Excel database → input format
+- input format → SQL database
+
+Important interpretation and ID-mapping decisions can be lost across these stages. This is especially risky when contributor treatments or plots are split, combined, or reinterpreted into GRP areas, treatments, seed mixes, or vegetation results.
+
+### SQL Objects Affected
+- Tables:
+  - none modified
+
+- Views:
+  - none expected
+
+- New tables:
+  - `grp.import_batch`
+  - `grp.import_object_map`
+
+- Deprecated tables/columns:
+  - none
+
+### Upload / Code Impacts
+- Excel → Input code:
+  - future workflow should create/update import tracking records when durable transformations or ID mappings are created
+
+- Input → SQL code:
+  - future upload workflow should create import batch records and object mapping records during upload
+
+- QA/QC impacts:
+  - future QA should confirm source-to-GRP mappings are present for projects where future updates are expected
+
+Dependency checks confirmed:
+- proposed tables do not already exist
+- `grp.project.database` and `grp.project.projectid` exist
+- `grp.project.database` currently allows only `GRP` and `GAZP`
+
+Before OM project records are inserted into `grp.project`, the existing `project.database_check` constraint will need to be updated to allow `OM`.
+
+### SQL Change
+
+```sql
+-- paste final SQL here
+```
+
+**Required View Updates**
+ - [x] No view updates expected
+
+**Testing Performed**
+- [x] Checked proposed table names do not already exist
+- [x] Checked referenced grp.project fields
+- [x] Checked existing grp.project database constraints
+- [] Schema changes executed
+- [] Post-change structure validated
+
+**Actual Outcome**
+
+**Status**
+- Planned
+
+---
+
 # Change 002 — Seed mix normalization
 Date: 2026-05-15
 
@@ -116,7 +185,6 @@ ADD COLUMN notes text;
 - [x] Post-change structure validated
 
 **Actual Outcome**
-### Actual Outcome
 Created new table:
 - `grp.seed_mix`
 

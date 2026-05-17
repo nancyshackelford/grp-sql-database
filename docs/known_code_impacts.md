@@ -8,6 +8,59 @@ Tracks known dependencies between:
 
 ---
 
+# Change 003 — Add import and source-to-GRP object tracking
+Date: 2026-05-16
+
+### Dependency Notes
+Change 003 adds administrative tracking tables rather than modifying ecological backbone tables.
+
+An import batch is one meaningful processing or upload event that creates durable transformations, reinterpretations, mappings, or SQL insertions related to a project’s data workflow.
+
+Import/provenance tracking should be updated whenever a processing stage creates durable transformations, reinterpretations, or ID mappings that future uploads may depend on.
+
+This does not mean every tiny file edit needs a batch. It means meaningful workflow transitions should be recorded, such as:
+- contributor/raw source → Excel interpretation
+- Excel → input conversion
+- input → SQL upload
+- corrected re-upload after schema change
+- reinterpretation of treatment/plot structure
+- addition of a new monitoring year
+
+### Expected Code Impacts
+- Excel → Input code may eventually need to create or export import tracking information for contributor-to-Excel and Excel-to-input transformations.
+- Input → SQL upload code will eventually need to insert records into:
+  - `grp.import_batch`
+  - `grp.import_object_map`
+- OM workflow should use these tables as a case-study record of each processing stage.
+- Existing GRP/GAZP historical data may only be backfilled where previous mapping documentation exists.
+
+### Expected Structural Changes
+- Create `grp.import_batch`
+- Create `grp.import_object_map`
+- Use `database` values:
+  - `GAZP`
+  - `GRP`
+  - `OM`
+- Link `grp.import_object_map.import_batchid` to `grp.import_batch.import_batchid`
+- Store source/provenance paths and object mappings as text-based tracking fields
+
+### Required Testing
+- [ ] Confirm `grp.import_batch` table exists
+- [ ] Confirm `grp.import_object_map` table exists
+- [ ] Confirm primary keys exist on both new tables
+- [ ] Confirm `grp.import_object_map.import_batchid` references `grp.import_batch(import_batchid)`
+- [ ] Confirm database CHECK constraints allow `GAZP`, `GRP`, and `OM`
+- [ ] Confirm no view updates are required
+- [ ] Later: test sample OM processing batch record
+- [ ] Later: test one-to-many mapping from contributor treatment to multiple GRP treatment IDs
+
+### Actual Outcome
+
+### Status
+- Planned
+
+---
+
 # Change 002 — Seed mix normalization
 Date: 2026-05-15
 

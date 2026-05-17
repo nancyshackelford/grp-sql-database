@@ -1,4 +1,51 @@
 -- =====================================================
+-- Change 003 dependency check
+-- Purpose: Check dependencies for adding import tracking tables
+-- Run before executing Change 003 in pgAdmin.
+-- =====================================================
+
+-- Check whether proposed import tracking tables already exist
+SELECT 
+    table_schema,
+    table_name,
+    table_type
+FROM information_schema.tables
+WHERE table_schema = 'grp'
+AND table_name IN ('import_batch', 'import_object_map')
+ORDER BY table_name;
+
+-- Confirm referenced project columns exist and inspect database constraint context
+SELECT 
+    column_name,
+    data_type,
+    is_nullable,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'project'
+AND column_name IN ('database', 'projectid')
+ORDER BY ordinal_position;
+
+-- Check constraints on grp.project related to database/projectid
+SELECT
+    tc.constraint_name,
+    tc.constraint_type,
+    kcu.column_name,
+    cc.check_clause
+FROM information_schema.table_constraints tc
+LEFT JOIN information_schema.key_column_usage kcu
+    ON tc.constraint_name = kcu.constraint_name
+LEFT JOIN information_schema.check_constraints cc
+    ON tc.constraint_name = cc.constraint_name
+WHERE tc.table_schema = 'grp'
+AND tc.table_name = 'project'
+AND (
+    kcu.column_name IN ('database', 'projectid')
+    OR cc.check_clause ILIKE '%database%'
+)
+ORDER BY tc.constraint_type, tc.constraint_name;
+
+-- =====================================================
 -- Change 002 dependency check
 -- Purpose: Check dependencies for seed mix normalization
 -- Run before executing Change 002 in pgAdmin.
