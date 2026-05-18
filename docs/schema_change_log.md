@@ -67,15 +67,24 @@ Confirm grp.full_paper preserves needed flattened output fields.
 - [x] Confirmed only grp.full_paper directly depends on paper-related tables.
 - [x] Confirmed grp.author_contributor is also used by grp.project_contributor and grp.full_project.
 - [x] Confirmed grp.project uses composite key database + projectid.
-- [ ] Run planned schema change in pgAdmin.
-- [ ] Confirm new tables and constraints.
-- [ ] Rebuild and test grp.full_paper.
-- [ ] Run paper import tests.
+- [x] Run planned schema change in pgAdmin.
+- [x] Confirm new tables and constraints.
+- [x] Rebuild and test grp.full_paper.
+- [x] Run paper import tests.
 
 ### Actual Outcomes
+Implemented successfully. The old `grp.full_paper` view was dropped, the old `grp.paper` and `grp.paper_author` tables were rebuilt into a normalized structure, and the new `grp.project_paper` linking table was added.
+
+The rebuilt structure now uses:
+- `grp.paper` for global publication records
+- `grp.project_paper` for project-publication links
+- `grp.paper_author` for publication-author links
+
+`grp.full_paper` was recreated successfully from the normalized tables. The view compiled and its structure was checked.
 
 ### Status
-- Planned
+- Implemented
+- Tested
 
 ---
 

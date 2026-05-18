@@ -1,4 +1,79 @@
 -- =====================================================
+-- View Update 005
+-- Related Change ID: Change 006
+-- Date: 2026-05-18
+-- Description: Recreate full_paper using normalized paper structure
+-- =====================================================
+
+-- Phase 6 view updates
+-- Rebuild full_paper after normalizing paper/publication tables.
+-- full_paper now joins:
+--   project_paper -> paper
+--   paper_author -> author_contributor
+
+DROP VIEW IF EXISTS grp.full_paper;
+
+CREATE VIEW grp.full_paper AS
+SELECT
+    pp.database,
+    pp.projectid,
+    p.paperid,
+    a.authors,
+    p.publication_year AS year,
+    p.publication_title AS title,
+    p.publication_journal AS journal,
+    p.publication_doi AS doi,
+    p.publication_url AS url,
+    ca.corresponding_author,
+    ca.email,
+    p.date_received AS received,
+    p.data_citation AS citation,
+    p.creativecommons_license AS license,
+    p.use_conditions AS conditions,
+    pp.notes AS project_paper_notes
+FROM grp.project_paper AS pp
+LEFT JOIN grp.paper AS p
+    ON pp.paperid = p.paperid
+LEFT JOIN (
+    SELECT
+        pa.paperid,
+        string_agg(
+            (ac.given_name || ' ' || ac.surname),
+            '; '
+            ORDER BY ac.surname, ac.given_name
+        ) AS authors
+    FROM grp.paper_author AS pa
+    LEFT JOIN grp.author_contributor AS ac
+        ON pa.author_contributorid = ac.author_contributorid
+    GROUP BY pa.paperid
+) AS a
+    ON p.paperid = a.paperid
+LEFT JOIN (
+    SELECT
+        pa.paperid,
+        string_agg(
+            (ac.given_name || ' ' || ac.surname),
+            '; '
+            ORDER BY ac.surname, ac.given_name
+        ) AS corresponding_author,
+        string_agg(
+            ac.email,
+            '; '
+            ORDER BY ac.surname, ac.given_name
+        ) AS email
+    FROM grp.paper_author AS pa
+    LEFT JOIN grp.author_contributor AS ac
+        ON pa.author_contributorid = ac.author_contributorid
+    WHERE pa.is_corresponding_author = true
+    GROUP BY pa.paperid
+) AS ca
+    ON p.paperid = ca.paperid
+ORDER BY
+    pp.database DESC,
+    pp.projectid,
+    p.paperid;
+
+-- =====================================================
 -- View Update 004
 -- Related Change ID: Change 005
 -- Date: 2026-05-18

@@ -50,17 +50,23 @@ Current SQL structure assumes:
 - [x] Confirm dependencies involving `grp.paper`, `grp.paper_author`, and `grp.full_paper`.
 - [x] Confirm dependencies involving `grp.author_contributor`.
 - [x] Confirm `grp.project` primary key structure.
-- [ ] Confirm new `grp.paper` table exists with global identity `paperid`.
-- [ ] Confirm new `grp.project_paper` table exists with correct primary key and foreign keys.
-- [ ] Confirm new `grp.paper_author` table exists with correct primary key and foreign keys.
-- [ ] Confirm rebuilt `grp.full_paper` returns expected flattened output.
-- [ ] Confirm import tests can load paper records, project-paper links, and paper-author links.
+- [x] Confirm new `grp.paper` table exists with global identity `paperid`.
+- [x] Confirm new `grp.project_paper` table exists with correct primary key and foreign keys.
+- [x] Confirm new `grp.paper_author` table exists with correct primary key and foreign keys.
+- [x] Confirm rebuilt `grp.full_paper` returns expected flattened output.
+- [x] Confirm import tests can load paper records, project-paper links, and paper-author links.
 
 ### Actual Outcomes
+Implemented. The old project-specific paper structure was replaced with a normalized paper/publication structure:
+- `grp.paper`
+- `grp.project_paper`
+- `grp.paper_author`
+
+`grp.full_paper` was recreated successfully and compiled using the new normalized tables. Structure checks confirmed the expected rebuilt view.
 
 ### Status
-- Identified
-- Investigating
+- Fixed
+- Tested
 
 ---
 
