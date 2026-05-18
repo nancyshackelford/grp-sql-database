@@ -10,7 +10,76 @@ For each change:
 
 ---
 
-## Change ID:
+## Change ID: 006
+
+Date: 2026-05-17
+
+### Summary
+Normalize the GRP paper/publication structure by replacing the current project-specific paper table design with a global paper table and separate linking tables for project-paper and paper-author relationships.
+
+### Motivation
+The existing structure stores paper records using a composite identity of `database + projectid + paperid`, meaning `paperid` is project-specific rather than globally unique. This limits the database’s ability to represent many-to-many relationships between projects and publications. A normalized structure is needed so that one paper can be linked to multiple projects, and one project can be linked to multiple papers.
+
+### SQL Objects Affected
+- Tables:
+  - `grp.paper`
+  - `grp.paper_author`
+
+- Views:
+  - `grp.full_paper`
+
+- New tables:
+  - `grp.paper`
+  - `grp.project_paper`
+  - `grp.paper_author`
+
+- Deprecated tables/columns:
+  - Old `grp.paper` structure with `database`, `projectid`, and project-specific `paperid`
+  - Old `grp.paper_author` structure with `database`, `projectid`, and project-specific `paperid`
+
+### Upload / Code Impacts
+- Excel → Input code:
+  - Existing paper/publication input structure may need to be staged before loading.
+  - Paper IDs should no longer be supplied as project-specific IDs from Excel.
+
+- Input → SQL code:
+  - Paper metadata must be inserted into `grp.paper`.
+  - Project-paper links must be inserted into `grp.project_paper`.
+  - Paper-author links must be inserted into `grp.paper_author`.
+
+- QA/QC impacts:
+  - Tests should confirm unique paper records, valid project-paper links, valid paper-author links, and correct DOI handling.
+
+### SQL Change
+```sql
+-- See sql/01_schema_changes.sql for planned schema changes.
+```
+
+### Required View Updates
+Rebuild grp.full_paper to use normalized paper structure.
+Confirm grp.full_paper preserves needed flattened output fields.
+
+### Testing Performed
+- [x] Ran dependency checks for existing paper-related objects.
+- [x] Confirmed current paper structure.
+- [x] Confirmed current paper_author structure.
+- [x] Confirmed current constraints on paper and paper_author.
+- [x] Confirmed only grp.full_paper directly depends on paper-related tables.
+- [x] Confirmed grp.author_contributor is also used by grp.project_contributor and grp.full_project.
+- [x] Confirmed grp.project uses composite key database + projectid.
+- [ ] Run planned schema change in pgAdmin.
+- [ ] Confirm new tables and constraints.
+- [ ] Rebuild and test grp.full_paper.
+- [ ] Run paper import tests.
+
+### Actual Outcomes
+
+### Status
+- Planned
+
+---
+
+## Change ID: 005
 Phase 5 — Separate topsoil age and growth medium depth
 
 Date:

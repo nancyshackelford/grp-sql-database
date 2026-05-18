@@ -26,6 +26,8 @@ Examples:
 ### Required Testing
 - [ ]
 
+### Actual Outcomes
+
 ### Status
 - Identified
 - Investigating
@@ -68,6 +70,8 @@ Why this change was needed.
 
 ### Testing Performed
 - [ ]
+
+### Actual Outcomes
 
 ### Status
 - Planned

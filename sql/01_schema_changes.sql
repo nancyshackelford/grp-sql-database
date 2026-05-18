@@ -1,4 +1,68 @@
 -- =====================================================
+-- Change 006
+-- Date: 2026-05-18
+-- Description: Normalize paper/publication structure
+-- =====================================================
+
+-- Drop and rebuild the current paper-related structure because the database is currently empty.
+DROP VIEW IF EXISTS grp.full_paper;
+DROP TABLE IF EXISTS grp.paper_author;
+DROP TABLE IF EXISTS grp.paper;
+
+-- Recreate paper table
+CREATE TABLE grp.paper (
+  paperid integer GENERATED ALWAYS AS IDENTITY,
+  publication_year integer,
+  publication_title text,
+  publication_journal text,
+  publication_doi text,
+  publication_url text,
+  data_citation text,
+  creativecommons_license text,
+  use_conditions text,
+  date_received date,
+  CONSTRAINT paper_pkey PRIMARY KEY (paperid),
+  CONSTRAINT publication_doi_unique UNIQUE (publication_doi)
+);
+  
+-- Create project_paper table
+CREATE TABLE grp.project_paper (
+  database text NOT NULL,
+  projectid integer NOT NULL,
+  paperid integer NOT NULL,
+  notes text,
+
+  CONSTRAINT project_paper_pkey 
+    PRIMARY KEY (database, projectid, paperid),
+
+  CONSTRAINT fk_project_paper_project
+    FOREIGN KEY (database, projectid)
+    REFERENCES grp.project(database, projectid),
+
+  CONSTRAINT fk_project_paper_paper
+    FOREIGN KEY (paperid)
+    REFERENCES grp.paper(paperid)
+);
+
+-- Recreate paper_author table
+CREATE TABLE grp.paper_author (
+  paperid integer NOT NULL,
+  author_contributorid integer NOT NULL,
+  is_corresponding_author boolean,
+  
+  CONSTRAINT pk_paper_author
+    PRIMARY KEY (paperid, author_contributorid),
+  
+  CONSTRAINT fk_paper_author_paper
+    FOREIGN KEY (paperid)
+    REFERENCES grp.paper(paperid),
+    
+  CONSTRAINT fk_paper_author_author
+    FOREIGN KEY (author_contributorid)
+    REFERENCES grp.author_contributor(author_contributorid)
+);
+
+-- =====================================================
 -- Change 005
 -- Date: 2026-05-18
 -- Description: Add depth to growth medium

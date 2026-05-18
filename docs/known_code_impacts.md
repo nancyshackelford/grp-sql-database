@@ -8,6 +8,62 @@ Tracks known dependencies between:
 
 ---
 
+# Known Code Impacts
+
+## Change ID: 006
+
+### SQL Change Short description.
+Normalize the paper/publication structure by replacing project-specific paper records with a global `paper` table, a `project_paper` linking table, and a simplified `paper_author` linking table.
+
+### Likely Affected Code
+– Excel → Input:
+- Paper/publication inputs will need to stop assuming `paperid` is project-specific.
+- Paper import workflow will need to handle SQL-generated global `paperid` values.
+- Existing flattened paper sheets may need staging/import logic before loading into normalized tables.
+
+- Input → SQL:
+- Existing import code that inserts directly into `grp.paper` will need to be updated.
+- Project-paper relationships will need to be inserted into `grp.project_paper`.
+- Paper-author relationships will need to be inserted into the rebuilt `grp.paper_author`.
+
+- SQL views:
+- `grp.full_paper` must be rebuilt from the new normalized structure.
+- No other paper-related views were identified in dependency checks.
+
+- QA/QC scripts:
+- QA/QC should be updated to check paper uniqueness, project-paper links, author-paper links, and DOI handling after import.
+
+### Dependency Notes
+Current SQL structure assumes:
+- `paperid` is only unique within `database + projectid`.
+- `grp.paper` stores project-specific paper records.
+- `grp.paper_author` links authors using `database + projectid + paperid`.
+- `grp.full_paper` joins paper and author information using the old composite project-paper identity.
+- `grp.author_contributor` is shared with `grp.project_contributor` and `grp.full_project` and should not be changed in this phase.
+- `grp.project` uses a composite primary key: `database + projectid`.
+
+### Required Testing
+- [x] Confirm existing paper-related objects.
+- [x] Confirm existing `grp.paper` structure.
+- [x] Confirm existing `grp.paper_author` structure.
+- [x] Confirm existing constraints on `grp.paper` and `grp.paper_author`.
+- [x] Confirm dependencies involving `grp.paper`, `grp.paper_author`, and `grp.full_paper`.
+- [x] Confirm dependencies involving `grp.author_contributor`.
+- [x] Confirm `grp.project` primary key structure.
+- [ ] Confirm new `grp.paper` table exists with global identity `paperid`.
+- [ ] Confirm new `grp.project_paper` table exists with correct primary key and foreign keys.
+- [ ] Confirm new `grp.paper_author` table exists with correct primary key and foreign keys.
+- [ ] Confirm rebuilt `grp.full_paper` returns expected flattened output.
+- [ ] Confirm import tests can load paper records, project-paper links, and paper-author links.
+
+### Actual Outcomes
+
+### Status
+- Identified
+- Investigating
+
+---
+
 ## Change 005 — Separate topsoil age and growth medium depth
 Date: 2026-05-18
 

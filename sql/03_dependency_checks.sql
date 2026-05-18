@@ -1,4 +1,101 @@
 -- =====================================================
+-- Change 006 dependency check
+-- Purpose: Normalize paper/publication structure
+-- Run before executing Change 006 in pgAdmin.
+-- =====================================================
+
+-- Check existing paper-related objects
+SELECT 
+    table_schema, 
+    table_name, 
+    table_type
+FROM information_schema.tables
+WHERE table_schema = 'grp'
+AND table_name ILIKE '%paper%'
+ORDER BY table_name;
+
+-- Check existing paper and paper_author structure
+SELECT
+  table_name,
+  column_name,
+  data_type,
+  is_nullable,
+  column_default,
+  ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name ILIKE '%paper%'
+ORDER BY table_name, ordinal_position;
+
+-- Check existing constraints on paper and paper_author
+SELECT
+    tc.constraint_name,
+    tc.constraint_type,
+    kcu.column_name,
+    cc.check_clause
+FROM information_schema.table_constraints tc
+LEFT JOIN information_schema.key_column_usage kcu
+    ON tc.constraint_name = kcu.constraint_name
+LEFT JOIN information_schema.check_constraints cc
+    ON tc.constraint_name = cc.constraint_name
+WHERE tc.table_schema = 'grp'
+AND tc.table_name IN ('paper', 'paper_author')
+ORDER BY tc.constraint_type, tc.constraint_name;
+
+-- Check existing dependencies on paper, paper_author, and full_paper
+SELECT
+    tc.table_schema,
+    tc.table_name,
+    kcu.column_name,
+    ccu.table_schema AS foreign_table_schema,
+    ccu.table_name AS foreign_table_name,
+    ccu.column_name AS foreign_column_name
+FROM information_schema.table_constraints AS tc
+JOIN information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+JOIN information_schema.constraint_column_usage AS ccu
+    ON ccu.constraint_name = tc.constraint_name
+WHERE tc.constraint_type = 'FOREIGN KEY'
+AND (
+    tc.table_name IN ('paper', 'paper_author', 'full_paper')
+    OR ccu.table_name IN ('paper', 'paper_author', 'full_paper')
+)
+ORDER BY tc.table_name, kcu.column_name;
+
+-- Check project primary key structure
+SELECT
+    tc.table_schema,
+    tc.table_name,
+    tc.constraint_name,
+    tc.constraint_type,
+    kcu.column_name,
+    ccu.table_schema AS foreign_table_schema,
+    ccu.table_name AS foreign_table_name,
+    ccu.column_name AS foreign_column_name
+FROM information_schema.table_constraints AS tc
+JOIN information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+JOIN information_schema.constraint_column_usage AS ccu
+    ON ccu.constraint_name = tc.constraint_name
+WHERE tc.constraint_type = 'PRIMARY KEY'
+AND (
+    tc.table_name = 'project'
+    OR ccu.table_name = 'project'
+)
+ORDER BY tc.table_name, tc.constraint_name, kcu.column_name;
+
+-- Check existing paper row counts
+SELECT COUNT(*) AS row_count
+  FROM grp.paper;
+
+-- Check current full_paper view definition
+SELECT
+  view_definition
+FROM information_schema.views
+WHERE table_schema = 'grp'
+AND table_name = 'full_paper';
+
+-- =====================================================
 -- Change 005 dependency check
 -- Purpose: Separate topsoil age and depth
 -- Run before executing Change 005 in pgAdmin.
