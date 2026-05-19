@@ -1,4 +1,18 @@
 -- =====================================================
+-- Change 007 dependency check
+-- Purpose: Enhance treatment - grazing, mowing, cover crop
+-- Run before executing Change 007 in pgAdmin.
+-- =====================================================
+
+-- Find dependent views using mowing
+SELECT
+  table_schema,
+  table_name,
+  view_definition
+FROM information_schema.views
+WHERE view_definition ILIKE '%mowing%';
+
+-- =====================================================
 -- Change 006 dependency check
 -- Purpose: Normalize paper/publication structure
 -- Run before executing Change 006 in pgAdmin.

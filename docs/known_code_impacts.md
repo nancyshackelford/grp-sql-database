@@ -8,6 +8,35 @@ Tracks known dependencies between:
 
 ---
 
+## Change ID: Change 007
+
+### SQL Change
+Add structured treatment detail tables for mowing and cover crops; add notes to grazer treatments; remove `maintenance_mowing` from `grp.treatment`.
+
+### Likely Affected Code
+- Excel → Input: Will need to route mowing details into `grp.treatment_mowing`, cover crop details into `grp.treatment_cover_crop`, and grazing animal/detail notes into `grp.treatment_grazer.notes`.
+- Input → SQL: Import scripts must stop writing to `grp.treatment.maintenance_mowing` and instead create rows in `grp.treatment_mowing` where mowing is present.
+- SQL views: `grp.full_treatment` and `grp.treatments_by_area` currently reference `maintenance_mowing` and will need to be updated.
+- QA/QC scripts: Any checks expecting mowing as a boolean field in `grp.treatment` will need revision.
+
+### Dependency Notes
+Existing code may assume mowing is stored directly in `grp.treatment` as `maintenance_mowing`. After this change, mowing will be stored in a detail table linked by `treatmentid`, consistent with other structured treatment details such as irrigation, fertilization, herbicide, and growth medium.
+
+Cover crop data will be stored separately from target-species seeding because cover crops are not restoration target species. Cover crop species will be linked through `speciesid`.
+
+### Required Testing
+- [ ] Confirm new treatment detail tables exist.
+- [ ] Confirm `grp.treatment_grazer.notes` exists.
+- [ ] Confirm `grp.treatment.maintenance_mowing` has been removed.
+- [ ] Confirm `grp.full_treatment` and `grp.treatments_by_area` compile after view updates.
+
+### Actual Outcomes
+
+### Status
+- Identified
+
+---
+
 # Known Code Impacts
 
 ## Change ID: 006

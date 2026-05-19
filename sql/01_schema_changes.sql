@@ -1,4 +1,51 @@
 -- =====================================================
+-- Change 007
+-- Date: 2026-05-19
+-- Description: Enhance treatment - grazing, mowing, cover crop
+-- =====================================================
+
+-- Create mowing table
+CREATE TABLE grp.treatment_mowing (
+  mowingid integer GENERATED ALWAYS AS IDENTITY, 
+  treatmentid integer NOT NULL,
+  height_class text,
+  amount numeric,
+  units text,
+  notes text,
+  
+  CONSTRAINT mowing_pkey PRIMARY KEY (mowingid),
+  CONSTRAINT fk_mowing_treatment_trtid 
+    FOREIGN KEY (treatmentid)
+    REFERENCES grp.treatment(treatmentid)
+);
+
+-- Create cover crop table
+CREATE TABLE grp.treatment_cover_crop (
+  covercropid integer GENERATED ALWAYS AS IDENTITY,
+  treatmentid integer NOT NULL,
+  speciesid integer,
+  amount numeric,
+  units text,
+  notes text,
+  
+  CONSTRAINT cover_crop_pk PRIMARY KEY (covercropid),
+  CONSTRAINT fk_cover_crop_treatment_trtid
+    FOREIGN KEY (treatmentid)
+    REFERENCES grp.treatment(treatmentid),
+  CONSTRAINT fk_cover_crop_species_speciesid
+    FOREIGN KEY (speciesid)
+    REFERENCES grp.species(speciesid)
+);
+
+-- Add notes column to grazing table
+ALTER TABLE grp.treatment_grazer
+  ADD COLUMN notes text;
+  
+-- Drop maintenance_mowing from treatment
+ALTER TABLE grp.treatment
+  DROP COLUMN maintenance_mowing;
+
+-- =====================================================
 -- Change 006
 -- Date: 2026-05-18
 -- Description: Normalize paper/publication structure

@@ -10,6 +10,57 @@ For each change:
 
 ---
 
+## Change ID: Change 008
+Date: 2026-05-18
+
+### Summary
+Refine treatment structure by adding detail tables for mowing and cover crops, adding a notes column to grazing treatments, and removing the former `maintenance_mowing` boolean from the main treatment table.
+
+### Motivation
+Mowing and cover crops require more structured detail than can be represented by a simple treatment-level flag or notes field. Mowing may include height class, numeric height, units, and notes. Cover crops may include species identity and seeding rate. Grazing requires a notes field to store details such as animal type where available.
+
+This change keeps treatment structure analytical without overbuilding specialized fields for rare treatment details.
+
+### SQL Objects Affected
+- Tables:
+  - `grp.treatment`
+  - `grp.treatment_grazer`
+- Views:
+  - `grp.full_treatment`
+  - `grp.treatments_by_area`
+- New tables:
+  - `grp.treatment_mowing`
+  - `grp.treatment_cover_crop`
+- Deprecated tables/columns:
+  - `grp.treatment.maintenance_mowing`
+
+### Upload / Code Impacts
+- Excel → Input code: Mowing and cover crop data will need to be routed into their respective detail tables.
+- Input → SQL code: Import code must stop using `grp.treatment.maintenance_mowing`.
+- QA/QC impacts: Tests should confirm table creation, FK structure, removal of `maintenance_mowing`, and successful view recompilation.
+
+### SQL Change
+```sql
+-- planned SQL in sql/01_schema_changes.sql
+```
+
+### Required View Updates
+- [ ] Update grp.full_treatment
+- [ ] Update grp.treatments_by_area
+
+### Testing Performed
+- [ ] Dependency check confirmed speciesid datatype.
+- [ ] Dependency check confirmed grp.treatment_grazer.notes does not already exist.
+- [ ] Dependency check confirmed maintenance_mowing appears only in expected treatment views.
+
+### Actual Outcomes
+
+### Status
+- Planned
+
+
+---
+
 ## Change ID: 006
 
 Date: 2026-05-17

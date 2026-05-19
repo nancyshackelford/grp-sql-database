@@ -1,4 +1,14 @@
 -- =====================================================
+-- View Update 007
+-- Related Change ID: Change 007
+-- Date: 2026-05-19
+-- Description: REnhance treatment - grazing, mowing, cover crop
+-- =====================================================
+
+-- full_treatment (add cover crop, mowing)
+-- treatments_by_area (add cover crop, mowing)
+
+-- =====================================================
 -- View Update 005
 -- Related Change ID: Change 006
 -- Date: 2026-05-18
