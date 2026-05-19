@@ -45,15 +45,28 @@ This change keeps treatment structure analytical without overbuilding specialize
 ```
 
 ### Required View Updates
-- [ ] Update grp.full_treatment
-- [ ] Update grp.treatments_by_area
+- [x] Update grp.full_treatment
+- [x] Update grp.treatments_by_area
 
 ### Testing Performed
-- [ ] Dependency check confirmed speciesid datatype.
-- [ ] Dependency check confirmed grp.treatment_grazer.notes does not already exist.
-- [ ] Dependency check confirmed maintenance_mowing appears only in expected treatment views.
+- [x] Dependency check confirmed speciesid datatype.
+- [x] Dependency check confirmed grp.treatment_grazer.notes does not already exist.
+- [x] Dependency check confirmed maintenance_mowing appears only in expected treatment views.
+- [x] Confirmed structure of grp.treatment_mowing
+- [x] Confirmed structure of grp.treatment_cover_crop
+- [x] Confirmed removal of maintenance_mowing
+- [x] Confirmed successful recompilation of treatment reporting views
 
 ### Actual Outcomes
+All schema changes and view updates executed successfully.
+
+The database now stores mowing as structured treatment detail data rather than a boolean field.
+
+Cover crop treatments are now represented separately from restoration target seeding and require species linkage through speciesid.
+
+A controlled placeholder species record will be required in grp.species before future cover crop imports begin.
+
+No unexpected dependency or recompilation issues occurred during implementation or testing.
 
 ### Status
 - Planned

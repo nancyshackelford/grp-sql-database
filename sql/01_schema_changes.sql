@@ -8,6 +8,7 @@
 CREATE TABLE grp.treatment_mowing (
   mowingid integer GENERATED ALWAYS AS IDENTITY, 
   treatmentid integer NOT NULL,
+  mowing_type text NOT NULL,
   height_class text,
   amount numeric,
   units text,
@@ -23,7 +24,7 @@ CREATE TABLE grp.treatment_mowing (
 CREATE TABLE grp.treatment_cover_crop (
   covercropid integer GENERATED ALWAYS AS IDENTITY,
   treatmentid integer NOT NULL,
-  speciesid integer,
+  speciesid integer NOT NULL,
   amount numeric,
   units text,
   notes text,

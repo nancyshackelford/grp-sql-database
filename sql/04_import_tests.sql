@@ -1,4 +1,90 @@
 -- =====================================================
+-- Change 007 import tests
+-- Purpose: Validate treatment refinement
+-- Run after executing Change 007 in pgAdmin.
+-- =====================================================
+
+-- Check structure of treatment_mowing
+SELECT
+  table_name,
+  column_name,
+  data_type,
+  is_nullable,
+  column_default,
+  ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'treatment_mowing'
+ORDER BY ordinal_position;
+
+-- Check structure of treatment_cover_crop
+SELECT
+  table_name,
+  column_name,
+  data_type,
+  is_nullable,
+  column_default,
+  ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'treatment_cover_crop'
+ORDER BY ordinal_position;
+
+-- Check maintenance_mowing was dropped from treatment
+SELECT
+  table_name,
+  column_name,
+  data_type,
+  is_nullable,
+  column_default,
+  ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'treatment'
+AND column_name = 'maintenance_mowing';
+
+-- Check notes was added to treatment_grazer
+SELECT
+  table_name,
+  column_name,
+  data_type,
+  is_nullable,
+  column_default,
+  ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'treatment_grazer'
+ORDER BY ordinal_position;
+
+-- Check full_treatment compiles and includes new treatment fields
+SELECT 
+    column_name,
+    data_type,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'full_treatment'
+ORDER BY ordinal_position;
+
+SELECT *
+FROM grp.full_treatment
+LIMIT 5;
+
+-- Check treatments_by_area compiles and includes new treatment fields
+SELECT 
+    column_name,
+    data_type,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'treatments_by_area'
+ORDER BY ordinal_position;
+
+SELECT *
+FROM grp.treatments_by_area
+LIMIT 5;
+
+-- =====================================================
 -- Change 006 import tests
 -- Purpose: Validate normalization of paper/publication
 -- Run after executing Change 006 in pgAdmin.
