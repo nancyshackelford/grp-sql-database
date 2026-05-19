@@ -98,19 +98,25 @@ ALTER TABLE grp.site
 ```
 
 ### Required View Updates
-- [ ] Recreate grp.full_site without removed grp.site columns
+- [x] Recreate grp.full_site without removed grp.site columns
 
 ### Testing Performed
-- [ ] Confirm `grp.full_site` dependency identified before schema change
-- [ ] Confirm removed columns no longer exist in `grp.site`
-- [ ] Confirm retained columns still exist in `grp.site`
-- [ ] Confirm `grp.full_site` recreates successfully
-- [ ] Confirm `grp.full_site` includes expected retained fields
+- [x] Confirm `grp.full_site` dependency identified before schema change
+- [x] Confirm removed columns no longer exist in `grp.site`
+- [x] Confirm retained columns still exist in `grp.site`
+- [x] Confirm `grp.full_site` recreates successfully
+- [x] Confirm `grp.full_site` includes expected retained fields
 
 ### Actual Outcomes
+- All targeted environmental covariate columns were successfully removed from grp.site.
+- grp.full_site was successfully recreated using the updated schema.
+- No additional dependent views were identified.
+- Retained site identifiers and summary climate variables remained intact.
+- Soil, classification, disturbance, reference ecosystem, and invasive metadata remained available through linked tables and joins in grp.full_site.
 
 ### Status
-- Planned
+- Implemented
+- Tested
 
 ---
 

@@ -12,7 +12,7 @@ Tracks known dependencies between:
 Change 008
 
 ### SQL Change
-Remove stale and externally derived environmental covariate columns from `grp.site`.
+Removed stale and externally derived environmental covariate columns from `grp.site`.
 
 ### Likely Affected Code
 - Excel → Input:
@@ -25,20 +25,25 @@ Remove stale and externally derived environmental covariate columns from `grp.si
   - Any QA scripts checking removed environmental variables will require updates.
 
 ### Dependency Notes
-- `grp.full_site` depends on `grp.site`.
-- Existing `grp.full_site` definition selects columns being removed from `grp.site`.
-- Core site identifiers and retained climate variables remain unchanged.
-- Reference ecosystem, classification, soil, disturbance, and invasive metadata are stored in separate linked tables and are unaffected by this change.
+- `grp.full_site` depended on `grp.site`.
+- Existing `grp.full_site` definition selected columns removed from `grp.site`.
+- Core site identifiers and retained climate variables remained unchanged.
+- Reference ecosystem, classification, soil, disturbance, and invasive metadata are stored in separate linked tables and were unaffected by this change.
 
 ### Required Testing
-- [ ] Confirm removed columns no longer exist in `grp.site`
-- [ ] Confirm `grp.full_site` recreates successfully
-- [ ] Confirm retained columns still appear correctly in `grp.full_site`
+- [x] Confirm removed columns no longer exist in `grp.site`
+- [x] Confirm `grp.full_site` recreates successfully
+- [x] Confirm retained columns still appear correctly in `grp.full_site`
 
 ### Actual Outcomes
+- All targeted environmental covariate columns were successfully removed from `grp.site`.
+- Retained columns (`siteid`, `name`, `latitude`, `longitude`, `aridity`, `annual_temp`, `annual_precip`) remained intact.
+- `grp.full_site` was successfully recreated without references to removed columns.
+- View compiled successfully and retained expected linked metadata fields.
 
 ### Status
-- Planned
+- Fixed
+- Tested
 
 ---
 

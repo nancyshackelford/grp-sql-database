@@ -6,7 +6,6 @@
 -- =====================================================
 
 -- Phase 9 view update: Recreate full_site without dropped grp.site columns.
-
 CREATE VIEW grp.full_site AS
 SELECT
     ps.database,

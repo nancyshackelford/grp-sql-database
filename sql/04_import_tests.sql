@@ -1,4 +1,40 @@
 -- =====================================================
+-- Change 008 import tests
+-- Purpose: Validate site table refinement
+-- Run after executing Change 008 in pgAdmin.
+-- =====================================================
+
+-- Confirm removed columns no longer exist in grp.site
+SELECT
+    column_name
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'site'
+ORDER BY ordinal_position;
+
+-- Confirm grp.full_site no longer exists prior to rebuild
+SELECT
+    table_schema,
+    table_name
+FROM information_schema.views
+WHERE table_schema = 'grp'
+AND table_name = 'full_site';
+
+-- Check full_site compiles and includes new treatment fields
+SELECT 
+    column_name,
+    data_type,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'full_site'
+ORDER BY ordinal_position;
+
+SELECT *
+FROM grp.full_site
+LIMIT 5;
+
+-- =====================================================
 -- Change 007 import tests
 -- Purpose: Validate treatment refinement
 -- Run after executing Change 007 in pgAdmin.
