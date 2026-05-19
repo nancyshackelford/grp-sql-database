@@ -1,4 +1,67 @@
 -- =====================================================
+-- View Update 007
+-- Related Change ID: Change 008
+-- Date: 2026-05-19
+-- Description: Recreate full_site after pruning stale/external site variables
+-- =====================================================
+
+-- Phase 9 view update: Recreate full_site without dropped grp.site columns.
+
+CREATE VIEW grp.full_site AS
+SELECT
+    ps.database,
+    ps.projectid,
+    site.siteid,
+    site.name,
+    site.latitude,
+    site.longitude,
+    rf.description AS ref_ecosystem,
+    c.class,
+    c.subclass,
+    c.subsubclass,
+    s.sand,
+    s.silt,
+    s.clay,
+    s.description,
+    s.depth,
+    site.aridity,
+    site.annual_temp,
+    site.annual_precip,
+    d.type AS disturbance,
+    spec.invasives,
+    spec.invasive_lifeform
+FROM grp.site
+LEFT JOIN grp.project_site ps
+    ON site.siteid = ps.siteid
+LEFT JOIN grp.site_ref_ecosystem rf
+    ON site.siteid = rf.siteid
+LEFT JOIN (
+    SELECT
+        site_classification.siteid,
+        classification.class,
+        classification.subclass,
+        classification.subsubclass
+    FROM grp.site_classification
+    LEFT JOIN grp.classification
+        USING (classificationid)
+) c
+    ON site.siteid = c.siteid
+LEFT JOIN grp.site_soil s
+    ON site.siteid = s.siteid
+LEFT JOIN grp.site_disturbance d
+    ON site.siteid = d.siteid
+LEFT JOIN (
+    SELECT
+        site_invasive.siteid,
+        species.species_code AS invasives,
+        species.lifeform AS invasive_lifeform
+    FROM grp.site_invasive
+    LEFT JOIN grp.species
+        USING (speciesid)
+) spec
+    ON site.siteid = spec.siteid;
+
+-- =====================================================
 -- View Update 006
 -- Related Change ID: Change 008
 -- Date: 2026-05-18

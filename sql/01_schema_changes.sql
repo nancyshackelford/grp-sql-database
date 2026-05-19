@@ -1,4 +1,41 @@
 -- =====================================================
+-- Change 008
+-- Date: 2026-05-19
+-- Description: Streamline site table
+-- =====================================================
+
+-- Drop dependent view
+DROP VIEW IF EXISTS grp.full_site;
+
+-- Alter existing site table by dropping unwanted columns
+ALTER TABLE grp.site
+  DROP COLUMN landcover,
+  DROP COLUMN growing_season_start,
+  DROP COLUMN growing_season_end,
+  DROP COLUMN elevation,
+  DROP COLUMN slope,
+  DROP COLUMN aspect,
+  DROP COLUMN annual_precip_contributor,
+  DROP COLUMN annual_temp_contributor,
+  DROP COLUMN mean_diurnal_range,
+  DROP COLUMN isothermality,
+  DROP COLUMN temp_seasonality,
+  DROP COLUMN max_temp_warmest_month,
+  DROP COLUMN max_temp_coldest_month,
+  DROP COLUMN temp_range,
+  DROP COLUMN mean_temp_wettest_quarter,
+  DROP COLUMN mean_temp_driest_quarter,
+  DROP COLUMN mean_temp_warmest_quarter,
+  DROP COLUMN mean_temp_coldest_quarter,
+  DROP COLUMN wettest_month_precip,
+  DROP COLUMN driest_month_precip,
+  DROP COLUMN precip_seasonality,
+  DROP COLUMN wettest_quarter_precip,
+  DROP COLUMN driest_quarter_precip,
+  DROP COLUMN warmest_quarter_precip,
+  DROP COLUMN coldest_quarter_precip;
+
+-- =====================================================
 -- Change 007
 -- Date: 2026-05-19
 -- Description: Enhance treatment - grazing, mowing, cover crop

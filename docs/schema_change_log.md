@@ -10,6 +10,110 @@ For each change:
 
 ---
 
+## Change ID:
+Change 008
+
+Date: 2026-05-19
+
+### Summary
+Remove stale and externally derived environmental covariate columns from `grp.site` and recreate `grp.full_site` accordingly.
+
+### Motivation
+GRP is shifting away from maintaining a large internal repository of externally derived environmental covariates. Most removed variables can be independently downloaded or regenerated from external spatial datasets. The goal is to retain only a small set of interpretable and broadly useful site descriptors while reducing long-term maintenance burden and versioning complexity.
+
+### SQL Objects Affected
+- Tables:
+  - `grp.site`
+- Views:
+  - `grp.full_site`
+- New tables:
+  - None
+- Deprecated tables/columns:
+  - `landcover`
+  - `growing_season_start`
+  - `growing_season_end`
+  - `elevation`
+  - `slope`
+  - `aspect`
+  - `annual_precip_contributor`
+  - `annual_temp_contributor`
+  - `mean_diurnal_range`
+  - `isothermality`
+  - `temp_seasonality`
+  - `max_temp_warmest_month`
+  - `max_temp_coldest_month`
+  - `temp_range`
+  - `mean_temp_wettest_quarter`
+  - `mean_temp_driest_quarter`
+  - `mean_temp_warmest_quarter`
+  - `mean_temp_coldest_quarter`
+  - `wettest_month_precip`
+  - `driest_month_precip`
+  - `precip_seasonality`
+  - `wettest_quarter_precip`
+  - `driest_quarter_precip`
+  - `warmest_quarter_precip`
+  - `coldest_quarter_precip`
+
+### Upload / Code Impacts
+- Excel → Input code:
+  - Future upload templates should remove deprecated environmental covariate fields.
+- Input → SQL code:
+  - Any import code referencing removed `grp.site` columns must be updated.
+- QA/QC impacts:
+  - QA scripts checking removed environmental variables will require updates.
+
+### SQL Change
+```sql
+-- Drop dependent view
+DROP VIEW IF EXISTS grp.full_site;
+
+-- Alter existing site table by dropping unwanted columns
+ALTER TABLE grp.site
+  DROP COLUMN landcover,
+  DROP COLUMN growing_season_start,
+  DROP COLUMN growing_season_end,
+  DROP COLUMN elevation,
+  DROP COLUMN slope,
+  DROP COLUMN aspect,
+  DROP COLUMN annual_precip_contributor,
+  DROP COLUMN annual_temp_contributor,
+  DROP COLUMN mean_diurnal_range,
+  DROP COLUMN isothermality,
+  DROP COLUMN temp_seasonality,
+  DROP COLUMN max_temp_warmest_month,
+  DROP COLUMN max_temp_coldest_month,
+  DROP COLUMN temp_range,
+  DROP COLUMN mean_temp_wettest_quarter,
+  DROP COLUMN mean_temp_driest_quarter,
+  DROP COLUMN mean_temp_warmest_quarter,
+  DROP COLUMN mean_temp_coldest_quarter,
+  DROP COLUMN wettest_month_precip,
+  DROP COLUMN driest_month_precip,
+  DROP COLUMN precip_seasonality,
+  DROP COLUMN wettest_quarter_precip,
+  DROP COLUMN driest_quarter_precip,
+  DROP COLUMN warmest_quarter_precip,
+  DROP COLUMN coldest_quarter_precip;
+```
+
+### Required View Updates
+- [ ] Recreate grp.full_site without removed grp.site columns
+
+### Testing Performed
+- [ ] Confirm `grp.full_site` dependency identified before schema change
+- [ ] Confirm removed columns no longer exist in `grp.site`
+- [ ] Confirm retained columns still exist in `grp.site`
+- [ ] Confirm `grp.full_site` recreates successfully
+- [ ] Confirm `grp.full_site` includes expected retained fields
+
+### Actual Outcomes
+
+### Status
+- Planned
+
+---
+
 ## Change ID: Change 008
 Date: 2026-05-18
 
@@ -41,7 +145,47 @@ This change keeps treatment structure analytical without overbuilding specialize
 
 ### SQL Change
 ```sql
--- planned SQL in sql/01_schema_changes.sql
+-- Create mowing table
+CREATE TABLE grp.treatment_mowing (
+  mowingid integer GENERATED ALWAYS AS IDENTITY, 
+  treatmentid integer NOT NULL,
+  mowing_type text NOT NULL,
+  height_class text,
+  amount numeric,
+  units text,
+  notes text,
+  
+  CONSTRAINT mowing_pkey PRIMARY KEY (mowingid),
+  CONSTRAINT fk_mowing_treatment_trtid 
+    FOREIGN KEY (treatmentid)
+    REFERENCES grp.treatment(treatmentid)
+);
+
+-- Create cover crop table
+CREATE TABLE grp.treatment_cover_crop (
+  covercropid integer GENERATED ALWAYS AS IDENTITY,
+  treatmentid integer NOT NULL,
+  speciesid integer NOT NULL,
+  amount numeric,
+  units text,
+  notes text,
+  
+  CONSTRAINT cover_crop_pk PRIMARY KEY (covercropid),
+  CONSTRAINT fk_cover_crop_treatment_trtid
+    FOREIGN KEY (treatmentid)
+    REFERENCES grp.treatment(treatmentid),
+  CONSTRAINT fk_cover_crop_species_speciesid
+    FOREIGN KEY (speciesid)
+    REFERENCES grp.species(speciesid)
+);
+
+-- Add notes column to grazing table
+ALTER TABLE grp.treatment_grazer
+  ADD COLUMN notes text;
+  
+-- Drop maintenance_mowing from treatment
+ALTER TABLE grp.treatment
+  DROP COLUMN maintenance_mowing;
 ```
 
 ### Required View Updates
@@ -69,8 +213,7 @@ A controlled placeholder species record will be required in grp.species before f
 No unexpected dependency or recompilation issues occurred during implementation or testing.
 
 ### Status
-- Planned
-
+- Tested
 
 ---
 

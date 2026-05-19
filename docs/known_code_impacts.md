@@ -8,6 +8,40 @@ Tracks known dependencies between:
 
 ---
 
+## Change ID:
+Change 008
+
+### SQL Change
+Remove stale and externally derived environmental covariate columns from `grp.site`.
+
+### Likely Affected Code
+- Excel → Input:
+  - Future site upload templates should no longer include removed environmental covariate fields.
+- Input → SQL:
+  - Any import scripts mapping removed `grp.site` columns will require updates.
+- SQL views:
+  - `grp.full_site`
+- QA/QC scripts:
+  - Any QA scripts checking removed environmental variables will require updates.
+
+### Dependency Notes
+- `grp.full_site` depends on `grp.site`.
+- Existing `grp.full_site` definition selects columns being removed from `grp.site`.
+- Core site identifiers and retained climate variables remain unchanged.
+- Reference ecosystem, classification, soil, disturbance, and invasive metadata are stored in separate linked tables and are unaffected by this change.
+
+### Required Testing
+- [ ] Confirm removed columns no longer exist in `grp.site`
+- [ ] Confirm `grp.full_site` recreates successfully
+- [ ] Confirm retained columns still appear correctly in `grp.full_site`
+
+### Actual Outcomes
+
+### Status
+- Planned
+
+---
+
 ## Change ID: Change 007
 
 ### SQL Change
