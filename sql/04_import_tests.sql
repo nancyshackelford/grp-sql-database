@@ -1,4 +1,15 @@
 -- =====================================================
+-- Change 010 import tests
+-- Purpose: Change database constraint to include "OM"
+-- Run after executing Change 010 in pgAdmin.
+-- =====================================================
+
+-- Confirm `database_check` allows `'OM'`
+-- Confirm existing values (`'GRP'`, `'GAZP'`) remain valid
+-- Check CHECK constraints on all grp tables with a database column
+-- Check full_project still compiles
+
+-- =====================================================
 -- Change 009 import tests
 -- Purpose: Species trait simplification
 -- Run after executing Change 009 in pgAdmin.

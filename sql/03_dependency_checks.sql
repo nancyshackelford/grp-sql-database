@@ -1,7 +1,68 @@
 -- =====================================================
+-- Change 010 dependency check
+-- Purpose: Change database constraint to include "OM"
+-- Run before executing Change 010 in pgAdmin.
+-- =====================================================
+
+-- Check current constraint definition for grp.project.database
+SELECT
+    con.conname AS constraint_name,
+    pg_get_constraintdef(con.oid) AS constraint_definition
+FROM pg_constraint con
+JOIN pg_class rel
+    ON rel.oid = con.conrelid
+JOIN pg_namespace nsp
+    ON nsp.oid = rel.relnamespace
+WHERE nsp.nspname = 'grp'
+AND rel.relname = 'project'
+AND con.contype = 'c'
+ORDER BY con.conname;
+
+-- Check whether database is referenced in views
+SELECT
+    dependent_ns.nspname AS dependent_schema,
+    dependent_view.relname AS dependent_view,
+    source_ns.nspname AS source_schema,
+    source_table.relname AS source_table
+FROM pg_depend
+JOIN pg_rewrite
+    ON pg_depend.objid = pg_rewrite.oid
+JOIN pg_class AS dependent_view
+    ON pg_rewrite.ev_class = dependent_view.oid
+JOIN pg_class AS source_table
+    ON pg_depend.refobjid = source_table.oid
+JOIN pg_namespace dependent_ns
+    ON dependent_view.relnamespace = dependent_ns.oid
+JOIN pg_namespace source_ns
+    ON source_table.relnamespace = source_ns.oid
+WHERE source_ns.nspname = 'grp'
+AND source_table.relname = 'project'
+ORDER BY dependent_schema, dependent_view;
+
+-- Check CHECK constraints on all grp tables with a database column
+SELECT
+    nsp.nspname AS table_schema,
+    rel.relname AS table_name,
+    con.conname AS constraint_name,
+    pg_get_constraintdef(con.oid) AS constraint_definition
+FROM pg_class rel
+JOIN pg_namespace nsp
+    ON nsp.oid = rel.relnamespace
+JOIN pg_attribute att
+    ON att.attrelid = rel.oid
+LEFT JOIN pg_constraint con
+    ON con.conrelid = rel.oid
+    AND con.contype = 'c'
+WHERE nsp.nspname = 'grp'
+AND rel.relkind = 'r'
+AND att.attname = 'database'
+AND att.attisdropped = false
+ORDER BY rel.relname, con.conname;
+
+-- =====================================================
 -- Change 009 dependency check
 -- Purpose: Species trait simplification
--- Run before executing Change 008 in pgAdmin.
+-- Run before executing Change 009 in pgAdmin.
 -- =====================================================
 
 -- Check existing columns in grp.species before editing.

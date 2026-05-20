@@ -1,4 +1,19 @@
 -- =====================================================
+-- Change 010
+-- Date: 2026-05-20
+-- Description: Change database constraint to include "OM"
+-- =====================================================
+
+-- Drop CHECK constraint in grp.project
+ALTER TABLE grp.project
+  DROP CONSTRAINT database_check;
+
+-- Add new CHECK constraint
+ALTER TABLE grp.project
+  ADD CONSTRAINT database_check
+    CHECK (database IN ('GAZP', 'GRP', 'OM'));
+
+-- =====================================================
 -- Change 009
 -- Date: 2026-05-20
 -- Description: Species trait simplification

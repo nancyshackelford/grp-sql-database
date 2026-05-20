@@ -8,6 +8,42 @@ Tracks known dependencies between:
 
 ---
 
+# Known Code Impacts
+
+## Change ID:
+Change 010
+
+### SQL Change
+Expand the `grp.project.database` CHECK constraint to allow `'OM'` as a valid database value.
+
+### Likely Affected Code
+- Excel → Input:
+  - Oak Meadow project records can now use `'OM'` as the database identifier.
+- Input → SQL:
+  - Import workflows inserting into `grp.project` must recognize `'OM'` as a valid database value.
+- SQL views:
+  - No expected impacts.
+- QA/QC scripts:
+  - Validation scripts checking allowed database values should include `'OM'`.
+
+### Dependency Notes
+- `grp.project.database` currently restricts values using the `database_check` CHECK constraint.
+- `grp.import_batch` and `grp.import_object_map` already allow `'OM'`.
+- No additional CHECK constraints were identified on other `grp` tables containing a `database` column.
+- No structural schema changes are being made.
+
+### Required Testing
+- [ ] Confirm `database_check` allows `'OM'`
+- [ ] Confirm existing values (`'GRP'`, `'GAZP'`) remain valid
+- [ ] Confirm `grp.full_project` still compiles
+
+### Actual Outcomes
+
+### Status
+- Planned
+
+---
+
 ## Change ID: Change 009
 
 ### SQL Change
