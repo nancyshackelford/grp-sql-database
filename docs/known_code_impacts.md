@@ -8,6 +8,35 @@ Tracks known dependencies between:
 
 ---
 
+## Change ID: Change 009
+
+### SQL Change
+Simplify species trait storage by dropping low-priority trait columns from `grp.species`: `seed_mass`, `path`, `raunkiaer`, `woodiness`, and `nfixer`. Retain `lifeform` in `grp.species` and retain lifespan information through `grp.species_lifespan`. Add an explicit unknown species row using `speciesid = 1`.
+
+### Likely Affected Code
+- Excel → Input: Species import code must stop expecting or importing `seed_mass`, `path`, `raunkiaer`, `woodiness`, and `nfixer`. Unknown or unresolved species should be mapped to `speciesid = 1` where appropriate.
+- Input → SQL: Any species upload scripts must insert only the retained species fields and must continue to support `speciesid` as the relational identifier.
+- SQL views: `grp.full_species` must be recreated without the dropped trait columns.
+- QA/QC scripts: Any checks that reference the dropped trait columns must be removed or revised.
+
+### Dependency Notes
+Subspecies and varieties will continue to receive unique `speciesid` values rather than being collapsed into the parent species. Higher-level analyses that need to group a parent species with its subtypes should use shared taxonomic fields such as `genus` and `species`. A future schema enhancement may add a `parent_speciesid` field or taxonomic rollup view to support this more explicitly.
+
+The `grp.full_species` view currently depends on the dropped trait columns and must be recreated. The `grp.species_lifespan` table does not require every `speciesid` to have a matching lifespan row because `grp.full_species` uses a left join.
+
+### Required Testing
+- [ ] Confirm dropped trait columns are no longer present in `grp.species`.
+- [ ] Confirm `speciesid = 1` exists in `grp.species` as the unknown species row.
+- [ ] Confirm `grp.full_species` compiles and returns expected retained columns.
+- [ ] Confirm existing foreign key dependencies on `grp.species.speciesid` remain intact.
+
+### Actual Outcomes
+
+### Status
+- Planned
+
+---
+
 ## Change ID:
 Change 008
 

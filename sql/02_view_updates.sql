@@ -1,4 +1,33 @@
 -- =====================================================
+-- View Update 008
+-- Related Change ID: Change 009
+-- Date: 2026-05-19
+-- Description: Simplify species traits in full_species
+-- =====================================================
+
+-- Drop dependent view first.
+DROP VIEW IF EXISTS grp.full_species;
+
+CREATE VIEW grp.full_species AS
+SELECT
+    species.speciesid,
+    species.species_code,
+    species."group",
+    species."order",
+    species.family,
+    species.genus,
+    species.species,
+    species.subtype,
+    species.subtype_name,
+    string_agg(species_lifespan.description, '; ') AS lifespan,
+    species.lifeform
+FROM grp.species
+LEFT JOIN grp.species_lifespan
+    USING (speciesid)
+GROUP BY species.speciesid
+ORDER BY species.speciesid;
+
+-- =====================================================
 -- View Update 007
 -- Related Change ID: Change 008
 -- Date: 2026-05-19

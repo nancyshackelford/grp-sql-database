@@ -1,4 +1,38 @@
 -- =====================================================
+-- Change 009
+-- Date: 2026-05-20
+-- Description: Species trait simplification
+-- =====================================================
+
+-- Drop full_species view
+DROP VIEW IF EXISTS grp.full_species;
+
+-- Drop low-priority trait columns from grp.species.
+-- Target dropped columns: seed_mass, path, raunkiaer, woodiness, nfixer.
+ALTER TABLE grp.species
+  DROP COLUMN seed_mass,
+  DROP COLUMN path,
+  DROP COLUMN raunkiaer,
+  DROP COLUMN woodiness,
+  DROP COLUMN nfixer;
+
+-- Insert unknown species row.
+INSERT INTO grp.species (
+  speciesid,
+  "group",
+  "order",
+  family,
+  genus,
+  species,
+  subtype,
+  subtype_name,
+  lifeform,
+  species_code
+)
+VALUES
+(1, 'unknown', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Unk_spp');
+
+-- =====================================================
 -- Change 008
 -- Date: 2026-05-19
 -- Description: Streamline site table

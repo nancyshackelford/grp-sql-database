@@ -10,6 +10,85 @@ For each change:
 
 ---
 
+## Change ID: Change 009
+Date: 2026-05-19
+
+### Summary
+Simplify species trait storage by retaining only core maintained species traits and removing low-priority trait fields from `grp.species`. This change retains `lifeform` and lifespan information while dropping `seed_mass`, `path`, `raunkiaer`, `woodiness`, and `nfixer`. It also adds an explicit unknown species row using `speciesid = 1`.
+
+### Motivation
+Several species trait fields created long-term maintenance obligations without being central to the intended GRP analyses. `seed_mass` was based on a past snapshot of an external database and would require ongoing provenance/version tracking to remain reliable. `path`, `woodiness`, and `nfixer` are externally retrievable or partially redundant with other fields. `raunkiaer` is ecologically meaningful but required curated derivation decisions and is not currently central enough to justify continued maintenance.
+
+The retained fields are those most likely to support practical filtering and interpretation: `lifeform` in `grp.species` and lifespan values through `grp.species_lifespan`.
+
+### SQL Objects Affected
+- Tables:
+  - `grp.species`
+  - `grp.species_lifespan`
+- Views:
+  - `grp.full_species`
+- New tables:
+  - None
+- Deprecated tables/columns:
+  - `grp.species.seed_mass`
+  - `grp.species.path`
+  - `grp.species.raunkiaer`
+  - `grp.species.woodiness`
+  - `grp.species.nfixer`
+
+### Upload / Code Impacts
+- Excel → Input code: Species import code must stop expecting or importing the dropped trait fields. Unknown or unresolved species should be mapped to `speciesid = 1` where appropriate.
+- Input → SQL code: Species upload scripts must insert only the retained fields and continue using `speciesid` as the relational identifier.
+- QA/QC impacts: QA/QC scripts that reference the dropped trait columns must be removed or revised. Tests should confirm the unknown species row exists, the dropped columns are absent, and `grp.full_species` compiles after being recreated.
+
+### SQL Change
+```sql
+-- Drop full_species view
+DROP VIEW IF EXISTS grp.full_species;
+
+-- Drop low-priority trait columns from grp.species.
+-- Target dropped columns: seed_mass, path, raunkiaer, woodiness, nfixer.
+ALTER TABLE grp.species
+  DROP COLUMN seed_mass,
+  DROP COLUMN path,
+  DROP COLUMN raunkiaer,
+  DROP COLUMN woodiness,
+  DROP COLUMN nfixer;
+
+-- Insert unknown species row.
+INSERT INTO grp.species (
+  speciesid,
+  "group",
+  "order",
+  family,
+  genus,
+  species,
+  subtype,
+  subtype_name,
+  lifeform,
+  species_code
+)
+VALUES
+(1, 'unknown', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Unk_spp');
+```
+
+### Required View Updates
+- [ ] Recreate grp.full_species without seed_mass, path, raunkiaer, woodiness, or nfixer.
+
+###Testing Performed
+- [ ] Confirmed dropped trait columns are no longer present in grp.species.
+- [ ] Confirmed speciesid = 1 exists in grp.species as the unknown species row.
+- [ ] Confirmed grp.full_species compiles and returns expected retained columns.
+- [ ] Confirmed existing foreign key dependencies on grp.species.speciesid remain intact.
+
+### Actual Outcomes
+
+
+### Status
+- Planned
+
+---
+
 ## Change ID:
 Change 008
 
