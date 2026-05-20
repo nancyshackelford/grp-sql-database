@@ -33,15 +33,22 @@ Expand the `grp.project.database` CHECK constraint to allow `'OM'` as a valid da
 - No structural schema changes are being made.
 
 ### Required Testing
-- [ ] Confirm `database_check` allows `'OM'`
-- [ ] Confirm existing values (`'GRP'`, `'GAZP'`) remain valid
-- [ ] Confirm `grp.full_project` still compiles
+- [x] Confirm `database_check` allows `'OM'`
+- [x] Confirm existing values (`'GRP'`, `'GAZP'`) remain valid
+- [x] Confirm `grp.full_project` still compiles
 
 ### Actual Outcomes
+The `grp.project.database` CHECK constraint now accepts `'OM'` as a valid database value.
+
+Post-change checks confirmed that no additional `grp` tables with a `database` column contain conflicting CHECK constraints restricting `'OM'`.
+
+No impacts to existing SQL views were identified. `grp.full_project` compiled and queried successfully after the constraint update.
+
+No additional upload or QA/QC code changes were required at this stage.
 
 ### Status
-- Planned
-
+- Implemented
+- Tested
 ---
 
 ## Change ID: Change 009

@@ -58,14 +58,18 @@ ALTER TABLE grp.project
 - [x] No view updates required
 
 ### Testing Performed
-- [ ] Check current CHECK constraints on grp.project
-- [ ] Check CHECK constraints on all grp tables with a database column
-- [ ] Confirm grp.full_project still compiles after constraint update
+- [x] Check current CHECK constraints on grp.project
+- [x] Check CHECK constraints on all grp tables with a database column
+- [x] Confirm grp.full_project still compiles after constraint update
 
 ### Actual Outcomes
+The `database_check` CHECK constraint on `grp.project.database` was successfully updated to allow `'OM'` while preserving the existing valid values `'GRP'` and `'GAZP'`.
+
+Post-change checks confirmed that `grp.project.database_check` now includes `'OM'`, that no other `grp` tables with a `database` column contain conflicting CHECK constraints, and that `grp.full_project` still compiles and can be queried successfully.
 
 ### Status
-- Planned
+- Implemented
+- Tested
 
 ---
 

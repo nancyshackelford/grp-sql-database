@@ -4,10 +4,53 @@
 -- Run after executing Change 010 in pgAdmin.
 -- =====================================================
 
--- Confirm `database_check` allows `'OM'`
--- Confirm existing values (`'GRP'`, `'GAZP'`) remain valid
+-- Confirm `database_check` allows `'OM'` and confirm existing values (`'GRP'`, `'GAZP'`) remain valid
+SELECT
+    con.conname AS constraint_name,
+    pg_get_constraintdef(con.oid) AS constraint_definition
+FROM pg_constraint con
+JOIN pg_class rel
+    ON rel.oid = con.conrelid
+JOIN pg_namespace nsp
+    ON nsp.oid = rel.relnamespace
+WHERE nsp.nspname = 'grp'
+AND rel.relname = 'project'
+AND con.contype = 'c'
+ORDER BY con.conname;
+
 -- Check CHECK constraints on all grp tables with a database column
+SELECT
+    nsp.nspname AS table_schema,
+    rel.relname AS table_name,
+    con.conname AS constraint_name,
+    pg_get_constraintdef(con.oid) AS constraint_definition
+FROM pg_class rel
+JOIN pg_namespace nsp
+    ON nsp.oid = rel.relnamespace
+JOIN pg_attribute att
+    ON att.attrelid = rel.oid
+LEFT JOIN pg_constraint con
+    ON con.conrelid = rel.oid
+    AND con.contype = 'c'
+WHERE nsp.nspname = 'grp'
+AND rel.relkind = 'r'
+AND att.attname = 'database'
+AND att.attisdropped = false
+ORDER BY rel.relname, con.conname;
+
 -- Check full_project still compiles
+SELECT 
+    column_name,
+    data_type,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'full_project'
+ORDER BY ordinal_position;
+
+SELECT *
+FROM grp.full_project
+LIMIT 5;
 
 -- =====================================================
 -- Change 009 import tests
