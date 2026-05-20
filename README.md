@@ -23,6 +23,7 @@ Current contents:
 - `02_view_updates.sql`
 - `03_dependency_checks.sql`
 - `04_import_tests.sql`
+- `05_data_dictionary_population.sql`
 
 ## docs/
 Project documentation and migration tracking.
