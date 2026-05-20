@@ -1,4 +1,76 @@
 -- =====================================================
+-- Change 009 import tests
+-- Purpose: Species trait simplification
+-- Run after executing Change 009 in pgAdmin.
+-- =====================================================
+
+-- Check columns in species have been dropped
+SELECT
+  column_name
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'species';
+
+-- Check unknown has been added as row 1
+SELECT *
+FROM grp.species
+WHERE speciesid = 1;
+
+-- Check full_species view has columns and compiles
+SELECT 
+    column_name,
+    data_type,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'full_species'
+ORDER BY ordinal_position;
+
+SELECT *
+FROM grp.full_species
+LIMIT 5;
+
+-- Check that dependencies on speciesid are still intact
+-- Check dependencies on species table
+SELECT
+    dependent_ns.nspname AS dependent_schema,
+    dependent_view.relname AS dependent_view,
+    source_ns.nspname AS source_schema,
+    source_table.relname AS source_table
+FROM pg_depend
+JOIN pg_rewrite
+    ON pg_depend.objid = pg_rewrite.oid
+JOIN pg_class AS dependent_view
+    ON pg_rewrite.ev_class = dependent_view.oid
+JOIN pg_class AS source_table
+    ON pg_depend.refobjid = source_table.oid
+JOIN pg_namespace dependent_ns
+    ON dependent_view.relnamespace = dependent_ns.oid
+JOIN pg_namespace source_ns
+    ON source_table.relnamespace = source_ns.oid
+WHERE source_ns.nspname = 'grp'
+AND source_table.relname = 'species'
+ORDER BY dependent_schema, dependent_view;
+
+-- Check dependencies in other tables
+SELECT
+    tc.table_schema,
+    tc.table_name,
+    kcu.column_name,
+    ccu.table_schema AS foreign_table_schema,
+    ccu.table_name AS foreign_table_name,
+    ccu.column_name AS foreign_column_name
+FROM information_schema.table_constraints AS tc
+JOIN information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+JOIN information_schema.constraint_column_usage AS ccu
+    ON ccu.constraint_name = tc.constraint_name
+WHERE tc.constraint_type = 'FOREIGN KEY'
+AND ccu.table_schema = 'grp'
+AND ccu.table_name = 'species'
+ORDER BY tc.table_name;
+
+-- =====================================================
 -- Change 008 import tests
 -- Purpose: Validate site table refinement
 -- Run after executing Change 008 in pgAdmin.

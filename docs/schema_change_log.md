@@ -73,19 +73,25 @@ VALUES
 ```
 
 ### Required View Updates
-- [ ] Recreate grp.full_species without seed_mass, path, raunkiaer, woodiness, or nfixer.
+- [x] Recreate grp.full_species without seed_mass, path, raunkiaer, woodiness, or nfixer.
 
 ###Testing Performed
-- [ ] Confirmed dropped trait columns are no longer present in grp.species.
-- [ ] Confirmed speciesid = 1 exists in grp.species as the unknown species row.
-- [ ] Confirmed grp.full_species compiles and returns expected retained columns.
-- [ ] Confirmed existing foreign key dependencies on grp.species.speciesid remain intact.
+- [x] Confirmed dropped trait columns are no longer present in grp.species.
+- [x] Confirmed speciesid = 1 exists in grp.species as the unknown species row.
+- [x] Confirmed grp.full_species compiles and returns expected retained columns.
+- [x] Confirmed existing foreign key dependencies on grp.species.speciesid remain intact.
 
 ### Actual Outcomes
+Implemented successfully. The low-priority trait columns `seed_mass`, `path`, `raunkiaer`, `woodiness`, and `nfixer` were removed from `grp.species`. The retained species trait structure now focuses on `lifeform` in `grp.species` and lifespan information through `grp.species_lifespan`.
 
+The `grp.full_species` view was recreated successfully without the dropped trait columns. The view now returns species taxonomy, aggregated lifespan, and `lifeform`.
+
+An unknown species row was added using `speciesid = 1` and `species_code = 'Unk_spp'`. This provides a stable placeholder for unresolved or unknown species during future imports.
+
+No lifespan row was added for the unknown species record. This is acceptable because `grp.full_species` uses a left join from `grp.species` to `grp.species_lifespan`.
 
 ### Status
-- Planned
+- Tested
 
 ---
 

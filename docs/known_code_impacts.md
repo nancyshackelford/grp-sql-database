@@ -25,15 +25,22 @@ Subspecies and varieties will continue to receive unique `speciesid` values rath
 The `grp.full_species` view currently depends on the dropped trait columns and must be recreated. The `grp.species_lifespan` table does not require every `speciesid` to have a matching lifespan row because `grp.full_species` uses a left join.
 
 ### Required Testing
-- [ ] Confirm dropped trait columns are no longer present in `grp.species`.
-- [ ] Confirm `speciesid = 1` exists in `grp.species` as the unknown species row.
-- [ ] Confirm `grp.full_species` compiles and returns expected retained columns.
-- [ ] Confirm existing foreign key dependencies on `grp.species.speciesid` remain intact.
+- [x] Confirm dropped trait columns are no longer present in `grp.species`.
+- [x] Confirm `speciesid = 1` exists in `grp.species` as the unknown species row.
+- [x] Confirm `grp.full_species` compiles and returns expected retained columns.
+- [x] Confirm existing foreign key dependencies on `grp.species.speciesid` remain intact.
 
 ### Actual Outcomes
+The species trait simplification was implemented. The low-priority trait columns `seed_mass`, `path`, `raunkiaer`, `woodiness`, and `nfixer` were dropped from `grp.species`. The `grp.full_species` view was recreated without those fields and now retains species taxonomy, aggregated lifespan, and `lifeform`.
+
+An explicit unknown species row was added using `speciesid = 1` and `species_code = 'Unk_spp'`. The initial insert was reviewed and corrected to ensure the unknown row represents unknown species information cleanly.
+
+No change was made to the structure of `grp.species_lifespan`. Because `grp.full_species` uses a left join, the unknown species row does not require a corresponding lifespan row.
+
+Subspecies and varieties remain represented as distinct `speciesid` values. A future enhancement may add `parent_speciesid` or a taxonomic rollup view to support querying a parent species together with all associated subtypes.
 
 ### Status
-- Planned
+- Tested
 
 ---
 

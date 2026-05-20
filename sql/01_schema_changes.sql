@@ -30,7 +30,7 @@ INSERT INTO grp.species (
   species_code
 )
 VALUES
-(1, 'unknown', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Unk_spp');
+(1, NULL, NULL, NULL, 'Unknown', 'unknown', NULL, NULL, NULL, 'Unk_spp');
 
 -- =====================================================
 -- Change 008
