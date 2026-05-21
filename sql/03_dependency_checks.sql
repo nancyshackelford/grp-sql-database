@@ -1,4 +1,88 @@
 -- =====================================================
+-- Change 011 dependency check
+-- Date: 2026-05-20
+-- Description: Support for data_dictionary creation
+-- =====================================================
+
+-- Check constraints on table
+SELECT
+    con.conname AS constraint_name,
+    con.contype AS constraint_type,
+    pg_get_constraintdef(con.oid) AS constraint_definition
+FROM pg_constraint con
+JOIN pg_class rel
+    ON rel.oid = con.conrelid
+JOIN pg_namespace nsp
+    ON nsp.oid = rel.relnamespace
+WHERE nsp.nspname = 'grp'
+AND rel.relname = 'area_treatment'
+ORDER BY
+    con.contype,
+    con.conname;
+
+-- Check foreign keys from table to other tables
+SELECT
+    tc.constraint_name,
+    kcu.column_name AS column_name,
+    ccu.table_schema AS referenced_schema,
+    ccu.table_name AS referenced_table,
+    ccu.column_name AS referenced_column
+FROM information_schema.table_constraints AS tc
+JOIN information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+    AND tc.table_schema = kcu.table_schema
+JOIN information_schema.constraint_column_usage AS ccu
+    ON ccu.constraint_name = tc.constraint_name
+    AND ccu.table_schema = tc.table_schema
+WHERE tc.constraint_type = 'FOREIGN KEY'
+AND tc.table_schema = 'grp'
+AND tc.table_name = 'area_treatment'
+ORDER BY
+    tc.constraint_name,
+    kcu.column_name;
+    
+-- Check foreign keys from other tables to table
+SELECT
+    tc.table_schema AS referencing_schema,
+    tc.table_name AS referencing_table,
+    kcu.column_name AS referencing_column,
+    ccu.table_schema AS referenced_schema,
+    ccu.table_name AS referenced_table,
+    ccu.column_name AS referenced_column,
+    tc.constraint_name
+FROM information_schema.table_constraints AS tc
+JOIN information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+    AND tc.table_schema = kcu.table_schema
+JOIN information_schema.constraint_column_usage AS ccu
+    ON ccu.constraint_name = tc.constraint_name
+    AND ccu.table_schema = tc.table_schema
+WHERE tc.constraint_type = 'FOREIGN KEY'
+AND ccu.table_schema = 'grp'
+AND ccu.table_name = 'area_treatment'
+ORDER BY
+    referencing_schema,
+    referencing_table,
+    referencing_column;
+
+-- Check dictionaryid default and identity status
+SELECT
+    column_name,
+    data_type,
+    is_nullable,
+    column_default,
+    is_identity,
+    identity_generation
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'data_dictionary'
+AND column_name = 'dictionaryid';
+
+-- Check current maximum dictionaryid
+SELECT MAX(dictionaryid) AS max_dictionaryid
+FROM grp.data_dictionary;
+
+-- =====================================================
 -- Change 010 dependency check
 -- Purpose: Change database constraint to include "OM"
 -- Run before executing Change 010 in pgAdmin.

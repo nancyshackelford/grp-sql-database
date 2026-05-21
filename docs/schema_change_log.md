@@ -10,23 +10,18 @@ For each change:
 
 ---
 
-# GRP SQL Schema Change Log
-
-## Change ID:
-Change 011
-
-Date:
-2026-05-19
+## Change ID: 010
+Date: 2026-05-20
 
 ### Summary
-Expand the `grp.project.database` CHECK constraint to allow `'OM'` as a valid database identifier.
+Populated `grp.data_dictionary` with table and column metadata for the finalized GRP schema and updated `grp.data_dictionary.dictionaryid` to auto-generate values.
 
 ### Motivation
-Oak Meadow project imports require `'OM'` to be accepted within the finalized controlled vocabulary for project database identifiers.
+Phase 12 documents the database structure before processing code is rewritten. The database needed internal metadata describing table/column meanings, workflow notes, legacy assumptions, QA/QC expectations, and external-source notes. During population, `dictionaryid` was found not to auto-generate, so the column was updated to support ongoing metadata entry.
 
 ### SQL Objects Affected
 - Tables:
-  - `grp.project`
+  - `grp.data_dictionary`
 - Views:
   - None
 - New tables:
@@ -36,40 +31,34 @@ Oak Meadow project imports require `'OM'` to be accepted within the finalized co
 
 ### Upload / Code Impacts
 - Excel → Input code:
-  - Oak Meadow project metadata can use `'OM'`.
+  - Future import code should use `grp.data_dictionary` as a reference for expected field meanings, legacy mappings, QA/QC expectations, and controlled vocabulary handling.
 - Input → SQL code:
-  - Imports into `grp.project` will accept `'OM'`.
+  - Code that inserts into `grp.data_dictionary` no longer needs to supply `dictionaryid`.
+  - Processing-code rewrites should align with documented table/column definitions.
 - QA/QC impacts:
-  - Validation logic should recognize `'OM'` as a valid database value.
+  - QA/QC scripts can use `grp.data_dictionary` to check nullable status, expected values, lookup-table relationships, external-source assumptions, and legacy field mappings.
 
 ### SQL Change
-```sql
--- Drop CHECK constraint in grp.project
-ALTER TABLE grp.project
-  DROP CONSTRAINT database_check;
-
--- Add new CHECK constraint
-ALTER TABLE grp.project
-  ADD CONSTRAINT database_check
-    CHECK (database IN ('GAZP', 'GRP', 'OM'));
 ```
-
+-- Data dictionary population completed in:
+-- sql/05_data_dictionary_population.sql
+See 05_data_dictionary_population
+```
 ### Required View Updates
-- [x] No view updates required
+- [x] None required.
 
 ### Testing Performed
-- [x] Check current CHECK constraints on grp.project
-- [x] Check CHECK constraints on all grp tables with a database column
-- [x] Confirm grp.full_project still compiles after constraint update
+- [x] Confirmed dictionaryid identity status.
+- [x] Inserted data dictionary rows without manually supplying dictionaryid.
+- [x] Checked representative inserted rows in grp.data_dictionary.
+- [x] Confirmed table-by-table metadata entries were accepted by existing constraints.
 
 ### Actual Outcomes
-The `database_check` CHECK constraint on `grp.project.database` was successfully updated to allow `'OM'` while preserving the existing valid values `'GRP'` and `'GAZP'`.
 
-Post-change checks confirmed that `grp.project.database_check` now includes `'OM'`, that no other `grp` tables with a `database` column contain conflicting CHECK constraints, and that `grp.full_project` still compiles and can be queried successfully.
+grp.data_dictionary.dictionaryid now auto-generates values. Metadata rows were added for base tables, lookup tables, join tables, treatment tables, vegetation results, and the data dictionary itself. Views were not modified. Several future cleanup items were identified but intentionally deferred, including lookup-table standardization, possible dataset/source-access restructuring separate from paper, and selected vocabulary/documentation refinements.
 
 ### Status
 - Implemented
-- Tested
 
 ---
 

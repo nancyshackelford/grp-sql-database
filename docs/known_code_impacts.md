@@ -8,6 +8,47 @@ Tracks known dependencies between:
 
 ---
 
+## Known code impacts
+## Change ID: 010
+
+### SQL Change
+Populated `grp.data_dictionary` with metadata for GRP schema tables and changed `dictionaryid` to auto-generate values.
+
+### Likely Affected Code
+- Excel → Input:
+  - Future mapping from Excel-era fields to SQL fields should reference `legacy_notes` and `workflow_notes`.
+- Input → SQL:
+  - Inserts into `grp.data_dictionary` should omit `dictionaryid`.
+  - Processing-code rewrites should use documented target fields rather than older Excel naming conventions.
+- SQL views:
+  - No immediate view changes.
+- QA/QC scripts:
+  - QA/QC scripts can be expanded to compare schema columns against `grp.data_dictionary`.
+  - Scripts can use `allowed_values`, `qa_qc_notes`, and lookup-table notes to guide validation.
+
+### Dependency Notes
+The workflow now assumes:
+- `grp.data_dictionary.dictionaryid` auto-generates.
+- `table_name` + `column_name` uniquely identifies each documented field.
+- Lookup-table vocabularies are generally maintained in lookup tables rather than duplicated in `allowed_values`.
+- `allowed_values` is mainly used where SQL CHECK constraints or stable value sets are important.
+- `legacy_notes` preserves Excel-era field mappings.
+- `external_source_notes` records dependencies such as CHELSA, World Plant List, TRY, USDA, or other external data sources.
+
+### Required Testing
+- [x] Confirm `dictionaryid` auto-generates.
+- [x] Confirm inserted metadata rows appear correctly.
+- [x] Confirm no view updates are required.
+- [x] Confirm future inserts can omit `dictionaryid`.
+
+### Actual Outcomes
+The metadata population was completed successfully. The data dictionary now documents the core schema, including table meanings, field definitions, workflow assumptions, lookup-table relationships, legacy Excel mappings, QA/QC expectations, and external-source dependencies. No processing code was changed during this phase, but the populated dictionary establishes the documented SQL target for future code rewrites.
+
+### Status
+- Implemented
+
+---
+
 # Known Code Impacts
 
 ## Change ID:

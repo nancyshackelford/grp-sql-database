@@ -1,4 +1,26 @@
 -- =====================================================
+-- Change 011 import tests
+-- Date: 2026-05-20
+-- Description: Support for data_dictionary creation
+-- =====================================================
+
+-- Check inserted data_dictionary rows
+SELECT *
+FROM grp.data_dictionary
+WHERE table_name = 'area';
+
+-- Check dictionaryid identity status
+SELECT
+    column_name,
+    column_default,
+    is_identity,
+    identity_generation
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'data_dictionary'
+AND column_name = 'dictionaryid';
+
+-- =====================================================
 -- Change 010 import tests
 -- Purpose: Change database constraint to include "OM"
 -- Run after executing Change 010 in pgAdmin.
