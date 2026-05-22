@@ -1,4 +1,40 @@
 -- =====================================================
+-- Dependency Checks for Schema Change 013
+-- Date: 2026-05-22
+-- Description: Check existing view infrastructure before adding view_dictionary
+-- =====================================================
+
+-- Check whether grp.view_dictionary already exists
+SELECT
+    table_schema,
+    table_name,
+    table_type
+FROM information_schema.tables
+WHERE table_schema = 'grp'
+AND table_name = 'view_dictionary';
+
+-- Check that all documented views currently exist
+SELECT
+    table_schema,
+    table_name
+FROM information_schema.views
+WHERE table_schema = 'grp'
+AND table_name IN (
+    'full_area',
+    'full_cultivar',
+    'full_individual',
+    'full_paper',
+    'full_project',
+    'full_seeding',
+    'full_site',
+    'full_species',
+    'full_treatment',
+    'full_veg_results',
+    'treatments_by_area'
+)
+ORDER BY table_name;
+
+-- =====================================================
 -- Change 012 dependency check
 -- Date: 2026-05-21
 -- Description: Update lookup tables

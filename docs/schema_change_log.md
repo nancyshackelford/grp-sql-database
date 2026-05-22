@@ -11,7 +11,54 @@ For each change:
 ---
 
 ## Change ID: Change 013
-Date: 2026-05-21
+Date: 2026-05-22
+
+### Summary
+Added a new `grp.view_dictionary` table to document GRP SQL views intended for direct querying by humans or downstream code.
+
+### Motivation
+GRP views are becoming important interface layers for querying, documentation, import checking, and future collaboration. Several views now include denormalization, aggregation, hierarchy interpretation, and grain assumptions. A lightweight view dictionary provides human-readable documentation of each view’s purpose, expected row grain, assumptions, and limitations without attempting full SQL lineage tracking.
+
+### SQL Objects Affected
+- Tables:
+  - `grp.view_dictionary`
+- Views:
+  - None changed
+- New tables:
+  - `grp.view_dictionary`
+- Deprecated tables/columns:
+  - None
+
+### Upload / Code Impacts
+- Excel → Input code:
+  - No direct impact expected.
+- Input → SQL code:
+  - No direct impact expected unless future upload or QA/QC scripts choose to reference `grp.view_dictionary`.
+- QA/QC impacts:
+  - Adds a new documentation table that can support future QA/QC checks of expected view grain, purpose, and limitations.
+
+### SQL Change
+```sql
+-- See sql/01_schema_changes.sql
+-- See sql/07_view_dictionary_population.sql
+```
+
+### Required View Updates
+- [ ] None expected.
+
+### Testing Performed
+- [ ] Check whether grp.view_dictionary already exists.
+- [ ] Check that all documented views currently exist in grp.
+
+### Actual Outcomes
+
+### Status
+- Planned
+
+---
+
+## Change ID: Change 013
+Date: 2026-05-22
 
 ### Summary
 Added metadata fields to controlled lookup tables, renamed the lifespan lookup value column, populated lookup vocabulary tables, and updated the data dictionary to reflect the new and renamed fields.

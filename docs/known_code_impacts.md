@@ -8,6 +8,47 @@ Tracks known dependencies between:
 
 ---
 
+
+## Known code impacts
+
+## Change ID: Change 013
+
+### SQL Change
+Add `grp.view_dictionary`, a lightweight documentation table for GRP SQL views.
+
+### Likely Affected Code
+- Excel → Input:
+  - No direct impact expected.
+- Input → SQL:
+  - No direct impact expected.
+- SQL views:
+  - No view definitions are changed.
+  - Existing views are documented in the new table.
+- QA/QC scripts:
+  - No existing QA/QC scripts should be affected.
+  - Future QA/QC scripts may optionally use `grp.view_dictionary` to check view existence, expected grain, or intended use.
+
+### Dependency Notes
+This change assumes:
+- The documented views already exist in schema `grp`.
+- `view_name` values are unique.
+- `view_level` values are limited to `entity`, `bridge`, `reporting`, or `summary`.
+- The table is maintained manually when views are added, renamed, removed, or substantially revised.
+- The table is for human-readable documentation only, not automated SQL lineage tracking.
+
+### Required Testing
+- [x] Confirm `grp.view_dictionary` does not already exist before running the schema change.
+- [x] Confirm all views included in the initial dictionary population currently exist in `grp`.
+- [ ] After implementation, confirm `grp.view_dictionary` exists.
+- [ ] After implementation, confirm all expected rows were inserted.
+
+### Actual Outcomes
+
+### Status
+- Identified
+
+---
+
 ## Change ID: Change 013
 
 ### SQL Change

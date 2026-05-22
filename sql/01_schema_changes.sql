@@ -1,6 +1,29 @@
 -- =====================================================
+-- Change 013
+-- Date: 2026-05-22
+-- Description: Create and populate view dictionary
+-- =====================================================
+
+CREATE TABLE grp.view_dictionary (
+    view_name text PRIMARY KEY,
+    display_order integer,
+    view_level text,
+    primary_table text,
+    is_denormalized boolean,
+    purpose text,
+    expected_row_grain text,
+    key_assumptions text,
+    known_limitations text,
+    notes text
+);
+
+ALTER TABLE grp.view_dictionary
+ADD CONSTRAINT view_dictionary_view_level_check
+CHECK (view_level IN ('entity', 'bridge', 'reporting', 'summary'));
+
+-- =====================================================
 -- Change 012
--- Date: 2026-05-21
+-- Date: 2026-05-22
 -- Description: Update lookup tables
 -- =====================================================
 
