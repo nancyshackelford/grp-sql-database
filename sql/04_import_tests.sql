@@ -1,4 +1,37 @@
 -- =====================================================
+-- Change 012 import tests
+-- Date: 2026-05-22
+-- Description: Support for data_dictionary creation
+-- =====================================================
+
+-- Confirm `definition` and `notes` columns exist-in all targeted lookup tables.
+-- Confirm lookup tables were populated with expected controlled vocabulary values.
+-- Confirm `grp.lifespan.description` has been renamed to `type`.
+SELECT * FROM grp.application_method;
+SELECT * FROM grp.bed_material;
+SELECT * FROM grp.bed_prep;
+SELECT * FROM grp.disturbance;
+SELECT * FROM grp.erosion_control;
+SELECT * FROM grp.fertilization;
+SELECT * FROM grp.grazer;
+SELECT * FROM grp.growth_medium;
+SELECT * FROM grp.herbicide;
+SELECT * FROM grp.invasion_control;
+SELECT * FROM grp.lifespan;
+SELECT * FROM grp.pretreatment;
+SELECT * FROM grp.vegmetric;
+
+-- Confirm data dictionary entries were added 
+SELECT *
+FROM grp.data_dictionary
+WHERE table_name = 'application_method';
+
+-- Confirm data dictionary entry was updated
+SELECT *
+FROM grp.data_dictionary
+WHERE table_name = 'lifespan';
+
+-- =====================================================
 -- Change 011 import tests
 -- Date: 2026-05-20
 -- Description: Support for data_dictionary creation

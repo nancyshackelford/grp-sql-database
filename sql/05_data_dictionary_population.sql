@@ -5,8 +5,7 @@
 -- Purpose: Add definition and notes to lookup tables
 -- =====================================================
 
--- Add data_dictionary rows
--- Note in rows that all was populated today
+-- Lookup definition and notes columns
 INSERT INTO grp.data_dictionary (
     table_name,
     column_name,
@@ -414,9 +413,9 @@ VALUES
 
 -- Update existing data_dictionary entry for grp.lifespan.description
 UPDATE grp.data_dictionary
-SET field_name = 'type'
+SET "column_name" = 'type'
 WHERE table_name = 'lifespan'
-AND field_name = 'description';
+AND "column_name" = 'description';
 
 -- =====================================================
 -- Data Dictionary Population

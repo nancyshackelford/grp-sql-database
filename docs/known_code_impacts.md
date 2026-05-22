@@ -23,15 +23,18 @@ Tidy and populate controlled lookup tables by adding `definition` and `notes` co
 This change assumes lookup tables can store controlled vocabulary metadata directly through nullable `definition` and `notes` fields. It also assumes `lifespan.description` is better represented as `lifespan.type`, because the field stores the controlled lookup value rather than explanatory prose. Lookup table population and data dictionary population are now separated into dedicated SQL files for readability and future maintenance.
 
 ### Required Testing
-- [ ] Confirm `definition` and `notes` columns exist in all targeted lookup tables.
-- [ ] Confirm `grp.lifespan.description` has been renamed to `type`.
-- [ ] Confirm lookup tables were populated with expected controlled vocabulary values.
-- [ ] Confirm data dictionary entries were added or updated for the new/renamed fields.
+- [x] Confirm `definition` and `notes` columns exist in all targeted lookup tables.
+- [x] Confirm `grp.lifespan.description` has been renamed to `type`.
+- [X] Confirm lookup tables were populated with expected controlled vocabulary values.
+- [x] Confirm data dictionary entries were added or updated for the new/renamed fields.
 
 ### Actual Outcomes
 
+Dependency checks found no issues requiring view updates before implementation. Lookup table structure and contents were reviewed before the change. The planned code was separated into dedicated files for schema changes, lookup table population, and data dictionary population, improving maintainability without changing the conceptual scope of Change 012.
+
 ### Status
-- Identified
+- Implemented
+- Tested
 
 ---
 

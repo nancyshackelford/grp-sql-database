@@ -1,6 +1,6 @@
 -- =====================================================
 -- Lookup Table Population
--- Phase 13: Lookup table refinement
+-- Change 012: Lookup table refinement
 -- Date: 2026-05-22
 -- Purpose: Initial population of lookup tables
 -- =====================================================
