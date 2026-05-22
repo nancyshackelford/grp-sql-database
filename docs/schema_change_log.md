@@ -10,6 +10,64 @@ For each change:
 
 ---
 
+## Change ID: Change 013
+Date: 2026-05-21
+
+### Summary
+Added metadata fields to controlled lookup tables, renamed the lifespan lookup value column, populated lookup vocabulary tables, and updated the data dictionary to reflect the new and renamed fields.
+
+### Motivation
+The lookup tables needed clearer internal documentation so controlled vocabulary values could be interpreted consistently during data entry, upload, QA/QC, and future database maintenance. Adding `definition` and `notes` fields makes the lookup tables more self-documenting. Renaming `lifespan.description` to `type` clarifies that the column stores a lifespan category rather than a prose description.
+
+### SQL Objects Affected
+- Tables:
+  - `grp.application_method`
+  - `grp.bed_material`
+  - `grp.bed_prep`
+  - `grp.disturbance`
+  - `grp.erosion_control`
+  - `grp.fertilization`
+  - `grp.grazer`
+  - `grp.growth_medium`
+  - `grp.herbicide`
+  - `grp.invasion_control`
+  - `grp.lifespan`
+  - `grp.pretreatment`
+  - `grp.vegmetric`
+  - `grp.data_dictionary`
+- Views:
+  - No view changes expected unless direct dependencies are identified.
+- New tables:
+  - None.
+- Deprecated tables/columns:
+  - `grp.lifespan.description` renamed to `grp.lifespan.type`.
+
+### Upload / Code Impacts
+- Excel → Input code: Lookup validation and reference materials may need to account for populated lookup tables and their definitions/notes.
+- Input → SQL code: Any code referencing `grp.lifespan.description` must be updated to `grp.lifespan.type`.
+- QA/QC impacts: QA/QC checks should confirm expected lookup values, new metadata columns, and updated data dictionary records.
+
+### SQL Change
+```sql
+-- See:
+-- sql/01_schema_changes.sql
+-- sql/05_data_dictionary_population.sql
+-- sql/06_lookup_population.sql
+```
+### Required View Updates
+- [ ] None expected unless dependency checks identify direct lookup table references in existing views.
+
+### Testing Performed
+- [ ] Dependency checks run to identify whether targeted lookup tables are referenced in existing views.
+- [ ] Dependency checks run to review current lookup table structure and contents prior to change.
+
+### Actual Outcomes
+
+### Status
+- Planned
+
+---
+
 ## Change ID: 010
 Date: 2026-05-20
 

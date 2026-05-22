@@ -1,4 +1,72 @@
 -- =====================================================
+-- Change 012 dependency check
+-- Date: 2026-05-21
+-- Description: Update lookup tables
+-- =====================================================
+
+-- Check whether any listed lookup tables are referenced by views
+SELECT 
+    schemaname,
+    viewname
+FROM pg_views
+WHERE schemaname = 'grp'
+AND (
+    definition ILIKE '%grp.application_method%'
+    OR definition ILIKE '%grp.bed_material%'
+    OR definition ILIKE '%grp.bed_prep%'
+    OR definition ILIKE '%grp.disturbance%'
+    OR definition ILIKE '%grp.erosion_control%'
+    OR definition ILIKE '%grp.fertilization%'
+    OR definition ILIKE '%grp.grazer%'
+    OR definition ILIKE '%grp.growth_medium%'
+    OR definition ILIKE '%grp.herbicide%'
+    OR definition ILIKE '%grp.invasion_control%'
+    OR definition ILIKE '%grp.lifespan%'
+    OR definition ILIKE '%grp.pretreatment%'
+    OR definition ILIKE '%grp.vegmetric%'
+);
+
+-- Check current column structure for all listed lookup tables
+SELECT
+	table_name,
+	column_name,
+	data_type,
+	column_default
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name IN (
+	'application_method',
+	'bed_material',
+	'bed_prep',
+	'disturbance',
+	'erosion_control',
+	'fertilization',
+	'grazer',
+	'growth_medium',
+	'herbicide',
+	'invasion_control',
+	'lifespan',
+	'pretreatment',
+	'vegmetric'
+)
+ORDER BY table_name;
+
+-- Check current contents of listed lookup tables
+SELECT * FROM grp.application_method;
+SELECT * FROM grp.bed_material;
+SELECT * FROM grp.bed_prep;
+SELECT * FROM grp.disturbance;
+SELECT * FROM grp.erosion_control;
+SELECT * FROM grp.fertilization;
+SELECT * FROM grp.grazer;
+SELECT * FROM grp.growth_medium;
+SELECT * FROM grp.herbicide;
+SELECT * FROM grp.invasion_control;
+SELECT * FROM grp.lifespan;
+SELECT * FROM grp.pretreatment;
+SELECT * FROM grp.vegmetric;
+
+-- =====================================================
 -- Change 011 dependency check
 -- Date: 2026-05-20
 -- Description: Support for data_dictionary creation

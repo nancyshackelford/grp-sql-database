@@ -1,7 +1,427 @@
 -- =====================================================
 -- Data Dictionary Population
+-- Phase 13: Lookup table refinement
+-- Date: 2026-05-22
+-- Purpose: Add definition and notes to lookup tables
+-- =====================================================
+
+-- Add data_dictionary rows
+-- Note in rows that all was populated today
+INSERT INTO grp.data_dictionary (
+    table_name,
+    column_name,
+    display_order,
+    data_type,
+    is_nullable,
+    definition,
+    workflow_notes,
+    allowed_values,
+    example,
+    legacy_notes,
+    qa_qc_notes,
+    external_source_notes
+)
+VALUES
+-- application_method
+(
+    'application_method',
+    'definition',
+    2,
+    'text',
+    'YES',
+    'Definition of the application method lookup value.',
+    'Populate with concise controlled vocabulary definitions.',
+    NULL,
+    'Aerial seeding.',
+    NULL,
+    'Definitions should remain consistent across related lookup tables.',
+    NULL
+),
+(
+    'application_method',
+    'notes',
+    3,
+    'text',
+    'YES',
+    'Additional notes or clarification for the application method lookup value.',
+    'Use for edge cases, synonyms, or contributor interpretation guidance.',
+    NULL,
+    'Includes seed spreading and manual planting.',
+    NULL,
+    'Avoid duplicating information already present in definition.',
+    NULL
+),
+
+-- bed_material
+(
+    'bed_material',
+    'definition',
+    2,
+    'text',
+    'YES',
+    'Definition of the bed material lookup value.',
+    'Populate with concise controlled vocabulary definitions.',
+    NULL,
+    'Gravel used as a bed material.',
+    NULL,
+    'Definitions should remain consistent across related lookup tables.',
+    NULL
+),
+(
+    'bed_material',
+    'notes',
+    3,
+    'text',
+    'YES',
+    'Additional notes or clarification for the bed material lookup value.',
+    'Use for edge cases, synonyms, or contributor interpretation guidance.',
+    NULL,
+    'Likely contains native seed sources.',
+    NULL,
+    'Avoid duplicating information already present in definition.',
+    NULL
+),
+
+-- bed_prep
+(
+    'bed_prep',
+    'definition',
+    2,
+    'text',
+    'YES',
+    'Definition of the bed preparation lookup value.',
+    'Populate with concise controlled vocabulary definitions.',
+    NULL,
+    'Land cleared.',
+    NULL,
+    'Definitions should remain consistent across related lookup tables.',
+    NULL
+),
+(
+    'bed_prep',
+    'notes',
+    3,
+    'text',
+    'YES',
+    'Additional notes or clarification for the bed preparation lookup value.',
+    'Use for edge cases, synonyms, or contributor interpretation guidance.',
+    NULL,
+    'Synonymous with harrowing.',
+    NULL,
+    'Avoid duplicating information already present in definition.',
+    NULL
+),
+
+-- disturbance
+(
+    'disturbance',
+    'definition',
+    2,
+    'text',
+    'YES',
+    'Definition of the disturbance lookup value.',
+    'Populate with concise controlled vocabulary definitions.',
+    NULL,
+    'Wild or prescribed fire.',
+    NULL,
+    'Definitions should remain consistent across related lookup tables.',
+    NULL
+),
+(
+    'disturbance',
+    'notes',
+    3,
+    'text',
+    'YES',
+    'Additional notes or clarification for the disturbance lookup value.',
+    'Use for edge cases, synonyms, or contributor interpretation guidance.',
+    NULL,
+    'Multiple disturbances listed in alphabetical order using "|" separator.',
+    NULL,
+    'Avoid duplicating information already present in definition.',
+    NULL
+),
+
+-- erosion_control
+(
+    'erosion_control',
+    'definition',
+    2,
+    'text',
+    'YES',
+    'Definition of the erosion control lookup value.',
+    'Populate with concise controlled vocabulary definitions.',
+    NULL,
+    'Compaction.',
+    NULL,
+    'Definitions should remain consistent across related lookup tables.',
+    NULL
+),
+(
+    'erosion_control',
+    'notes',
+    3,
+    'text',
+    'YES',
+    'Additional notes or clarification for the erosion control lookup value.',
+    'Use for edge cases, synonyms, or contributor interpretation guidance.',
+    NULL,
+    'Surface cover of straw or other material.',
+    NULL,
+    'Avoid duplicating information already present in definition.',
+    NULL
+),
+
+-- fertilization
+(
+    'fertilization',
+    'definition',
+    2,
+    'text',
+    'YES',
+    'Definition of the fertilization lookup value.',
+    'Populate with concise controlled vocabulary definitions.',
+    NULL,
+    'Nitrogen fertilization.',
+    NULL,
+    'Definitions should remain consistent across related lookup tables.',
+    NULL
+),
+(
+    'fertilization',
+    'notes',
+    3,
+    'text',
+    'YES',
+    'Additional notes or clarification for the fertilization lookup value.',
+    'Use for edge cases, synonyms, or contributor interpretation guidance.',
+    NULL,
+    'Specific nutrients unknown.',
+    NULL,
+    'Avoid duplicating information already present in definition.',
+    NULL
+),
+
+-- grazer
+(
+    'grazer',
+    'definition',
+    2,
+    'text',
+    'YES',
+    'Definition of the grazer lookup value.',
+    'Populate with concise controlled vocabulary definitions.',
+    NULL,
+    'Grazers removed.',
+    NULL,
+    'Definitions should remain consistent across related lookup tables.',
+    NULL
+),
+(
+    'grazer',
+    'notes',
+    3,
+    'text',
+    'YES',
+    'Additional notes or clarification for the grazer lookup value.',
+    'Use for edge cases, synonyms, or contributor interpretation guidance.',
+    NULL,
+    'Not previously present.',
+    NULL,
+    'Avoid duplicating information already present in definition.',
+    NULL
+),
+
+-- growth_medium
+(
+    'growth_medium',
+    'definition',
+    2,
+    'text',
+    'YES',
+    'Definition of the growth medium lookup value.',
+    'Populate with concise controlled vocabulary definitions.',
+    NULL,
+    'Waste rock and earth excavated to reach a target resource.',
+    NULL,
+    'Definitions should remain consistent across related lookup tables.',
+    NULL
+),
+(
+    'growth_medium',
+    'notes',
+    3,
+    'text',
+    'YES',
+    'Additional notes or clarification for the growth medium lookup value.',
+    'Use for edge cases, synonyms, or contributor interpretation guidance.',
+    NULL,
+    'May be directly returned or applied from stockpiles.',
+    NULL,
+    'Avoid duplicating information already present in definition.',
+    NULL
+),
+
+-- herbicide
+(
+    'herbicide',
+    'definition',
+    2,
+    'text',
+    'YES',
+    'Definition of the herbicide lookup value.',
+    'Populate with concise controlled vocabulary definitions.',
+    NULL,
+    'Glyphosate herbicide.',
+    NULL,
+    'Definitions should remain consistent across related lookup tables.',
+    NULL
+),
+(
+    'herbicide',
+    'notes',
+    3,
+    'text',
+    'YES',
+    'Additional notes or clarification for the herbicide lookup value.',
+    'Use for edge cases, synonyms, or contributor interpretation guidance.',
+    NULL,
+    'Specific herbicide details unknown.',
+    NULL,
+    'Avoid duplicating information already present in definition.',
+    NULL
+),
+
+-- invasion_control
+(
+    'invasion_control',
+    'definition',
+    2,
+    'text',
+    'YES',
+    'Definition of the invasion control lookup value.',
+    'Populate with concise controlled vocabulary definitions.',
+    NULL,
+    'Prescribed burn.',
+    NULL,
+    'Definitions should remain consistent across related lookup tables.',
+    NULL
+),
+(
+    'invasion_control',
+    'notes',
+    3,
+    'text',
+    'YES',
+    'Additional notes or clarification for the invasion control lookup value.',
+    'Use for edge cases, synonyms, or contributor interpretation guidance.',
+    NULL,
+    'Usually after mowing or tilling.',
+    NULL,
+    'Avoid duplicating information already present in definition.',
+    NULL
+),
+
+-- lifespan
+(
+    'lifespan',
+    'definition',
+    2,
+    'text',
+    'YES',
+    'Definition of the lifespan lookup value.',
+    'Populate with concise controlled vocabulary definitions.',
+    NULL,
+    'Lives for more than two growing seasons.',
+    NULL,
+    'Definitions should remain consistent across related lookup tables.',
+    NULL
+),
+(
+    'lifespan',
+    'notes',
+    3,
+    'text',
+    'YES',
+    'Additional notes or clarification for the lifespan lookup value.',
+    'Use for edge cases, synonyms, or contributor interpretation guidance.',
+    NULL,
+    NULL,
+    NULL,
+    'Avoid duplicating information already present in definition.',
+    NULL
+),
+
+-- pretreatment
+(
+    'pretreatment',
+    'definition',
+    2,
+    'text',
+    'YES',
+    'Definition of the pretreatment lookup value.',
+    'Populate with concise controlled vocabulary definitions.',
+    NULL,
+    'Smoke treatment or use of karrikinolide.',
+    NULL,
+    'Definitions should remain consistent across related lookup tables.',
+    NULL
+),
+(
+    'pretreatment',
+    'notes',
+    3,
+    'text',
+    'YES',
+    'Additional notes or clarification for the pretreatment lookup value.',
+    'Use for edge cases, synonyms, or contributor interpretation guidance.',
+    NULL,
+    'Used when hydrophobic or crusted soils are present.',
+    NULL,
+    'Avoid duplicating information already present in definition.',
+    NULL
+),
+
+-- vegmetric
+(
+    'vegmetric',
+    'definition',
+    2,
+    'text',
+    'YES',
+    'Definition of the vegetation metric lookup value.',
+    'Populate with concise controlled vocabulary definitions.',
+    NULL,
+    'Presence of a species within a unit.',
+    NULL,
+    'Definitions should remain consistent across related lookup tables.',
+    NULL
+),
+(
+    'vegmetric',
+    'notes',
+    3,
+    'text',
+    'YES',
+    'Additional notes or clarification for the vegetation metric lookup value.',
+    'Use for edge cases, synonyms, or contributor interpretation guidance.',
+    NULL,
+    'Exceptions include linear densities or unclear original units.',
+    NULL,
+    'Avoid duplicating information already present in definition.',
+    NULL
+);
+
+-- Update existing data_dictionary entry for grp.lifespan.description
+UPDATE grp.data_dictionary
+SET field_name = 'type'
+WHERE table_name = 'lifespan'
+AND field_name = 'description';
+
+-- =====================================================
+-- Data Dictionary Population
 -- Phase 12: Metadata and workflow documentation
--- Date: 2026-05-19
+-- Date: 2026-05-21
 -- Purpose: Populate grp.data_dictionary with table and column metadata
 -- =====================================================
 

@@ -8,6 +8,33 @@ Tracks known dependencies between:
 
 ---
 
+## Change ID: Change 013
+
+### SQL Change
+Tidy and populate controlled lookup tables by adding `definition` and `notes` columns, renaming `grp.lifespan.description` to `type`, populating lookup values, and adding corresponding data dictionary entries.
+
+### Likely Affected Code
+- Excel → Input: May need updates where lookup table definitions or notes are referenced, displayed, or validated.
+- Input → SQL: May need updates if lifespan values currently map to `description` rather than `type`.
+- SQL views: No direct view changes expected unless dependency checks identify direct references to modified lookup table structures.
+- QA/QC scripts: May need updates to include `definition`, `notes`, and `lifespan.type` in lookup/data dictionary checks.
+
+### Dependency Notes
+This change assumes lookup tables can store controlled vocabulary metadata directly through nullable `definition` and `notes` fields. It also assumes `lifespan.description` is better represented as `lifespan.type`, because the field stores the controlled lookup value rather than explanatory prose. Lookup table population and data dictionary population are now separated into dedicated SQL files for readability and future maintenance.
+
+### Required Testing
+- [ ] Confirm `definition` and `notes` columns exist in all targeted lookup tables.
+- [ ] Confirm `grp.lifespan.description` has been renamed to `type`.
+- [ ] Confirm lookup tables were populated with expected controlled vocabulary values.
+- [ ] Confirm data dictionary entries were added or updated for the new/renamed fields.
+
+### Actual Outcomes
+
+### Status
+- Identified
+
+---
+
 ## Known code impacts
 ## Change ID: 010
 
