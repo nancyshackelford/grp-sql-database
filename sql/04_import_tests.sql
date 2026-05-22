@@ -1,4 +1,36 @@
 -- =====================================================
+-- Import Tests for Schema Change 013
+-- Date: 2026-05-22
+-- Description: Validate creation and population of view_dictionary
+-- =====================================================
+
+-- Check that grp.view_dictionary exists
+SELECT
+    table_schema,
+    table_name,
+    table_type
+FROM information_schema.tables
+WHERE table_schema = 'grp'
+AND table_name = 'view_dictionary';
+
+-- Check columns and column order in grp.view_dictionary
+SELECT
+    ordinal_position,
+    column_name,
+    data_type,
+    is_nullable
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'view_dictionary'
+ORDER BY ordinal_position;
+
+-- Check that all expected views were inserted into grp.view_dictionary
+SELECT
+    *
+FROM grp.view_dictionary
+ORDER BY display_order;
+
+-- =====================================================
 -- Change 012 import tests
 -- Date: 2026-05-22
 -- Description: Support for data_dictionary creation

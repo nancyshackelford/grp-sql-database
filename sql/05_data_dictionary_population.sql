@@ -1,6 +1,117 @@
 -- =====================================================
+-- Data Dictionary Population for Schema Change 013
+-- Date: 2026-05-22
+-- Description: Add data_dictionary entries for grp.view_dictionary
+-- =====================================================
+
+INSERT INTO grp.data_dictionary (
+    table_name,
+    column_name,
+    display_order,
+    data_type,
+    is_nullable,
+    definition,
+    workflow_notes,
+    allowed_values,
+    example,
+    legacy_notes,
+    qa_qc_notes,
+    external_source_notes
+)
+VALUES
+('view_dictionary', 'view_name', 1, 'text', 'NO',
+ 'Name of the SQL view being documented.',
+ 'Use the exact view name from schema grp. This field is the primary identifier for each documented view.',
+ NULL,
+ 'full_treatment',
+ NULL,
+ 'Should match an existing view name in information_schema.views where table_schema = ''grp''.',
+ NULL),
+
+('view_dictionary', 'display_order', 2, 'integer', 'YES',
+ 'Suggested display order for listing documented views.',
+ 'Used only for human-readable ordering of view dictionary records.',
+ NULL,
+ '9',
+ NULL,
+ 'Check for duplicate or missing display_order values if ordering becomes important.',
+ NULL),
+
+('view_dictionary', 'view_level', 3, 'text', 'YES',
+ 'Broad category describing the role of the view.',
+ 'Use this to distinguish simple entity views from bridge, reporting, or summary views.',
+ 'entity; bridge; reporting; summary',
+ 'reporting',
+ NULL,
+ 'Constrained by view_dictionary_view_level_check.',
+ NULL),
+
+('view_dictionary', 'primary_table', 4, 'text', 'YES',
+ 'Primary table or entity represented by the view.',
+ 'This is a human-readable documentation field, not an enforced foreign key.',
+ NULL,
+ 'treatment',
+ NULL,
+ 'Should be reviewed when a view is substantially rewritten.',
+ NULL),
+
+('view_dictionary', 'is_denormalized', 5, 'boolean', 'YES',
+ 'Indicates whether the view flattens, aggregates, or combines multiple records into a more queryable form.',
+ 'Use TRUE for reporting-style views that aggregate or denormalize related tables.',
+ 'TRUE; FALSE',
+ 'TRUE',
+ NULL,
+ 'TRUE values should cue users to check expected row grain and known limitations before using the view for counts or joins.',
+ NULL),
+
+('view_dictionary', 'purpose', 6, 'text', 'YES',
+ 'Human-readable description of what the view is intended to support.',
+ 'Describe the intended use of the view rather than restating the SQL definition.',
+ NULL,
+ 'Treatment-level reporting view that flattens treatment timing and treatment-detail tables.',
+ NULL,
+ 'Review when views are added, renamed, removed, or substantially revised.',
+ NULL),
+
+('view_dictionary', 'expected_row_grain', 7, 'text', 'YES',
+ 'Expected unit represented by one row in the view.',
+ 'Use plain language such as one row per treatment, one row per site, or one row per area-treatment relationship.',
+ NULL,
+ 'One row per treatment.',
+ NULL,
+ 'Important for detecting accidental row multiplication in joins and reporting outputs.',
+ NULL),
+
+('view_dictionary', 'key_assumptions', 8, 'text', 'YES',
+ 'Important assumptions that the view relies on to behave as intended.',
+ 'Use this field to document assumptions about joins, aggregation, hierarchy, uniqueness, or lookup behavior.',
+ NULL,
+ 'Many treatment detail tables are aggregated into semicolon-separated text fields.',
+ NULL,
+ 'Review after schema changes that affect joins, lookup tables, or one-to-many relationships.',
+ NULL),
+
+('view_dictionary', 'known_limitations', 9, 'text', 'YES',
+ 'Known cautions, edge cases, or limits on how the view should be interpreted.',
+ 'Use this field to warn users about row expansion risk, flattened values, or fields that are not appropriate for detailed relational querying.',
+ NULL,
+ 'Multiple detail records may affect row grain or aggregation behavior.',
+ NULL,
+ 'Important field for future QA/QC and troubleshooting of unexpected row counts.',
+ NULL),
+
+('view_dictionary', 'notes', 10, 'text', 'YES',
+ 'Optional additional notes about the view.',
+ 'Use sparingly for information that does not fit the purpose, assumptions, or limitations fields.',
+ NULL,
+ 'Review after treatment-detail schema changes.',
+ NULL,
+ NULL,
+ NULL);
+
+-- =====================================================
 -- Data Dictionary Population
--- Phase 13: Lookup table refinement
+-- Change 012: Lookup table refinement
 -- Date: 2026-05-22
 -- Purpose: Add definition and notes to lookup tables
 -- =====================================================
