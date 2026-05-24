@@ -1,4 +1,30 @@
 -- =====================================================
+-- View Dictionary Updates
+-- Related Change ID: Change 014
+-- Date: 2026-05-23
+-- Description: Update view descriptions after splitting project data accessibility from paper/project metadata
+-- =====================================================
+
+UPDATE grp.view_dictionary
+SET
+    purpose = 'Provides publication/source metadata associated with projects through the project-paper relationship.',
+    expected_row_grain = 'One row per project-paper relationship.',
+    key_assumptions = 'Papers are standalone publication/source entities. Project-paper relationships may be many-to-many. Dataset accessibility is not paper metadata.',
+    known_limitations = 'Does not include project dataset accessibility metadata. Data accessibility is stored in grp.project_data_accessibility and exposed through grp.full_project.',
+    notes = 'Updated during Change 014 after moving dataset accessibility fields out of grp.paper.'
+WHERE view_name = 'full_paper';
+
+
+UPDATE grp.view_dictionary
+SET
+    purpose = 'Provides project-level metadata, including contributors, locations, vegetation metrics, and aggregated project dataset accessibility metadata.',
+    expected_row_grain = 'One row per project.',
+    key_assumptions = 'Project data accessibility is project-level metadata and may eventually include multiple records per project.',
+    known_limitations = 'Data accessibility fields are aggregated from grp.project_data_accessibility, so multiple accessibility records will be collapsed into semicolon-separated values.',
+    notes = 'Updated during Change 014 after moving dataset accessibility into grp.project_data_accessibility. Aggregation preserves one row per project.'
+WHERE view_name = 'full_project';
+
+-- =====================================================
 -- Change 013
 -- Date: 2026-05-22
 -- Description: Create and populate view dictionary

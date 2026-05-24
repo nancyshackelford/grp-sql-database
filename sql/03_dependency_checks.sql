@@ -1,4 +1,83 @@
 -- =====================================================
+-- Dependency Check 014
+-- Related Change ID: Change 014
+-- Date: 2026-05-23
+-- Description: Check dependencies before splitting project data accessibility from paper/project metadata
+-- =====================================================
+
+-- Check dependencies on grp.paper data-accessibility columns
+SELECT
+    dependent_ns.nspname AS dependent_schema,
+    dependent_view.relname AS dependent_view,
+    source_ns.nspname AS source_schema,
+    source_table.relname AS source_table
+FROM pg_depend dep
+JOIN pg_rewrite rewrite
+    ON dep.objid = rewrite.oid
+JOIN pg_class dependent_view
+    ON rewrite.ev_class = dependent_view.oid
+JOIN pg_class source_table
+    ON dep.refobjid = source_table.oid
+JOIN pg_namespace dependent_ns
+    ON dependent_ns.oid = dependent_view.relnamespace
+JOIN pg_namespace source_ns
+    ON source_ns.oid = source_table.relnamespace
+WHERE source_ns.nspname = 'grp'
+AND source_table.relname IN ('paper', 'project')
+ORDER BY
+    dependent_schema,
+    dependent_view,
+    source_table;
+
+-- Check current paper columns involved in the split
+SELECT
+    column_name,
+    data_type,
+    is_nullable,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'paper'
+AND column_name IN (
+    'data_citation',
+    'creativecommons_license',
+    'use_conditions',
+    'date_received',
+    'publication_doi',
+    'publication_url'
+)
+ORDER BY ordinal_position;
+
+-- Check current project columns involved in the split
+SELECT
+    column_name,
+    data_type,
+    is_nullable,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'project'
+AND column_name IN (
+    'availability'
+)
+ORDER BY ordinal_position;
+
+-- Check whether any existing data are present in fields being moved
+-- Expected: likely zero rows because database is currently empty, but confirm.
+SELECT
+    COUNT(*) AS paper_rows_with_data_accessibility_values
+FROM grp.paper
+WHERE data_citation IS NOT NULL
+OR creativecommons_license IS NOT NULL
+OR use_conditions IS NOT NULL
+OR date_received IS NOT NULL;
+
+SELECT
+    COUNT(*) AS project_rows_with_availability_values
+FROM grp.project
+WHERE availability IS NOT NULL;
+
+-- =====================================================
 -- Dependency Checks for Schema Change 013
 -- Date: 2026-05-22
 -- Description: Check existing view infrastructure before adding view_dictionary

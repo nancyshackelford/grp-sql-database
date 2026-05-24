@@ -1,4 +1,212 @@
 -- =====================================================
+-- Import Tests 014
+-- Related Change ID: Change 014
+-- Date: 2026-05-23
+-- Description: Test split of project data accessibility from paper/project metadata
+-- =====================================================
+
+
+-- Check project_data_accessibility table exists.
+SELECT
+    table_schema,
+    table_name,
+    table_type
+FROM information_schema.tables
+WHERE table_schema = 'grp'
+AND table_name = 'project_data_accessibility';
+
+
+-- Check expected columns exist in project_data_accessibility.
+SELECT
+    column_name,
+    data_type,
+    is_nullable,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'project_data_accessibility'
+ORDER BY ordinal_position;
+
+
+-- Check primary key and foreign key constraints on project_data_accessibility.
+SELECT
+    tc.table_name,
+    tc.constraint_name,
+    tc.constraint_type,
+    kcu.column_name,
+    ccu.table_name AS foreign_table_name,
+    ccu.column_name AS foreign_column_name
+FROM information_schema.table_constraints AS tc
+LEFT JOIN information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+    AND tc.table_schema = kcu.table_schema
+LEFT JOIN information_schema.constraint_column_usage AS ccu
+    ON ccu.constraint_name = tc.constraint_name
+    AND ccu.table_schema = tc.table_schema
+WHERE tc.table_schema = 'grp'
+AND tc.table_name = 'project_data_accessibility'
+ORDER BY
+    tc.constraint_type,
+    tc.constraint_name;
+
+
+-- Check dropped columns are no longer present in paper.
+SELECT
+    column_name
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'paper'
+AND column_name IN (
+    'data_citation',
+    'creativecommons_license',
+    'use_conditions',
+    'date_received'
+);
+
+
+-- Check publication DOI and publication URL remain in paper.
+SELECT
+    column_name,
+    data_type,
+    is_nullable
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'paper'
+AND column_name IN (
+    'publication_doi',
+    'publication_url'
+)
+ORDER BY column_name;
+
+
+-- Check dropped availability column is no longer present in project.
+SELECT
+    column_name
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'project'
+AND column_name = 'availability';
+
+
+-- Check full_paper view exists and compiles.
+SELECT *
+FROM grp.full_paper
+LIMIT 10;
+
+
+-- Check full_paper no longer includes dataset accessibility fields.
+SELECT
+    column_name,
+    data_type
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'full_paper'
+AND column_name IN (
+    'received',
+    'citation',
+    'license',
+    'conditions',
+    'data_citation',
+    'data_doi',
+    'data_url',
+    'creativecommons_license',
+    'use_conditions',
+    'date_received'
+)
+ORDER BY column_name;
+
+
+-- Check full_project view exists and compiles.
+SELECT *
+FROM grp.full_project
+LIMIT 10;
+
+
+-- Check full_project includes aggregated dataset accessibility fields.
+SELECT
+    column_name,
+    data_type
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'full_project'
+AND column_name IN (
+    'availability',
+    'data_citation',
+    'data_doi',
+    'data_url',
+    'creativecommons_license',
+    'use_conditions',
+    'first_date_received',
+    'latest_date_received',
+    'data_accessibility_notes'
+)
+ORDER BY column_name;
+
+
+-- Check data dictionary entries exist for project_data_accessibility.
+SELECT
+    table_name,
+    column_name,
+    display_order,
+    data_type,
+    is_nullable,
+    definition
+FROM grp.data_dictionary
+WHERE table_name = 'project_data_accessibility'
+ORDER BY display_order;
+
+
+-- Check data dictionary entries were removed for dropped paper/project columns.
+SELECT
+    table_name,
+    column_name
+FROM grp.data_dictionary
+WHERE (table_name = 'paper'
+    AND column_name IN (
+        'data_citation',
+        'creativecommons_license',
+        'use_conditions',
+        'date_received'
+    ))
+OR (table_name = 'project'
+    AND column_name = 'availability')
+ORDER BY
+    table_name,
+    column_name;
+
+
+-- Check paper publication DOI/URL dictionary notes were updated.
+SELECT
+    table_name,
+    column_name,
+    workflow_notes,
+    legacy_notes,
+    external_source_notes
+FROM grp.data_dictionary
+WHERE table_name = 'paper'
+AND column_name IN (
+    'publication_doi',
+    'publication_url'
+)
+ORDER BY column_name;
+
+
+-- Check view dictionary entries were updated for full_paper and full_project.
+SELECT
+    view_name,
+    purpose,
+    expected_row_grain,
+    key_assumptions,
+    known_limitations,
+    notes
+FROM grp.view_dictionary
+WHERE view_name IN (
+    'full_paper',
+    'full_project'
+)
+ORDER BY view_name;
+
+-- =====================================================
 -- Import Tests for Schema Change 013
 -- Date: 2026-05-22
 -- Description: Validate creation and population of view_dictionary

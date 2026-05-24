@@ -1,4 +1,209 @@
 -- =====================================================
+-- Data Dictionary Updates
+-- Related Change ID: Change 014
+-- Date: 2026-05-23
+-- Description: Split project data accessibility from paper/project metadata
+-- =====================================================
+
+-- Remove deprecated dictionary entries.
+DELETE FROM grp.data_dictionary
+WHERE (table_name = 'paper'
+    AND column_name IN (
+        'data_citation',
+        'creativecommons_license',
+        'use_conditions',
+        'date_received'
+    ))
+OR (table_name = 'project'
+    AND column_name = 'availability');
+
+
+-- Add dictionary entries for grp.project_data_accessibility.
+
+INSERT INTO grp.data_dictionary (
+    table_name,
+    column_name,
+    display_order,
+    data_type,
+    is_nullable,
+    definition,
+    workflow_notes,
+    allowed_values,
+    example,
+    legacy_notes,
+    qa_qc_notes,
+    external_source_notes
+)
+VALUES
+
+(
+    'project_data_accessibility',
+    'data_accessibilityid',
+    1,
+    'integer',
+    'NO',
+    'Unique identifier for a project data accessibility record.',
+    'Automatically generated primary key.',
+    NULL,
+    '1',
+    'Created during Change 014 to separate project dataset accessibility from publication metadata.',
+    'Must be unique.',
+    NULL
+),
+
+(
+    'project_data_accessibility',
+    'projectid',
+    2,
+    'integer',
+    'NO',
+    'Project identifier linked to the associated project.',
+    'References grp.project.projectid.',
+    NULL,
+    '101',
+    'A project may have multiple associated data accessibility records.',
+    'Must match an existing projectid in grp.project.',
+    NULL
+),
+
+(
+    'project_data_accessibility',
+    'availability',
+    3,
+    'text',
+    'YES',
+    'Description of whether and how project data are available.',
+    'Describes accessibility of the underlying project dataset rather than publication access.',
+    NULL,
+    'Available upon request',
+    'Moved from grp.project during Change 014.',
+    'Use consistent terminology where possible.',
+    NULL
+),
+
+(
+    'project_data_accessibility',
+    'data_citation',
+    4,
+    'text',
+    'YES',
+    'Citation for the project dataset.',
+    'Use when datasets have formal citation requirements separate from publication citation.',
+    NULL,
+    'Smith et al. 2024 Vegetation Dataset',
+    'Moved from grp.paper during Change 014.',
+    'Check for complete citation formatting where possible.',
+    NULL
+),
+
+(
+    'project_data_accessibility',
+    'data_doi',
+    5,
+    'text',
+    'YES',
+    'Digital Object Identifier (DOI) associated with the project dataset.',
+    'Separate from publication DOI.',
+    NULL,
+    '10.1234/example.dataset.001',
+    'Created during Change 014 to distinguish dataset identifiers from publication identifiers.',
+    'Use standard DOI formatting.',
+    'Distinct from paper.publication_doi.'
+),
+
+(
+    'project_data_accessibility',
+    'data_url',
+    6,
+    'text',
+    'YES',
+    'URL associated with access to the project dataset.',
+    'May link to repositories, archives, or download portals.',
+    NULL,
+    'https://example.org/dataset',
+    'Created during Change 014.',
+    'Confirm URLs are valid and stable where possible.',
+    NULL
+),
+
+(
+    'project_data_accessibility',
+    'creativecommons_license',
+    7,
+    'text',
+    'YES',
+    'Creative Commons or equivalent license associated with the project dataset.',
+    'Describes permitted dataset reuse.',
+    NULL,
+    'CC-BY 4.0',
+    'Moved from grp.paper during Change 014.',
+    'Use standardized license names where possible.',
+    NULL
+),
+
+(
+    'project_data_accessibility',
+    'use_conditions',
+    8,
+    'text',
+    'YES',
+    'Conditions or restrictions governing dataset use.',
+    'May include embargoes, attribution requirements, or access restrictions.',
+    NULL,
+    'Non-commercial use only',
+    'Moved from grp.paper during Change 014.',
+    'Document any known restrictions clearly.',
+    NULL
+),
+
+(
+    'project_data_accessibility',
+    'date_received',
+    9,
+    'date',
+    'YES',
+    'Date the dataset or access permission was received.',
+    'Use ISO date formatting.',
+    NULL,
+    '2025-04-12',
+    'Moved from grp.paper during Change 014.',
+    'Check for valid dates.',
+    NULL
+),
+
+(
+    'project_data_accessibility',
+    'data_accessibility_notes',
+    10,
+    'text',
+    'YES',
+    'Additional notes related to dataset accessibility, permissions, or logistics.',
+    'Use for contextual details not captured elsewhere.',
+    NULL,
+    'Raw data available only through direct request to data steward.',
+    'Created during Change 014.',
+    'Avoid duplicating information already stored in structured fields.',
+    NULL
+);
+
+
+-- Clarify publication DOI/URL definitions in paper metadata.
+UPDATE grp.data_dictionary
+SET
+    workflow_notes = 'Publication-level DOI for papers or formal publications. Distinct from dataset-level DOI stored in grp.project_data_accessibility.',
+    legacy_notes = 'Retained in grp.paper during Change 014 because publication identifiers remain publication metadata.'
+WHERE table_name = 'paper'
+AND column_name = 'publication_doi';
+
+
+UPDATE grp.data_dictionary
+SET
+    workflow_notes = 'Publication-level URL for papers or formal publications. Distinct from dataset-level URL stored in grp.project_data_accessibility.',
+    legacy_notes = 'Retained in grp.paper during Change 014 because publication URLs remain publication metadata.'
+WHERE table_name = 'paper'
+AND column_name = 'publication_url';
+
+-- =====================================================
 -- Data Dictionary Population for Schema Change 013
 -- Date: 2026-05-22
 -- Description: Add data_dictionary entries for grp.view_dictionary

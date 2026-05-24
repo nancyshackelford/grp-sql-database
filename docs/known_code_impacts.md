@@ -8,6 +8,47 @@ Tracks known dependencies between:
 
 ---
 
+# Known Code Impacts
+
+## Change ID: Change 014
+
+### SQL Change
+Split project dataset accessibility metadata out of `grp.paper` and `grp.project` into new table `grp.project_data_accessibility`.
+
+### Likely Affected Code
+- Excel → Input: Data accessibility fields should map to `project_data_accessibility`, not `paper` or `project`.
+- Input → SQL: Insert scripts must populate `grp.project_data_accessibility` for availability, data citation, data DOI, data URL, license, use conditions, date received, and access notes.
+- SQL views: `full_paper` and `full_project` recreated.
+- QA/QC scripts: Checks must look for data accessibility fields in `project_data_accessibility` or aggregated fields in `full_project`.
+
+### Dependency Notes
+Code should no longer assume:
+- `project.availability` exists
+- `paper.data_citation` exists
+- `paper.creativecommons_license` exists
+- `paper.use_conditions` exists
+- `paper.date_received` exists
+- `full_paper` contains data accessibility metadata
+
+Code may now assume:
+- publication DOI and URL remain in `paper`
+- dataset DOI and URL belong in `project_data_accessibility`
+- `full_project` preserves one row per project by aggregating accessibility records
+
+### Required Testing
+- [ ] Confirm `grp.project_data_accessibility` exists with expected columns.
+- [ ] Confirm dropped columns are absent from `grp.paper` and `grp.project`.
+- [ ] Confirm `full_paper` compiles and no longer includes data accessibility fields.
+- [ ] Confirm `full_project` compiles and includes aggregated data accessibility fields.
+- [ ] Confirm `data_dictionary` and `view_dictionary` updates are present.
+
+### Actual Outcomes
+
+### Status
+- Identified
+
+---
+
 
 ## Known code impacts
 

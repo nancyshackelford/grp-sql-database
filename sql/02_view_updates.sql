@@ -1,4 +1,182 @@
 -- =====================================================
+-- View Update 009
+-- Related Change ID: Change 014
+-- Date: 2026-05-23
+-- Description: Update project and paper views after splitting project data accessibility from paper/project metadata
+-- =====================================================
+
+-- Drop views before recreating them.
+DROP VIEW IF EXISTS grp.full_paper;
+DROP VIEW IF EXISTS grp.full_project;
+
+-- Recreate full_paper as publication/source metadata only.
+-- Data accessibility fields have been removed from paper-facing view.
+CREATE VIEW grp.full_paper AS
+SELECT
+    pp.database,
+    pp.projectid,
+    p.paperid,
+    a.authors,
+    p.publication_year AS year,
+    p.publication_title AS title,
+    p.publication_journal AS journal,
+    p.publication_doi AS doi,
+    p.publication_url AS url,
+    ca.corresponding_author,
+    ca.email,
+    pp.notes AS project_paper_notes
+FROM grp.project_paper pp
+LEFT JOIN grp.paper p
+    ON pp.paperid = p.paperid
+LEFT JOIN (
+    SELECT
+        pa.paperid,
+        string_agg(
+            (ac.given_name || ' '::text || ac.surname),
+            '; '::text
+            ORDER BY ac.surname, ac.given_name
+        ) AS authors
+    FROM grp.paper_author pa
+    LEFT JOIN grp.author_contributor ac
+        ON pa.author_contributorid = ac.author_contributorid
+    GROUP BY pa.paperid
+) a
+    ON p.paperid = a.paperid
+LEFT JOIN (
+    SELECT
+        pa.paperid,
+        string_agg(
+            (ac.given_name || ' '::text || ac.surname),
+            '; '::text
+            ORDER BY ac.surname, ac.given_name
+        ) AS corresponding_author,
+        string_agg(
+            ac.email,
+            '; '::text
+            ORDER BY ac.surname, ac.given_name
+        ) AS email
+    FROM grp.paper_author pa
+    LEFT JOIN grp.author_contributor ac
+        ON pa.author_contributorid = ac.author_contributorid
+    WHERE pa.is_corresponding_author = true
+    GROUP BY pa.paperid
+) ca
+    ON p.paperid = ca.paperid
+ORDER BY
+    pp.database DESC,
+    pp.projectid,
+    p.paperid;
+
+
+-- Recreate full_project as one row per project.
+-- Project data accessibility is aggregated so future multiple access records
+-- do not multiply project rows in this view.
+CREATE VIEW grp.full_project AS
+SELECT
+    project.database,
+    project.projectid,
+    project.type,
+    c.contributor,
+    c.contributor_email,
+    l.continent,
+    l.country,
+    l.state,
+    string_agg(project_vegmetric.type, '; '::text) AS vegmetric,
+    project.community,
+    project.reference,
+    pda.availability,
+    pda.data_citation,
+    pda.data_doi,
+    pda.data_url,
+    pda.creativecommons_license,
+    pda.use_conditions,
+    pda.first_date_received,
+    pda.latest_date_received,
+    pda.data_accessibility_notes,
+    project.notes
+FROM grp.project
+LEFT JOIN grp.project_vegmetric
+    ON project.database = project_vegmetric.database
+    AND project.projectid = project_vegmetric.projectid
+LEFT JOIN (
+    SELECT
+        project_contributor.database,
+        project_contributor.projectid,
+        string_agg(
+            (author_contributor.given_name || ' '::text || author_contributor.surname),
+            '; '::text
+        ) AS contributor,
+        string_agg(
+            author_contributor.email,
+            '; '::text
+        ) AS contributor_email
+    FROM grp.project_contributor
+    LEFT JOIN grp.author_contributor
+        USING (author_contributorid)
+    GROUP BY
+        project_contributor.database,
+        project_contributor.projectid
+) c
+    ON project.database = c.database
+    AND project.projectid = c.projectid
+LEFT JOIN (
+    SELECT
+        project_location.database,
+        project_location.projectid,
+        string_agg(location.continent, '; '::text) AS continent,
+        string_agg(location.country, '; '::text) AS country,
+        string_agg(location.state, '; '::text) AS state
+    FROM grp.project_location
+    LEFT JOIN grp.location
+        USING (locationid)
+    GROUP BY
+        project_location.database,
+        project_location.projectid
+) l
+    ON project.database = l.database
+    AND project.projectid = l.projectid
+LEFT JOIN (
+    SELECT
+        projectid,
+        string_agg(availability, '; '::text ORDER BY data_accessibilityid) AS availability,
+        string_agg(data_citation, '; '::text ORDER BY data_accessibilityid) AS data_citation,
+        string_agg(data_doi, '; '::text ORDER BY data_accessibilityid) AS data_doi,
+        string_agg(data_url, '; '::text ORDER BY data_accessibilityid) AS data_url,
+        string_agg(creativecommons_license, '; '::text ORDER BY data_accessibilityid) AS creativecommons_license,
+        string_agg(use_conditions, '; '::text ORDER BY data_accessibilityid) AS use_conditions,
+        MIN(date_received) AS first_date_received,
+        MAX(date_received) AS latest_date_received,
+        string_agg(data_accessibility_notes, '; '::text ORDER BY data_accessibilityid) AS data_accessibility_notes
+    FROM grp.project_data_accessibility
+    GROUP BY projectid
+) pda
+    ON project.projectid = pda.projectid
+GROUP BY
+    project.database,
+    project.projectid,
+    project.type,
+    c.contributor,
+    c.contributor_email,
+    l.continent,
+    l.country,
+    l.state,
+    project.community,
+    project.reference,
+    pda.availability,
+    pda.data_citation,
+    pda.data_doi,
+    pda.data_url,
+    pda.creativecommons_license,
+    pda.use_conditions,
+    pda.first_date_received,
+    pda.latest_date_received,
+    pda.data_accessibility_notes,
+    project.notes
+ORDER BY
+    project.database,
+    project.projectid;
+
+-- =====================================================
 -- View Update 008
 -- Related Change ID: Change 009
 -- Date: 2026-05-19

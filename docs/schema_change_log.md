@@ -10,6 +10,62 @@ For each change:
 
 ---
 
+# GRP SQL Schema Change Log
+
+## Change ID: Change 014
+Date: 2026-05-23
+
+### Summary
+Created `grp.project_data_accessibility` and moved project dataset accessibility metadata out of paper/project metadata.
+
+### Motivation
+Dataset accessibility describes whether and how the underlying project data can be accessed. This is distinct from publication access. Papers remain standalone publication/source entities linked to projects through `grp.project_paper`.
+
+### SQL Objects Affected
+- Tables:
+  - `grp.paper`
+  - `grp.project`
+- Views:
+  - `grp.full_paper`
+  - `grp.full_project`
+- New tables:
+  - `grp.project_data_accessibility`
+- Deprecated tables/columns:
+  - `grp.paper.data_citation`
+  - `grp.paper.creativecommons_license`
+  - `grp.paper.use_conditions`
+  - `grp.paper.date_received`
+  - `grp.project.availability`
+
+### Upload / Code Impacts
+- Excel → Input code: Dataset accessibility fields must map to `grp.project_data_accessibility`.
+- Input → SQL code: Import scripts must insert accessibility metadata by `projectid`.
+- QA/QC impacts: Tests must confirm data accessibility fields are no longer stored in `paper` or `project`.
+
+### SQL Change
+```sql
+-- See sql/01_schema_changes.sql, sql/02_view_updates.sql,
+-- and sql/05_data_dictionary_population.sql for Change 014.
+```
+
+### Required View Updates
+- [ ] Recreate grp.full_paper without dataset accessibility fields.
+- [ ] Recreate grp.full_project with aggregated dataset accessibility fields.
+
+### Testing Performed
+- [ ] Confirmed new table exists.
+- [ ] Confirmed expected columns and constraints.
+- [ ] Confirmed dropped columns are absent.
+- [ ] Confirmed both affected views compile.
+- [ ] Confirmed dictionary updates.
+
+### Actual Outcomes
+
+### Status
+- Planned
+
+---
+
 ## Change ID: Change 013
 Date: 2026-05-22
 
