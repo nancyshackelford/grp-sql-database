@@ -53,23 +53,38 @@ VALUES
 
 (
     'project_data_accessibility',
-    'projectid',
+    'database',
     2,
+    'text',
+    'NO',
+    'Database identifier for the associated project.',
+    'Used with projectid as a composite foreign key to grp.project.',
+    NULL,
+    'GRP',
+    'Added during Change 014 because projectid is not unique by itself.',
+    'Must match an existing database/projectid combination in grp.project.',
+    NULL
+),
+
+(
+    'project_data_accessibility',
+    'projectid',
+    3,
     'integer',
     'NO',
     'Project identifier linked to the associated project.',
-    'References grp.project.projectid.',
+    'Used with database as a composite foreign key to grp.project.',
     NULL,
     '101',
     'A project may have multiple associated data accessibility records.',
-    'Must match an existing projectid in grp.project.',
+    'Must match an existing database/projectid combination in grp.project.',
     NULL
 ),
 
 (
     'project_data_accessibility',
     'availability',
-    3,
+    4,
     'text',
     'YES',
     'Description of whether and how project data are available.',
@@ -84,7 +99,7 @@ VALUES
 (
     'project_data_accessibility',
     'data_citation',
-    4,
+    5,
     'text',
     'YES',
     'Citation for the project dataset.',
@@ -99,7 +114,7 @@ VALUES
 (
     'project_data_accessibility',
     'data_doi',
-    5,
+    6,
     'text',
     'YES',
     'Digital Object Identifier (DOI) associated with the project dataset.',
@@ -114,7 +129,7 @@ VALUES
 (
     'project_data_accessibility',
     'data_url',
-    6,
+    7,
     'text',
     'YES',
     'URL associated with access to the project dataset.',
@@ -129,7 +144,7 @@ VALUES
 (
     'project_data_accessibility',
     'creativecommons_license',
-    7,
+    8,
     'text',
     'YES',
     'Creative Commons or equivalent license associated with the project dataset.',
@@ -144,7 +159,7 @@ VALUES
 (
     'project_data_accessibility',
     'use_conditions',
-    8,
+    9,
     'text',
     'YES',
     'Conditions or restrictions governing dataset use.',
@@ -159,7 +174,7 @@ VALUES
 (
     'project_data_accessibility',
     'date_received',
-    9,
+    10,
     'date',
     'YES',
     'Date the dataset or access permission was received.',
@@ -174,7 +189,7 @@ VALUES
 (
     'project_data_accessibility',
     'data_accessibility_notes',
-    10,
+    11,
     'text',
     'YES',
     'Additional notes related to dataset accessibility, permissions, or logistics.',

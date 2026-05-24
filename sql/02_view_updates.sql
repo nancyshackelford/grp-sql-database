@@ -9,8 +9,13 @@
 DROP VIEW IF EXISTS grp.full_paper;
 DROP VIEW IF EXISTS grp.full_project;
 
--- Recreate full_paper as publication/source metadata only.
--- Data accessibility fields have been removed from paper-facing view.
+
+-- =====================================================
+-- full_paper
+-- Publication/source metadata only.
+-- Dataset accessibility metadata has been removed.
+-- =====================================================
+
 CREATE VIEW grp.full_paper AS
 SELECT
     pp.database,
@@ -68,9 +73,13 @@ ORDER BY
     p.paperid;
 
 
--- Recreate full_project as one row per project.
--- Project data accessibility is aggregated so future multiple access records
--- do not multiply project rows in this view.
+-- =====================================================
+-- full_project
+-- One row per project.
+-- Dataset accessibility metadata aggregated from
+-- grp.project_data_accessibility.
+-- =====================================================
+
 CREATE VIEW grp.full_project AS
 SELECT
     project.database,
@@ -84,6 +93,7 @@ SELECT
     string_agg(project_vegmetric.type, '; '::text) AS vegmetric,
     project.community,
     project.reference,
+
     pda.availability,
     pda.data_citation,
     pda.data_doi,
@@ -93,11 +103,15 @@ SELECT
     pda.first_date_received,
     pda.latest_date_received,
     pda.data_accessibility_notes,
+
     project.notes
+
 FROM grp.project
+
 LEFT JOIN grp.project_vegmetric
     ON project.database = project_vegmetric.database
     AND project.projectid = project_vegmetric.projectid
+
 LEFT JOIN (
     SELECT
         project_contributor.database,
@@ -119,6 +133,7 @@ LEFT JOIN (
 ) c
     ON project.database = c.database
     AND project.projectid = c.projectid
+
 LEFT JOIN (
     SELECT
         project_location.database,
@@ -135,22 +150,67 @@ LEFT JOIN (
 ) l
     ON project.database = l.database
     AND project.projectid = l.projectid
+
 LEFT JOIN (
     SELECT
+        database,
         projectid,
-        string_agg(availability, '; '::text ORDER BY data_accessibilityid) AS availability,
-        string_agg(data_citation, '; '::text ORDER BY data_accessibilityid) AS data_citation,
-        string_agg(data_doi, '; '::text ORDER BY data_accessibilityid) AS data_doi,
-        string_agg(data_url, '; '::text ORDER BY data_accessibilityid) AS data_url,
-        string_agg(creativecommons_license, '; '::text ORDER BY data_accessibilityid) AS creativecommons_license,
-        string_agg(use_conditions, '; '::text ORDER BY data_accessibilityid) AS use_conditions,
+
+        string_agg(
+            availability,
+            '; '::text
+            ORDER BY data_accessibilityid
+        ) AS availability,
+
+        string_agg(
+            data_citation,
+            '; '::text
+            ORDER BY data_accessibilityid
+        ) AS data_citation,
+
+        string_agg(
+            data_doi,
+            '; '::text
+            ORDER BY data_accessibilityid
+        ) AS data_doi,
+
+        string_agg(
+            data_url,
+            '; '::text
+            ORDER BY data_accessibilityid
+        ) AS data_url,
+
+        string_agg(
+            creativecommons_license,
+            '; '::text
+            ORDER BY data_accessibilityid
+        ) AS creativecommons_license,
+
+        string_agg(
+            use_conditions,
+            '; '::text
+            ORDER BY data_accessibilityid
+        ) AS use_conditions,
+
         MIN(date_received) AS first_date_received,
         MAX(date_received) AS latest_date_received,
-        string_agg(data_accessibility_notes, '; '::text ORDER BY data_accessibilityid) AS data_accessibility_notes
+
+        string_agg(
+            data_accessibility_notes,
+            '; '::text
+            ORDER BY data_accessibilityid
+        ) AS data_accessibility_notes
+
     FROM grp.project_data_accessibility
-    GROUP BY projectid
+
+    GROUP BY
+        database,
+        projectid
+
 ) pda
-    ON project.projectid = pda.projectid
+    ON project.database = pda.database
+    AND project.projectid = pda.projectid
+
 GROUP BY
     project.database,
     project.projectid,
@@ -160,8 +220,10 @@ GROUP BY
     l.continent,
     l.country,
     l.state,
+
     project.community,
     project.reference,
+
     pda.availability,
     pda.data_citation,
     pda.data_doi,
@@ -171,7 +233,9 @@ GROUP BY
     pda.first_date_received,
     pda.latest_date_received,
     pda.data_accessibility_notes,
+
     project.notes
+
 ORDER BY
     project.database,
     project.projectid;

@@ -49,20 +49,27 @@ Dataset accessibility describes whether and how the underlying project data can 
 ```
 
 ### Required View Updates
-- [ ] Recreate grp.full_paper without dataset accessibility fields.
-- [ ] Recreate grp.full_project with aggregated dataset accessibility fields.
+- [x] Recreate grp.full_paper without dataset accessibility fields.
+- [x] Recreate grp.full_project with aggregated dataset accessibility fields.
 
 ### Testing Performed
-- [ ] Confirmed new table exists.
-- [ ] Confirmed expected columns and constraints.
-- [ ] Confirmed dropped columns are absent.
-- [ ] Confirmed both affected views compile.
-- [ ] Confirmed dictionary updates.
+- [x] Confirmed new table exists.
+- [x] Confirmed expected columns and constraints.
+- [x] Confirmed dropped columns are absent.
+- [x] Confirmed both affected views compile.
+- [x] Confirmed dictionary updates.
 
 ### Actual Outcomes
+No unexpected code impacts were identified during testing. The main confirmed impact is that future import and QA/QC code must treat dataset accessibility as project-level metadata stored in `grp.project_data_accessibility`, not as publication metadata in `grp.paper` or core project metadata in `grp.project`.
+
+The addition of `database` to `grp.project_data_accessibility` clarified that project references use the composite project key rather than `projectid` alone. View code was updated accordingly so accessibility records join and aggregate by both `database` and `projectid`.
+
+Tests confirmed that `grp.full_paper` no longer exposes data accessibility fields, while `grp.full_project` exposes aggregated accessibility fields and remains one row per project. Future code should use `grp.project_data_accessibility` directly for detailed access records, or `grp.full_project` for project-level summaries.
+
 
 ### Status
-- Planned
+- Implemented
+- Tested
 
 ---
 

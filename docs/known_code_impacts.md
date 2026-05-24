@@ -36,16 +36,23 @@ Code may now assume:
 - `full_project` preserves one row per project by aggregating accessibility records
 
 ### Required Testing
-- [ ] Confirm `grp.project_data_accessibility` exists with expected columns.
-- [ ] Confirm dropped columns are absent from `grp.paper` and `grp.project`.
-- [ ] Confirm `full_paper` compiles and no longer includes data accessibility fields.
-- [ ] Confirm `full_project` compiles and includes aggregated data accessibility fields.
-- [ ] Confirm `data_dictionary` and `view_dictionary` updates are present.
+- [x] Confirm `grp.project_data_accessibility` exists with expected columns.
+- [x] Confirm dropped columns are absent from `grp.paper` and `grp.project`.
+- [x] Confirm `full_paper` compiles and no longer includes data accessibility fields.
+- [x] Confirm `full_project` compiles and includes aggregated data accessibility fields.
+- [x] Confirm `data_dictionary` and `view_dictionary` updates are present.
 
 ### Actual Outcomes
+Implemented as planned. `grp.project_data_accessibility` was created with the expected fields, including `database` and `projectid` as the composite project reference. Data accessibility fields were removed from `grp.paper`, and `availability` was removed from `grp.project`. Publication-level DOI and URL fields remain in `grp.paper`.
+
+`grp.full_paper` was recreated successfully as a publication/source metadata view only. `grp.full_project` was recreated successfully with aggregated data accessibility fields from `grp.project_data_accessibility`, preserving one row per project. `grp.data_dictionary` and `grp.view_dictionary` were updated to reflect the schema and view changes.
+
+Import tests confirmed that the new table exists, expected columns and constraints are present, dropped columns are absent, affected views compile, and dictionary updates are present. No data migration was required because the database currently contains no project or paper data beyond populated lookup tables.
+
 
 ### Status
-- Identified
+- Implemented
+- Tested
 
 ---
 

@@ -5,7 +5,6 @@
 -- Description: Test split of project data accessibility from paper/project metadata
 -- =====================================================
 
-
 -- Check project_data_accessibility table exists.
 SELECT
     table_schema,
