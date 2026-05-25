@@ -24,6 +24,8 @@ Current contents:
 - `03_dependency_checks.sql`
 - `04_import_tests.sql`
 - `05_data_dictionary_population.sql`
+- `06_lookup_population.sql`
+- `07_view_dictionary_population.sql`
 
 ## docs/
 Project documentation and migration tracking.
