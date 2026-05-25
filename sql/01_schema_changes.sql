@@ -30,6 +30,12 @@ VALUES
     ('mulch', 'Vegetation was mowed and biomass left on site.', NULL),
     ('removal', 'Vegetation was cut and removed as hay or biomass.', NULL),
     ('flail', 'Vegetation was mowed using a flail mower.', NULL);
+    
+-- Add FK connecting treatment_mowing.type to mowing.type
+ALTER TABLE grp.treatment_mowing
+ADD CONSTRAINT treatment_mowing_type_fkey
+FOREIGN KEY (type)
+REFERENCES grp.mowing(type);
 
 -- =====================================================
 -- Change 014
