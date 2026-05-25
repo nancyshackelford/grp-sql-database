@@ -1,4 +1,65 @@
 -- =====================================================
+-- Import Tests 016
+-- Related Change ID: Change 016
+-- Date: 2026-05-25
+-- Description: Confirm area_treatment → project FK exists and functions
+-- =====================================================
+
+-- Check foreign key constraint exists on area_treatment
+SELECT
+    con.conname AS constraint_name,
+    con.contype AS constraint_type,
+    rel.relname AS table_name,
+    pg_get_constraintdef(con.oid) AS constraint_definition
+FROM pg_constraint con
+JOIN pg_class rel
+    ON rel.oid = con.conrelid
+JOIN pg_namespace nsp
+    ON nsp.oid = rel.relnamespace
+WHERE nsp.nspname = 'grp'
+AND rel.relname = 'area_treatment'
+AND con.conname = 'fk_area_treatment_project';
+
+-- Confirm referenced columns exist in grp.project
+SELECT
+    column_name,
+    data_type,
+    is_nullable
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'project'
+AND column_name IN ('database', 'projectid')
+ORDER BY ordinal_position;
+
+-- Confirm no orphaned project references exist in area_treatment
+SELECT
+    at.database,
+    at.projectid
+FROM grp.area_treatment at
+LEFT JOIN grp.project p
+    ON at.database = p.database
+    AND at.projectid = p.projectid
+WHERE p.projectid IS NULL;
+
+-- Confirm ERD-visible FK relationship structure
+SELECT
+    tc.table_name,
+    kcu.column_name,
+    ccu.table_name AS foreign_table_name,
+    ccu.column_name AS foreign_column_name
+FROM information_schema.table_constraints AS tc
+JOIN information_schema.key_column_usage AS kcu
+    ON tc.constraint_name = kcu.constraint_name
+    AND tc.table_schema = kcu.table_schema
+JOIN information_schema.constraint_column_usage AS ccu
+    ON ccu.constraint_name = tc.constraint_name
+    AND ccu.table_schema = tc.table_schema
+WHERE tc.constraint_type = 'FOREIGN KEY'
+AND tc.table_schema = 'grp'
+AND tc.table_name = 'area_treatment'
+ORDER BY kcu.ordinal_position;
+
+-- =====================================================
 -- Import Tests 015
 -- Related Change ID: Change 015
 -- Date: 2026-05-25

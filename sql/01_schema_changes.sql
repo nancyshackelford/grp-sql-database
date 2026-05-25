@@ -1,6 +1,17 @@
 -- =====================================================
 -- Change 015
 -- Date: 2026-05-25
+-- Description: Create relational reference between area_treatment and project
+-- =====================================================
+
+ALTER TABLE grp.area_treatment
+ADD CONSTRAINT fk_area_treatment_project
+FOREIGN KEY (database, projectid)
+REFERENCES grp.project(database, projectid);
+
+-- =====================================================
+-- Change 015
+-- Date: 2026-05-25
 -- Description: Create mowing look up table
 -- =====================================================
 

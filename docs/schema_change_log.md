@@ -19,6 +19,64 @@ Date:
 2026-05-24
 
 ### Summary
+Add direct foreign key constraint from `grp.area_treatment(database, projectid)` to `grp.project(database, projectid)`.
+
+### Motivation
+The `area_treatment` table already included `database` and `projectid` within its composite primary key, implying explicit project-level ownership of area-treatment relationships. However, no foreign key constraint existed to enforce that these values referenced a valid row in `grp.project`.
+
+This created a structural inconsistency where project context was logically implied but not relationally enforced. The change improves referential integrity and clarifies project-level ownership within the schema.
+
+### SQL Objects Affected
+- Tables:
+  - `grp.area_treatment`
+- Views:
+  - None
+- New tables:
+  - None
+- Deprecated tables/columns:
+  - None
+
+### Upload / Code Impacts
+- Excel → Input code:
+  - No expected impact.
+- Input → SQL code:
+  - Imported `database` and `projectid` values must now match existing rows in `grp.project`.
+- QA/QC impacts:
+  - Upload failures will now occur if invalid project references are present in `area_treatment`.
+
+### SQL Change
+```sql
+ALTER TABLE grp.area_treatment
+ADD CONSTRAINT fk_area_treatment_project
+FOREIGN KEY (database, projectid)
+REFERENCES grp.project(database, projectid);
+```
+### Required View Updates
+- [x] None required
+
+### Testing Performed
+- [x] Constraint successfully added to grp.area_treatment
+- [x] Existing data validated against new foreign key constraint
+- [x] ERD review confirmed new project relationship appears correctly
+
+### Actual Outcomes
+Created constraint within grp.area_treatment on projectid and database, referencing back to grp.project.
+
+### Status
+- Implemented
+- Tested
+
+---
+
+# GRP SQL Schema Change Log
+
+## Change ID:
+Change 016
+
+Date:
+2026-05-24
+
+### Summary
 Rename `grp.treatment_mowing.mowing_type` to `type`, create a new `grp.mowing` lookup table, recreate dependent views, and update related data dictionary entries.
 
 ### Motivation
