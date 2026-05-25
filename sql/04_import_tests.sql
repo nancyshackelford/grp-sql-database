@@ -1,4 +1,121 @@
 -- =====================================================
+-- Import Tests 015
+-- Related Change ID: Change 015
+-- Date: 2026-05-25
+-- Description: Test creating mowing lookup table and renaming mowing_type
+-- =====================================================
+
+-- Check treatment_mowing has type and no longer has mowing_type
+SELECT
+    column_name,
+    data_type,
+    is_nullable,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'treatment_mowing'
+ORDER BY ordinal_position;
+
+-- Check mowing lookup table exists
+SELECT
+    table_schema,
+    table_name,
+    table_type
+FROM information_schema.tables
+WHERE table_schema = 'grp'
+AND table_name = 'mowing';
+
+-- Check mowing lookup table structure
+SELECT
+    column_name,
+    data_type,
+    is_nullable,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'mowing'
+ORDER BY ordinal_position;
+
+-- Check mowing lookup values were inserted
+SELECT *
+FROM grp.mowing
+ORDER BY type;
+
+-- Check full_treatment compiles and still exposes mowing_type
+SELECT *
+FROM grp.full_treatment
+LIMIT 5;
+
+-- Check treatments_by_area compiles and still exposes mowing_type
+SELECT *
+FROM grp.treatments_by_area
+LIMIT 5;
+
+-- Check view columns for mowing outputs
+SELECT
+    table_name,
+    column_name,
+    data_type,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name IN ('full_treatment', 'treatments_by_area')
+AND column_name ILIKE '%mowing%'
+ORDER BY table_name, ordinal_position;
+
+-- Check view definitions now source m.type, not m.mowing_type
+SELECT
+    schemaname,
+    viewname,
+    definition
+FROM pg_views
+WHERE schemaname = 'grp'
+AND viewname IN ('full_treatment', 'treatments_by_area')
+AND definition ILIKE '%m.type%';
+
+-- Check no remaining view definition references m.mowing_type
+SELECT
+    schemaname,
+    viewname,
+    definition
+FROM pg_views
+WHERE schemaname = 'grp'
+AND viewname IN ('full_treatment', 'treatments_by_area')
+AND definition ILIKE '%m.mowing_type%';
+
+-- Check data_dictionary treatment_mowing entry was corrected
+SELECT
+    table_name,
+    column_name,
+    display_order,
+    data_type,
+    is_nullable,
+    definition,
+    workflow_notes,
+    allowed_values
+FROM grp.data_dictionary
+WHERE table_name = 'treatment_mowing'
+AND column_name IN ('mowing_type', 'type')
+ORDER BY column_name;
+
+-- Check data_dictionary entries for new mowing lookup table
+SELECT
+    table_name,
+    column_name,
+    display_order,
+    data_type,
+    is_nullable,
+    definition,
+    workflow_notes,
+    allowed_values,
+    example,
+    qa_qc_notes
+FROM grp.data_dictionary
+WHERE table_name = 'mowing'
+ORDER BY display_order, column_name;
+
+
+-- =====================================================
 -- Import Tests 014
 -- Related Change ID: Change 014
 -- Date: 2026-05-23

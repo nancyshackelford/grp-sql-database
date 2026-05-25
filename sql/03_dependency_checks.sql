@@ -1,4 +1,122 @@
 -- =====================================================
+-- Dependency Check 015
+-- Related Change ID: Change 015
+-- Date: 2026-05-25
+-- Description: Check dependencies before creating mowing lookup table and renaming mowing_type
+-- =====================================================
+
+-- Check current treatment_mowing structure
+SELECT
+    column_name,
+    data_type,
+    is_nullable,
+    ordinal_position
+FROM information_schema.columns
+WHERE table_schema = 'grp'
+AND table_name = 'treatment_mowing'
+ORDER BY ordinal_position;
+
+-- Check whether a grp.mowing lookup table already exists
+SELECT
+    table_schema,
+    table_name,
+    table_type
+FROM information_schema.tables
+WHERE table_schema = 'grp'
+AND table_name = 'mowing';
+
+-- Check dependencies on grp.treatment_mowing
+SELECT
+    dependent_ns.nspname AS dependent_schema,
+    dependent_view.relname AS dependent_object,
+    dependent_view.relkind AS dependent_object_type
+FROM pg_depend d
+JOIN pg_rewrite r
+    ON d.objid = r.oid
+JOIN pg_class dependent_view
+    ON r.ev_class = dependent_view.oid
+JOIN pg_namespace dependent_ns
+    ON dependent_ns.oid = dependent_view.relnamespace
+JOIN pg_class source_table
+    ON d.refobjid = source_table.oid
+JOIN pg_namespace source_ns
+    ON source_ns.oid = source_table.relnamespace
+WHERE source_ns.nspname = 'grp'
+AND source_table.relname = 'treatment_mowing'
+ORDER BY dependent_schema, dependent_object;
+
+-- Check definitions of views expected to reference mowing fields
+SELECT
+    schemaname,
+    viewname,
+    definition
+FROM pg_views
+WHERE schemaname = 'grp'
+AND viewname IN ('full_treatment', 'treatments_by_area')
+ORDER BY viewname;
+
+-- Check specifically for current references to mowing_type in view definitions
+SELECT
+    schemaname,
+    viewname,
+    definition
+FROM pg_views
+WHERE schemaname = 'grp'
+AND definition ILIKE '%mowing_type%'
+ORDER BY viewname;
+
+-- Check whether any constraints currently reference mowing_type
+SELECT
+    con.conname AS constraint_name,
+    con.contype AS constraint_type,
+    pg_get_constraintdef(con.oid) AS constraint_definition
+FROM pg_constraint con
+JOIN pg_class rel
+    ON rel.oid = con.conrelid
+JOIN pg_namespace nsp
+    ON nsp.oid = rel.relnamespace
+WHERE nsp.nspname = 'grp'
+AND rel.relname = 'treatment_mowing'
+ORDER BY con.conname;
+
+-- Check whether any indexes currently reference mowing_type
+SELECT
+    indexname,
+    indexdef
+FROM pg_indexes
+WHERE schemaname = 'grp'
+AND tablename = 'treatment_mowing'
+ORDER BY indexname;
+
+-- Check whether the data_dictionary already has treatment_mowing.mowing_type
+-- and whether treatment_mowing.type already exists
+SELECT
+    table_name,
+    column_name,
+    display_order,
+    data_type,
+    is_nullable,
+    definition,
+    allowed_values
+FROM grp.data_dictionary
+WHERE table_name = 'treatment_mowing'
+AND column_name IN ('mowing_type', 'type')
+ORDER BY column_name;
+
+-- Check whether the data_dictionary already has entries for a mowing lookup table
+SELECT
+    table_name,
+    column_name,
+    display_order,
+    data_type,
+    is_nullable,
+    definition,
+    allowed_values
+FROM grp.data_dictionary
+WHERE table_name = 'mowing'
+ORDER BY display_order, column_name;
+
+-- =====================================================
 -- Dependency Check 014
 -- Related Change ID: Change 014
 -- Date: 2026-05-23

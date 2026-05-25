@@ -12,6 +12,93 @@ For each change:
 
 # GRP SQL Schema Change Log
 
+## Change ID:
+Change 016
+
+Date:
+2026-05-24
+
+### Summary
+Rename `grp.treatment_mowing.mowing_type` to `type`, create a new `grp.mowing` lookup table, recreate dependent views, and update related data dictionary entries.
+
+### Motivation
+Most treatment detail tables use a standardized internal column name of `type`. `grp.treatment_mowing` was inconsistent with this convention by using `mowing_type`. This change improves schema consistency across treatment detail tables while preserving the more descriptive output name `mowing_type` within denormalized views.
+
+A new `grp.mowing` lookup table was also added to provide a controlled vocabulary structure for mowing treatment categories.
+
+### SQL Objects Affected
+- Tables:
+  - `grp.treatment_mowing`
+  - `grp.data_dictionary`
+
+- Views:
+  - `grp.full_treatment`
+  - `grp.treatments_by_area`
+
+- New tables:
+  - `grp.mowing`
+
+- Deprecated tables/columns:
+  - `grp.treatment_mowing.mowing_type`
+
+### Upload / Code Impacts
+- Excel → Input code:
+  - Input templates and preprocessing scripts referencing `mowing_type` must now use `type`
+
+- Input → SQL code:
+  - INSERT statements targeting `grp.treatment_mowing` must reference `type`
+  - Controlled vocabulary logic may now optionally validate against `grp.mowing`
+
+- QA/QC impacts:
+  - QA/QC scripts referencing `mowing_type` require updating
+  - Lookup-table validation checks can now include `grp.mowing`
+
+### SQL Change
+```sql
+ALTER TABLE grp.treatment_mowing
+RENAME COLUMN mowing_type TO type;
+
+CREATE TABLE grp.mowing (
+    type text PRIMARY KEY,
+    definition text,
+    notes text
+);
+
+INSERT INTO grp.mowing (
+    type,
+    definition,
+    notes
+)
+VALUES
+    ('present', 'Vegetation was mowed.', NULL),
+    ('mulch', 'Vegetation was mowed and biomass left on site.', NULL),
+    ('removal', 'Vegetation was cut and removed as hay or biomass.', NULL),
+    ('flail', 'Vegetation was mowed using a flail mower.', NULL);
+```
+
+### Required View Updates
+- [ ] Recreate `grp.full_treatment`
+- [ ] Recreate `grp.treatments_by_area`
+- [ ] Update references from `m.mowing_type` to `m.type`
+
+### Testing Performed
+- [ ] Checked updated structure of `grp.treatment_mowing`
+- [ ] Confirmed `grp.mowing` exists
+- [ ] Confirmed `grp.mowing` values were inserted
+- [ ] Confirmed `grp.full_treatment` compiles successfully
+- [ ] Confirmed `grp.treatments_by_area` compiles successfully
+- [ ] Confirmed updated view definitions reference `m.type`
+- [ ] Confirmed data dictionary updates were applied successfully
+
+### Actual Outcomes
+
+### Status
+- Planned
+
+---
+
+# GRP SQL Schema Change Log
+
 ## Change ID: Change 014
 Date: 2026-05-23
 

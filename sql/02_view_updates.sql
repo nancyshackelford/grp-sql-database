@@ -2,12 +2,169 @@
 -- View Update 009
 -- Related Change ID: Change 014
 -- Date: 2026-05-23
--- Description: Update project and paper views after splitting project data accessibility from paper/project metadata
+-- Description: Recreate full_treatment and treatments_by_area after mowing column rename
 -- =====================================================
 
 -- Drop views before recreating them.
 DROP VIEW IF EXISTS grp.full_paper;
 DROP VIEW IF EXISTS grp.full_project;
+
+-- Recreate full_treatment
+CREATE VIEW grp.full_treatment AS
+ SELECT DISTINCT at.database,
+    at.projectid,
+    treatment.treatmentid,
+    treatment.year,
+    treatment.month,
+    treatment.day,
+    treatment.weeks_since_restoration,
+    treatment.other_treatment,
+    a.application_method,
+    bm.bed_material,
+    bp.bed_prep,
+    e.erosion_control,
+    string_agg(f.type, '; '::text) AS fertilization_type,
+    string_agg(((f.amount)::character varying)::text, '; '::text) AS fertilization_amount,
+    string_agg(f.units, '; '::text) AS fertilization_units,
+    string_agg(f.notes, '; '::text) AS fertilization_info,
+    treatment.grading,
+    g.grazer,
+    string_agg(g.notes, '; '::text) AS grazer_notes,
+    string_agg(gm.type, '; '::text) AS growth_medium,
+    string_agg(((gm.top_soil_age)::character varying)::text, '; '::text) AS top_soil_age,
+    string_agg(((gm.growth_medium_depth)::character varying)::text, '; '::text) AS growth_medium_depth,
+    string_agg(gm.growth_medium_depth_units, '; '::text) AS growth_medium_depth_units,
+    string_agg(gm.notes, '; '::text) AS growth_medium_info,
+    string_agg(h.type, '; '::text) AS herbicide_type,
+    string_agg(h.chemical, '; '::text) AS herbicide_chemical,
+    string_agg(((h.amount)::character varying)::text, '; '::text) AS herbicide_amount,
+    string_agg(h.units, '; '::text) AS herbicide_units,
+    i.invasion_control,
+    string_agg(ir.type, '; '::text) AS irrigation_type,
+    string_agg(((ir.amount)::character varying)::text, '; '::text) AS irrigation_amount,
+    string_agg(ir.units, '; '::text) AS irrigation_units,
+    string_agg(ir.notes, '; '::text) AS irrigation_info,
+    string_agg(m.type, '; '::text) AS mowing_type,
+    string_agg(m.height_class, '; '::text) AS mowing_height_class,
+    string_agg(((m.amount)::character varying)::text, '; '::text) AS mowing_amount,
+    string_agg(m.units, '; '::text) AS mowing_units,
+    string_agg(m.notes, '; '::text) AS mowing_notes,
+    string_agg(((cc.speciesid)::character varying)::text, '; '::text) AS cover_crop_speciesid,
+    string_agg(((cc.amount)::character varying)::text, '; '::text) AS cover_crop_amount,
+    string_agg(cc.units, '; '::text) AS cover_crop_units,
+    string_agg(cc.notes, '; '::text) AS cover_crop_notes,
+    treatment.shelter,
+    treatment.maintenance_fire,
+    treatment.notes AS treatment_notes
+   FROM (((((((((((((grp.treatment
+     LEFT JOIN ( SELECT area_treatment.database,
+            area_treatment.projectid,
+            area_treatment.treatmentid,
+            areaid,
+            area.siteid
+           FROM (grp.area_treatment
+             LEFT JOIN grp.area USING (areaid))) at USING (treatmentid))
+     LEFT JOIN ( SELECT treatment_application.treatmentid,
+            string_agg(treatment_application.type, '; '::text) AS application_method
+           FROM grp.treatment_application
+          GROUP BY treatment_application.treatmentid) a USING (treatmentid))
+     LEFT JOIN ( SELECT treatment_material.treatmentid,
+            string_agg(treatment_material.type, ', '::text) AS bed_material
+           FROM grp.treatment_material
+          GROUP BY treatment_material.treatmentid) bm USING (treatmentid))
+     LEFT JOIN ( SELECT treatment_prep.treatmentid,
+            string_agg(treatment_prep.type, ', '::text) AS bed_prep
+           FROM grp.treatment_prep
+          GROUP BY treatment_prep.treatmentid) bp USING (treatmentid))
+     LEFT JOIN ( SELECT treatment_erosion.treatmentid,
+            string_agg(treatment_erosion.type, ', '::text) AS erosion_control
+           FROM grp.treatment_erosion
+          GROUP BY treatment_erosion.treatmentid) e USING (treatmentid))
+     LEFT JOIN ( SELECT treatment_fertilization.treatmentid,
+            treatment_fertilization.type,
+            treatment_fertilization.amount,
+            treatment_fertilization.units,
+            treatment_fertilization.notes
+           FROM grp.treatment_fertilization
+          GROUP BY treatment_fertilization.notes, treatment_fertilization.treatmentid, treatment_fertilization.type, treatment_fertilization.amount, treatment_fertilization.units) f USING (treatmentid))
+     LEFT JOIN ( SELECT treatment_medium.treatmentid,
+            treatment_medium.type,
+            treatment_medium.top_soil_age,
+            treatment_medium.growth_medium_depth,
+            treatment_medium.growth_medium_depth_units,
+            treatment_medium.notes
+           FROM grp.treatment_medium
+          GROUP BY treatment_medium.treatmentid, treatment_medium.notes, treatment_medium.type, treatment_medium.top_soil_age, treatment_medium.growth_medium_depth, treatment_medium.growth_medium_depth_units) gm USING (treatmentid))
+     LEFT JOIN ( SELECT treatment_grazer.treatmentid,
+            string_agg(treatment_grazer.type, ', '::text) AS grazer,
+            string_agg(treatment_grazer.notes, '; '::text) AS notes
+           FROM grp.treatment_grazer
+          GROUP BY treatment_grazer.treatmentid) g USING (treatmentid))
+     LEFT JOIN ( SELECT treatment_herbicide.treatmentid,
+            treatment_herbicide.type,
+            treatment_herbicide.chemical,
+            treatment_herbicide.amount,
+            treatment_herbicide.units
+           FROM grp.treatment_herbicide
+          GROUP BY treatment_herbicide.treatmentid, treatment_herbicide.type, treatment_herbicide.chemical, treatment_herbicide.amount, treatment_herbicide.units) h USING (treatmentid))
+     LEFT JOIN ( SELECT treatment_invasion.treatmentid,
+            string_agg(treatment_invasion.type, ', '::text) AS invasion_control
+           FROM grp.treatment_invasion
+          GROUP BY treatment_invasion.treatmentid) i USING (treatmentid))
+     LEFT JOIN grp.treatment_irrigation ir USING (treatmentid))
+     LEFT JOIN grp.treatment_mowing m USING (treatmentid))
+     LEFT JOIN grp.treatment_cover_crop cc USING (treatmentid))
+  GROUP BY treatment.treatmentid, treatment.notes, at.database, at.projectid, at.areaid, at.siteid, a.application_method, bm.bed_material, bp.bed_prep, e.erosion_control, g.grazer, i.invasion_control;
+
+-- Recreate treatments_by_area
+CREATE VIEW grp.treatments_by_area AS
+ SELECT area_treatment.areaid,
+    area_treatment.treatmentid,
+    full_treatment.year,
+    full_treatment.month,
+    full_treatment.day,
+    full_treatment.weeks_since_restoration,
+    full_treatment.other_treatment,
+    full_treatment.application_method,
+    full_treatment.bed_material,
+    full_treatment.bed_prep,
+    full_treatment.erosion_control,
+    full_treatment.fertilization_type,
+    full_treatment.fertilization_amount,
+    full_treatment.fertilization_units,
+    full_treatment.fertilization_info,
+    full_treatment.grading,
+    full_treatment.grazer,
+    full_treatment.grazer_notes,
+    full_treatment.growth_medium,
+    full_treatment.top_soil_age,
+    full_treatment.growth_medium_depth,
+    full_treatment.growth_medium_depth_units,
+    full_treatment.growth_medium_info,
+    full_treatment.herbicide_type,
+    full_treatment.herbicide_chemical,
+    full_treatment.herbicide_amount,
+    full_treatment.herbicide_units,
+    full_treatment.invasion_control,
+    full_treatment.irrigation_type,
+    full_treatment.irrigation_amount,
+    full_treatment.irrigation_units,
+    full_treatment.irrigation_info,
+    full_treatment.mowing_type,
+    full_treatment.mowing_height_class,
+    full_treatment.mowing_amount,
+    full_treatment.mowing_units,
+    full_treatment.mowing_notes,
+    full_treatment.cover_crop_speciesid,
+    full_treatment.cover_crop_amount,
+    full_treatment.cover_crop_units,
+    full_treatment.cover_crop_notes,
+    full_treatment.shelter,
+    full_treatment.maintenance_fire,
+    full_treatment.treatment_notes
+   FROM (grp.full_treatment
+     RIGHT JOIN grp.area_treatment USING (treatmentid))
+  ORDER BY area_treatment.areaid, full_treatment.weeks_since_restoration;
 
 
 -- =====================================================

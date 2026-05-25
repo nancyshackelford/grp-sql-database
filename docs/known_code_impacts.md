@@ -10,6 +10,53 @@ Tracks known dependencies between:
 
 # Known Code Impacts
 
+## Change ID:
+Change 015
+
+### SQL Change
+Rename `grp.treatment_mowing.mowing_type` to `type`, create `grp.mowing` lookup table, recreate dependent views, and update data dictionary entries.
+
+### Likely Affected Code
+- Excel → Input:
+  - Any import sheets or preprocessing scripts referencing `mowing_type`
+  - Any controlled vocabulary validation for mowing treatments
+
+- Input → SQL:
+  - INSERT statements targeting `grp.treatment_mowing`
+  - Any ETL logic mapping mowing treatment fields
+
+- SQL views:
+  - `grp.full_treatment`
+  - `grp.treatments_by_area`
+
+- QA/QC scripts:
+  - Any checks referencing `grp.treatment_mowing.mowing_type`
+  - Any checks validating allowed mowing values
+
+### Dependency Notes
+- `grp.full_treatment` previously referenced `m.mowing_type`
+- `grp.treatments_by_area` depends on `grp.full_treatment`
+- Import logic may assume the original column name `mowing_type`
+- The new `grp.mowing` table is now the expected controlled vocabulary source for mowing treatment types
+- View outputs intentionally continue exposing `mowing_type` for readability and backwards compatibility
+
+### Required Testing
+- [ ] Confirm `grp.treatment_mowing` contains `type` and no longer contains `mowing_type`
+- [ ] Confirm `grp.mowing` exists and is populated
+- [ ] Confirm `grp.full_treatment` compiles successfully
+- [ ] Confirm `grp.treatments_by_area` compiles successfully
+- [ ] Confirm view definitions reference `m.type`
+- [ ] Confirm data dictionary updates were applied successfully
+
+### Actual Outcomes
+
+### Status
+- Identified
+
+---
+
+# Known Code Impacts
+
 ## Change ID: Change 014
 
 ### SQL Change

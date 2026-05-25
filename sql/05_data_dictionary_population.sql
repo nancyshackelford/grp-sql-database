@@ -1,5 +1,85 @@
 -- =====================================================
 -- Data Dictionary Updates
+-- Related Change ID: Change 015
+-- Date: 2026-05-25
+-- Description: create mowing lookup table
+-- =====================================================
+
+-- Update existing treatment_mowing entry after column rename
+UPDATE grp.data_dictionary
+SET
+    column_name = 'type',
+    definition = 'Type or frequency category of mowing treatment.',
+    allowed_values = 'Values should match grp.mowing.type.'
+WHERE table_name = 'treatment_mowing'
+AND column_name = 'mowing_type';
+
+
+-- Add data dictionary entries for new mowing lookup table
+INSERT INTO grp.data_dictionary (
+    dictionaryid,
+    table_name,
+    column_name,
+    display_order,
+    data_type,
+    is_nullable,
+    definition,
+    workflow_notes,
+    allowed_values,
+    example,
+    legacy_notes,
+    qa_qc_notes,
+    external_source_notes
+)
+VALUES
+(
+    (SELECT COALESCE(MAX(dictionaryid), 0) + 1 FROM grp.data_dictionary),
+    'mowing',
+    'type',
+    1,
+    'text',
+    'NO',
+    'Controlled vocabulary value describing the type or frequency category of mowing treatment.',
+    'Used as the lookup table for grp.treatment_mowing.type.',
+    NULL,
+    'mulch',
+    NULL,
+    'Values should be reviewed for consistency before import.',
+    NULL
+),
+(
+    (SELECT COALESCE(MAX(dictionaryid), 0) + 1 FROM grp.data_dictionary),
+    'mowing',
+    'definition',
+    2,
+    'text',
+    'YES',
+    'Definition of the mowing treatment type.',
+    NULL,
+    NULL,
+    'Vegetation was mowed and biomass left on site.',
+    NULL,
+    NULL,
+    NULL
+),
+(
+    (SELECT COALESCE(MAX(dictionaryid), 0) + 1 FROM grp.data_dictionary),
+    'mowing',
+    'notes',
+    3,
+    'text',
+    'YES',
+    'Additional notes about the mowing treatment type.',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+);
+
+-- =====================================================
+-- Data Dictionary Updates
 -- Related Change ID: Change 014
 -- Date: 2026-05-23
 -- Description: Split project data accessibility from paper/project metadata

@@ -1,4 +1,37 @@
 -- =====================================================
+-- Change 015
+-- Date: 2026-05-25
+-- Description: Create mowing look up table
+-- =====================================================
+
+-- Drop dependent views.
+DROP VIEW IF EXISTS grp.full_treatment;
+DROP VIEW IF EXISTS grp.treatments_by_area;
+
+-- Rename treatment_mowing.mowing_type to type
+ALTER TABLE grp.treatment_mowing
+RENAME COLUMN mowing_type TO type;
+
+-- Create mowing lookup table
+CREATE TABLE grp.mowing (
+    type text PRIMARY KEY,
+    definition text,
+    notes text
+);
+
+-- Populate mowing lookup table
+INSERT INTO grp.mowing (
+    type,
+    definition,
+    notes
+)
+VALUES
+    ('present', 'Vegetation was mowed.', NULL),
+    ('mulch', 'Vegetation was mowed and biomass left on site.', NULL),
+    ('removal', 'Vegetation was cut and removed as hay or biomass.', NULL),
+    ('flail', 'Vegetation was mowed using a flail mower.', NULL);
+
+-- =====================================================
 -- Change 014
 -- Date: 2026-05-23
 -- Description: Split project data accessibility from paper/project metadata
