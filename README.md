@@ -58,19 +58,17 @@ Phase 0 completed:
 - GitHub repository initialized
 - schema tracking infrastructure established
 
-Phase 1 involves making structural changes:
+Phase 1 is completed and involved making structural changes:
 - Add treatment notes (complete)
-- Fix seed mixes
-- Add import/conversion tracking
-- Separate topsoil age and depth
-- Rework project references
-- Resolve availability
-- Treatment vocabulary and treatment-detail refinements
-- Site variable pruning
-- Species trait simplification
-- Input naming and mapping cleanup
-- Update processing code and metadata
-- Drop deprecated columns
+- Fix seed mixes (complete)
+- Add import/conversion tracking (complete)
+- Separate topsoil age and depth (complete)
+- Rework project references (complete)
+- Resolve availability (complete)
+- Treatment vocabulary and treatment-detail refinements (complete)
+- Site variable pruning (complete)
+- Species trait simplification (complete)
+- Update metadata (complete)
 
 Phase 2 will involve testing and finalizing code:
 - Input format → SQL
