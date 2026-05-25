@@ -14,10 +14,8 @@ SET
 WHERE table_name = 'treatment_mowing'
 AND column_name = 'mowing_type';
 
-
 -- Add data dictionary entries for new mowing lookup table
 INSERT INTO grp.data_dictionary (
-    dictionaryid,
     table_name,
     column_name,
     display_order,
@@ -33,7 +31,6 @@ INSERT INTO grp.data_dictionary (
 )
 VALUES
 (
-    (SELECT COALESCE(MAX(dictionaryid), 0) + 1 FROM grp.data_dictionary),
     'mowing',
     'type',
     1,
@@ -42,13 +39,12 @@ VALUES
     'Controlled vocabulary value describing the type or frequency category of mowing treatment.',
     'Used as the lookup table for grp.treatment_mowing.type.',
     NULL,
-    'mulch',
+    'annual mowing',
     NULL,
     'Values should be reviewed for consistency before import.',
     NULL
 ),
 (
-    (SELECT COALESCE(MAX(dictionaryid), 0) + 1 FROM grp.data_dictionary),
     'mowing',
     'definition',
     2,
@@ -57,13 +53,12 @@ VALUES
     'Definition of the mowing treatment type.',
     NULL,
     NULL,
-    'Vegetation was mowed and biomass left on site.',
+    'Mowing conducted once per year.',
     NULL,
     NULL,
     NULL
 ),
 (
-    (SELECT COALESCE(MAX(dictionaryid), 0) + 1 FROM grp.data_dictionary),
     'mowing',
     'notes',
     3,

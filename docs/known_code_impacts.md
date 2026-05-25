@@ -41,17 +41,28 @@ Rename `grp.treatment_mowing.mowing_type` to `type`, create `grp.mowing` lookup 
 - View outputs intentionally continue exposing `mowing_type` for readability and backwards compatibility
 
 ### Required Testing
-- [ ] Confirm `grp.treatment_mowing` contains `type` and no longer contains `mowing_type`
-- [ ] Confirm `grp.mowing` exists and is populated
-- [ ] Confirm `grp.full_treatment` compiles successfully
-- [ ] Confirm `grp.treatments_by_area` compiles successfully
-- [ ] Confirm view definitions reference `m.type`
-- [ ] Confirm data dictionary updates were applied successfully
+- [x] Confirm `grp.treatment_mowing` contains `type` and no longer contains `mowing_type`
+- [x] Confirm `grp.mowing` exists and is populated
+- [x] Confirm `grp.full_treatment` compiles successfully
+- [x] Confirm `grp.treatments_by_area` compiles successfully
+- [x] Confirm view definitions reference `m.type`
+- [x] Confirm data dictionary updates were applied successfully
 
 ### Actual Outcomes
 
+`treatment_mowing.mowing_type` was successfully renamed to `type` to align with naming conventions used across other treatment detail tables.
+
+A new controlled vocabulary lookup table, `grp.mowing`, was successfully created and populated with initial mowing treatment categories.
+
+Dependent views (`grp.full_treatment` and `grp.treatments_by_area`) were successfully recreated after updating internal references from `m.mowing_type` to `m.type`. Existing exposed view output names (`mowing_type`) were intentionally preserved to maintain readability and reduce downstream disruption.
+
+`grp.data_dictionary` entries were successfully updated to reflect the renamed column and new lookup table structure.
+
+No unexpected dependency conflicts or compilation issues were identified during testing.
+
 ### Status
-- Identified
+- Implemented
+- Tested
 
 ---
 

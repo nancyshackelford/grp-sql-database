@@ -77,23 +77,43 @@ VALUES
 ```
 
 ### Required View Updates
-- [ ] Recreate `grp.full_treatment`
-- [ ] Recreate `grp.treatments_by_area`
-- [ ] Update references from `m.mowing_type` to `m.type`
+- [x] Recreate `grp.full_treatment`
+- [x] Recreate `grp.treatments_by_area`
+- [x] Update references from `m.mowing_type` to `m.type`
 
 ### Testing Performed
-- [ ] Checked updated structure of `grp.treatment_mowing`
-- [ ] Confirmed `grp.mowing` exists
-- [ ] Confirmed `grp.mowing` values were inserted
-- [ ] Confirmed `grp.full_treatment` compiles successfully
-- [ ] Confirmed `grp.treatments_by_area` compiles successfully
-- [ ] Confirmed updated view definitions reference `m.type`
-- [ ] Confirmed data dictionary updates were applied successfully
+- [x] Checked updated structure of `grp.treatment_mowing`
+- [x] Confirmed `grp.mowing` exists
+- [x] Confirmed `grp.mowing` values were inserted
+- [x] Confirmed `grp.full_treatment` compiles successfully
+- [x] Confirmed `grp.treatments_by_area` compiles successfully
+- [x] Confirmed updated view definitions reference `m.type`
+- [x] Confirmed data dictionary updates were applied successfully
 
 ### Actual Outcomes
 
+Schema changes were implemented successfully without affecting overall treatment view structure or denormalized output formatting.
+
+`grp.treatment_mowing` now follows the same internal naming convention as other treatment detail tables that use a standardized `type` field.
+
+The new `grp.mowing` lookup table is functioning as the controlled vocabulary source for mowing treatment categories.
+
+View recreation completed successfully and downstream view outputs remained stable, including continued exposure of the `mowing_type` column name in denormalized views.
+
+Data dictionary updates compiled successfully after correcting INSERT statements to rely on the auto-generated `dictionaryid` sequence.
+
+Import tests confirmed:
+- successful column rename
+- successful lookup table creation and population
+- successful recompilation of dependent views
+- successful data dictionary updates
+- absence of remaining `m.mowing_type` references in updated view definitions
+
+No additional view dictionary updates were required because view purpose, grain, and output structure remained unchanged.
+
 ### Status
-- Planned
+- Implemented
+- Tested
 
 ---
 

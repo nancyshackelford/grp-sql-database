@@ -5,8 +5,8 @@
 -- =====================================================
 
 -- Drop dependent views.
-DROP VIEW IF EXISTS grp.full_treatment;
 DROP VIEW IF EXISTS grp.treatments_by_area;
+DROP VIEW IF EXISTS grp.full_treatment;
 
 -- Rename treatment_mowing.mowing_type to type
 ALTER TABLE grp.treatment_mowing

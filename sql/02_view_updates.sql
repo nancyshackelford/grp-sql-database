@@ -6,8 +6,8 @@
 -- =====================================================
 
 -- Drop views before recreating them.
-DROP VIEW IF EXISTS grp.full_paper;
 DROP VIEW IF EXISTS grp.full_project;
+DROP VIEW IF EXISTS grp.full_paper;
 
 -- Recreate full_treatment
 CREATE VIEW grp.full_treatment AS
@@ -165,7 +165,6 @@ CREATE VIEW grp.treatments_by_area AS
    FROM (grp.full_treatment
      RIGHT JOIN grp.area_treatment USING (treatmentid))
   ORDER BY area_treatment.areaid, full_treatment.weeks_since_restoration;
-
 
 -- =====================================================
 -- full_paper

@@ -114,7 +114,6 @@ FROM grp.data_dictionary
 WHERE table_name = 'mowing'
 ORDER BY display_order, column_name;
 
-
 -- =====================================================
 -- Import Tests 014
 -- Related Change ID: Change 014
