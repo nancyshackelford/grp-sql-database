@@ -260,5 +260,3 @@ INSERT INTO grp.vegmetric VALUES ('presence', 'Presence of a species within a un
 -- PostgreSQL database dump complete
 --
 
-\unrestrict baJzjf08QAvC19fFH2ZCsPoFWcoO5OCadYhLk587drqRbzOIBPoYiYRwc0OfYue
-
