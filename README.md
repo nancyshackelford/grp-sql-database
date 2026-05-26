@@ -34,6 +34,12 @@ Current contents:
 - `schema_change_log.md`
 - `known_code_impacts.md`
 
+## supabase/
+Supabase working directory.
+
+Current contents:
+- migration/
+
 ---
 
 # Workflow Philosophy
