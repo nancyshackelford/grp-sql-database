@@ -1,0 +1,20 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": {
+                    "rejectUnauthorized": false
+                }
+            },
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "aws-1-ca-central-1.pooler.supabase.com",
+            "port": 6543,
+            "driver": "CockroachDB",
+            "name": "GRP Supabase",
+            "database": "postgres",
+            "username": "postgres.rudybfqutvodkakgctpo",
+            "password": "globAlre$tore2023"
+        }
+    ]
+}
