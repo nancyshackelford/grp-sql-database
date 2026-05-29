@@ -18,27 +18,28 @@ This repository tracks:
 Executable SQL scripts.
 
 Current contents:
-- `00_phase0_diagnostics.sql`
-- `01_schema_changes.sql`
-- `02_view_updates.sql`
-- `03_dependency_checks.sql`
-- `04_import_tests.sql`
-- `05_data_dictionary_population.sql`
-- `06_lookup_population.sql`
-- `07_view_dictionary_population.sql`
+- /data_import
+- /dependency_checks
+- /diagnostics
+- /import_tests
+- /metadata_changes
+- /schema_changes
 
 ## docs/
 Project documentation and migration tracking.
 
 Current contents:
-- `schema_change_log.md`
-- `known_code_impacts.md`
+- /data_import
+- /known_code_impacts
+- /lookup_table_changes
+- /schema_change_log
 
 ## supabase/
 Supabase working directory.
 
 Current contents:
-- migration/
+- /.temp
+- /migrations
 
 ---
 
@@ -76,11 +77,7 @@ Phase 1 is completed and involved making structural changes:
 - Species trait simplification (complete)
 - Update metadata (complete)
 
-Phase 2 will involve testing and finalizing code:
-- Input format → SQL
-- Excel format → Input format
-
-Phase 3 will be a project-by-project migration of the Excel database to the SQL database
-- ~202 projects
-  
-Phase 4 will be to design access methods for public use
+Phase 2 in transition to and integration with Supabase:
+- Schema transferred (complete)
+- Metadata and lookup tables transferred (complete)
+- Data import 
