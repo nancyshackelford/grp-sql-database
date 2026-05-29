@@ -77,7 +77,7 @@ Phase 1 is completed and involved making structural changes:
 - Species trait simplification (complete)
 - Update metadata (complete)
 
-Phase 2 in transition to and integration with Supabase:
+Phase 2 is transition to and integration with Supabase:
 - Schema transferred (complete)
 - Metadata and lookup tables transferred (complete)
 - Data import 
