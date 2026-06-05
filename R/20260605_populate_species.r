@@ -6,13 +6,15 @@ library(DBI)
 library(RPostgres)
 
 # Connect to the database
+password <- readLines("C:\\Users\\nshack\\OneDrive - University of Victoria\\Documents\\R\\GRP\\pword.csv")
+
 conn <- dbConnect(
   Postgres(),
   host = "aws-1-ca-central-1.pooler.supabase.com",
   port = 6543,
   dbname = "postgres",
   user = "postgres.rudybfqutvodkakgctpo",
-  password = "globAlre$tore2023",
+  password = password,
   sslmode = "require"
 )
 

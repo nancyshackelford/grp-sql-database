@@ -1,0 +1,159 @@
+## This script creates the import documentation for the populate species work
+## Entries are created for five tables: 
+## import_batch, import_project, import_artifact, import_transformation_step, and import_transformation_step_artifact
+
+# Libraries
+library(tidyverse)
+library(DBI)
+library(RPostgres)
+library(glue)
+
+# Connect to the database
+password <- readLines("C:\\Users\\nshack\\OneDrive - University of Victoria\\Documents\\R\\GRP\\pword.csv")
+
+conn <- dbConnect(
+  Postgres(),
+  host = "aws-1-ca-central-1.pooler.supabase.com",
+  port = 6543,
+  dbname = "postgres",
+  user = "postgres.rudybfqutvodkakgctpo",
+  password = password,
+  sslmode = "require"
+)
+
+# Register species import artifacts --------------------------------------
+
+dbBegin(conn)
+
+batch_id <- dbGetQuery(conn, "
+  INSERT INTO grp.import_batch (
+    database,
+    source_folder,
+    source_file_list,
+    workflow_version,
+    processed_by,
+    processed_date,
+    pipeline_stage_start,
+    pipeline_stage_end,
+    notes
+  )
+  VALUES (
+    'GRP',
+    'Supabase Storage: grp-import-artifacts/species_vocabulary_2026-06-05/',
+    'species_names-2024-Feb-28.csv; import_species.R; sp_crosswalk.csv',
+    'species_import_v1',
+    'Nancy Shackelford',
+    CURRENT_DATE,
+    'species vocabulary import',
+    'species tables populated',
+    'Initial migration of legacy GAZP species vocabulary into GRP species tables.'
+  )
+  RETURNING import_batchid;
+")$import_batchid
+
+import_project_id <- dbGetQuery(conn, glue::glue_sql("
+  INSERT INTO grp.import_project (
+    import_batchid,
+    database,
+    contribution_type,
+    contribution_period,
+    documentation_tier,
+    import_status,
+    import_started_at,
+    import_completed_at,
+    is_current_version,
+    notes
+  )
+  VALUES (
+    {batch_id},
+    'GRP',
+    'reference vocabulary migration',
+    'legacy GAZP species list',
+    'full',
+    'completed',
+    CURRENT_TIMESTAMP,
+    CURRENT_TIMESTAMP,
+    TRUE,
+    'Special import_project record used to group species vocabulary migration artifacts and transformation steps.'
+  )
+  RETURNING import_projectid;
+", .con = conn))$import_projectid
+
+artifacts <- tibble::tribble(
+  ~artifact_type, ~artifact_subtype, ~file_name, ~file_extension, ~file_path_or_storage_key, ~source_layer, ~workflow_stage, ~notes,
+  "source_data", "legacy species vocabulary", "species_names-2024-Feb-28.csv", "csv", "species_vocabulary_2026-06-05/species_names-2024-Feb-28.csv", "legacy Excel/CSV export", "input", "Original legacy species table used as the source for the GRP species vocabulary import.",
+  "transformation_script", "R import script", "import_species.R", "R", "species_vocabulary_2026-06-05/import_species.R", "R transformation workflow", "transform/load", "R script used to clean species values, generate GRP species codes, create the crosswalk, and load species tables.",
+  "transformation_table", "species code crosswalk", "sp_crosswalk.csv", "csv", "species_vocabulary_2026-06-05/sp_crosswalk.csv", "migration crosswalk", "output", "Crosswalk linking legacy Excel species IDs to generated GRP species IDs and species codes."
+)
+
+artifacts_to_write <- artifacts %>%
+  mutate(
+    import_projectid = import_project_id,
+    import_batchid = batch_id,
+    database = "GRP",
+    storage_bucket = "grp-import-artifacts",
+    created_by = "Nancy Shackelford",
+    created_date = Sys.Date(),
+    loaded_at = Sys.time()
+  ) %>%
+  select(
+    import_projectid,
+    import_batchid,
+    database,
+    artifact_type,
+    artifact_subtype,
+    file_name,
+    file_extension,
+    file_path_or_storage_key,
+    storage_bucket,
+    source_layer,
+    workflow_stage,
+    created_by,
+    created_date,
+    loaded_at,
+    notes
+  )
+
+dbWriteTable(
+  conn,
+  Id(schema = "grp", table = "import_artifact"),
+  artifacts_to_write,
+  append = TRUE,
+  row.names = FALSE
+)
+
+steps <- tibble::tribble(
+  ~step_order, ~step_name, ~step_description, ~transformation_type, ~software_or_language, ~notes,
+  1, "Clean legacy species source table", "Cleaned NA values, subtype labels, lifeform values, placeholder taxa, spelling/code issues, and duplicate taxon records.", "data cleaning", "R", "Included manual overrides for known legacy code collisions and taxonomic/code inconsistencies.",
+  2, "Generate GRP species codes", "Generated stable GRP species codes, including distinct codes for varieties, subspecies, and known legacy collisions.", "code generation", "R", "Original Excel codes were preserved separately in the species crosswalk and species_names table.",
+  3, "Create species code crosswalk", "Created a crosswalk from legacy Excel species IDs to GRP species IDs and GRP species codes.", "crosswalk generation", "R", "Crosswalk retained as an import artifact for migration provenance and future Excel-to-SQL imports.",
+  4, "Load GRP species tables", "Loaded cleaned data into grp.species, grp.species_names, and grp.species_lifespan.", "database load", "R/PostgreSQL", "Species IDs were generated by PostgreSQL identity column during load."
+)
+
+steps_to_write <- steps %>%
+  mutate(
+    import_projectid = import_project_id,
+    import_batchid = batch_id,
+    database = "GRP"
+  ) %>%
+  select(
+    import_projectid,
+    import_batchid,
+    database,
+    step_order,
+    step_name,
+    step_description,
+    transformation_type,
+    software_or_language,
+    notes
+  )
+
+dbWriteTable(
+  conn,
+  Id(schema = "grp", table = "import_transformation_step"),
+  steps_to_write,
+  append = TRUE,
+  row.names = FALSE
+)
+
+dbCommit(conn)
