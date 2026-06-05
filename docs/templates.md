@@ -61,9 +61,7 @@ Why this change was needed.
 - QA/QC impacts:
 
 ### SQL Change
-```sql
--- paste actual SQL here
-```
+What code to reference for changes
 
 ### Required View Updates
 - [ ]
