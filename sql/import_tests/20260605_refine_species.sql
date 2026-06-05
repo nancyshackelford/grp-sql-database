@@ -93,3 +93,60 @@ FROM grp.data_dictionary
 WHERE table_name = 'species_lifespan'
   AND column_name IN ('type', 'description')
 ORDER BY column_name;
+
+-- Confirm lifeform lookup table exists and has expected values
+
+SELECT *
+FROM grp.lifeform
+ORDER BY type;
+
+-- Confirm lifeform_check was removed from grp.species
+
+SELECT
+    conname AS constraint_name,
+    contype AS constraint_type,
+    pg_get_constraintdef(oid) AS constraint_definition
+FROM pg_constraint
+WHERE conrelid = 'grp.species'::regclass
+  AND conname = 'lifeform_check';
+
+-- Confirm species.lifeform now has FK to grp.lifeform(type) */
+
+SELECT
+    conname AS constraint_name,
+    contype AS constraint_type,
+    pg_get_constraintdef(oid) AS constraint_definition
+FROM pg_constraint
+WHERE conrelid = 'grp.species'::regclass
+  AND conname = 'FK_Species.Lifeform';
+
+-- Confirm current species rows, if any, all pass the lookup
+
+SELECT
+    s.lifeform
+FROM grp.species s
+LEFT JOIN grp.lifeform lf
+  ON s.lifeform = lf.type
+WHERE s.lifeform IS NOT NULL
+  AND lf.type IS NULL;
+
+-- Check new data_dictionary for lifeform lookup table
+
+SELECT
+    table_name,
+    column_name,
+    data_type,
+    is_nullable,
+    definition,
+    workflow_notes,
+    allowed_values,
+    example,
+    qa_qc_notes,
+    display_order
+FROM grp.data_dictionary
+WHERE table_name IN ('lifeform', 'species')
+  AND (
+      table_name = 'lifeform'
+      OR column_name = 'lifeform'
+  )
+ORDER BY table_name, display_order;
