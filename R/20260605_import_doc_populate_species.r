@@ -67,10 +67,10 @@ import_project_id <- dbGetQuery(conn, glue::glue_sql("
   VALUES (
     {batch_id},
     'GRP',
-    'reference vocabulary migration',
+    'initial_import',
     'legacy GAZP species list',
-    'full',
-    'completed',
+    'fully_reproducible',
+    'validated',
     CURRENT_TIMESTAMP,
     CURRENT_TIMESTAMP,
     TRUE,
@@ -81,9 +81,33 @@ import_project_id <- dbGetQuery(conn, glue::glue_sql("
 
 artifacts <- tibble::tribble(
   ~artifact_type, ~artifact_subtype, ~file_name, ~file_extension, ~file_path_or_storage_key, ~source_layer, ~workflow_stage, ~notes,
-  "source_data", "legacy species vocabulary", "species_names-2024-Feb-28.csv", "csv", "species_vocabulary_2026-06-05/species_names-2024-Feb-28.csv", "legacy Excel/CSV export", "input", "Original legacy species table used as the source for the GRP species vocabulary import.",
-  "transformation_script", "R import script", "import_species.R", "R", "species_vocabulary_2026-06-05/import_species.R", "R transformation workflow", "transform/load", "R script used to clean species values, generate GRP species codes, create the crosswalk, and load species tables.",
-  "transformation_table", "species code crosswalk", "sp_crosswalk.csv", "csv", "species_vocabulary_2026-06-05/sp_crosswalk.csv", "migration crosswalk", "output", "Crosswalk linking legacy Excel species IDs to generated GRP species IDs and species codes."
+
+  "raw_data",
+  "legacy species vocabulary",
+  "species_names-2024-Feb-28.csv",
+  "csv",
+  "species_vocabulary_2026-06-05/species_names-2024-Feb-28.csv",
+  "legacy Excel/CSV export",
+  "input",
+  "Original legacy species table used as the source for the GRP species vocabulary import.",
+
+  "transformation_code",
+  "R import script",
+  "import_species.R",
+  "R",
+  "species_vocabulary_2026-06-05/import_species.R",
+  "R transformation workflow",
+  "transform/load",
+  "R script used to clean species values, generate GRP species codes, create the crosswalk, and load species tables.",
+
+  "mapping_table",
+  "species code crosswalk",
+  "sp_crosswalk.csv",
+  "csv",
+  "species_vocabulary_2026-06-05/sp_crosswalk.csv",
+  "migration crosswalk",
+  "output",
+  "Crosswalk linking legacy Excel species IDs to generated GRP species IDs and species codes."
 )
 
 artifacts_to_write <- artifacts %>%
@@ -152,6 +176,61 @@ dbWriteTable(
   conn,
   Id(schema = "grp", table = "import_transformation_step"),
   steps_to_write,
+  append = TRUE,
+  row.names = FALSE
+)
+
+artifact_ids <- dbGetQuery(conn, glue::glue_sql("
+  SELECT import_artifactid, file_name
+  FROM grp.import_artifact
+  WHERE import_batchid = {batch_id}
+    AND import_projectid = {import_project_id};
+", .con = conn))
+
+step_ids <- dbGetQuery(conn, glue::glue_sql("
+  SELECT import_transformation_stepid, step_order, step_name
+  FROM grp.import_transformation_step
+  WHERE import_batchid = {batch_id}
+    AND import_projectid = {import_project_id};
+", .con = conn))
+
+step_artifact_links <- tibble::tribble(
+  ~step_order, ~file_name, ~artifact_role, ~notes,
+
+  1, "species_names-2024-Feb-28.csv", "input",
+  "Source file used for species cleaning.",
+
+  1, "import_species.R", "code",
+  "R script used to clean source species data.",
+
+  2, "import_species.R", "code",
+  "R script used to generate GRP species codes.",
+
+  3, "import_species.R", "code",
+  "R script used to create the species code crosswalk.",
+
+  3, "sp_crosswalk.csv", "mapping",
+  "Crosswalk produced by the transformation workflow.",
+
+  4, "import_species.R", "code",
+  "R script used to load species tables into PostgreSQL."
+) %>%
+  left_join(step_ids, by = "step_order") %>%
+  left_join(artifact_ids, by = "file_name") %>%
+  select(
+    import_transformation_stepid,
+    import_artifactid,
+    artifact_role,
+    notes
+  )
+
+step_artifact_links %>%
+  filter(is.na(import_transformation_stepid) | is.na(import_artifactid))
+
+dbWriteTable(
+  conn,
+  Id(schema = "grp", table = "import_transformation_step_artifact"),
+  step_artifact_links,
   append = TRUE,
   row.names = FALSE
 )
