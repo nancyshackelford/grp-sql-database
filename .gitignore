@@ -1,1 +1,11 @@
 supabase/.temp/
+
+# Import data
+data/harmonized/**/*
+!data/source/**/.gitkeep
+
+data/processed/**/*
+!data/processed/**/.gitkeep
+
+data/reports/**/*
+!data/reports/**/.gitkeep
