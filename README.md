@@ -55,7 +55,7 @@ GRP_SQL/
 ├── .gitignore
 └── README.md
 
-## Directory Overview
+# Directory Overview
 R/
 
 Contains R scripts used to support data imports and database maintenance.
@@ -103,7 +103,7 @@ Supabase-specific infrastructure.
 migrations/ – version-controlled migration files generated and applied through Supabase
 Database Change Workflow
 
-## Philosophy
+# Philosophy
 
 All structural changes should follow a documented workflow:
 
@@ -117,7 +117,7 @@ Commit and merge through GitHub.
 
 Documentation should accompany all significant schema, metadata, lookup-table, and workflow changes.
 
-## Current Status
+# Current Status
 
 The database schema has been migrated to Supabase and is under active development.
 
