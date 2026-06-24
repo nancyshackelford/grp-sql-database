@@ -284,7 +284,14 @@ out |>
 # 6. VALIDATION STEP 2: LOOKUP VALIDATION
 # ------------------------------------------------------------
 
-validate_lookup_constraints <- function(stg_tbl, target_table, constraints_tbl, con, schema = "grp") {
+validate_lookup_constraints <- function(
+    stg_tbl,
+    target_table,
+    constraints_tbl,
+    con,
+    schema = "grp",
+    skip_id_columns = TRUE
+) {
 
   fk_constraints <- constraints_tbl |>
     dplyr::filter(
@@ -292,38 +299,62 @@ validate_lookup_constraints <- function(stg_tbl, target_table, constraints_tbl, 
       .data$constraint_type == "FOREIGN KEY"
     ) |>
     dplyr::mutate(
+      fk_columns = stringr::str_match(
+        .data$constraint_definition,
+        "FOREIGN KEY \\(([^\\)]+)\\)"
+      )[, 2],
       referenced_table = stringr::str_match(
         .data$constraint_definition,
         paste0("REFERENCES\\s+", schema, "\\.([A-Za-z0-9_]+)\\s*\\(")
       )[, 2],
-      referenced_column = stringr::str_match(
+      referenced_columns = stringr::str_match(
         .data$constraint_definition,
-        paste0("REFERENCES\\s+", schema, "\\.[A-Za-z0-9_]+\\s*\\(([A-Za-z0-9_]+)\\)")
+        paste0("REFERENCES\\s+", schema, "\\.[A-Za-z0-9_]+\\s*\\(([^\\)]+)\\)")
       )[, 2]
     ) |>
-    dplyr::filter(!is.na(.data$referenced_table), !is.na(.data$referenced_column))
+    dplyr::filter(
+      !is.na(.data$fk_columns),
+      !is.na(.data$referenced_table),
+      !is.na(.data$referenced_columns)
+    ) |>
+    dplyr::mutate(
+      fk_column_list = stringr::str_split(.data$fk_columns, "\\s*,\\s*"),
+      referenced_column_list = stringr::str_split(.data$referenced_columns, "\\s*,\\s*")
+    ) |>
+    dplyr::filter(lengths(.data$fk_column_list) == 1)
+
+  if (skip_id_columns) {
+    fk_constraints <- fk_constraints |>
+      dplyr::filter(
+        !stringr::str_detect(.data$column_name, "id$")
+      )
+  }
 
   purrr::pmap_dfr(
     fk_constraints,
     function(table_schema, table_name, column_name, constraint_name,
              constraint_type_code, constraint_type, constraint_definition,
              is_identity, identity_generation, column_default,
-             referenced_table, referenced_column, ...) {
+             fk_columns, referenced_table, referenced_columns,
+             fk_column_list, referenced_column_list, ...) {
 
-      if (!column_name %in% names(stg_tbl)) return(NULL)
+      fk_col <- fk_column_list[[1]]
+      ref_col <- referenced_column_list[[1]]
+
+      if (!fk_col %in% names(stg_tbl)) return(NULL)
 
       ref_tbl <- get_lookup_table(con, referenced_table, schema = schema)
 
-      if (!referenced_column %in% names(ref_tbl)) return(NULL)
+      if (!ref_col %in% names(ref_tbl)) return(NULL)
 
       staged_values <- stg_tbl |>
         dplyr::mutate(.row_number = dplyr::row_number()) |>
-        dplyr::select(.data$.row_number, value = dplyr::all_of(column_name)) |>
+        dplyr::select(.data$.row_number, value = dplyr::all_of(fk_col)) |>
         dplyr::filter(!is.na(.data$value)) |>
         dplyr::mutate(value = as.character(.data$value))
 
       ref_values <- ref_tbl |>
-        dplyr::pull(.data[[referenced_column]]) |>
+        dplyr::pull(.data[[ref_col]]) |>
         as.character() |>
         unique()
 
@@ -334,15 +365,15 @@ validate_lookup_constraints <- function(stg_tbl, target_table, constraints_tbl, 
 
       tibble::tibble(
         table_name = target_table,
-        column_name = column_name,
+        column_name = fk_col,
         issue_type = "lookup_mismatch",
         issue_severity = "error",
         row_number = bad_rows$.row_number,
         raw_value = bad_rows$value,
         notes = paste0(
-          target_table, ".", column_name,
+          target_table, ".", fk_col,
           " does not exist in ",
-          referenced_table, ".", referenced_column,
+          referenced_table, ".", ref_col,
           " for constraint ",
           constraint_name
         )
@@ -354,3 +385,161 @@ validate_lookup_constraints <- function(stg_tbl, target_table, constraints_tbl, 
 # ------------------------------------------------------------
 # 7. VALIDATION STEP 3: REFERENTIAL INTEGRITY VALIDATION
 # ------------------------------------------------------------
+validate_referential_integrity <- function(
+    staged_tables,
+    constraints_tbl,
+    con,
+    schema = "grp",
+    id_columns_only = TRUE
+) {
+
+  fk_constraints <- constraints_tbl |>
+    dplyr::filter(.data$constraint_type == "FOREIGN KEY") |>
+    dplyr::mutate(
+      fk_columns = stringr::str_match(
+        .data$constraint_definition,
+        "FOREIGN KEY \\(([^\\)]+)\\)"
+      )[, 2],
+      referenced_table = stringr::str_match(
+        .data$constraint_definition,
+        paste0("REFERENCES\\s+", schema, "\\.([A-Za-z0-9_]+)\\s*\\(")
+      )[, 2],
+      referenced_columns = stringr::str_match(
+        .data$constraint_definition,
+        paste0("REFERENCES\\s+", schema, "\\.[A-Za-z0-9_]+\\s*\\(([^\\)]+)\\)")
+      )[, 2]
+    ) |>
+    dplyr::filter(
+      .data$table_name %in% names(staged_tables),
+      !is.na(.data$fk_columns),
+      !is.na(.data$referenced_table),
+      !is.na(.data$referenced_columns)
+    ) |>
+    dplyr::distinct(
+      .data$table_name,
+      .data$constraint_name,
+      .data$constraint_definition,
+      .data$fk_columns,
+      .data$referenced_table,
+      .data$referenced_columns
+    ) |>
+    dplyr::mutate(
+      fk_column_list = stringr::str_split(.data$fk_columns, "\\s*,\\s*"),
+      referenced_column_list = stringr::str_split(.data$referenced_columns, "\\s*,\\s*")
+    ) |>
+    dplyr::filter(lengths(.data$fk_column_list) == lengths(.data$referenced_column_list))
+
+  if (id_columns_only) {
+    fk_constraints <- fk_constraints |>
+      dplyr::filter(
+        purrr::map_lgl(
+          .data$fk_column_list,
+          ~ any(stringr::str_detect(.x, "id$"))
+        )
+      )
+  }
+
+  purrr::pmap_dfr(
+    fk_constraints,
+    function(table_name, constraint_name, constraint_definition,
+             fk_columns, referenced_table, referenced_columns,
+             fk_column_list, referenced_column_list, ...) {
+
+      child_tbl <- staged_tables[[table_name]]
+
+      if (is.null(child_tbl) || nrow(child_tbl) == 0) return(NULL)
+
+      if (!all(fk_column_list %in% names(child_tbl))) return(NULL)
+
+      child_keys <- child_tbl |>
+        dplyr::mutate(.row_number = dplyr::row_number()) |>
+        dplyr::select(
+          .data$.row_number,
+          dplyr::all_of(fk_column_list)
+        ) |>
+        dplyr::filter(
+          dplyr::if_all(
+            dplyr::all_of(fk_column_list),
+            ~ !is.na(.x)
+          )
+        ) |>
+        dplyr::distinct()
+
+      if (nrow(child_keys) == 0) return(NULL)
+
+      staged_parent <- staged_tables[[referenced_table]]
+
+      staged_parent_keys <- NULL
+
+      if (!is.null(staged_parent) &&
+          nrow(staged_parent) > 0 &&
+          all(referenced_column_list %in% names(staged_parent))) {
+
+        staged_parent_keys <- staged_parent |>
+          dplyr::select(dplyr::all_of(referenced_column_list)) |>
+          dplyr::filter(
+            dplyr::if_all(
+              dplyr::all_of(referenced_column_list),
+              ~ !is.na(.x)
+            )
+          ) |>
+          dplyr::distinct()
+      }
+
+      db_parent <- DBI::dbReadTable(
+        con,
+        DBI::Id(schema = schema, table = referenced_table)
+      )
+
+      db_parent_keys <- db_parent |>
+        dplyr::select(dplyr::all_of(referenced_column_list)) |>
+        dplyr::filter(
+          dplyr::if_all(
+            dplyr::all_of(referenced_column_list),
+            ~ !is.na(.x)
+          )
+        ) |>
+        dplyr::distinct()
+
+      parent_keys <- dplyr::bind_rows(
+        staged_parent_keys,
+        db_parent_keys
+      ) |>
+        dplyr::distinct()
+
+      child_compare <- child_keys |>
+        dplyr::rename_with(
+          ~ referenced_column_list,
+          dplyr::all_of(fk_column_list)
+        )
+
+      bad_rows <- child_compare |>
+        dplyr::anti_join(
+          parent_keys,
+          by = referenced_column_list
+        )
+
+      if (nrow(bad_rows) == 0) return(NULL)
+
+      tibble::tibble(
+        table_name = table_name,
+        column_name = paste(fk_column_list, collapse = ", "),
+        issue_type = "referential_integrity_issue",
+        issue_severity = "blocker",
+        row_number = bad_rows$.row_number,
+        raw_value = bad_rows |>
+          dplyr::select(dplyr::all_of(referenced_column_list)) |>
+          apply(1, paste, collapse = " | "),
+        notes = paste0(
+          table_name, ".",
+          paste(fk_column_list, collapse = ", "),
+          " does not match staged or existing parent key ",
+          referenced_table, ".",
+          paste(referenced_column_list, collapse = ", "),
+          " for constraint ",
+          constraint_name
+        )
+      )
+    }
+  )
+}

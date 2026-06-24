@@ -1,4 +1,10 @@
-### Helper functions
+### Helper functions for SQL import process (from harmonized data)
+
+# Libraries
+library(tidyverse)
+library(DBI)
+
+
 # Helper: normalize blanks
 na_if_blank <- function(x) {
   x <- as.character(x)
