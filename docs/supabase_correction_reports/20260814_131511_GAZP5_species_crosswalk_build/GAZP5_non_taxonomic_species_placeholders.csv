@@ -1,0 +1,2 @@
+source_table,source_column,source_speciesid,source_rows,exclusion_reason
+trtrates,speciesid,mix_unknown,3,Unknown-composition seed-mix placeholder; importer retains the mix with speciesid missing rather than inventing a taxon.

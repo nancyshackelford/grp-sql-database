@@ -1,0 +1,267 @@
+treatment_mediumid,treatmentid,type,top_soil_age,notes,growth_medium_depth,growth_medium_depth_units
+41,1,topsoil,,applied,,treatment presence
+42,3,mixed,,applied,,treatment presence
+43,5,topsoil,,applied,,treatment presence
+44,7,waste,,applied,,treatment presence
+45,9,waste,,applied,,treatment presence
+46,11,mixed,,applied,,treatment presence
+47,13,mixed,,applied,,treatment presence
+48,15,topsoil,,applied,,treatment presence
+49,17,waste,,applied,,treatment presence
+50,19,waste,,applied,,treatment presence
+51,21,mixed,,applied,,treatment presence
+52,23,waste,,applied,,treatment presence
+53,25,mixed,,applied,,treatment presence
+54,27,waste,,applied,,treatment presence
+55,29,mixed,,applied,,treatment presence
+56,31,mixed,,applied,,treatment presence
+57,33,topsoil,,applied,,treatment presence
+58,35,waste,,applied,,treatment presence
+59,37,waste,,applied,,treatment presence
+60,39,mixed,,applied,,treatment presence
+61,208,haul,,applied,,treatment presence
+62,209,topsoil,0.5,,,
+63,210,topsoil,0.5,,,
+64,211,haul,,applied,,treatment presence
+65,211,topsoil,0.5,,,
+66,212,topsoil,0.5,,,
+67,213,haul,,applied,,treatment presence
+68,213,topsoil,0.5,,,
+69,214,topsoil,0.1,,,
+70,215,topsoil,0.1,,,
+71,216,haul,,applied,,treatment presence
+72,216,topsoil,0.3,,,
+73,217,scoria,,applied,,treatment presence
+74,218,haul,,applied,,treatment presence
+75,218,topsoil,0.1,,,
+76,219,scoria,,applied,,treatment presence
+77,219,spoil,,applied,,treatment presence
+78,220,topsoil,0.5,,,
+79,221,topsoil,0.75,,,
+80,222,topsoil,0.75,,,
+81,223,topsoil,0.75,,,
+82,224,haul,,applied,,treatment presence
+83,224,topsoil,0.1,,,
+84,225,haul,,applied,,treatment presence
+85,225,topsoil,0.1,,,
+86,226,haul,,applied,,treatment presence
+87,227,topsoil,0.1,,,
+88,228,haul,,applied,,treatment presence
+89,228,topsoil,0.5,,,
+90,229,topsoil,0.1,,,
+91,230,scoria,,applied,,treatment presence
+92,231,topsoil,0.5,,,
+93,232,haul,,applied,,treatment presence
+94,232,topsoil,0.25,,,
+95,233,haul,,applied,,treatment presence
+96,233,topsoil,0.25,,,
+97,234,haul,,applied,,treatment presence
+98,234,topsoil,0.25,,,
+99,235,topsoil,1,,,
+100,236,topsoil,0.1,,,
+101,237,haul,,applied,,treatment presence
+102,237,topsoil,0.5,,,
+103,238,haul,,applied,,treatment presence
+104,239,haul,,applied,,treatment presence
+105,240,haul,,applied,,treatment presence
+106,240,topsoil,0.5,,,
+107,241,haul,,applied,,treatment presence
+108,242,topsoil,0.5,,,
+109,243,haul,,applied,,treatment presence
+110,244,haul,,applied,,treatment presence
+111,244,topsoil,0.1,,,
+112,245,haul,,applied,,treatment presence
+113,245,topsoil,0.1,,,
+114,246,haul,,applied,,treatment presence
+115,246,topsoil,0,,,
+116,247,topsoil,0.5,,,
+117,248,scoria,,applied,,treatment presence
+118,248,topsoil,0.5,,,
+119,249,topsoil,0.5,,,
+120,250,scoria,,applied,,treatment presence
+121,250,topsoil,0.5,,,
+122,251,topsoil,0.5,,,
+123,252,topsoil,0.5,,,
+124,253,topsoil,0.5,,,
+125,254,topsoil,0.5,,,
+126,255,topsoil,0.5,,,
+127,256,topsoil,0.5,,,
+128,257,topsoil,,applied,,treatment presence
+129,258,topsoil,,applied,,treatment presence
+130,259,topsoil,,applied,,treatment presence
+131,260,haul,,applied,,treatment presence
+132,260,topsoil,0,,,
+133,261,topsoil,0,,,
+134,261,haul,,applied,,treatment presence
+135,262,haul,,applied,,treatment presence
+136,262,topsoil,2.5,,,
+137,263,haul,,applied,,treatment presence
+138,263,topsoil,1.5,,,
+139,264,topsoil,0.6,,,
+140,265,haul,,applied,,treatment presence
+141,265,topsoil,0.5,,,
+142,266,haul,,applied,,treatment presence
+143,266,topsoil,4,,,
+144,267,haul,,applied,,treatment presence
+145,267,topsoil,6,,,
+146,268,topsoil,0.5,,,
+147,269,topsoil,0.25,,,
+148,270,haul,,applied,,treatment presence
+149,270,topsoil,0.5,,,
+150,271,haul,,applied,,treatment presence
+151,271,topsoil,0.5,,,
+152,272,haul,,applied,,treatment presence
+153,272,topsoil,0.5,,,
+154,273,topsoil,0.5,,,
+155,274,haul,,applied,,treatment presence
+156,275,topsoil,0.6,,,
+157,276,topsoil,0.5,,,
+158,277,haul,,applied,,treatment presence
+159,277,topsoil,0.5,,,
+160,278,haul,,applied,,treatment presence
+161,278,topsoil,0.5,,,
+162,279,haul,,applied,,treatment presence
+163,279,topsoil,1.5,,,
+164,280,haul,,applied,,treatment presence
+165,280,topsoil,0.5,,,
+166,281,haul,,applied,,treatment presence
+167,281,topsoil,0.5,,,
+168,282,haul,,applied,,treatment presence
+169,282,topsoil,0.5,,,
+170,283,haul,,applied,,treatment presence
+171,283,topsoil,0.5,,,
+172,284,topsoil,0.5,,,
+173,285,haul,,applied,,treatment presence
+174,285,topsoil,0.5,,,
+175,286,topsoil,0.6,,,
+176,287,haul,,applied,,treatment presence
+177,287,topsoil,0.5,,,
+178,288,haul,,applied,,treatment presence
+179,288,topsoil,0.5,,,
+180,289,topsoil,0.5,,,
+181,290,topsoil,0.25,,,
+182,291,topsoil,0.3,,,
+183,292,topsoil,0.25,,,
+184,293,topsoil,0.3,,,
+185,294,topsoil,0.5,,,
+186,295,topsoil,0.5,,,
+187,296,topsoil,0.5,,,
+188,297,topsoil,0.6,,,
+189,298,topsoil,0.5,,,
+190,299,topsoil,0.5,,,
+191,300,topsoil,0.5,,,
+192,301,topsoil,0.5,,,
+193,302,topsoil,0.3,,,
+194,303,topsoil,0.3,,,
+195,304,topsoil,0.4,,,
+196,305,topsoil,0.3,,,
+197,306,topsoil,0.3,,,
+198,307,topsoil,0.3,,,
+199,308,topsoil,0.1,,,
+200,309,topsoil,0.25,,,
+201,310,haul,,applied,,treatment presence
+202,311,haul,,applied,,treatment presence
+203,312,topsoil,0.5,,,
+204,313,haul,,applied,,treatment presence
+205,314,topsoil,0.1,,,
+206,315,topsoil,0.1,,,
+207,316,spoil,,applied,,treatment presence
+208,317,spoil,,applied,,treatment presence
+209,318,spoil,,applied,,treatment presence
+210,319,topsoil,0.2,,,
+211,320,topsoil,0.2,,,
+212,321,scoria,,applied,,treatment presence
+213,321,spoil,,applied,,treatment presence
+214,322,scoria,,applied,,treatment presence
+215,322,spoil,,applied,,treatment presence
+216,323,topsoil,0.5,,,
+217,324,haul,,applied,,treatment presence
+218,324,topsoil,0.5,,,
+219,325,topsoil,0.5,,,
+220,326,topsoil,0.5,,,
+221,327,topsoil,0.5,,,
+222,328,scoria,,applied,,treatment presence
+223,329,scoria,,applied,,treatment presence
+224,330,scoria,,applied,,treatment presence
+225,331,topsoil,0.5,,,
+226,332,topsoil,0.5,,,
+227,333,topsoil,0.5,,,
+228,334,topsoil,0.5,,,
+229,335,haul,,applied,,treatment presence
+230,335,topsoil,0.5,,,
+231,336,topsoil,0.75,,,
+232,337,topsoil,0.5,,,
+233,338,haul,,applied,,treatment presence
+234,338,topsoil,0.5,,,
+235,339,topsoil,0.5,,,
+236,340,scoria,,applied,,treatment presence
+237,341,scoria,,applied,,treatment presence
+238,342,topsoil,0.5,,,
+239,343,topsoil,0.6,,,
+240,344,topsoil,0.6,,,
+241,345,topsoil,0.1,,,
+242,346,haul,,applied,,treatment presence
+243,346,topsoil,0.5,,,
+244,347,topsoil,0.1,,,
+245,348,scoria,,applied,,treatment presence
+246,349,scoria,,applied,,treatment presence
+247,350,scoria,,applied,,treatment presence
+248,351,topsoil,0.75,,,
+249,352,scoria,,applied,,treatment presence
+250,353,haul,,applied,,treatment presence
+251,353,topsoil,0.3,,,
+252,354,scoria,,applied,,treatment presence
+253,355,topsoil,1.1,,,
+254,356,topsoil,1.5,,,
+255,357,haul,,applied,,treatment presence
+256,357,topsoil,0.5,,,
+257,358,topsoil,1.5,,,
+258,359,scoria,,applied,,treatment presence
+259,360,haul,,applied,,treatment presence
+260,361,topsoil,0.5,,,
+261,362,haul,,applied,,treatment presence
+262,363,topsoil,0.4,,,
+263,364,topsoil,0.2,,,
+264,365,topsoil,0.2,,,
+265,366,topsoil,0.5,,,
+266,367,topsoil,0.2,,,
+267,368,topsoil,0.5,,,
+268,369,topsoil,0.1,,,
+269,370,topsoil,0.1,,,
+270,371,spoil,,applied,,treatment presence
+271,372,spoil,,applied,,treatment presence
+272,373,haul,,applied,,treatment presence
+273,374,haul,,applied,,treatment presence
+274,374,topsoil,0,,,
+275,375,scoria,,applied,,treatment presence
+276,376,haul,,applied,,treatment presence
+277,376,topsoil,0,,,
+278,377,haul,,applied,,treatment presence
+279,377,topsoil,0,,,
+280,378,haul,,applied,,treatment presence
+281,378,topsoil,0,,,
+282,379,topsoil,0.5,,,
+283,380,scoria,,applied,,treatment presence
+284,381,topsoil,0,,,
+285,382,topsoil,0,,,
+286,383,topsoil,0,,,
+287,384,topsoil,0,,,
+288,385,topsoil,0.2,,,
+289,386,haul,,applied,,treatment presence
+290,387,topsoil,0.1,,,
+291,388,haul,,applied,,treatment presence
+292,388,topsoil,0.25,,,
+293,389,scoria,,applied,,treatment presence
+294,390,topsoil,0.5,,,
+295,391,scoria,,applied,,treatment presence
+296,392,scoria,,applied,,treatment presence
+297,393,haul,,applied,,treatment presence
+298,393,topsoil,0.1,,,
+299,394,haul,,applied,,treatment presence
+300,394,topsoil,0.1,,,
+301,395,topsoil,0.2,,,
+302,396,topsoil,1.6,,,
+303,397,topsoil,0.2,,,
+304,398,topsoil,,applied,,treatment presence
+305,399,topsoil,,applied,,treatment presence
+306,400,topsoil,0.5,,,

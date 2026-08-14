@@ -1,0 +1,4 @@
+project_code,source_timepoint_keys,supabase_rows,month_rows_to_update,month_rows_already_correct,month_source_missing,day_rows_to_update,day_rows_already_correct,day_source_missing
+GAZP1,20,625,625,0,0,0,0,625
+GAZP2,72,576,576,0,0,0,0,576
+GAZP3,9,81,81,0,0,0,0,81

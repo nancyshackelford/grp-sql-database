@@ -1,0 +1,46 @@
+project_code,sheet,status_column,status_value,rows
+GAZP1,study,reconstruction_status,reconstructed_from_supabase,1
+GAZP1,site,reconstruction_status,partial; environmental fields not stored in Supabase,1
+GAZP1,treatments,reconstruction_status,reverse_mapped_from_normalized_treatment_tables,100
+GAZP1,timepoints,reconstruction_status,reconstructed_from_veg_result_dates,20
+GAZP1,trtrates,species_mapping_status,unique_reverse_mapping,100
+GAZP1,trtrates,cultivar_mapping_status,not_applicable_or_no_reverse_mapping,100
+GAZP1,trtrates,reconstruction_status,partial; treatment_type and trt_year not stored in seeding,100
+GAZP1,vegresults,species_mapping_status,unique_reverse_mapping,625
+GAZP1,vegresults,reconstruction_status,reverse_mapped_from_supabase,625
+GAZP2,study,reconstruction_status,reconstructed_from_supabase,1
+GAZP2,site,reconstruction_status,partial; environmental fields not stored in Supabase,4
+GAZP2,treatments,reconstruction_status,reverse_mapped_from_normalized_treatment_tables,180
+GAZP2,timepoints,reconstruction_status,reconstructed_from_veg_result_dates,72
+GAZP2,trtrates,species_mapping_status,ambiguous_multiple_legacy_codes,72
+GAZP2,trtrates,species_mapping_status,unique_reverse_mapping,96
+GAZP2,trtrates,cultivar_mapping_status,not_applicable_or_no_reverse_mapping,168
+GAZP2,trtrates,reconstruction_status,partial; treatment_type and trt_year not stored in seeding,168
+GAZP2,vegresults,species_mapping_status,unique_reverse_mapping,576
+GAZP2,vegresults,reconstruction_status,reverse_mapped_from_supabase,576
+GAZP3,study,reconstruction_status,reconstructed_from_supabase,1
+GAZP3,site,reconstruction_status,partial; environmental fields not stored in Supabase,1
+GAZP3,treatments,reconstruction_status,reverse_mapped_from_normalized_treatment_tables,3
+GAZP3,timepoints,reconstruction_status,reconstructed_from_veg_result_dates,9
+GAZP3,trtrates,species_mapping_status,ambiguous_multiple_legacy_codes,6
+GAZP3,trtrates,species_mapping_status,unique_reverse_mapping,3
+GAZP3,trtrates,cultivar_mapping_status,not_applicable_or_no_reverse_mapping,9
+GAZP3,trtrates,reconstruction_status,partial; treatment_type and trt_year not stored in seeding,9
+GAZP3,vegresults,species_mapping_status,ambiguous_multiple_legacy_codes,54
+GAZP3,vegresults,species_mapping_status,unique_reverse_mapping,27
+GAZP3,vegresults,reconstruction_status,partial; species code ambiguous or absent,54
+GAZP3,vegresults,reconstruction_status,reverse_mapped_from_supabase,27
+GAZP5,study,reconstruction_status,reconstructed_from_supabase,1
+GAZP5,site,reconstruction_status,partial; environmental fields not stored in Supabase,193
+GAZP5,treatments,reconstruction_status,reverse_mapped_from_normalized_treatment_tables,1150
+GAZP5,timepoints,reconstruction_status,reconstructed_from_veg_result_dates,193
+GAZP5,trtrates,species_mapping_status,ambiguous_multiple_legacy_codes,902
+GAZP5,trtrates,species_mapping_status,no_reverse_mapping,2
+GAZP5,trtrates,species_mapping_status,unique_reverse_mapping,2053
+GAZP5,trtrates,cultivar_mapping_status,not_applicable_or_no_reverse_mapping,2957
+GAZP5,trtrates,reconstruction_status,partial; treatment_type and trt_year not stored in seeding,2957
+GAZP5,refs,reconstruction_status,partial; full source author string not stored,1
+GAZP5,vegresults,species_mapping_status,ambiguous_multiple_legacy_codes,1386
+GAZP5,vegresults,species_mapping_status,unique_reverse_mapping,1386
+GAZP5,vegresults,reconstruction_status,partial; species code ambiguous or absent,1386
+GAZP5,vegresults,reconstruction_status,reverse_mapped_from_supabase,1386

@@ -1,0 +1,5 @@
+project_code,projectid,contribution_period,notes
+GAZP1,1,Post-import audit correction completed 2026-08-14,Backfilled 625 monitoring month values from the authoritative harmonized timepoints sheet.
+GAZP2,2,Post-import audit correction completed 2026-08-14,Backfilled 576 monitoring month values from the authoritative harmonized timepoints sheet.
+GAZP3,3,Post-import audit correction completed 2026-08-14,Backfilled 81 monitoring month values from the authoritative harmonized timepoints sheet.
+GAZP5,5,Post-import audit correction completed 2026-08-14,Corrected Art_tri3 to speciesid 7171 / Art_tri_sub_tri and built a standalone project species crosswalk preserving historical concepts.

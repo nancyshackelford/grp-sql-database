@@ -1,0 +1,18 @@
+project_code,projectid,step_order,step_name,step_description,transformation_type,software_or_language,notes
+GAZP1,1,1,Recover authoritative monitoring dates,Read project timepoints and match them to live vegetation-result records.,data reconciliation,R/PostgreSQL,Month and day were assessed independently.
+GAZP1,1,2,Apply timepoint correction,Update monitoring month/day fields after row-level validation.,database correction,R/PostgreSQL,No source day values were available; months were corrected.
+GAZP1,1,3,Validate corrected records,Re-read corrected rows and verify values and project counts.,data validation,R/PostgreSQL,Correction reports retain row-level evidence.
+GAZP1,1,4,Archive and register correction provenance,Archive dated artifacts and register the correction in import tracking tables.,artifact archival and provenance,R/Supabase,No project_object_crosswalk rows are created.
+GAZP2,2,1,Recover authoritative monitoring dates,Read project timepoints and match them to live vegetation-result records.,data reconciliation,R/PostgreSQL,Month and day were assessed independently.
+GAZP2,2,2,Apply timepoint correction,Update monitoring month/day fields after row-level validation.,database correction,R/PostgreSQL,No source day values were available; months were corrected.
+GAZP2,2,3,Validate corrected records,Re-read corrected rows and verify values and project counts.,data validation,R/PostgreSQL,Correction reports retain row-level evidence.
+GAZP2,2,4,Archive and register correction provenance,Archive dated artifacts and register the correction in import tracking tables.,artifact archival and provenance,R/Supabase,No project_object_crosswalk rows are created.
+GAZP3,3,1,Recover authoritative monitoring dates,Read project timepoints and match them to live vegetation-result records.,data reconciliation,R/PostgreSQL,Month and day were assessed independently.
+GAZP3,3,2,Apply timepoint correction,Update monitoring month/day fields after row-level validation.,database correction,R/PostgreSQL,No source day values were available; months were corrected.
+GAZP3,3,3,Validate corrected records,Re-read corrected rows and verify values and project counts.,data validation,R/PostgreSQL,Correction reports retain row-level evidence.
+GAZP3,3,4,Archive and register correction provenance,Archive dated artifacts and register the correction in import tracking tables.,artifact archival and provenance,R/Supabase,No project_object_crosswalk rows are created.
+GAZP5,5,1,Review historical and current taxonomy,Compare historical project codes with harmonized mappings and live Supabase taxonomy.,taxonomy reconciliation,R/PostgreSQL,Historical nuance remains project-specific where appropriate.
+GAZP5,5,2,Apply Art_tri3 taxonomy correction,Create the tridentata subspecies taxon and reassign GAZP5 vegetation and seeding records.,database correction,R/PostgreSQL,Canonical code: Art_tri_sub_tri; speciesid: 7171.
+GAZP5,5,3,Build project species crosswalk,Construct contextual reverse mappings from Supabase records to historical GAZP5 species codes.,crosswalk generation,R,Pse_rup/Pse_rup1 use speciesid plus seeding rate and unit.
+GAZP5,5,4,Validate taxonomy and crosswalk,"Verify corrected references, mapping completeness, taxonomy flags, and non-taxonomic placeholders.",data validation,R/PostgreSQL,mix_unknown is documented but excluded from taxonomy.
+GAZP5,5,5,Archive and register correction provenance,Archive dated artifacts and register the correction in import tracking tables.,artifact archival and provenance,R/Supabase,No project_object_crosswalk rows are created.

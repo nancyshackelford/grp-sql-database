@@ -1,0 +1,5 @@
+database,projectid,type,community,reference,notes,date_received
+GAZP,1,artificial plots,seeded community,,original data was blocked spatial structure that is not included in SQL version,2018-03-01
+GAZP,2,experimental seeding,seeded community,,,2018-01-15
+GAZP,3,experimental seeding,seeded community,,,2018-02-13
+GAZP,5,landscape restoration,seeded community,,,2018-02-13
