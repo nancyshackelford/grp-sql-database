@@ -1,0 +1,103 @@
+excel_speciesid,excel_cultivarid,excel_cultivar,excel_cultivarorigin,excel_seedlat,excel_seedlong,sql_speciesid,sql_cultivarid,sql_cultivar,sql_cultivarorigin,sql_seedlat,sql_seedlong,cultivar_match_status,notes
+Ach_mil,1,Eagle Mountain,NA,NA,NA,387,1,Eagle Mountain,NA,NA,NA,matched,NA
+Ach_mil1,1,Great Northern,NA,NA,NA,387,2,Great Northern,NA,NA,NA,matched,NA
+Agr_cri,1,Hycrest,Canada,NA,NA,5316,11,Hycrest,Canada,NA,NA,matched,NA
+Agr_cri,2,Fairway,Canada,NA,NA,5316,12,Fairway,Canada,NA,NA,matched,NA
+Agr_cri,3,Hycrest II,NA,NA,NA,5316,13,Hycrest II,NA,NA,NA,matched,NA
+Agr_cri,4,Ephraim,NA,NA,NA,5316,14,Ephraim,NA,NA,NA,matched,NA
+Agr_cri,5,Roadcrest,NA,NA,NA,5316,15,Roadcrest,NA,NA,NA,matched,NA
+Agr_cri,6,Nordan,Canada,NA,NA,5316,16,Nordan,Canada,NA,NA,matched,NA
+Agr_cri,6,Nordan,NA,NA,NA,5316,16,Nordan,Canada,NA,NA,matched,NA
+Agr_cri,7,Kirk,Canada,NA,NA,5316,17,Kirk,Canada,NA,NA,matched,NA
+Agr_des,1,CD-II,NA,NA,NA,5317,18,CD-II,NA,NA,NA,matched,NA
+Agr_des,2,Hycrest II,Washington,NA,NA,5317,19,Hycrest II,Washington,NA,NA,matched,NA
+Agr_des,3,Nordan,Canada,NA,NA,5317,20,Nordan,Canada,NA,NA,matched,NA
+Agr_fra,1,P27,Idaho,NA,NA,5318,21,P27,Idaho,NA,NA,matched,NA
+Agr_fra,2,Vavilov,Utah,NA,NA,5318,22,Vavilov,Utah,NA,NA,matched,NA
+Agr_fra,3,Vavilov II,Washington,NA,NA,5318,23,Vavilov II,Washington,NA,NA,matched,NA
+And_ger,1,Roundtree,Iowa,NA,NA,5351,24,Roundtree,Iowa,NA,NA,matched,NA
+Ari_pur,1,Longiseta,NA,NA,NA,5382,25,Longiseta,NA,NA,NA,matched,NA
+Ast_cic,1,Cicer,NA,NA,NA,2529,4,Cicer,NA,NA,NA,matched,NA
+Bas_pro,1,Immigrant,NA,NA,NA,1705,3,Immigrant,NA,NA,NA,matched,NA
+Bou_cur,1,Vaughn,NA,NA,NA,5416,26,Vaughn,NA,NA,NA,matched,NA
+Bou_cur,2,Niner,NA,NA,NA,5416,27,Niner,NA,NA,NA,matched,NA
+Bou_cur,3,Killdeer,NA,NA,NA,5416,28,Killdeer,NA,NA,NA,matched,NA
+Bro_ine,1,Manchar,Idaho,NA,NA,5453,29,Manchar,Idaho,NA,NA,matched,NA
+Bro_ine,2,Lincoln,Kansas,NA,NA,5453,30,Lincoln,Kansas,NA,NA,matched,NA
+Bro_rip,1,Cache,Washington,NA,NA,5465,31,Cache,Washington,NA,NA,matched,NA
+Bro_rip,2,Regar,Idaho,NA,NA,5465,32,Regar,Idaho,NA,NA,matched,NA
+Buc_dac,1,Bowie,NA,NA,NA,5474,33,Bowie,NA,NA,NA,matched,NA
+Cal_lon,1,Goshen,NA,NA,NA,5485,34,Goshen,NA,NA,NA,matched,NA
+Cho_gra,1,Alma,NA,NA,NA,5503,35,Alma,NA,NA,NA,matched,NA
+Ely_cani,1,Revenue,NA,NA,NA,5569,36,Revenue,NA,NA,NA,matched,NA
+Ely_elo,1,Alkar,Montana,NA,NA,5571,37,Alkar,Montana,NA,NA,matched,NA
+Ely_ely,1,Antelope Creek,NA,NA,NA,5573,38,Antelope Creek,NA,NA,NA,matched,NA
+Ely_ely,2,Rattlesnake,NA,NA,NA,5573,39,Rattlesnake,NA,NA,NA,matched,NA
+Ely_ely,3,Sand Hollow,NA,NA,NA,5573,40,Sand Hollow,NA,NA,NA,matched,NA
+Ely_ely,4,Toe Jam Creek,Washington,NA,NA,5573,43,Toe Jam Creek,NA,NA,NA,matched,NA
+Ely_ely1,4,Fish Creek,NA,NA,NA,5573,41,Fish Creek,NA,NA,NA,matched,NA
+Ely_ely2,5,Toe Jam Creek,Washington,NA,NA,5573,43,Toe Jam Creek,Washington,NA,NA,matched,NA
+Ely_his,1,Luna,NA,NA,NA,5576,44,Luna,NA,NA,NA,matched,NA
+Ely_his,2,Rush,Utah,NA,NA,5576,45,Rush,Utah,NA,NA,matched,NA
+Ely_his,3,Mandan 759,NA,NA,NA,5576,46,Mandan 759,NA,NA,NA,matched,NA
+Ely_lan,2,Critana,Washington,NA,NA,5577,48,Critana,Washington,NA,NA,matched,NA
+Ely_lan,3,Sodar,NA,NA,NA,5577,49,Sodar,NA,NA,NA,matched,NA
+Ely_lan2,1,Bannock,NA,NA,NA,5577,47,Bannock,NA,NA,NA,matched,NA
+Ely_mul,1,Boardman,NA,NA,NA,5578,50,Boardman,NA,NA,NA,matched,NA
+Ely_smi,1,Recovery,Idaho,NA,NA,5582,51,Recovery,Idaho,NA,NA,matched,NA
+Ely_smi,2,Rodan,Washington,NA,NA,5582,52,Rodan,Washington,NA,NA,matched,NA
+Ely_smi,3,Barton,NA,NA,NA,5582,53,Barton,NA,NA,NA,matched,NA
+Ely_smi,4,Rosana,NA,NA,NA,5582,54,Rosana,NA,NA,NA,matched,NA
+Ely_smi,5,Arriba,NA,NA,NA,5582,55,Arriba,NA,NA,NA,matched,NA
+Ely_spi,1,P7_G6,NA,NA,NA,5583,56,P7_G6,NA,NA,NA,matched,NA
+Ely_spi,2,Goldar,Washington,NA,NA,5583,57,Goldar,Washington,NA,NA,matched,NA
+Ely_spi,3,Anatone,Canada,NA,NA,5583,58,Anatone,Canada,NA,NA,matched,NA
+Ely_spi,3,Anatone,NA,NA,NA,5583,58,Anatone,Canada,NA,NA,matched,NA
+Ely_spi,4,T1561,Idaho,NA,NA,5583,59,T1561,Idaho,NA,NA,matched,NA
+Ely_spi,6,Secar,NA,NA,NA,5583,61,Secar,NA,NA,NA,matched,NA
+Ely_spi1,5,P7,NA,NA,NA,5583,60,P7,NA,NA,NA,matched,NA
+Ely_tra,1,First Strike,NA,NA,NA,5585,62,First Strike,NA,NA,NA,matched,NA
+Ely_tra,2,Pryor,Canada,NA,NA,5585,63,Pryor,Canada,NA,NA,matched,NA
+Ely_tra,3,Revenue,NA,NA,NA,5585,64,Revenue,NA,NA,NA,matched,NA
+Ely_waw,1,Secar,Washington,NA,NA,5588,65,Secar,Washington,NA,NA,matched,NA
+Fes_ida,1,Joseph,Oregon,NA,NA,5639,66,Joseph,Oregon,NA,NA,matched,NA
+Fes_ovi,1,Covar,Washington,NA,NA,5644,67,Covar,Washington,NA,NA,matched,NA
+Fes_ovi,1,Covar,NA,NA,NA,5644,67,Covar,Washington,NA,NA,matched,NA
+Ley_ang,1,Prairieland,NA,NA,NA,5705,68,Prairieland,NA,NA,NA,matched,NA
+Ley_cin,1,Trailhead,Montana,NA,NA,5707,69,Trailhead,Montana,NA,NA,matched,NA
+Lin_per,1,Appar,NA,NA,NA,4276,9,Appar,NA,NA,NA,matched,NA
+Lin_per,2,Appar Lewis,NA,NA,NA,4276,10,Appar Lewis,NA,NA,NA,matched,NA
+Med_sat,1,Ladak,NA,NA,NA,2861,5,Ladak,NA,NA,NA,matched,NA
+Med_sat,2,Travois,NA,NA,NA,2861,6,Travois,NA,NA,NA,matched,NA
+Mel_off,1,YB,NA,NA,NA,2871,7,YB,NA,NA,NA,matched,NA
+Nas_vir,1,Lodorm,NA,NA,NA,5763,70,Lodorm,NA,NA,NA,matched,NA
+Ono_vic,1,Eski,NA,NA,NA,2887,8,Eski,NA,NA,NA,matched,NA
+Ory_hym,1,Nezpar,Idaho,NA,NA,5765,71,Nezpar,Idaho,NA,NA,matched,NA
+Ory_hym,2,Paloma,NA,NA,NA,5765,72,Paloma,NA,NA,NA,matched,NA
+Pan_vir,1,Blackwell,NA,NA,NA,5801,73,Blackwell,NA,NA,NA,ambiguous_source_key,Excel speciesid + cultivarid maps to multiple cultivar names; future project imports require manual review.
+Pan_vir,1,Dacotah,"Morten County, North
+Dakota",46.4,-100.9,5801,74,Dacotah,"Morten County, North
+Dakota",46.4,-100.9,ambiguous_source_key,Excel speciesid + cultivarid maps to multiple cultivar names; future project imports require manual review.
+Pan_vir,2,Forestburg,"Sanborn County, South Dakota",44,-98.1,5801,75,Forestburg,"Sanborn County, South Dakota",44,-98.1,matched,NA
+Pan_vir,3,Dacotah,"Morten County, North
+Dakota",46.4,-100.9,5801,74,Dacotah,"Morten County, North
+Dakota",46.4,-100.9,matched,NA
+Pan_vir,4,Cave in Rock,"Hardin County, Illinois",37.5,-88.2,5801,77,Cave in Rock,"Hardin County, Illinois",37.5,-88.2,matched,NA
+Pan_vir,5,Summer,"Otoe County, Nebraska",40.7,-95.9,5801,78,Summer,"Otoe County, Nebraska",40.7,-95.9,matched,NA
+Pan_vir,6,Sunburst,"Union County, South
+Dakota",42.7,-96.6,5801,79,Sunburst,"Union County, South
+Dakota",42.7,-96.6,matched,NA
+Psa_jun,1,Bozoisky-Select,Utah,NA,NA,5879,80,Bozoisky-Select,Utah,NA,NA,matched,NA
+Psa_jun,2,Bozoisky II,Utah,NA,NA,5879,81,Bozoisky II,Utah,NA,NA,matched,NA
+Psa_jun,3,Vinall,NA,NA,NA,5879,82,Vinall,NA,NA,NA,matched,NA
+Psa_jun,4,Syn-A,NA,NA,NA,5879,83,Syn-A,NA,NA,NA,matched,NA
+Psa_jun,5,Tetra-1,NA,NA,NA,5879,84,Tetra-1,NA,NA,NA,matched,NA
+Pse_rup,1,Sherman,Oregon,NA,NA,5881,85,Sherman,Oregon,NA,NA,matched,NA
+Pse_rup,2,Opportunity,NA,NA,NA,5881,86,Opportunity,NA,NA,NA,matched,NA
+Pse_rup,3,Mountain Home,NA,NA,NA,5881,87,Mountain Home,NA,NA,NA,matched,NA
+Pse_rup,4,Reliable,NA,NA,NA,5881,88,Reliable,NA,NA,NA,matched,NA
+San_min,1,Delar,NA,NA,NA,6426,93,Delar,NA,NA,NA,matched,NA
+Sch_sco,1,Aldous,Kansas,NA,NA,5901,89,Aldous,Kansas,NA,NA,ambiguous_source_key,Excel speciesid + cultivarid maps to multiple cultivar names; future project imports require manual review.
+Sch_sco,1,Camper,NA,NA,NA,5901,90,Camper,NA,NA,NA,ambiguous_source_key,Excel speciesid + cultivarid maps to multiple cultivar names; future project imports require manual review.
+Sch_sco,3,Blaze,NA,NA,NA,5901,91,Blaze,NA,NA,NA,matched,NA
+Sor_nut,1,Rumsey,Illinois,NA,NA,5921,92,Rumsey,Illinois,NA,NA,matched,NA
