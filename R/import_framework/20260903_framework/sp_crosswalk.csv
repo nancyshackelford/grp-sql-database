@@ -120,7 +120,7 @@ Ach_aspe,1666,Ach_aspe
 Ach_col,385,Ach_col
 Ach_mil,387,Ach_mil
 Ach_mil_3,386,Ach_mil__var_occ
-Ach_mil1,387,Ach_mil
+Ach_mil1,386,Ach_mil__var_occ
 Ach_mol,393,Ach_mol
 Ach_nob,388,Ach_nob
 Ach_pan,390,Ach_pan
@@ -6063,7 +6063,7 @@ Sal_hum,4393,Sal_hum
 Sal_ibe,1758,Sal_ibe
 Sal_int,4394,Sal_int
 Sal_kal,1759,Sal_kal
-Sal_kal1,1759,Sal_kal
+Sal_kal1,7174,Sal_tra
 Sal_lan,4395,Sal_lan
 Sal_lap,4396,Sal_lap
 Sal_lar,1760,Sal_lar
@@ -7007,6 +7007,8 @@ Ulm_pum,6451,Ulm_pum
 Ulm_rub,6452,Ulm_rub
 Ulm_tho,6454,Ulm_tho
 Umb_cal,3968,Umb_cal
+UN_ID_ERSI,7172,Eri_gra
+UN_ID_PAMU,7173,Pac_mul
 Uno_ham,4052,Uno_ham
 Uno_pan,4053,Uno_pan
 Uno_pit,4054,Uno_pit

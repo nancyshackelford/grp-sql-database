@@ -1,15 +1,15 @@
-### This is to import GAZP6 into the SQL database from the Excel format
-### It will be a fifth draft of the larger import process
-### The update here will be making sure timepoints are being referenced, and creating a species crosswalk table
+### This is to import GAZP8 into the SQL database from the Excel format
+### It will be a sixth draft of the larger import process
+### The update here will be building in the new import-framework structure for source code files and overarching crosswalk tables
 
-### Libraries and source files
+### Libraries and source files ------------------------------------
 library(tidyverse)
 library(openxlsx)
 library(DBI)
 library(RPostgres)
 library(glue)
 
-### Connect to Supabase database
+### Connect to Supabase database ------------------------------------
 password <- readLines("C:\\Users\\nshack\\OneDrive - University of Victoria\\Documents\\R\\GRP\\pword.csv")
 service_role <- readLines("C:\\Users\\nshack\\OneDrive - University of Victoria\\Documents\\R\\GRP\\skey.csv")
 
@@ -30,18 +30,18 @@ dbListTables(con)
 Sys.getenv("SUPABASE_URL")
 Sys.getenv("SUPABASE_SERVICE_KEY")
 
-### Read workbook tables
+### Read workbook tables -------------------------------------
 # Names of all sheets
-sheets <- getSheetNames("data/harmonized/GAZP/GAZP5/GAZP5.xlsx")
+sheets <- getSheetNames("data/harmonized/GAZP/GAZP8/GAZP8.xlsx")
 
 # Individual sheets
-study <- read.xlsx("data/harmonized/GAZP/GAZP6/GAZP6.xlsx", sheet = "study")
-site <- read.xlsx("data/harmonized/GAZP/GAZP6/GAZP6.xlsx", sheet = "site")
-treatments <- read.xlsx("data/harmonized/GAZP/GAZP6/GAZP6.xlsx", sheet = "treatments")
-timepoints <- read.xlsx("data/harmonized/GAZP/GAZP6/GAZP6.xlsx", sheet = "timepoints")
-trtrates <- read.xlsx("data/harmonized/GAZP/GAZP6/GAZP6.xlsx", sheet = "trtrates")
-refs <- read.xlsx("data/harmonized/GAZP/GAZP6/GAZP6.xlsx", sheet = "refs")
-vegresults <- read.xlsx("data/harmonized/GAZP/GAZP6/GAZP6.xlsx", sheet = "vegresults")
+study <- read.xlsx("data/harmonized/GAZP/GAZP8/GAZP8.xlsx", sheet = "study")
+site <- read.xlsx("data/harmonized/GAZP/GAZP8/GAZP8.xlsx", sheet = "site")
+treatments <- read.xlsx("data/harmonized/GAZP/GAZP8/GAZP8.xlsx", sheet = "treatments")
+timepoints <- read.xlsx("data/harmonized/GAZP/GAZP8/GAZP8.xlsx", sheet = "timepoints")
+trtrates <- read.xlsx("data/harmonized/GAZP/GAZP8/GAZP8.xlsx", sheet = "trtrates")
+refs <- read.xlsx("data/harmonized/GAZP/GAZP8/GAZP8.xlsx", sheet = "refs")
+vegresults <- read.xlsx("data/harmonized/GAZP/GAZP8/GAZP8.xlsx", sheet = "vegresults")
 
 # As a list
 data_list <- list(
@@ -54,18 +54,24 @@ data_list <- list(
   vegresults = vegresults
 )
 
-### Pull constraints and lookup tables list
-source("R/source_drafts/20260612_import_registry.r") # Note this code requires the db connection be called con
-source("R/source_drafts/20260620_import_helper_functions.r")
+### Pull constraints and lookup tables list -----------------------------
+framework_version <- "20260903_framework" 
+
+framework_dir <- file.path("R", "import_framework", framework_version)
+source(file.path(framework_dir, "import_registry.r"))
+source(file.path(framework_dir, "import_helper_functions.r"))
 
 ### Create species lookup table
-# This was updated in the GAZP1-5 review because certain subspecies in GAZP5 had been lost
+## Foundational GRP species crosswalk (pre-established and stored in the import framework)
 sp_crosswalk <- readr::read_csv(
-  "crosswalk_tables/20260605_sp_crosswalk.csv",
+  file.path(framework_dir, "sp_crosswalk.csv"),
   show_col_types = FALSE
 )
+
+## Species names from SQL database
 lu_species <- get_lookup_table(con, "species_names")
 
+## Reduce to GRP (Excel) codes and SQL IDs from foundational crosswalk
 species_lookup <- sp_crosswalk |>
   transmute(
     source_species_code = na_if_blank(excel_speciesid),
@@ -74,6 +80,7 @@ species_lookup <- sp_crosswalk |>
   filter(!is.na(source_species_code), !is.na(speciesid)) |>
   distinct()
 
+## Get names from SQL database and add to the species lookup table
 species_lookup <- species_lookup |>
     mutate(
     species_code = as.character(source_species_code)
@@ -83,62 +90,417 @@ species_lookup <- species_lookup |>
   ) |>
   select(-species_code)
 
+### Create species crosswalk table ----------------------------------
+source(file.path(framework_dir, "species_crosswalk_creation.R"))
 
-### Create species crosswalk table
-source("R/source_drafts/20260825_species_crosswalk_creation.R")
-
-### Create project-level species crosswalk: GAZP6 - change for the next
+### Create project-level species crosswalk
 # Run the species crosswalk. It will flag things.
 # Then review them and add them to the project_species_overrides table below.
 # Then rerun the species crosswalk
 
-species_crosswalk_result <- build_project_species_crosswalk(
-  data_list = data_list,
-  species_lookup = species_lookup,
-  lu_species = lu_species,
-  global_species_crosswalk = sp_crosswalk,
-  database = "GAZP",
-  projectid = study$projectid[[1]],
-  overrides = project_species_overrides,
-  output_path = file.path(
+## The below is the template for most projects (not complicated ones)
+#project_species_overrides <- tribble(
+#  ~source_table, ~source_column, ~source_value,
+#  ~accepted_species_code, ~accepted_species_name,
+#  ~mapping_status, ~decision_note,
+
+#  "vegresults", "speciesid", "Ach_mil",
+#  "Ach_mil", "Achillea millefolium",
+#  "human_reviewed_same_taxon",
+#  "Reviewed for GAZP8; Ach_mil represents Achillea millefolium.",
+
+#)
+
+#species_crosswalk_result <- build_project_species_crosswalk(
+#  data_list = data_list,
+#  species_lookup = species_lookup,
+#  lu_species = lu_species,
+#  global_species_crosswalk = sp_crosswalk,
+#  database = "GAZP",
+#  projectid = study$projectid[[1]],
+#  overrides = project_species_overrides,
+#  output_path = file.path(
+#    "crosswalk_tables",
+#    "GAZP",
+#    "GAZP6",
+#    "GAZP6_species_crosswalk.csv"
+#  )
+#)
+
+### GAZP8 is complicated; delete the below in the next -----------------------------
+### Project-specific species decisions
+
+excluded_veg_species <- tribble(
+  ~source_value,   ~exclusion_reason,
+  "UN_ID_BG",      "Bare ground; non-taxonomic observation.",
+  "UN_ID_CD",      "Meaning could not be determined from the source data.",
+  "UN_ID_FD",      "Fine debris; non-taxonomic observation.",
+  "UN_ID_FS",      "Meaning could not be determined from the source data.",
+  "UN_ID_GW",      "Meaning could not be determined from the source data.",
+  "UN_ID_TC",      "Total cover; non-taxonomic observation.",
+  "UN_ID_TP",      "Meaning could not be determined from the source data.",
+  "UN_ID_TS",      "Triticale seeds; non-taxonomic observation.",
+  "UN_ID_WOC",     "Meaning could not be determined from the source data.",
+  "UN_ID_biocrust", "Biocrust; non-taxonomic observation."
+)
+
+# Preserve the excluded records as an audit before removing them from the
+# data that will be mapped and uploaded.
+excluded_vegresults <- vegresults |>
+  inner_join(
+    excluded_veg_species,
+    by = c("speciesid" = "source_value")
+  )
+
+readr::write_csv(
+  excluded_vegresults,
+  file.path(
     "crosswalk_tables",
     "GAZP",
-    "GAZP6",
-    "GAZP6_species_crosswalk.csv"
+    "GAZP8",
+    "GAZP8_excluded_vegresults.csv"
+  ),
+  na = ""
+)
+
+vegresults <- vegresults |>
+  anti_join(
+    excluded_veg_species,
+    by = c("speciesid" = "source_value")
+  )
+
+# SAVE and SETE intentionally map to the same generic unknown species. Keep
+# them in vegresults for staging, but omit them from the general builder and
+# add reviewed project-specific crosswalk rows after its collision checks.
+reviewed_unknown_source_codes <- c("UN_ID_SAVE", "UN_ID_SETE")
+
+data_list_for_species_crosswalk <- data_list
+data_list_for_species_crosswalk$vegresults <- vegresults |>
+  filter(
+    !stringr::str_squish(as.character(speciesid)) %in%
+      reviewed_unknown_source_codes
+  )
+
+# Obtain the canonical GRP lookup values rather than hard-coding names or
+# relying on row order.
+art_tri <- lu_species |>
+  filter(species_code == "Art_tri") |>
+  distinct(speciesid, species_code, name)
+
+unknown_species <- DBI::dbGetQuery(
+  con,
+  "
+  SELECT
+    speciesid,
+    species_code,
+    concat_ws(
+      ' ',
+      NULLIF(genus, ''),
+      NULLIF(species, ''),
+      NULLIF(subtype_name, '')
+    ) AS name
+  FROM grp.species
+  WHERE speciesid = 1
+  "
+) |>
+  mutate(
+    name = if_else(
+      is.na(name) | name == "",
+      "Unknown",
+      name
+    )
+  ) |>
+  distinct(speciesid, species_code, name)
+
+stopifnot(nrow(art_tri) == 1L)
+stopifnot(nrow(unknown_species) == 1L)
+
+# Refresh after any species additions made during this import session. The
+# generic unknown record is absent from grp.species_names, so add it back.
+lu_species <- get_lookup_table(con, "species_names") |>
+  bind_rows(unknown_species) |>
+  distinct(speciesid, species_code, name)
+
+unknown_lifeform_species <- lu_species |>
+  filter(species_code %in% c("L_Forb", "L_moss", "L_Shrub")) |>
+  distinct(speciesid, species_code, name)
+
+stopifnot(
+  setequal(
+    unknown_lifeform_species$species_code,
+    c("L_Forb", "L_moss", "L_Shrub")
   )
 )
+
+get_lifeform_species <- function(species_code_value) {
+  unknown_lifeform_species |>
+    filter(species_code == species_code_value) |>
+    slice_head(n = 1)
+}
+
+unknown_forb <- get_lifeform_species("L_Forb")
+unknown_moss <- get_lifeform_species("L_moss")
+unknown_shrub <- get_lifeform_species("L_Shrub")
+
+reviewed_species_codes <- c(
+  "Ach_mil__var_occ",
+  "Ely_ely__sub_ely",
+  "Pla_pat",
+  "Pas_smi",
+  "G_Festuc_spp",
+  "Sal_tra"
+)
+
+reviewed_species <- DBI::dbGetQuery(
+  con,
+  "
+  SELECT DISTINCT
+    s.speciesid,
+    s.species_code,
+    COALESCE(
+      sn.name,
+      concat_ws(
+        ' ',
+        NULLIF(s.genus, ''),
+        NULLIF(s.species, ''),
+        CASE
+          WHEN s.subtype = 'subspecies' THEN 'subsp.'
+          WHEN s.subtype = 'variety' THEN 'var.'
+          ELSE NULL
+        END,
+        NULLIF(s.subtype_name, '')
+      )
+    ) AS name
+  FROM grp.species s
+  LEFT JOIN grp.species_names sn
+    ON sn.speciesid = s.speciesid
+   AND sn.species_code = s.species_code
+  WHERE s.species_code IN (
+    'Ach_mil__var_occ',
+    'Ely_ely__sub_ely',
+    'Pla_pat',
+    'Pas_smi',
+    'G_Festuc_spp',
+    'Sal_tra'
+  )
+  "
+) |>
+  as_tibble() |>
+  distinct(speciesid, species_code, name)
+
+stopifnot(setequal(reviewed_species$species_code, reviewed_species_codes))
+
+# Some accepted infraspecific records are absent from grp.species_names. Add
+# their canonical rows locally so the project override validator can resolve
+# every reviewed target without changing the shared framework code.
+lu_species <- lu_species |>
+  bind_rows(reviewed_species) |>
+  distinct(speciesid, species_code, name)
+
+get_reviewed_species <- function(species_code_value) {
+  reviewed_species |>
+    filter(species_code == species_code_value) |>
+    slice_head(n = 1)
+}
+
+ach_mil_occ <- get_reviewed_species("Ach_mil__var_occ")
+ely_ely_ssp <- get_reviewed_species("Ely_ely__sub_ely")
+pla_pat <- get_reviewed_species("Pla_pat")
+pas_smi <- get_reviewed_species("Pas_smi")
+festuca_spp <- get_reviewed_species("G_Festuc_spp")
+sal_tra <- get_reviewed_species("Sal_tra")
 
 project_species_overrides <- tribble(
   ~source_table, ~source_column, ~source_value,
   ~accepted_species_code, ~accepted_species_name,
   ~mapping_status, ~decision_note,
 
-  "site", "invasivespe", "Elytropappus rhinocerotis",
-  "Dic_rhi", "Dicerothamnus rhinocerotis",
-  "synonym_or_name_update",
+  "vegresults", "speciesid", "UN_ID_ARTR",
+  art_tri$species_code[[1]], art_tri$name[[1]],
+  "human_reviewed_same_taxon",
   paste(
-    "Elytropappus rhinocerotis is retained as the source name.",
-    "It maps to the accepted taxon Dicerothamnus rhinocerotis."
+    "Reviewed for GAZP8;",
+    "source code ARTR represents Artemisia tridentata."
   ),
 
-  "trtrates", "speciesid", "Cha_inv",
-  "Cha_inv", "Chaetobromus involucratus",
-  "human_reviewed_same_taxon",
-  "Reviewed for GAZP6; Cha_inv represents Chaetobromus involucratus.",
+  "vegresults", "speciesid", "UN_ID_UNKFORB",
+  unknown_forb$species_code[[1]], unknown_forb$name[[1]],
+  "human_reviewed_lifeform",
+  "Reviewed for GAZP8; source observation identifies an unknown forb.",
 
-  "vegresults", "speciesid", "Cha_inv",
-  "Cha_inv", "Chaetobromus involucratus",
+  "vegresults", "speciesid", "UN_ID_UNKMOSS",
+  unknown_moss$species_code[[1]], unknown_moss$name[[1]],
+  "human_reviewed_lifeform",
+  "Reviewed for GAZP8; source observation identifies an unknown moss.",
+
+  "vegresults", "speciesid", "UN_ID_UNKSHRUB",
+  unknown_shrub$species_code[[1]], unknown_shrub$name[[1]],
+  "human_reviewed_lifeform",
+  "Reviewed for GAZP8; source observation identifies an unknown shrub.",
+
+  "trtrates", "speciesid", "Ach_mil1",
+  ach_mil_occ$species_code[[1]], ach_mil_occ$name[[1]],
+  "human_reviewed_infraspecific_taxon",
+  paste(
+    "Reviewed for GAZP8; all Ach_mil1 records represent",
+    "Achillea millefolium var. occidentalis."
+  ),
+
+  "vegresults", "speciesid", "Ach_mil1",
+  ach_mil_occ$species_code[[1]], ach_mil_occ$name[[1]],
+  "human_reviewed_infraspecific_taxon",
+  paste(
+    "Reviewed for GAZP8; all Ach_mil1 records represent",
+    "Achillea millefolium var. occidentalis."
+  ),
+
+  "trtrates", "speciesid", "Ely_ely",
+  ely_ely_ssp$species_code[[1]], ely_ely_ssp$name[[1]],
+  "human_reviewed_infraspecific_taxon",
+  paste(
+    "Reviewed against the source PDF for GAZP8; Ely_ely represents",
+    "Elymus elymoides subsp. elymoides."
+  ),
+
+  "vegresults", "speciesid", "Ely_ely",
+  ely_ely_ssp$species_code[[1]], ely_ely_ssp$name[[1]],
+  "human_reviewed_infraspecific_taxon",
+  paste(
+    "Reviewed against the source PDF for GAZP8; Ely_ely represents",
+    "Elymus elymoides subsp. elymoides."
+  ),
+
+  "trtrates", "speciesid", "Pla_pat",
+  pla_pat$species_code[[1]], pla_pat$name[[1]],
   "human_reviewed_same_taxon",
-  "Reviewed for GAZP6; Cha_inv represents Chaetobromus involucratus."
+  paste(
+    "Reviewed for GAZP8; the raw data identify Plantago patagonica",
+    "without an infraspecific taxon."
+  ),
+
+  "vegresults", "speciesid", "Pla_pat",
+  pla_pat$species_code[[1]], pla_pat$name[[1]],
+  "human_reviewed_same_taxon",
+  paste(
+    "Reviewed for GAZP8; the raw data identify Plantago patagonica",
+    "without an infraspecific taxon."
+  ),
+
+  "trtrates", "speciesid", "Pse_rup",
+  pas_smi$species_code[[1]], pas_smi$name[[1]],
+  "human_reviewed_source_correction",
+  paste(
+    "Corrected for GAZP8; Pse_rup was derived incorrectly from raw code",
+    "PASM, which the source workbook and PDF identify as Pascopyrum smithii."
+  ),
+
+  "vegresults", "speciesid", "Pse_rup",
+  pas_smi$species_code[[1]], pas_smi$name[[1]],
+  "human_reviewed_source_correction",
+  paste(
+    "Corrected for GAZP8; Pse_rup was derived incorrectly from raw code",
+    "PASM, which the source workbook and PDF identify as Pascopyrum smithii."
+  ),
+
+  "vegresults", "speciesid", "G_Vul_spp",
+  festuca_spp$species_code[[1]], festuca_spp$name[[1]],
+  "human_reviewed_taxonomic_update",
+  paste(
+    "Reviewed for GAZP8; unresolved raw VULPI observations are retained",
+    "at genus level under the accepted Festuca genus."
+  ),
+
+  "vegresults", "speciesid", "Sal_kal1",
+  sal_tra$species_code[[1]], sal_tra$name[[1]],
+  "human_reviewed_source_correction",
+  paste(
+    "Corrected for GAZP8; raw code SATR represents Salsola tragus.",
+    "A one-record note equating SATR with SAKA was not generalized."
+  )
+)
+
+# Build crosswalk table (Delete from "complicated" comment to here; keep this)
+species_crosswalk_path <- file.path(
+  "crosswalk_tables", "GAZP", "GAZP8", "GAZP8_species_crosswalk.csv"
+)
+
+species_crosswalk_result <- build_project_species_crosswalk(
+  data_list = data_list_for_species_crosswalk,
+  species_lookup = species_lookup,
+  lu_species = lu_species,
+  global_species_crosswalk = sp_crosswalk,
+  database = "GAZP",
+  projectid = study$projectid[[1]],
+  overrides = project_species_overrides,
+  output_path = species_crosswalk_path
 )
 
 project_species_crosswalk <- species_crosswalk_result$crosswalk
-project_species_lookup <- species_crosswalk_result$lookup
+
+reviewed_unknown_crosswalk <- vegresults |>
+  mutate(source_species_code = stringr::str_squish(as.character(speciesid))) |>
+  filter(source_species_code %in% reviewed_unknown_source_codes) |>
+  count(source_species_code, name = "source_occurrences") |>
+  transmute(
+    database = "GAZP",
+    projectid = as.integer(study$projectid[[1]]),
+    project_code = paste0("GAZP", study$projectid[[1]]),
+    crosswalk_row_type = "default",
+    rule_source_table = "vegresults",
+    source_table = "vegresults",
+    source_column = "speciesid",
+    source_value_type = "species_code",
+    source_value = source_species_code,
+    source_occurrences = as.integer(source_occurrences),
+    speciesid = as.integer(unknown_species$speciesid[[1]]),
+    accepted_species_code = unknown_species$species_code[[1]],
+    accepted_species_name = unknown_species$name[[1]],
+    mapping_status = "human_reviewed_unknown",
+    reverse_mapping_rule = "source_value_preserved_in_notes",
+    match_rate = NA_real_,
+    match_unit = NA_character_,
+    contextual_rule_validated = TRUE,
+    global_source_code_count = NA_integer_,
+    global_source_codes = NA_character_,
+    review_required = FALSE,
+    reviewed = TRUE,
+    decision_note = paste(
+      "Reviewed for GAZP8; source code", source_value,
+      "is retained separately and mapped to unknown species."
+    )
+  )
+
+stopifnot(
+  setequal(
+    reviewed_unknown_crosswalk$source_value,
+    reviewed_unknown_source_codes
+  )
+)
+
+project_species_crosswalk <- bind_rows(
+  project_species_crosswalk,
+  reviewed_unknown_crosswalk
+) |>
+  arrange(source_table, source_column, source_value)
+
+project_species_lookup <- bind_rows(
+  species_crosswalk_result$lookup,
+  reviewed_unknown_crosswalk |>
+    select(
+      source_table, source_column, source_value, speciesid,
+      accepted_species_code, accepted_species_name, mapping_status
+    )
+) |>
+  distinct()
+
+readr::write_csv(project_species_crosswalk, species_crosswalk_path, na = "")
+
 species_contextual_rules <- species_crosswalk_result$contextual_rules
 species_mapping_collisions <- species_crosswalk_result$collisions
 species_mapping_discrepancies <- species_crosswalk_result$discrepancies
+# These should be empty!
 
-### Staging output
+### Staging output --------------------------------------------------------------
 staging_plan <- list(
   # Group 1: Project backbone
   project = c("study"),
@@ -190,7 +552,7 @@ staging_plan <- list(
 )
 
 
-#### Group 1: Project backbone
+#### Group 1: Project backbone --------------------------------------------------------------
 # ---- project ----
 
 stg_project <- study |>
@@ -201,7 +563,7 @@ stg_project <- study |>
     community = na_if_blank(community),
     reference = na_if_blank(refdata),
     notes = na_if_blank(notes),
-    date_received = as.Date("2018-02-14") ############# CHANGE PER PROJECT
+    date_received = as.Date("2018-03-30") ############# CHANGE PER PROJECT
   ) |>
   distinct()
 
@@ -245,7 +607,7 @@ stg_project_data_accessibility <- study |>
     data_doi = .env$data_doi,
     data_url = .env$data_url,
     data_accessibility_notes = .env$data_accessibility_notes,
-    date_received = as.Date("2018-02-14") # Confirm for GAZP6
+    date_received = as.Date("2018-03-30") # Confirm for GAZP8
   ) |>
   transmute(
     database,
@@ -750,7 +1112,7 @@ purrr::map_int(group1_staged, nrow)
 # Lookup validation not needed for group 1, as any controlled vocabulary is embedded in table constraints for this group
 
 
-#### Group 2: Site attributes
+#### Group 2: Site attributes --------------------------------------------------------------
 # ---- lookup tables ----
 
 lu_classification <- get_lookup_table(con, "classification")
@@ -800,14 +1162,21 @@ site_classification_issues
 stg_site_disturbance <- site |>
   transmute(
     siteid = as.integer(siteid),
-    type = normalize_vocab(disturbance)
+    type = na_if_blank(disturbance)
   ) |>
   filter(!is.na(type)) |>
-  transmute(
+  separate_rows(
+    type,
+    sep = "\\s*\\|\\s*"
+  ) |>
+  mutate(
+    type = normalize_vocab(type)
+  ) |>
+  filter(!is.na(type)) |>
+  distinct(
     siteid,
     type
-  ) |>
-  distinct()
+  )
 
 head(stg_site_disturbance)
 
@@ -980,19 +1349,31 @@ group2_staged <- list(
 purrr::map_int(group2_staged, nrow)
 
 
-#### Group 3: Experimental structure
+#### Group 3: Experimental structure --------------------------------------------------------------
 # ---- area ----
-# NOTE FOR FUTURE: This does not handle blocked designs.
-## To do that, the plan is to build code that first creates the staging piece for the blocks, 
-## then uses that to correctly create the plot staging (needs the areaid for the parentid)
-## A bit of this is worked through in the GAZP2 Codex chat.
-## Block scale and units will have to be added by hand
+# Build plot areas for either blocked or unblocked designs. For blocked
+# designs, blocks are identified within sites and become the plot parents.
+treatment_area_context <- treatments |>
+  transmute(
+    source_treatmentid = as.character(treatmentid),
+    siteid = as.integer(siteid),
+    restoration_start_year = as.numeric(tsr_start_year),
+    restoration_type = normalize_vocab(restorationtype),
+    disturbance_end_year = as.numeric(disturbanceendyear)
+  ) |>
+  distinct()
 
-# GAZP area grain: plot-level unit from vegresults.
-# Check that this measurement scale and units are unique to each replicate
+ambiguous_treatment_sites <- treatment_area_context |>
+  distinct(source_treatmentid, siteid) |>
+  count(source_treatmentid, name = "n_sites") |>
+  filter(n_sites != 1L)
+
+stopifnot(nrow(ambiguous_treatment_sites) == 0L)
+
+# Check that measurement scale and units are unique to each replicate.
 vegresults |>
   transmute(
-    source_treatmentid = treatmentid,
+    source_treatmentid = as.character(treatmentid),
     block = na_if_blank(block),
     replicate = na_if_blank(replicate),
     size = as.numeric(measurementscale),
@@ -1002,62 +1383,126 @@ vegresults |>
   count(source_treatmentid, block, replicate) |>
   filter(n > 1)
 
-area_candidates <- vegresults |>
+replicate_candidates <- vegresults |>
   transmute(
-    source_treatmentid = treatmentid,
+    source_treatmentid = as.character(treatmentid),
     block = na_if_blank(block),
     replicate = na_if_blank(replicate),
     size = as.numeric(measurementscale),
     units = na_if_blank(measurementmetric)
   ) |>
-  filter(!is.na(source_treatmentid)) |>
-  distinct() |>
-  arrange(source_treatmentid, block, replicate) |>
-  mutate(
-    areaid = next_ids(
-      con,
-      table = "area",
-      id_col = "areaid",
-      n = n()
-    )
-  )
-
-head(area_candidates)
-
-area_crosswalk <- area_candidates |>
-  transmute(
-    source_treatmentid,
-    block,
-    replicate,
-    areaid
-  )
-
-head(area_crosswalk)
-
-stg_area <- area_candidates |>
-  left_join(
-    treatments |>
-      transmute(
-        source_treatmentid = treatmentid,
-        siteid = as.integer(siteid),
-        restoration_start_year = as.numeric(tsr_start_year),
-        restoration_type = normalize_vocab(restorationtype),
-        disturbance_end_year = as.numeric(disturbanceendyear)
-      ) |>
-      distinct(),
-    by = "source_treatmentid"
+  filter(
+    !is.na(source_treatmentid),
+    !is.na(replicate)
   ) |>
+  distinct() |>
+  left_join(treatment_area_context, by = "source_treatmentid")
+
+stopifnot(!anyNA(replicate_candidates$siteid))
+
+# Treat the project as blocked only when more than one distinct, nonblank block
+# value occurs. Some legacy unblocked projects use block = 1 for every plot.
+block_present <- !is.na(replicate_candidates$block)
+block_values <- unique(replicate_candidates$block[block_present])
+has_blocks <- length(block_values) > 1L
+
+if (has_blocks && !all(block_present)) {
+  stop("Some, but not all, area candidates have block IDs. Review before continuing.")
+}
+
+if (has_blocks) {
+  # Block numbers can repeat among sites, so siteid and block form the key.
+  block_candidates <- replicate_candidates |>
+    distinct(siteid, block) |>
+    arrange(siteid, block) |>
+    mutate(
+      size = 18 * 16 * 8,
+      units = "m2"
+    )
+} else {
+  block_candidates <- tibble(
+    siteid = integer(),
+    block = character(),
+    size = numeric(),
+    units = character()
+  )
+}
+
+n_blocks <- nrow(block_candidates)
+n_replicates <- nrow(replicate_candidates)
+
+# Allocate all area IDs together so block and plot ranges cannot overlap.
+allocated_areaids <- next_ids(
+  con,
+  table = "area",
+  id_col = "areaid",
+  n = n_blocks + n_replicates
+)
+
+block_candidates <- block_candidates |>
+  mutate(areaid = allocated_areaids[seq_len(n_blocks)])
+
+replicate_candidates <- replicate_candidates |>
+  arrange(siteid, block, source_treatmentid, replicate) |>
+  mutate(areaid = allocated_areaids[n_blocks + seq_len(n_replicates)])
+
+if (has_blocks) {
+  replicate_candidates <- replicate_candidates |>
+    left_join(
+      block_candidates |>
+        select(siteid, block, parentid = areaid),
+      by = c("siteid", "block")
+    )
+} else {
+  replicate_candidates <- replicate_candidates |>
+    mutate(parentid = NA_integer_)
+}
+
+if (has_blocks) {
+  stopifnot(!anyNA(replicate_candidates$parentid))
+}
+
+if (has_blocks) {
+  stg_block_area <- block_candidates |>
+    transmute(
+      areaid = as.integer(areaid),
+      siteid,
+      type = "block",
+      size,
+      units,
+      restoration_start_year = NA_real_,
+      restoration_type = NA_character_,
+      disturbance_end_year = NA_real_,
+      parentid = NA_integer_
+    )
+} else {
+  stg_block_area <- tibble(
+    areaid = integer(),
+    siteid = integer(),
+    type = character(),
+    size = numeric(),
+    units = character(),
+    restoration_start_year = numeric(),
+    restoration_type = character(),
+    disturbance_end_year = numeric(),
+    parentid = integer()
+  )
+}
+
+stg_replicate_area <- replicate_candidates |>
   transmute(
     areaid = as.integer(areaid),
     siteid,
     type = "plot",
-    size = size,
-    units = units,
+    size,
+    units,
     restoration_start_year,
     restoration_type,
     disturbance_end_year,
-    parentid = NA_integer_
-  ) |>
+    parentid = as.integer(parentid)
+  )
+
+stg_area <- bind_rows(stg_block_area, stg_replicate_area) |>
   distinct()
 
 head(stg_area)
@@ -1070,18 +1515,43 @@ area_issues <- validate_staged_table(
 
 area_issues
 
-# Write crosswalk output
-
-harmonized_SQL_crosswalk <- area_candidates |>
-  transmute(
-    database = "GAZP",
-    projectid = as.integer(study$projectid[1]),
-    object_type = "plot",
-    source_treatmentid,
-    block,
-    replicate,
-    areaid
+# Write crosswalk output for plot children and, when present, block parents.
+block_crosswalk <- if (has_blocks) {
+  block_candidates |>
+    transmute(
+      database = "GAZP",
+      projectid = as.integer(study$projectid[1]),
+      object_type = "block",
+      source_treatmentid = NA_character_,
+      block,
+      replicate = NA_character_,
+      areaid
+    )
+} else {
+  tibble(
+    database = character(),
+    projectid = integer(),
+    object_type = character(),
+    source_treatmentid = character(),
+    block = character(),
+    replicate = character(),
+    areaid = integer()
   )
+}
+
+harmonized_SQL_crosswalk <- bind_rows(
+  block_crosswalk,
+  replicate_candidates |>
+    transmute(
+      database = "GAZP",
+      projectid = as.integer(study$projectid[1]),
+      object_type = "plot",
+      source_treatmentid,
+      block,
+      replicate,
+      areaid
+    )
+)
 
 # ---- treatment ----
 # treatment crosswalk
@@ -1272,7 +1742,7 @@ purrr::map_int(group3_staged, nrow)
 # No lookup validation needed for group 3, as any controlled vocabulary is embedded in table constraints for this group
 
 
-#### Group 4: Treatment details
+#### Group 4: Treatment details ------------------------------
 # ---- lookup tables ----
 
 lu_application_method <- get_lookup_table(con, "application_method")
@@ -1347,12 +1817,12 @@ treatment_application_issues <- validate_staged_table(
 treatment_application_issues
 
 # ---- treatment_cover_crop ----
-# covercropid is identity-generated, so omit it.
-# speciesid 1 represents an unknown or unreported species.
-
-stg_treatment_cover_crop <- other_treatment_src |>
-  filter(has_cover_crop) |>
-  transmute(
+  # covercropid is identity-generated, so omit it.
+  # speciesid 1 represents an unknown or unreported species.
+  
+  stg_treatment_cover_crop <- other_treatment_src |>
+    filter(has_cover_crop) |>
+    transmute(
     treatmentid,
     speciesid = 1L,
     amount = NA_real_,
@@ -1678,7 +2148,7 @@ cover_crop_routing_issues
 cultipack_routing_issues
 
 
-#### Group 5: Seeding and planting
+#### Group 5: Seeding and planting ---------------------------
 # ---- lookup tables ----
 
 lu_pretreatment <- get_lookup_table(con, "pretreatment")
@@ -1802,6 +2272,24 @@ stg_seed_mix <- seed_mix_candidates |>
   )
 
 head(stg_seed_mix)
+
+## For GAZP8, add seed mix confusion notes
+stg_seed_mix <- stg_seed_mix |>
+  mutate(
+    notes = case_when(
+      as.numeric(treated_richness) == 12 ~ paste(
+        "Composition retained from the detailed source seed data, which list",
+        "12 species for the BLM90.10 mixture; the published study narrative",
+        "instead reports 14 species."
+      ),
+      as.numeric(treated_richness) == 23 ~ paste(
+        "Composition retained from the detailed source seed data, which list",
+        "23 species for this mixture; the published study narrative instead",
+        "reports 21 species."
+      ),
+      TRUE ~ notes
+    )
+  )
 
 seed_mix_issues <- validate_staged_table(
   stg_tbl = stg_seed_mix,
@@ -1938,7 +2426,7 @@ group5_lookup_issues <- purrr::imap_dfr(
 group5_lookup_issues
 
 
-#### Group 6: Results
+#### Group 6: Results -------------------------------------------
 # ---- veg_result ----
 
 veg_timepoint_lookup <- timepoints |>
@@ -1962,7 +2450,10 @@ veg_result_resolved <- vegresults |>
     replicate = na_if_blank(replicate),
     time_since_restoration = as.integer(tsr),
     source_species_code = na_if_blank(speciesid),
-    origin = normalize_vocab(speciesorigin),
+    origin = case_when(
+      normalize_vocab(speciesorigin) == "unknown_sp" ~ "unknown",
+      TRUE ~ normalize_vocab(speciesorigin)
+      ),
     response = as.numeric(response),
     level = normalize_vocab(responselevel),
     metric = normalize_vocab(responsemetric),
@@ -2019,6 +2510,32 @@ if (nrow(veg_result_species_unresolved) > 0L) {
   )
 }
 
+## GAZP8: Adding notes for unknown forbs so they don't collapse in the distinct() call
+veg_result_resolved <- veg_result_resolved |>
+  mutate(staging_year = coalesce(timepoint_year, source_year)) |>
+  group_by(
+    areaid,
+    time_since_restoration,
+    staging_year,
+    month,
+    day,
+    source_species_code,
+    speciesid,
+    origin,
+    level,
+    response,
+    metric
+  ) |>
+  mutate(
+    unknown_forb_occurrence = if_else(
+      source_species_code == "UN_ID_UNKFORB",
+      row_number(),
+      NA_integer_
+    )
+  ) |>
+  ungroup() |>
+  select(-staging_year)
+
 stg_veg_result <- veg_result_resolved |>
   transmute(
     areaid = as.integer(areaid),
@@ -2033,15 +2550,21 @@ stg_veg_result <- veg_result_resolved |>
     level,
     response,
     metric,
-    notes = NA_character_
+    notes = case_when(
+      source_species_code == "UN_ID_UNKFORB" ~ paste(
+        "Original unresolved species code:",
+        source_species_code,
+        "| Distinct source taxon occurrence:",
+        unknown_forb_occurrence
+      ),
+      source_species_code %in% reviewed_unknown_source_codes ~
+        paste("Original unresolved species code:", source_species_code),
+      TRUE ~ NA_character_
+    )
     ) |>
   distinct()
 
 head(stg_veg_result)
-
-### GAZP6 - transform back to original density values
-stg_veg_result <- stg_veg_result |>
-  mutate(response = response * 0.25)
 
 veg_result_issues <- validate_staged_table(
   stg_tbl = stg_veg_result,
@@ -2111,7 +2634,7 @@ veg_timepoint_missing_issues
 veg_timepoint_year_issues
 
 
-#### Referential validation
+#### Referential validation ----------------------------------------
 # Validate foreign-key relationships across every staged table.
 # Parent keys may exist in either another staged table or the SQL database.
 
@@ -2141,17 +2664,16 @@ referential_integrity_issues <- validate_referential_integrity(
 referential_integrity_issues
 
 
-#### Write crosswalk outputs
-crosswalk_dir <- "crosswalk_tables/GAZP/GAZP6"
+#### Write crosswalk outputs -------------------------------------------
+crosswalk_dir <- "crosswalk_tables/GAZP/GAZP8"
 dir.create(crosswalk_dir, recursive = TRUE, showWarnings = FALSE)
 
 write_csv(
   harmonized_SQL_crosswalk,
-  file.path(crosswalk_dir, "GAZP6_harmonized-SQL_crosswalk.csv")
+  file.path(crosswalk_dir, "GAZP8_harmonized-SQL_crosswalk.csv")
 )
 
-
-#### Write to Supabase
+#### Write to Supabase ------------------------------------------------
 DBI::dbWithTransaction(con, {
 
   # Group 1: project backbone
@@ -2225,101 +2747,68 @@ purrr::map_dfr(import_check_tables, function(tbl) {
 })
 
 
-#### Write files to Supabase
+#### Write files to Supabase ------------------------------------------------
 supabase_url <- "https://rudybfqutvodkakgctpo.supabase.co"
 service_key <- service_role
 
-# Crosswalk table
-upload_to_supabase(
-  local_file = "crosswalk_tables/GAZP/GAZP6/GAZP6_harmonized-SQL_crosswalk.csv",
-  destination_path = "GAZP/GAZP6/crosswalks/GAZP6_harmonized-SQL_crosswalk.csv",
-  supabase_url = supabase_url,
-  service_key = service_key
+# Files produced or reviewed for this import.
+gazp8_uploads <- tribble(
+  ~local_file, ~destination_path,
+
+  # Crosswalk and exclusion-audit files
+  "crosswalk_tables/GAZP/GAZP8/GAZP8_harmonized-SQL_crosswalk.csv",
+  "GAZP/GAZP8/crosswalks/GAZP8_harmonized-SQL_crosswalk.csv",
+
+  "crosswalk_tables/GAZP/GAZP8/GAZP8_species_crosswalk.csv",
+  "GAZP/GAZP8/crosswalks/GAZP8_species_crosswalk.csv",
+
+  "crosswalk_tables/GAZP/GAZP8/GAZP8_excluded_vegresults.csv",
+  "GAZP/GAZP8/crosswalks/GAZP8_excluded_vegresults.csv",
+
+  # Harmonized workbook
+  "data/harmonized/GAZP/GAZP8/GAZP8.xlsx",
+  "GAZP/GAZP8/harmonized/GAZP8.xlsx",
+
+  # Original source files
+  "data/source/GAZP/GAZP8/Cover classes.csv",
+  "GAZP/GAZP8/source/Cover_classes.csv",
+
+  "data/source/GAZP/GAZP8/Final Report Jan2017 for Conservation Registry.pdf",
+  "GAZP/GAZP8/source/Final_Report_Jan2017_for_Conservation_Registry.pdf",
+
+  "data/source/GAZP/GAZP8/PineRidgeStudyPlots.csv",
+  "GAZP/GAZP8/source/PineRidgeStudyPlots.csv",
+
+  "data/source/GAZP/GAZP8/PineRidgeStudyPlots.xlsx",
+  "GAZP/GAZP8/source/PineRidgeStudyPlots.xlsx",
+
+  "data/source/GAZP/GAZP8/Seed data.csv",
+  "GAZP/GAZP8/source/Seed_data.csv",
+
+  # Import and species-addition code
+  "R/import_code/GAZP8/20260903_GAZP8_import.r",
+  "GAZP/GAZP8/code/20260903_GAZP8_import.r",
+
+  "R/import_code/GAZP8/20260903_GAZP8_add_species.r",
+  "GAZP/GAZP8/code/20260903_GAZP8_add_species.r"
 )
 
-upload_to_supabase(
-  local_file = "crosswalk_tables/GAZP/GAZP6/GAZP6_species_crosswalk.csv",
-  destination_path = "GAZP/GAZP6/crosswalks/GAZP6_species_crosswalk.csv",
-  supabase_url = supabase_url,
-  service_key = service_key
-)
+missing_gazp8_uploads <- gazp8_uploads |>
+  filter(!file.exists(local_file))
 
-# Harmonized data
-upload_to_supabase(
-  local_file =
-    "data/harmonized/GAZP/GAZP6/GAZP6.xlsx",
+if (nrow(missing_gazp8_uploads) > 0L) {
+  print(missing_gazp8_uploads)
+  stop("One or more GAZP8 files are missing; upload cancelled.", call. = FALSE)
+}
 
-  destination_path =
-    "GAZP/GAZP6/harmonized/GAZP6.xlsx",
-
-  supabase_url = supabase_url,
-  service_key = service_key
-)
-
-# Source data
-upload_to_supabase(
-  local_file =
-    "data/source/GAZP/GAZP6/LF.csv",
-
-  destination_path =
-    "GAZP/GAZP6/source/LF.csv",
-
-  supabase_url = supabase_url,
-  service_key = service_key
-)
-
-upload_to_supabase(
-  local_file =
-    "data/source/GAZP/GAZP6/Meta data C.Becker Namaqualand south africa.xlsx",
-
-  destination_path =
-    "GAZP/GAZP6/source/Meta_data_CBecker_Namaqualand_south_africa.xlsx",
-
-  supabase_url = supabase_url,
-  service_key = service_key
-)
-
-upload_to_supabase(
-  local_file =
-    "data/source/GAZP/GAZP6/TR.csv",
-
-  destination_path =
-    "GAZP/GAZP6/source/TR.csv",
-
-  supabase_url = supabase_url,
-  service_key = service_key
-)
-
-upload_to_supabase(
-  local_file =
-    "data/source/GAZP/GAZP6/Supplementary Material 1.docx",
-
-  destination_path =
-    "GAZP/GAZP6/source/Supplementary_Material_1.docx",
-
-  supabase_url = supabase_url,
-  service_key = service_key
-)
-
-# Code
-upload_to_supabase(
-  local_file =
-    "R/import_code/GAZP6/20260825_GAZP6_import.r",
-
-  destination_path =
-    "GAZP/GAZP6/code/20260825_GAZP6_import.r",
-
-  supabase_url = supabase_url,
-  service_key = service_key
-)
-
-upload_to_supabase(
-  local_file =
-    "R/source_drafts/20260825_species_crosswalk_creation.r",
-
-  destination_path =
-    "GAZP/GAZP6/code/20260825_species_crosswalk_creation.r",
-
-  supabase_url = supabase_url,
-  service_key = service_key
+purrr::pwalk(
+  gazp8_uploads,
+  function(local_file, destination_path) {
+    upload_to_supabase(
+      local_file = local_file,
+      destination_path = destination_path,
+      supabase_url = supabase_url,
+      service_key = service_key
+    )
+  }
 )
