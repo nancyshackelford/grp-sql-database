@@ -1,0 +1,6 @@
+step_order,step_name,transformation_type,notes
+1,Reprocess vegetation sampling grain,data transformation,Retained block-level overall results and nested center/quadrat sampling areas without scaling cover values.
+2,Prepare and audit harmonized data,data preparation,"Produced explicit spatial areas, treatment links, species inventory, and row-level audit."
+3,Build and validate SQL staging,database staging,"Built all applicable target tables and validated schema, vocabulary, and referential integrity."
+4,Summarize and approve commit plan,review and approval,Fingerprinted approved staging artifacts and checked live identifier drift before commit.
+5,Commit transaction,database load,Pending final approval; will insert all nonempty staging tables transactionally.

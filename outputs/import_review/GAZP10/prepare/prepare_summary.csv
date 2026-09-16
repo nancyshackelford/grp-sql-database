@@ -1,0 +1,10 @@
+check,value,status
+source_vegresult_rows,2625,information
+prepared_vegresult_rows,2625,pass
+ready_for_build_rows,2625,information
+unready_vegresult_rows,0,pass
+rows_missing_explicit_area_treatment,0,pass
+prepared_block_areas,25,information
+prepared_child_areas,50,information
+explicit_area_treatment_links,114,information
+species_requiring_review,0,pass

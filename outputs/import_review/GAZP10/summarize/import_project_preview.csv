@@ -1,0 +1,2 @@
+database,projectid,contribution_type,contribution_period,documentation_tier,import_status,is_current_version,notes
+GAZP,10,initial_import,"Vegetation monitoring from 2008 through 2012; controlled burns documented on October 19, 2012 after the imported monitoring period.",fully_reproducible,pending_commit,TRUE,Source burn flags and publication burn counts disagree (13 versus 10); no fire treatment is inferred for the imported pre-burn vegetation observations.

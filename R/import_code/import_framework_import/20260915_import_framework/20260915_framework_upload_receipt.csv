@@ -1,0 +1,6 @@
+local_file,bucket,destination_path,status_code
+C:\Users\nshack\OneDrive - University of Victoria\Documents\GitHub\grp-sql-database\R\import_framework\20260915_framework\prepare_functions.R,import_framework,20260915_framework/prepare_functions.R,200
+C:\Users\nshack\OneDrive - University of Victoria\Documents\GitHub\grp-sql-database\R\import_framework\20260915_framework\build_functions.R,import_framework,20260915_framework/build_functions.R,200
+C:\Users\nshack\OneDrive - University of Victoria\Documents\GitHub\grp-sql-database\R\import_framework\20260915_framework\import_registry.r,import_framework,20260915_framework/import_registry.r,200
+C:\Users\nshack\OneDrive - University of Victoria\Documents\GitHub\grp-sql-database\R\import_framework\20260915_framework\import_helper_functions.r,import_framework,20260915_framework/import_helper_functions.r,200
+C:\Users\nshack\OneDrive - University of Victoria\Documents\GitHub\grp-sql-database\R\import_framework\20260915_framework\sp_crosswalk.csv,import_framework,20260915_framework/sp_crosswalk.csv,200

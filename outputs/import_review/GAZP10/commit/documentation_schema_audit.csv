@@ -1,0 +1,6 @@
+table,missing_target_columns,status
+import_batch,,pass
+import_project,,pass
+import_artifact,,pass
+import_transformation_step,,pass
+import_transformation_step_artifact,,pass

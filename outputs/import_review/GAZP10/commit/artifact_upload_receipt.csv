@@ -1,0 +1,18 @@
+file_name,destination_path,status_code,status
+2008-2009-2010_TOTALS_SIMPLE.XLSX,GAZP/GAZP10/source/2008-2009-2010_TOTALS_SIMPLE.XLSX,200,uploaded
+2011_CENSUS_2.xlsx,GAZP/GAZP10/source/2011_CENSUS_2.xlsx,200,uploaded
+CENSUS_2012_2013 relevant.xls,GAZP/GAZP10/source/CENSUS_2012_2013 relevant.xls,200,uploaded
+CENSUS_2012_2013 w % cover.xls,GAZP/GAZP10/source/CENSUS_2012_2013 w percent cover.xls,200,uploaded
+Relevant data.xlsx,GAZP/GAZP10/source/Relevant data.xlsx,200,uploaded
+Backup of Relevant data.xlk,GAZP/GAZP10/source/Backup of Relevant data.xlk,200,uploaded
+Porensky_etal_2012_spatial_priority.pdf,GAZP/GAZP10/source/Porensky_etal_2012_spatial_priority.pdf,200,uploaded
+2015YoungFireCryptic.pdf,GAZP/GAZP10/source/2015YoungFireCryptic.pdf,200,uploaded
+submitted_appendix_A.PDF,GAZP/GAZP10/source/submitted_appendix_A.PDF,200,uploaded
+GAZP10.xlsx,GAZP/GAZP10/harmonized/GAZP10.xlsx,200,uploaded
+GAZP10_reprocessed.xlsx,GAZP/GAZP10/harmonized/GAZP10_reprocessed.xlsx,200,uploaded
+01_reprocess_GAZP10_vegresults.R,GAZP/GAZP10/code/01_reprocess_GAZP10_vegresults.R,200,uploaded
+02_GAZP10_import.R,GAZP/GAZP10/code/02_GAZP10_import.R,200,uploaded
+03_GAZP10_build.R,GAZP/GAZP10/code/03_GAZP10_build.R,200,uploaded
+04_GAZP10_summarize.R,GAZP/GAZP10/code/04_GAZP10_summarize.R,200,uploaded
+GAZP10_harmonized-SQL_crosswalk.csv,GAZP/GAZP10/crosswalks/GAZP10_harmonized-SQL_crosswalk.csv,200,uploaded
+GAZP10_species_crosswalk.csv,GAZP/GAZP10/crosswalks/GAZP10_species_crosswalk.csv,200,uploaded

@@ -1,0 +1,5 @@
+database,source_treatmentid,siteid,restoration_type,restoration_start_year,year,month,day,weeks_since_restoration,other_treatment_source,other_treatment,notes
+GAZP,10_1,167,seeding,2008,2008,2,7,0,aggregated seeding,,Seeding treatment note: aggregated seeding.
+GAZP,10_2,167,seeding,2008,2008,2,7,0,interspersed seeding,,Seeding treatment note: interspersed seeding.
+GAZP,10_3,167,seeding,2008,2008,2,7,0,aggregated seeding,,Seeding treatment note: aggregated seeding.
+GAZP,10_4,167,seeding,2008,2008,2,7,0,interspersed seeding,,Seeding treatment note: interspersed seeding.

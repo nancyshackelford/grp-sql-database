@@ -1,0 +1,8 @@
+id_type,expected_current_max,live_current_max,status
+area,3040,3040,pass
+treatment,538,538,pass
+location,5,5,pass
+paper,2,2,pass
+author,5,5,pass
+seed_mix,349,349,pass
+seeding,4578,4578,pass
