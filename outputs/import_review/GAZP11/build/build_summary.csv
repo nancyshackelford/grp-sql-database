@@ -1,0 +1,11 @@
+check,value,status
+project_rows,1,pass
+area_rows,1507,pass
+treatment_rows,122,pass
+area_treatment_rows,1566,pass
+veg_result_rows,1220,pass
+veg_rows_lost,0,pass
+seeding_rows,120,pass
+grazer_rows,48,pass
+pretreatment_rows,60,pass
+existing_project_rows,0,pass

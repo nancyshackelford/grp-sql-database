@@ -1,0 +1,3 @@
+source_treatmentid,source_treatment_event_key,restoration_type,treatment_category,treatment_type,amount_raw,amount,units,absent_treatment,omission_reason
+11_25,11_25::event_01,passive,application method,none,applied,,treatment presence,TRUE,No application occurred; omit false application-method detail.
+11_50,11_50::event_01,passive,application method,none,applied,,treatment presence,TRUE,No application occurred; omit false application-method detail.

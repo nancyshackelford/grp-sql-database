@@ -1,0 +1,8 @@
+"check","value"
+"active raw rows",1024
+"active candidate rows",1024
+"unique candidate vegetation keys",1024
+"unique source sampling keys",1012
+"source sampling keys occurring in both years",12
+"candidate area keys shared between years",0
+"duplicate candidate vegetation keys",0

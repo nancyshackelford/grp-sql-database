@@ -1,0 +1,6 @@
+step_order,step_name,transformation_type,notes
+1,Reprocess harmonized seedling results,data transformation,Reversed per-square-metre standardization to counts; restored active raw spatial and grazing labels; kept years separate because area alignment is uncertain. Passive counts use the reviewed 16-fold inverse without retained row-level raw records.
+2,Prepare and audit harmonized data,data preparation,Created treatment-event keys and child-plot treatment links only; omitted false applicationmethod=none; retained herbicide mapping gap in project notes.
+3,Build and validate SQL staging,database staging,"Built all 36 applicable or explicitly empty target tables and checked vocabulary, references, exact species codes, and row preservation."
+4,Summarize and approve commit plan,review and approval,Fingerprinted approved build files and checked current SQL identifier maxima without writing to SQL.
+5,Commit transaction,database load,Pending separate final authorization; will recheck file hashes and ID drift before live insertion.

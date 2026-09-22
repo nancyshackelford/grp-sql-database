@@ -1,0 +1,15 @@
+file_name,destination_path,status_code,status
+NV_seedlings_edit.csv,GAZP/GAZP11/source/NV_seedlings_edit.csv,200,uploaded
+NV_seedlings_edit.xlsx,GAZP/GAZP11/source/NV_seedlings_edit.xlsx,200,uploaded
+NV_seedlings_relevant.csv,GAZP/GAZP11/source/NV_seedlings_relevant.csv,200,uploaded
+Rout.csv,GAZP/GAZP11/source/Rout.csv,200,uploaded
+Species.csv,GAZP/GAZP11/source/Species.csv,200,uploaded
+Processing.R,GAZP/GAZP11/source/Processing.R,200,uploaded
+GAZP11.xlsx,GAZP/GAZP11/harmonized/GAZP11.xlsx,200,uploaded
+GAZP11_reprocessed.xlsx,GAZP/GAZP11/harmonized/GAZP11_reprocessed.xlsx,200,uploaded
+01_reprocess_GAZP11_vegresults.R,GAZP/GAZP11/code/01_reprocess_GAZP11_vegresults.R,200,uploaded
+02_GAZP11_import.R,GAZP/GAZP11/code/02_GAZP11_import.R,200,uploaded
+03_GAZP11_build.R,GAZP/GAZP11/code/03_GAZP11_build.R,200,uploaded
+04_GAZP11_summarize.R,GAZP/GAZP11/code/04_GAZP11_summarize.R,200,uploaded
+GAZP11_harmonized-SQL_crosswalk.csv,GAZP/GAZP11/crosswalks/GAZP11_harmonized-SQL_crosswalk.csv,200,uploaded
+GAZP11_species_crosswalk.csv,GAZP/GAZP11/crosswalks/GAZP11_species_crosswalk.csv,200,uploaded

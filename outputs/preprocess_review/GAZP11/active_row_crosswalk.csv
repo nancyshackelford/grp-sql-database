@@ -1,0 +1,1025 @@
+"source_sheet","source_row","source_id","source_rep","source_block","source_transect_distance_m","survey_year","grazing_timing","planned_irrigation","spatial_arrangement","seed_rate","seed_coating","source_species","speciesid","proposed_treatmentid","proposed_block","proposed_replicate","proposed_response","proposed_measurementscale"
+"NV_seedlings_edit",2,"11_1",1,"two",54,2016,"Fall","no water","mix","high","C","na","L_Pgrass","11_1",10101,542,4,0.25
+"NV_seedlings_edit",3,"11_1",1,"two",46,2016,"Fall","no water","mix","high","C","na","L_Pgrass","11_1",10101,462,8,0.25
+"NV_seedlings_edit",4,"11_1",2,"one",50,2016,"Fall","no water","mix","high","C","na","L_Pgrass","11_1",10102,501,2,0.25
+"NV_seedlings_edit",5,"11_1",2,"one",54,2016,"Fall","no water","mix","high","C","na","L_Pgrass","11_1",10102,541,6,0.25
+"NV_seedlings_edit",6,"11_1",2,"one",46,2016,"Fall","no water","mix","high","C","na","L_Pgrass","11_1",10102,461,18,0.25
+"NV_seedlings_edit",7,"11_1",3,"three",14,2016,"Fall","no water","mix","high","C","na","L_Pgrass","11_1",10103,143,1,0.25
+"NV_seedlings_edit",8,"11_1",3,"three",6,2016,"Fall","no water","mix","high","C","na","L_Pgrass","11_1",10103,63,5,0.25
+"NV_seedlings_edit",9,"11_1",4,"two",14,2016,"Fall","no water","mix","low","C","na","L_Pgrass","11_3",10104,142,4,0.25
+"NV_seedlings_edit",10,"11_1",4,"two",10,2016,"Fall","no water","mix","low","C","na","L_Pgrass","11_3",10104,102,8,0.25
+"NV_seedlings_edit",11,"11_1",5,"one",50,2016,"Fall","no water","mix","low","C","na","L_Pgrass","11_3",10105,501,0,0.25
+"NV_seedlings_edit",12,"11_1",5,"one",54,2016,"Fall","no water","mix","low","C","na","L_Pgrass","11_3",10105,541,0,0.25
+"NV_seedlings_edit",13,"11_1",5,"one",46,2016,"Fall","no water","mix","low","C","na","L_Pgrass","11_3",10105,461,19,0.25
+"NV_seedlings_edit",14,"11_1",6,"three",54,2016,"Fall","no water","mix","low","C","na","L_Pgrass","11_3",10106,543,0,0.25
+"NV_seedlings_edit",15,"11_1",6,"three",45,2016,"Fall","no water","mix","low","C","na","L_Pgrass","11_3",10106,453,1,0.25
+"NV_seedlings_edit",16,"11_2",1,"two",14,2016,"Fall","water","mix","high","C","na","L_Pgrass","11_1",10201,142,0,0.25
+"NV_seedlings_edit",17,"11_2",1,"two",10,2016,"Fall","water","mix","high","C","na","L_Pgrass","11_1",10201,102,2,0.25
+"NV_seedlings_edit",18,"11_2",2,"three",54,2016,"Fall","water","mix","high","C","na","L_Pgrass","11_1",10202,543,0,0.25
+"NV_seedlings_edit",19,"11_2",2,"three",46,2016,"Fall","water","mix","high","C","na","L_Pgrass","11_1",10202,463,2,0.25
+"NV_seedlings_edit",20,"11_2",3,"two",54,2016,"Fall","water","mix","low","C","na","L_Pgrass","11_3",10203,542,0,0.25
+"NV_seedlings_edit",21,"11_2",3,"two",50,2016,"Fall","water","mix","low","C","na","L_Pgrass","11_3",10203,502,9,0.25
+"NV_seedlings_edit",22,"11_2",4,"one",46,2016,"Fall","water","mix","low","C","na","L_Pgrass","11_3",10204,461,0,0.25
+"NV_seedlings_edit",23,"11_2",4,"one",54,2016,"Fall","water","mix","low","C","na","L_Pgrass","11_3",10204,541,5,0.25
+"NV_seedlings_edit",24,"11_2",4,"one",50,2016,"Fall","water","mix","low","C","na","L_Pgrass","11_3",10204,501,14,0.25
+"NV_seedlings_edit",25,"11_2",5,"three",46,2016,"Fall","water","mix","low","C","na","L_Pgrass","11_3",10205,463,0,0.25
+"NV_seedlings_edit",26,"11_2",5,"three",54,2016,"Fall","water","mix","low","C","na","L_Pgrass","11_3",10205,543,0,0.25
+"NV_seedlings_edit",27,"11_1",7,"two",54,2016,"Spring","no water","mix","high","C","na","L_Pgrass","11_51",10107,542,5,0.25
+"NV_seedlings_edit",28,"11_1",7,"two",46,2016,"Spring","no water","mix","high","C","na","L_Pgrass","11_51",10107,462,11,0.25
+"NV_seedlings_edit",29,"11_1",8,"three",14,2016,"Spring","no water","mix","high","C","na","L_Pgrass","11_51",10108,143,1,0.25
+"NV_seedlings_edit",30,"11_1",8,"three",6,2016,"Spring","no water","mix","high","C","na","L_Pgrass","11_51",10108,63,6,0.25
+"NV_seedlings_edit",31,"11_1",9,"one",14,2016,"Spring","no water","mix","high","C","na","L_Pgrass","11_51",10109,141,3,0.25
+"NV_seedlings_edit",32,"11_1",9,"one",6,2016,"Spring","no water","mix","high","C","na","L_Pgrass","11_51",10109,61,10,0.25
+"NV_seedlings_edit",33,"11_1",9,"one",10,2016,"Spring","no water","mix","high","C","na","L_Pgrass","11_51",10109,101,13,0.25
+"NV_seedlings_edit",34,"11_1",10,"two",14,2016,"Spring","no water","mix","low","C","na","L_Pgrass","11_53",10110,142,2,0.25
+"NV_seedlings_edit",35,"11_1",10,"two",6,2016,"Spring","no water","mix","low","C","na","L_Pgrass","11_53",10110,62,3,0.25
+"NV_seedlings_edit",36,"11_1",11,"three",6,2016,"Spring","no water","mix","low","C","na","L_Pgrass","11_53",10111,63,1,0.25
+"NV_seedlings_edit",37,"11_1",11,"three",14,2016,"Spring","no water","mix","low","C","na","L_Pgrass","11_53",10111,143,1,0.25
+"NV_seedlings_edit",38,"11_1",12,"one",6,2016,"Spring","no water","mix","low","C","na","L_Pgrass","11_53",10112,61,3,0.25
+"NV_seedlings_edit",39,"11_1",12,"one",14,2016,"Spring","no water","mix","low","C","na","L_Pgrass","11_53",10112,141,3,0.25
+"NV_seedlings_edit",40,"11_1",12,"one",10,2016,"Spring","no water","mix","low","C","na","L_Pgrass","11_53",10112,101,5,0.25
+"NV_seedlings_edit",41,"11_2",6,"two",54,2016,"Spring","water","mix","high","C","na","L_Pgrass","11_51",10206,542,11,0.25
+"NV_seedlings_edit",42,"11_2",6,"two",46,2016,"Spring","water","mix","high","C","na","L_Pgrass","11_51",10206,462,16,0.25
+"NV_seedlings_edit",43,"11_2",7,"three",6,2016,"Spring","water","mix","high","C","na","L_Pgrass","11_51",10207,63,5,0.25
+"NV_seedlings_edit",44,"11_2",7,"three",14,2016,"Spring","water","mix","high","C","na","L_Pgrass","11_51",10207,143,28,0.25
+"NV_seedlings_edit",45,"11_2",8,"one",10,2016,"Spring","water","mix","high","C","na","L_Pgrass","11_51",10208,101,2,0.25
+"NV_seedlings_edit",46,"11_2",8,"one",14,2016,"Spring","water","mix","high","C","na","L_Pgrass","11_51",10208,141,2,0.25
+"NV_seedlings_edit",47,"11_2",8,"one",6,2016,"Spring","water","mix","high","C","na","L_Pgrass","11_51",10208,61,11,0.25
+"NV_seedlings_edit",48,"11_2",9,"two",54,2016,"Spring","water","mix","low","C","na","L_Pgrass","11_53",10209,542,3,0.25
+"NV_seedlings_edit",49,"11_2",9,"two",46,2016,"Spring","water","mix","low","C","na","L_Pgrass","11_53",10209,462,0,0.25
+"NV_seedlings_edit",50,"11_2",10,"three",6,2016,"Spring","water","mix","low","C","na","L_Pgrass","11_53",10210,63,0,0.25
+"NV_seedlings_edit",51,"11_2",10,"three",14,2016,"Spring","water","mix","low","C","na","L_Pgrass","11_53",10210,143,2,0.25
+"NV_seedlings_edit",52,"11_2",11,"one",46,2016,"Spring","water","mix","low","C","na","L_Pgrass","11_53",10211,461,3,0.25
+"NV_seedlings_edit",53,"11_2",11,"one",50,2016,"Spring","water","mix","low","C","na","L_Pgrass","11_53",10211,501,3,0.25
+"NV_seedlings_edit",54,"11_2",11,"one",54,2016,"Spring","water","mix","low","C","na","L_Pgrass","11_53",10211,541,4,0.25
+"NV_seedlings_edit",55,"11_3",1,"three",2,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",301,23,6,0.125
+"NV_seedlings_edit",56,"11_3",1,"three",4,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",301,43,1,0.125
+"NV_seedlings_edit",57,"11_3",1,"three",7,2016,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",10301,73,7,0.25
+"NV_seedlings_edit",58,"11_3",1,"three",16,2016,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",10301,163,7,0.25
+"NV_seedlings_edit",59,"11_3",2,"two",12,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",302,122,4,0.125
+"NV_seedlings_edit",60,"11_3",2,"two",14,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",302,142,11,0.125
+"NV_seedlings_edit",61,"11_3",3,"two",12,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",303,122,0,0.125
+"NV_seedlings_edit",62,"11_3",3,"two",14,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",303,142,1,0.125
+"NV_seedlings_edit",63,"11_3",4,"three",2,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",304,23,7,0.125
+"NV_seedlings_edit",64,"11_3",4,"three",4,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",304,43,2,0.125
+"NV_seedlings_edit",65,"11_3",5,"one",12,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",305,121,6,0.125
+"NV_seedlings_edit",66,"11_3",5,"one",14,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",305,141,7,0.125
+"NV_seedlings_edit",67,"11_3",6,"three",2,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",306,23,10,0.125
+"NV_seedlings_edit",68,"11_3",6,"three",4,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",306,43,2,0.125
+"NV_seedlings_edit",69,"11_3",7,"two",2,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",307,22,0,0.125
+"NV_seedlings_edit",70,"11_3",7,"two",4,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",307,42,0,0.125
+"NV_seedlings_edit",71,"11_3",7,"two",14,2016,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",10307,142,1,0.25
+"NV_seedlings_edit",72,"11_3",7,"two",10,2016,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",10307,102,5,0.25
+"NV_seedlings_edit",73,"11_3",8,"one",12,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",308,121,6,0.125
+"NV_seedlings_edit",74,"11_3",8,"one",14,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",308,141,3,0.125
+"NV_seedlings_edit",75,"11_3",8,"one",46,2016,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",10308,461,6,0.25
+"NV_seedlings_edit",76,"11_3",8,"one",54,2016,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",10308,541,14,0.25
+"NV_seedlings_edit",77,"11_3",8,"one",50,2016,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",10308,501,29,0.25
+"NV_seedlings_edit",78,"11_3",9,"one",2,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",309,21,7,0.125
+"NV_seedlings_edit",79,"11_3",9,"one",4,2015,"Ungrazed","no water","mix","high","C","na","L_Pgrass","11_26",309,41,2,0.125
+"NV_seedlings_edit",80,"11_3",10,"three",2,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",310,23,7,0.125
+"NV_seedlings_edit",81,"11_3",10,"three",4,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",310,43,0,0.125
+"NV_seedlings_edit",82,"11_3",10,"three",14,2016,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",10310,143,3,0.25
+"NV_seedlings_edit",83,"11_3",10,"three",6,2016,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",10310,63,4,0.25
+"NV_seedlings_edit",84,"11_3",11,"two",2,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",311,22,1,0.125
+"NV_seedlings_edit",85,"11_3",11,"two",4,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",311,42,7,0.125
+"NV_seedlings_edit",86,"11_3",12,"two",2,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",312,22,1,0.125
+"NV_seedlings_edit",87,"11_3",12,"two",4,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",312,42,4,0.125
+"NV_seedlings_edit",88,"11_3",13,"three",2,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",313,23,0,0.125
+"NV_seedlings_edit",89,"11_3",13,"three",4,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",313,43,6,0.125
+"NV_seedlings_edit",90,"11_3",14,"one",12,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",314,121,0,0.125
+"NV_seedlings_edit",91,"11_3",14,"one",14,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",314,141,0,0.125
+"NV_seedlings_edit",92,"11_3",15,"three",2,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",315,23,9,0.125
+"NV_seedlings_edit",93,"11_3",15,"three",4,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",315,43,3,0.125
+"NV_seedlings_edit",94,"11_3",16,"two",2,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",316,22,0,0.125
+"NV_seedlings_edit",95,"11_3",16,"two",4,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",316,42,0,0.125
+"NV_seedlings_edit",96,"11_3",16,"two",14,2016,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",10316,142,1,0.25
+"NV_seedlings_edit",97,"11_3",16,"two",10,2016,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",10316,102,4,0.25
+"NV_seedlings_edit",98,"11_3",17,"one",12,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",317,121,1,0.125
+"NV_seedlings_edit",99,"11_3",17,"one",14,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",317,141,0,0.125
+"NV_seedlings_edit",100,"11_3",17,"one",46,2016,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",10317,461,1,0.25
+"NV_seedlings_edit",101,"11_3",17,"one",50,2016,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",10317,501,2,0.25
+"NV_seedlings_edit",102,"11_3",17,"one",54,2016,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",10317,541,5,0.25
+"NV_seedlings_edit",103,"11_3",18,"one",2,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",318,21,4,0.125
+"NV_seedlings_edit",104,"11_3",18,"one",4,2015,"Ungrazed","no water","mix","low","C","na","L_Pgrass","11_28",318,41,4,0.125
+"NV_seedlings_edit",105,"11_4",1,"three",12,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",401,123,1,0.125
+"NV_seedlings_edit",106,"11_4",1,"three",14,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",401,143,1,0.125
+"NV_seedlings_edit",107,"11_4",1,"three",54,2016,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",10401,543,0,0.25
+"NV_seedlings_edit",108,"11_4",1,"three",46,2016,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",10401,463,1,0.25
+"NV_seedlings_edit",109,"11_4",2,"two",2,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",402,22,9,0.125
+"NV_seedlings_edit",110,"11_4",2,"two",4,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",402,42,0,0.125
+"NV_seedlings_edit",111,"11_4",3,"two",12,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",403,122,3,0.125
+"NV_seedlings_edit",112,"11_4",3,"two",14,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",403,142,1,0.125
+"NV_seedlings_edit",113,"11_4",4,"three",2,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",404,23,0,0.125
+"NV_seedlings_edit",114,"11_4",4,"three",4,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",404,43,7,0.125
+"NV_seedlings_edit",115,"11_4",5,"one",2,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",405,21,3,0.125
+"NV_seedlings_edit",116,"11_4",5,"one",4,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",405,41,7,0.125
+"NV_seedlings_edit",117,"11_4",6,"three",12,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",406,123,6,0.125
+"NV_seedlings_edit",118,"11_4",6,"three",14,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",406,143,4,0.125
+"NV_seedlings_edit",119,"11_4",7,"two",2,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",407,22,11,0.125
+"NV_seedlings_edit",120,"11_4",7,"two",4,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",407,42,8,0.125
+"NV_seedlings_edit",121,"11_4",7,"two",14,2016,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",10407,142,4,0.25
+"NV_seedlings_edit",122,"11_4",7,"two",10,2016,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",10407,102,8,0.25
+"NV_seedlings_edit",123,"11_4",8,"one",2,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",408,21,0,0.125
+"NV_seedlings_edit",124,"11_4",8,"one",4,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",408,41,7,0.125
+"NV_seedlings_edit",125,"11_4",8,"one",10,2016,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",10408,101,0,0.25
+"NV_seedlings_edit",126,"11_4",8,"one",14,2016,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",10408,141,13,0.25
+"NV_seedlings_edit",127,"11_4",8,"one",6,2016,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",10408,61,26,0.25
+"NV_seedlings_edit",128,"11_4",9,"one",2,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",409,21,5,0.125
+"NV_seedlings_edit",129,"11_4",9,"one",4,2015,"Ungrazed","water","mix","high","C","na","L_Pgrass","11_26",409,41,3,0.125
+"NV_seedlings_edit",130,"11_4",10,"three",2,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",410,23,0,0.125
+"NV_seedlings_edit",131,"11_4",10,"three",4,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",410,43,5,0.125
+"NV_seedlings_edit",132,"11_4",10,"three",6,2016,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",10410,63,3,0.25
+"NV_seedlings_edit",133,"11_4",10,"three",14,2016,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",10410,143,3,0.25
+"NV_seedlings_edit",134,"11_4",11,"two",12,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",411,122,3,0.125
+"NV_seedlings_edit",135,"11_4",11,"two",14,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",411,142,1,0.125
+"NV_seedlings_edit",136,"11_4",12,"two",12,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",412,122,0,0.125
+"NV_seedlings_edit",137,"11_4",12,"two",14,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",412,142,0,0.125
+"NV_seedlings_edit",138,"11_4",13,"three",2,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",413,23,2,0.125
+"NV_seedlings_edit",139,"11_4",13,"three",4,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",413,43,2,0.125
+"NV_seedlings_edit",140,"11_4",14,"one",12,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",414,121,3,0.125
+"NV_seedlings_edit",141,"11_4",14,"one",14,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",414,141,0,0.125
+"NV_seedlings_edit",142,"11_4",15,"three",12,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",415,123,1,0.125
+"NV_seedlings_edit",143,"11_4",15,"three",14,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",415,143,2,0.125
+"NV_seedlings_edit",144,"11_4",16,"two",12,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",416,122,6,0.125
+"NV_seedlings_edit",145,"11_4",16,"two",14,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",416,142,8,0.125
+"NV_seedlings_edit",146,"11_4",16,"two",50,2016,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",10416,502,0,0.25
+"NV_seedlings_edit",147,"11_4",16,"two",54,2016,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",10416,542,4,0.25
+"NV_seedlings_edit",148,"11_4",17,"one",12,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",417,121,1,0.125
+"NV_seedlings_edit",149,"11_4",17,"one",14,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",417,141,3,0.125
+"NV_seedlings_edit",150,"11_4",17,"one",46,2016,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",10417,461,1,0.25
+"NV_seedlings_edit",151,"11_4",17,"one",50,2016,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",10417,501,10,0.25
+"NV_seedlings_edit",152,"11_4",17,"one",54,2016,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",10417,541,12,0.25
+"NV_seedlings_edit",153,"11_4",18,"one",12,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",418,121,4,0.125
+"NV_seedlings_edit",154,"11_4",18,"one",14,2015,"Ungrazed","water","mix","low","C","na","L_Pgrass","11_28",418,141,1,0.125
+"NV_seedlings_edit",155,"11_5",1,"two",14,2016,"Fall","no water","mix","high","UC","na","L_Pgrass","11_2",10501,142,0,0.25
+"NV_seedlings_edit",156,"11_5",1,"two",6,2016,"Fall","no water","mix","high","UC","na","L_Pgrass","11_2",10501,62,3,0.25
+"NV_seedlings_edit",157,"11_5",2,"one",6,2016,"Fall","no water","mix","high","UC","na","L_Pgrass","11_2",10502,61,2,0.25
+"NV_seedlings_edit",158,"11_5",2,"one",14,2016,"Fall","no water","mix","high","UC","na","L_Pgrass","11_2",10502,141,12,0.25
+"NV_seedlings_edit",159,"11_5",2,"one",10,2016,"Fall","no water","mix","high","UC","na","L_Pgrass","11_2",10502,101,13,0.25
+"NV_seedlings_edit",160,"11_5",3,"three",54,2016,"Fall","no water","mix","high","UC","na","L_Pgrass","11_2",10503,543,0,0.25
+"NV_seedlings_edit",161,"11_5",3,"three",46,2016,"Fall","no water","mix","high","UC","na","L_Pgrass","11_2",10503,463,1,0.25
+"NV_seedlings_edit",162,"11_5",4,"two",54,2016,"Fall","no water","mix","low","UC","na","L_Pgrass","11_4",10504,542,1,0.25
+"NV_seedlings_edit",163,"11_5",4,"two",50,2016,"Fall","no water","mix","low","UC","na","L_Pgrass","11_4",10504,502,2,0.25
+"NV_seedlings_edit",164,"11_5",5,"one",14,2016,"Fall","no water","mix","low","UC","na","L_Pgrass","11_4",10505,141,5,0.25
+"NV_seedlings_edit",165,"11_5",5,"one",10,2016,"Fall","no water","mix","low","UC","na","L_Pgrass","11_4",10505,101,6,0.25
+"NV_seedlings_edit",166,"11_5",5,"one",6,2016,"Fall","no water","mix","low","UC","na","L_Pgrass","11_4",10505,61,20,0.25
+"NV_seedlings_edit",167,"11_5",6,"three",14,2016,"Fall","no water","mix","low","UC","na","L_Pgrass","11_4",10506,143,0,0.25
+"NV_seedlings_edit",168,"11_5",6,"three",6,2016,"Fall","no water","mix","low","UC","na","L_Pgrass","11_4",10506,63,3,0.25
+"NV_seedlings_edit",169,"11_5",7,"two",6,2016,"Spring","no water","mix","high","UC","na","L_Pgrass","11_52",10507,62,4,0.25
+"NV_seedlings_edit",170,"11_5",7,"two",14,2016,"Spring","no water","mix","high","UC","na","L_Pgrass","11_52",10507,142,24,0.25
+"NV_seedlings_edit",171,"11_5",8,"three",46,2016,"Spring","no water","mix","high","UC","na","L_Pgrass","11_52",10508,463,0,0.25
+"NV_seedlings_edit",172,"11_5",8,"three",54,2016,"Spring","no water","mix","high","UC","na","L_Pgrass","11_52",10508,543,8,0.25
+"NV_seedlings_edit",173,"11_5",9,"one",50,2016,"Spring","no water","mix","high","UC","na","L_Pgrass","11_52",10509,501,3,0.25
+"NV_seedlings_edit",174,"11_5",9,"one",54,2016,"Spring","no water","mix","high","UC","na","L_Pgrass","11_52",10509,541,8,0.25
+"NV_seedlings_edit",175,"11_5",9,"one",46,2016,"Spring","no water","mix","high","UC","na","L_Pgrass","11_52",10509,461,24,0.25
+"NV_seedlings_edit",176,"11_5",19,"two",54,2016,"Spring","no water","mix","low","UC","na","L_Pgrass","11_54",10519,542,3,0.25
+"NV_seedlings_edit",177,"11_5",19,"two",46,2016,"Spring","no water","mix","low","UC","na","L_Pgrass","11_54",10519,462,5,0.25
+"NV_seedlings_edit",178,"11_5",11,"three",46,2016,"Spring","no water","mix","low","UC","na","L_Pgrass","11_54",10511,463,2,0.25
+"NV_seedlings_edit",179,"11_5",11,"three",54,2016,"Spring","no water","mix","low","UC","na","L_Pgrass","11_54",10511,543,2,0.25
+"NV_seedlings_edit",180,"11_5",12,"one",50,2016,"Spring","no water","mix","low","UC","na","L_Pgrass","11_54",10512,501,5,0.25
+"NV_seedlings_edit",181,"11_5",12,"one",54,2016,"Spring","no water","mix","low","UC","na","L_Pgrass","11_54",10512,541,6,0.25
+"NV_seedlings_edit",182,"11_5",12,"one",46,2016,"Spring","no water","mix","low","UC","na","L_Pgrass","11_54",10512,461,10,0.25
+"NV_seedlings_edit",183,"11_6",1,"two",50,2016,"Fall","water","mix","high","UC","na","L_Pgrass","11_2",10601,502,2,0.25
+"NV_seedlings_edit",184,"11_6",1,"two",54,2016,"Fall","water","mix","high","UC","na","L_Pgrass","11_2",10601,542,4,0.25
+"NV_seedlings_edit",185,"11_6",2,"three",14,2016,"Fall","water","mix","high","UC","na","L_Pgrass","11_2",10602,143,5,0.25
+"NV_seedlings_edit",186,"11_6",2,"three",6,2016,"Fall","water","mix","high","UC","na","L_Pgrass","11_2",10602,63,7,0.25
+"NV_seedlings_edit",187,"11_6",3,"two",10,2016,"Fall","water","mix","low","UC","na","L_Pgrass","11_4",10603,102,8,0.25
+"NV_seedlings_edit",188,"11_6",3,"two",14,2016,"Fall","water","mix","low","UC","na","L_Pgrass","11_4",10603,142,12,0.25
+"NV_seedlings_edit",189,"11_6",4,"one",6,2016,"Fall","water","mix","low","UC","na","L_Pgrass","11_4",10604,61,0,0.25
+"NV_seedlings_edit",190,"11_6",4,"one",10,2016,"Fall","water","mix","low","UC","na","L_Pgrass","11_4",10604,101,3,0.25
+"NV_seedlings_edit",191,"11_6",4,"one",14,2016,"Fall","water","mix","low","UC","na","L_Pgrass","11_4",10604,141,8,0.25
+"NV_seedlings_edit",192,"11_6",5,"three",14,2016,"Fall","water","mix","low","UC","na","L_Pgrass","11_4",10605,143,1,0.25
+"NV_seedlings_edit",193,"11_6",5,"three",6,2016,"Fall","water","mix","low","UC","na","L_Pgrass","11_4",10605,63,3,0.25
+"NV_seedlings_edit",194,"11_6",6,"two",14,2016,"Spring","water","mix","high","UC","na","L_Pgrass","11_52",10606,142,3,0.25
+"NV_seedlings_edit",195,"11_6",6,"two",6,2016,"Spring","water","mix","high","UC","na","L_Pgrass","11_52",10606,62,6,0.25
+"NV_seedlings_edit",196,"11_6",7,"three",54,2016,"Spring","water","mix","high","UC","na","L_Pgrass","11_52",10607,543,1,0.25
+"NV_seedlings_edit",197,"11_6",7,"three",46,2016,"Spring","water","mix","high","UC","na","L_Pgrass","11_52",10607,463,7,0.25
+"NV_seedlings_edit",198,"11_6",8,"one",50,2016,"Spring","water","mix","high","UC","na","L_Pgrass","11_52",10608,501,0,0.25
+"NV_seedlings_edit",199,"11_6",8,"one",54,2016,"Spring","water","mix","high","UC","na","L_Pgrass","11_52",10608,541,4,0.25
+"NV_seedlings_edit",200,"11_6",8,"one",46,2016,"Spring","water","mix","high","UC","na","L_Pgrass","11_52",10608,461,16,0.25
+"NV_seedlings_edit",201,"11_6",9,"two",6,2016,"Spring","water","mix","low","UC","na","L_Pgrass","11_54",10609,62,0,0.25
+"NV_seedlings_edit",202,"11_6",9,"two",14,2016,"Spring","water","mix","low","UC","na","L_Pgrass","11_54",10609,142,3,0.25
+"NV_seedlings_edit",203,"11_6",10,"three",46,2016,"Spring","water","mix","low","UC","na","L_Pgrass","11_54",10610,463,2,0.25
+"NV_seedlings_edit",204,"11_6",10,"three",54,2016,"Spring","water","mix","low","UC","na","L_Pgrass","11_54",10610,543,4,0.25
+"NV_seedlings_edit",205,"11_6",11,"one",6,2016,"Spring","water","mix","low","UC","na","L_Pgrass","11_54",10611,61,4,0.25
+"NV_seedlings_edit",206,"11_6",11,"one",10,2016,"Spring","water","mix","low","UC","na","L_Pgrass","11_54",10611,101,6,0.25
+"NV_seedlings_edit",207,"11_6",11,"one",14,2016,"Spring","water","mix","low","UC","na","L_Pgrass","11_54",10611,141,15,0.25
+"NV_seedlings_edit",208,"11_7",1,"three",12,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",701,123,3,0.125
+"NV_seedlings_edit",209,"11_7",1,"three",14,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",701,143,16,0.125
+"NV_seedlings_edit",210,"11_7",1,"three",57,2016,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",10701,573,6,0.25
+"NV_seedlings_edit",211,"11_7",1,"three",49,2016,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",10701,493,29,0.25
+"NV_seedlings_edit",212,"11_7",2,"two",2,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",702,22,8,0.125
+"NV_seedlings_edit",213,"11_7",2,"two",4,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",702,42,24,0.125
+"NV_seedlings_edit",214,"11_7",3,"two",2,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",703,22,5,0.125
+"NV_seedlings_edit",215,"11_7",3,"two",4,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",703,42,5,0.125
+"NV_seedlings_edit",216,"11_7",4,"three",12,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",704,123,13,0.125
+"NV_seedlings_edit",217,"11_7",4,"three",14,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",704,143,13,0.125
+"NV_seedlings_edit",218,"11_7",5,"one",2,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",705,21,8,0.125
+"NV_seedlings_edit",219,"11_7",5,"one",4,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",705,41,3,0.125
+"NV_seedlings_edit",220,"11_7",6,"three",12,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",706,123,0,0.125
+"NV_seedlings_edit",221,"11_7",6,"three",14,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",706,143,1,0.125
+"NV_seedlings_edit",222,"11_7",7,"two",12,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",707,122,9,0.125
+"NV_seedlings_edit",223,"11_7",7,"two",14,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",707,142,5,0.125
+"NV_seedlings_edit",224,"11_7",7,"two",50,2016,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",10707,502,6,0.25
+"NV_seedlings_edit",225,"11_7",7,"two",54,2016,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",10707,542,29,0.25
+"NV_seedlings_edit",226,"11_7",8,"one",2,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",708,21,12,0.125
+"NV_seedlings_edit",227,"11_7",8,"one",4,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",708,41,7,0.125
+"NV_seedlings_edit",228,"11_7",8,"one",10,2016,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",10708,101,2,0.25
+"NV_seedlings_edit",229,"11_7",8,"one",14,2016,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",10708,141,16,0.25
+"NV_seedlings_edit",230,"11_7",8,"one",6,2016,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",10708,61,17,0.25
+"NV_seedlings_edit",231,"11_7",9,"one",12,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",709,121,9,0.125
+"NV_seedlings_edit",232,"11_7",9,"one",14,2015,"Ungrazed","no water","mix","high","UC","na","L_Pgrass","11_27",709,141,12,0.125
+"NV_seedlings_edit",233,"11_7",10,"three",12,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",710,123,0,0.125
+"NV_seedlings_edit",234,"11_7",10,"three",14,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",710,143,0,0.125
+"NV_seedlings_edit",235,"11_7",10,"three",54,2016,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",10710,543,0,0.25
+"NV_seedlings_edit",236,"11_7",10,"three",46,2016,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",10710,463,1,0.25
+"NV_seedlings_edit",237,"11_7",11,"two",12,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",711,122,7,0.125
+"NV_seedlings_edit",238,"11_7",11,"two",14,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",711,142,0,0.125
+"NV_seedlings_edit",239,"11_7",12,"two",12,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",712,122,2,0.125
+"NV_seedlings_edit",240,"11_7",12,"two",14,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",712,142,4,0.125
+"NV_seedlings_edit",241,"11_7",13,"three",12,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",713,123,3,0.125
+"NV_seedlings_edit",242,"11_7",13,"three",14,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",713,143,8,0.125
+"NV_seedlings_edit",243,"11_7",14,"one",2,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",714,21,1,0.125
+"NV_seedlings_edit",244,"11_7",14,"one",4,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",714,41,0,0.125
+"NV_seedlings_edit",245,"11_7",15,"three",12,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",715,123,1,0.125
+"NV_seedlings_edit",246,"11_7",15,"three",14,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",715,143,9,0.125
+"NV_seedlings_edit",247,"11_7",16,"two",12,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",716,122,4,0.125
+"NV_seedlings_edit",248,"11_7",16,"two",14,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",716,142,1,0.125
+"NV_seedlings_edit",249,"11_7",16,"two",54,2016,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",10716,542,0,0.25
+"NV_seedlings_edit",250,"11_7",16,"two",50,2016,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",10716,502,3,0.25
+"NV_seedlings_edit",251,"11_7",17,"one",2,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",717,21,3,0.125
+"NV_seedlings_edit",252,"11_7",17,"one",4,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",717,41,2,0.125
+"NV_seedlings_edit",253,"11_7",17,"one",6,2016,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",10717,61,0,0.25
+"NV_seedlings_edit",254,"11_7",17,"one",14,2016,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",10717,141,2,0.25
+"NV_seedlings_edit",255,"11_7",17,"one",10,2016,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",10717,101,29,0.25
+"NV_seedlings_edit",256,"11_7",18,"one",12,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",718,121,0,0.125
+"NV_seedlings_edit",257,"11_7",18,"one",14,2015,"Ungrazed","no water","mix","low","UC","na","L_Pgrass","11_29",718,141,0,0.125
+"NV_seedlings_edit",258,"11_8",1,"three",2,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",801,23,0,0.125
+"NV_seedlings_edit",259,"11_8",1,"three",4,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",801,43,0,0.125
+"NV_seedlings_edit",260,"11_8",1,"three",6,2016,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",10801,63,6,0.25
+"NV_seedlings_edit",261,"11_8",1,"three",14,2016,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",10801,143,8,0.25
+"NV_seedlings_edit",262,"11_8",2,"two",12,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",802,122,6,0.125
+"NV_seedlings_edit",263,"11_8",2,"two",14,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",802,142,11,0.125
+"NV_seedlings_edit",264,"11_8",3,"two",2,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",803,22,6,0.125
+"NV_seedlings_edit",265,"11_8",3,"two",4,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",803,42,1,0.125
+"NV_seedlings_edit",266,"11_8",4,"three",12,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",804,123,10,0.125
+"NV_seedlings_edit",267,"11_8",4,"three",14,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",804,143,13,0.125
+"NV_seedlings_edit",268,"11_8",5,"one",12,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",805,121,3,0.125
+"NV_seedlings_edit",269,"11_8",5,"one",14,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",805,141,14,0.125
+"NV_seedlings_edit",270,"11_8",6,"three",2,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",806,23,2,0.125
+"NV_seedlings_edit",271,"11_8",6,"three",4,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",806,43,0,0.125
+"NV_seedlings_edit",272,"11_8",7,"two",50,2016,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",10807,502,9,0.25
+"NV_seedlings_edit",273,"11_8",7,"two",54,2016,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",10807,542,17,0.25
+"NV_seedlings_edit",274,"11_8",8,"one",12,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",808,121,0,0.125
+"NV_seedlings_edit",275,"11_8",8,"one",14,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",808,141,3,0.125
+"NV_seedlings_edit",276,"11_8",8,"one",54,2016,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",10808,541,24,0.25
+"NV_seedlings_edit",277,"11_8",8,"one",50,2016,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",10808,501,27,0.25
+"NV_seedlings_edit",278,"11_8",8,"one",46,2016,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",10808,461,38,0.25
+"NV_seedlings_edit",279,"11_8",9,"one",12,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",809,121,9,0.125
+"NV_seedlings_edit",280,"11_8",9,"one",14,2015,"Ungrazed","water","mix","high","UC","na","L_Pgrass","11_27",809,141,5,0.125
+"NV_seedlings_edit",281,"11_8",10,"three",12,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",810,123,0,0.125
+"NV_seedlings_edit",282,"11_8",10,"three",14,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",810,143,1,0.125
+"NV_seedlings_edit",283,"11_8",10,"three",46,2016,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",10810,463,1,0.25
+"NV_seedlings_edit",284,"11_8",10,"three",54,2016,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",10810,543,2,0.25
+"NV_seedlings_edit",285,"11_8",11,"two",2,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",811,22,7,0.125
+"NV_seedlings_edit",286,"11_8",11,"two",4,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",811,42,0,0.125
+"NV_seedlings_edit",287,"11_8",12,"two",2,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",812,22,0,0.125
+"NV_seedlings_edit",288,"11_8",12,"two",4,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",812,42,4,0.125
+"NV_seedlings_edit",289,"11_8",13,"three",12,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",813,123,0,0.125
+"NV_seedlings_edit",290,"11_8",13,"three",14,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",813,143,4,0.125
+"NV_seedlings_edit",291,"11_8",14,"one",2,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",814,21,0,0.125
+"NV_seedlings_edit",292,"11_8",14,"one",4,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",814,41,4,0.125
+"NV_seedlings_edit",293,"11_8",15,"three",2,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",815,23,7,0.125
+"NV_seedlings_edit",294,"11_8",15,"three",4,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",815,43,6,0.125
+"NV_seedlings_edit",295,"11_8",16,"two",2,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",816,22,3,0.125
+"NV_seedlings_edit",296,"11_8",16,"two",4,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",816,42,2,0.125
+"NV_seedlings_edit",297,"11_8",16,"two",14,2016,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",10816,142,1,0.25
+"NV_seedlings_edit",298,"11_8",16,"two",10,2016,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",10816,102,6,0.25
+"NV_seedlings_edit",299,"11_8",17,"one",2,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",817,21,0,0.125
+"NV_seedlings_edit",300,"11_8",17,"one",4,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",817,41,2,0.125
+"NV_seedlings_edit",301,"11_8",17,"one",10,2016,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",10817,101,9,0.25
+"NV_seedlings_edit",302,"11_8",17,"one",6,2016,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",10817,61,10,0.25
+"NV_seedlings_edit",303,"11_8",17,"one",14,2016,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",10817,141,15,0.25
+"NV_seedlings_edit",304,"11_8",18,"one",2,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",818,21,9,0.125
+"NV_seedlings_edit",305,"11_8",18,"one",4,2015,"Ungrazed","water","mix","low","UC","na","L_Pgrass","11_29",818,41,0,0.125
+"NV_seedlings_edit",306,"11_9",1,"two",2,2016,"Fall","no water","mono","high","C","POFE","Poa_fen","11_13",10901,22,0,0.25
+"NV_seedlings_edit",307,"11_9",1,"two",10,2016,"Fall","no water","mono","high","C","ELEL","Ely_ely","11_5",10901,102,0,0.25
+"NV_seedlings_edit",308,"11_9",1,"two",18,2016,"Fall","no water","mono","high","C","VUMY","Vul_mic","11_21",10901,182,1,0.25
+"NV_seedlings_edit",309,"11_9",1,"two",6,2016,"Fall","no water","mono","high","C","POSE","Pse_rup","11_17",10901,62,5,0.25
+"NV_seedlings_edit",310,"11_9",1,"two",14,2016,"Fall","no water","mono","high","C","ELTR","Ely_tra","11_9",10901,142,24,0.25
+"NV_seedlings_edit",311,"11_9",2,"one",10,2016,"Fall","no water","mono","high","C","POSE","Pse_rup","11_17",10902,101,0,0.25
+"NV_seedlings_edit",312,"11_9",2,"one",14,2016,"Fall","no water","mono","high","C","VUMY","Vul_mic","11_21",10902,141,0,0.25
+"NV_seedlings_edit",313,"11_9",2,"one",6,2016,"Fall","no water","mono","high","C","ELEL","Ely_ely","11_5",10902,61,1,0.25
+"NV_seedlings_edit",314,"11_9",2,"one",18,2016,"Fall","no water","mono","high","C","POFE","Poa_fen","11_13",10902,181,1,0.25
+"NV_seedlings_edit",315,"11_9",2,"one",2,2016,"Fall","no water","mono","high","C","ELTR","Ely_tra","11_9",10902,21,11,0.25
+"NV_seedlings_edit",316,"11_9",3,"three",46,2016,"Fall","no water","mono","high","C","VUMY","Vul_mic","11_21",10903,463,0,0.25
+"NV_seedlings_edit",317,"11_9",3,"three",50,2016,"Fall","no water","mono","high","C","POSE","Pse_rup","11_17",10903,503,0,0.25
+"NV_seedlings_edit",318,"11_9",3,"three",54,2016,"Fall","no water","mono","high","C","POFE","Poa_fen","11_13",10903,543,0,0.25
+"NV_seedlings_edit",319,"11_9",3,"three",58,2016,"Fall","no water","mono","high","C","ELEL","Ely_ely","11_5",10903,583,0,0.25
+"NV_seedlings_edit",320,"11_9",3,"three",42,2016,"Fall","no water","mono","high","C","ELTR","Ely_tra","11_9",10903,423,4,0.25
+"NV_seedlings_edit",321,"11_9",4,"two",18,2016,"Fall","no water","mono","low","C","VUMY","Vul_mic","11_23",10904,182,0,0.25
+"NV_seedlings_edit",322,"11_9",4,"two",2,2016,"Fall","no water","mono","low","C","ELEL","Ely_ely","11_7",10904,22,1,0.25
+"NV_seedlings_edit",323,"11_9",4,"two",14,2016,"Fall","no water","mono","low","C","POSE","Pse_rup","11_19",10904,142,12,0.25
+"NV_seedlings_edit",324,"11_9",4,"two",6,2016,"Fall","no water","mono","low","C","ELTR","Ely_tra","11_11",10904,62,14,0.25
+"NV_seedlings_edit",325,"11_9",4,"two",10,2016,"Fall","no water","mono","low","C","POFE","Poa_fen","11_15",10904,102,18,0.25
+"NV_seedlings_edit",326,"11_9",5,"one",2,2016,"Fall","no water","mono","low","C","VUMY","Vul_mic","11_23",10905,21,0,0.25
+"NV_seedlings_edit",327,"11_9",5,"one",6,2016,"Fall","no water","mono","low","C","ELEL","Ely_ely","11_7",10905,61,0,0.25
+"NV_seedlings_edit",328,"11_9",5,"one",18,2016,"Fall","no water","mono","low","C","POFE","Poa_fen","11_15",10905,181,0,0.25
+"NV_seedlings_edit",329,"11_9",5,"one",10,2016,"Fall","no water","mono","low","C","POSE","Pse_rup","11_19",10905,101,2,0.25
+"NV_seedlings_edit",330,"11_9",5,"one",14,2016,"Fall","no water","mono","low","C","ELTR","Ely_tra","11_11",10905,141,12,0.25
+"NV_seedlings_edit",331,"11_9",6,"three",10,2016,"Fall","no water","mono","low","C","POFE","Poa_fen","11_15",10906,103,0,0.25
+"NV_seedlings_edit",332,"11_9",6,"three",13,2016,"Fall","no water","mono","low","C","ELTR","Ely_tra","11_11",10906,133,0,0.25
+"NV_seedlings_edit",333,"11_9",6,"three",2,2016,"Fall","no water","mono","low","C","VUMY","Vul_mic","11_23",10906,23,1,0.25
+"NV_seedlings_edit",334,"11_9",6,"three",6,2016,"Fall","no water","mono","low","C","POSE","Pse_rup","11_19",10906,63,2,0.25
+"NV_seedlings_edit",335,"11_9",6,"three",17,2016,"Fall","no water","mono","low","C","ELEL","Ely_ely","11_7",10906,173,10,0.25
+"NV_seedlings_edit",336,"11_9",7,"two",2,2016,"Spring","no water","mono","high","C","POSE","Pse_rup","11_67",10907,22,0,0.25
+"NV_seedlings_edit",337,"11_9",7,"two",10,2016,"Spring","no water","mono","high","C","POFE","Poa_fen","11_63",10907,102,0,0.25
+"NV_seedlings_edit",338,"11_9",7,"two",14,2016,"Spring","no water","mono","high","C","ELEL","Ely_ely","11_55",10907,142,0,0.25
+"NV_seedlings_edit",339,"11_9",7,"two",18,2016,"Spring","no water","mono","high","C","VUMY","Vul_mic","11_71",10907,182,1,0.25
+"NV_seedlings_edit",340,"11_9",7,"two",6,2016,"Spring","no water","mono","high","C","ELTR","Ely_tra","11_59",10907,62,13,0.25
+"NV_seedlings_edit",341,"11_9",8,"three",54,2016,"Spring","no water","mono","high","C","POFE","Poa_fen","11_63",10908,543,0,0.25
+"NV_seedlings_edit",342,"11_9",8,"three",42,2016,"Spring","no water","mono","high","C","VUMY","Vul_mic","11_71",10908,423,1,0.25
+"NV_seedlings_edit",343,"11_9",8,"three",58,2016,"Spring","no water","mono","high","C","ELEL","Ely_ely","11_55",10908,583,3,0.25
+"NV_seedlings_edit",344,"11_9",8,"three",46,2016,"Spring","no water","mono","high","C","POSE","Pse_rup","11_67",10908,463,4,0.25
+"NV_seedlings_edit",345,"11_9",8,"three",50,2016,"Spring","no water","mono","high","C","ELTR","Ely_tra","11_59",10908,503,18,0.25
+"NV_seedlings_edit",346,"11_9",9,"one",2,2016,"Spring","no water","mono","high","C","VUMY","Vul_mic","11_71",10909,21,0,0.25
+"NV_seedlings_edit",347,"11_9",9,"one",14,2016,"Spring","no water","mono","high","C","POFE","Poa_fen","11_63",10909,141,1,0.25
+"NV_seedlings_edit",348,"11_9",9,"one",10,2016,"Spring","no water","mono","high","C","ELEL","Ely_ely","11_55",10909,101,2,0.25
+"NV_seedlings_edit",349,"11_9",9,"one",18,2016,"Spring","no water","mono","high","C","POSE","Pse_rup","11_67",10909,181,21,0.25
+"NV_seedlings_edit",350,"11_9",9,"one",6,2016,"Spring","no water","mono","high","C","ELTR","Ely_tra","11_59",10909,61,24,0.25
+"NV_seedlings_edit",351,"11_9",10,"two",14,2016,"Spring","no water","mono","low","C","POFE","Poa_fen","11_65",10910,142,0,0.25
+"NV_seedlings_edit",352,"11_9",10,"two",2,2016,"Spring","no water","mono","low","C","VUMY","Vul_mic","11_73",10910,22,1,0.25
+"NV_seedlings_edit",353,"11_9",10,"two",10,2016,"Spring","no water","mono","low","C","POSE","Pse_rup","11_69",10910,102,2,0.25
+"NV_seedlings_edit",354,"11_9",10,"two",6,2016,"Spring","no water","mono","low","C","ELEL","Ely_ely","11_57",10910,62,3,0.25
+"NV_seedlings_edit",355,"11_9",10,"two",18,2016,"Spring","no water","mono","low","C","ELTR","Ely_tra","11_61",10910,182,7,0.25
+"NV_seedlings_edit",356,"11_9",11,"three",2,2016,"Spring","no water","mono","low","C","VUMY","Vul_mic","11_73",10911,23,0,0.25
+"NV_seedlings_edit",357,"11_9",11,"three",7,2016,"Spring","no water","mono","low","C","ELTR","Ely_tra","11_61",10911,73,0,0.25
+"NV_seedlings_edit",358,"11_9",11,"three",18,2016,"Spring","no water","mono","low","C","POFE","Poa_fen","11_65",10911,183,0,0.25
+"NV_seedlings_edit",359,"11_9",11,"three",14,2016,"Spring","no water","mono","low","C","ELEL","Ely_ely","11_57",10911,143,3,0.25
+"NV_seedlings_edit",360,"11_9",11,"three",11,2016,"Spring","no water","mono","low","C","POSE","Pse_rup","11_69",10911,113,7,0.25
+"NV_seedlings_edit",361,"11_9",12,"one",46,2016,"Spring","no water","mono","low","C","ELEL","Ely_ely","11_57",10912,461,2,0.25
+"NV_seedlings_edit",362,"11_9",12,"one",50,2016,"Spring","no water","mono","low","C","POFE","Poa_fen","11_65",10912,501,3,0.25
+"NV_seedlings_edit",363,"11_9",12,"one",42,2016,"Spring","no water","mono","low","C","POSE","Pse_rup","11_69",10912,421,4,0.25
+"NV_seedlings_edit",364,"11_9",12,"one",54,2016,"Spring","no water","mono","low","C","VUMY","Vul_mic","11_73",10912,541,8,0.25
+"NV_seedlings_edit",365,"11_9",12,"one",58,2016,"Spring","no water","mono","low","C","ELTR","Ely_tra","11_61",10912,581,28,0.25
+"NV_seedlings_edit",366,"11_10",1,"two",2,2016,"Fall","water","mono","high","C","VUMY","Vul_mic","11_21",11001,22,2,0.25
+"NV_seedlings_edit",367,"11_10",1,"two",11,2016,"Fall","water","mono","high","C","ELEL","Ely_ely","11_5",11001,112,2,0.25
+"NV_seedlings_edit",368,"11_10",1,"two",6,2016,"Fall","water","mono","high","C","ELTR","Ely_tra","11_9",11001,62,3,0.25
+"NV_seedlings_edit",369,"11_10",1,"two",15,2016,"Fall","water","mono","high","C","POFE","Poa_fen","11_13",11001,152,3,0.25
+"NV_seedlings_edit",370,"11_10",1,"two",18,2016,"Fall","water","mono","high","C","POSE","Pse_rup","11_17",11001,182,6,0.25
+"NV_seedlings_edit",371,"11_10",2,"one",46,2016,"Fall","water","mono","high","C","POFE","Poa_fen","11_13",11002,461,0,0.25
+"NV_seedlings_edit",372,"11_10",2,"one",50,2016,"Fall","water","mono","high","C","VUMY","Vul_mic","11_21",11002,501,3,0.25
+"NV_seedlings_edit",373,"11_10",2,"one",58,2016,"Fall","water","mono","high","C","ELTR","Ely_tra","11_9",11002,581,4,0.25
+"NV_seedlings_edit",374,"11_10",2,"one",42,2016,"Fall","water","mono","high","C","ELEL","Ely_ely","11_5",11002,421,5,0.25
+"NV_seedlings_edit",375,"11_10",2,"one",54,2016,"Fall","water","mono","high","C","POSE","Pse_rup","11_17",11002,541,9,0.25
+"NV_seedlings_edit",376,"11_10",3,"three",2,2016,"Fall","water","mono","high","C","POFE","Poa_fen","11_13",11003,23,0,0.25
+"NV_seedlings_edit",377,"11_10",3,"three",10,2016,"Fall","water","mono","high","C","ELTR","Ely_tra","11_9",11003,103,0,0.25
+"NV_seedlings_edit",378,"11_10",3,"three",18,2016,"Fall","water","mono","high","C","POSE","Pse_rup","11_17",11003,183,0,0.25
+"NV_seedlings_edit",379,"11_10",3,"three",6,2016,"Fall","water","mono","high","C","VUMY","Vul_mic","11_21",11003,63,1,0.25
+"NV_seedlings_edit",380,"11_10",3,"three",14,2016,"Fall","water","mono","high","C","ELEL","Ely_ely","11_5",11003,143,0,0.25
+"NV_seedlings_edit",381,"11_10",4,"two",46,2016,"Fall","water","mono","low","C","VUMY","Vul_mic","11_23",11004,462,0,0.25
+"NV_seedlings_edit",382,"11_10",4,"two",50,2016,"Fall","water","mono","low","C","ELEL","Ely_ely","11_7",11004,502,0,0.25
+"NV_seedlings_edit",383,"11_10",4,"two",54,2016,"Fall","water","mono","low","C","POFE","Poa_fen","11_15",11004,542,0,0.25
+"NV_seedlings_edit",384,"11_10",4,"two",58,2016,"Fall","water","mono","low","C","POSE","Pse_rup","11_19",11004,582,0,0.25
+"NV_seedlings_edit",385,"11_10",4,"two",42,2016,"Fall","water","mono","low","C","ELTR","Ely_tra","11_11",11004,422,11,0.25
+"NV_seedlings_edit",386,"11_10",5,"one",10,2016,"Fall","water","mono","low","C","VUMY","Vul_mic","11_23",11005,101,0,0.25
+"NV_seedlings_edit",387,"11_10",5,"one",2,2016,"Fall","water","mono","low","C","POFE","Poa_fen","11_15",11005,21,2,0.25
+"NV_seedlings_edit",388,"11_10",5,"one",6,2016,"Fall","water","mono","low","C","ELEL","Ely_ely","11_7",11005,61,5,0.25
+"NV_seedlings_edit",389,"11_10",5,"one",18,2016,"Fall","water","mono","low","C","POSE","Pse_rup","11_19",11005,181,6,0.25
+"NV_seedlings_edit",390,"11_10",5,"one",14,2016,"Fall","water","mono","low","C","ELTR","Ely_tra","11_11",11005,141,9,0.25
+"NV_seedlings_edit",391,"11_10",6,"three",13,2016,"Fall","water","mono","low","C","VUMY","Vul_mic","11_23",11006,133,0,0.25
+"NV_seedlings_edit",392,"11_10",6,"three",10,2016,"Fall","water","mono","low","C","POFE","Poa_fen","11_15",11006,103,1,0.25
+"NV_seedlings_edit",393,"11_10",6,"three",2,2016,"Fall","water","mono","low","C","ELEL","Ely_ely","11_7",11006,23,2,0.25
+"NV_seedlings_edit",394,"11_10",6,"three",17,2016,"Fall","water","mono","low","C","POSE","Pse_rup","11_19",11006,173,4,0.25
+"NV_seedlings_edit",395,"11_10",6,"three",6,2016,"Fall","water","mono","low","C","ELTR","Ely_tra","11_11",11006,63,7,0.25
+"NV_seedlings_edit",396,"11_10",7,"two",14,2016,"Spring","water","mono","high","C","POFE","Poa_fen","11_63",11007,142,0,0.25
+"NV_seedlings_edit",397,"11_10",7,"two",10,2016,"Spring","water","mono","high","C","VUMY","Vul_mic","11_71",11007,102,3,0.25
+"NV_seedlings_edit",398,"11_10",7,"two",2,2016,"Spring","water","mono","high","C","ELEL","Ely_ely","11_55",11007,22,4,0.25
+"NV_seedlings_edit",399,"11_10",7,"two",18,2016,"Spring","water","mono","high","C","POSE","Pse_rup","11_67",11007,182,4,0.25
+"NV_seedlings_edit",400,"11_10",7,"two",6,2016,"Spring","water","mono","high","C","ELTR","Ely_tra","11_59",11007,62,49,0.25
+"NV_seedlings_edit",401,"11_10",8,"three",2,2016,"Spring","water","mono","high","C","POSE","Pse_rup","11_67",11008,23,1,0.25
+"NV_seedlings_edit",402,"11_10",8,"three",10,2016,"Spring","water","mono","high","C","ELTR","Ely_tra","11_59",11008,103,2,0.25
+"NV_seedlings_edit",403,"11_10",8,"three",6,2016,"Spring","water","mono","high","C","VUMY","Vul_mic","11_71",11008,63,3,0.25
+"NV_seedlings_edit",404,"11_10",8,"three",14,2016,"Spring","water","mono","high","C","POFE","Poa_fen","11_63",11008,143,4,0.25
+"NV_seedlings_edit",405,"11_10",8,"three",18,2016,"Spring","water","mono","high","C","ELEL","Ely_ely","11_55",11008,183,6,0.25
+"NV_seedlings_edit",406,"11_10",9,"one",7,2016,"Spring","water","mono","high","C","POFE","Poa_fen","11_63",11009,71,0,0.25
+"NV_seedlings_edit",407,"11_10",9,"one",11,2016,"Spring","water","mono","high","C","ELEL","Ely_ely","11_55",11009,111,0,0.25
+"NV_seedlings_edit",408,"11_10",9,"one",18,2016,"Spring","water","mono","high","C","VUMY","Vul_mic","11_71",11009,181,3,0.25
+"NV_seedlings_edit",409,"11_10",9,"one",14,2016,"Spring","water","mono","high","C","POSE","Pse_rup","11_67",11009,141,17,0.25
+"NV_seedlings_edit",410,"11_10",9,"one",3,2016,"Spring","water","mono","high","C","ELTR","Ely_tra","11_59",11009,31,25,0.25
+"NV_seedlings_edit",411,"11_10",10,"two",50,2016,"Spring","water","mono","low","C","POFE","Poa_fen","11_65",11010,502,0,0.25
+"NV_seedlings_edit",412,"11_10",10,"two",54,2016,"Spring","water","mono","low","C","VUMY","Vul_mic","11_73",11010,542,1,0.25
+"NV_seedlings_edit",413,"11_10",10,"two",58,2016,"Spring","water","mono","low","C","ELEL","Ely_ely","11_57",11010,582,1,0.25
+"NV_seedlings_edit",414,"11_10",10,"two",42,2016,"Spring","water","mono","low","C","POSE","Pse_rup","11_69",11010,422,4,0.25
+"NV_seedlings_edit",415,"11_10",10,"two",46,2016,"Spring","water","mono","low","C","ELTR","Ely_tra","11_61",11010,462,6,0.25
+"NV_seedlings_edit",416,"11_10",11,"three",46,2016,"Spring","water","mono","low","C","POFE","Poa_fen","11_65",11011,463,0,0.25
+"NV_seedlings_edit",417,"11_10",11,"three",50,2016,"Spring","water","mono","low","C","VUMY","Vul_mic","11_73",11011,503,0,0.25
+"NV_seedlings_edit",418,"11_10",11,"three",57,2016,"Spring","water","mono","low","C","POSE","Pse_rup","11_69",11011,573,1,0.25
+"NV_seedlings_edit",419,"11_10",11,"three",61,2016,"Spring","water","mono","low","C","ELEL","Ely_ely","11_57",11011,613,2,0.25
+"NV_seedlings_edit",420,"11_10",11,"three",54,2016,"Spring","water","mono","low","C","ELTR","Ely_tra","11_61",11011,543,3,0.25
+"NV_seedlings_edit",421,"11_10",12,"one",6,2016,"Spring","water","mono","low","C","ELEL","Ely_ely","11_57",11012,61,1,0.25
+"NV_seedlings_edit",422,"11_10",12,"one",18,2016,"Spring","water","mono","low","C","POFE","Poa_fen","11_65",11012,181,4,0.25
+"NV_seedlings_edit",423,"11_10",12,"one",2,2016,"Spring","water","mono","low","C","VUMY","Vul_mic","11_73",11012,21,5,0.25
+"NV_seedlings_edit",424,"11_10",12,"one",10,2016,"Spring","water","mono","low","C","ELTR","Ely_tra","11_61",11012,101,11,0.25
+"NV_seedlings_edit",425,"11_10",12,"one",14,2016,"Spring","water","mono","low","C","POSE","Pse_rup","11_69",11012,141,15,0.25
+"NV_seedlings_edit",426,"11_11",1,"three",5,2015,"Ungrazed","no water","mono","high","C","ELEL","Ely_ely","11_30",1101,53,2,0.125
+"NV_seedlings_edit",427,"11_11",1,"three",2,2015,"Ungrazed","no water","mono","high","C","ELTR","Ely_tra","11_34",1101,23,2,0.125
+"NV_seedlings_edit",428,"11_11",1,"three",1,2015,"Ungrazed","no water","mono","high","C","POFE","Poa_fen","11_38",1101,13,0,0.125
+"NV_seedlings_edit",429,"11_11",1,"three",3,2015,"Ungrazed","no water","mono","high","C","POSE","Pse_rup","11_42",1101,33,1,0.125
+"NV_seedlings_edit",430,"11_11",1,"three",4,2015,"Ungrazed","no water","mono","high","C","VUMI","Vul_mic","11_46",1101,43,0,0.125
+"NV_seedlings_edit",431,"11_11",1,"three",10,2016,"Ungrazed","no water","mono","high","C","POSE","Pse_rup","11_42",11101,103,1,0.25
+"NV_seedlings_edit",432,"11_11",1,"three",2,2016,"Ungrazed","no water","mono","high","C","POFE","Poa_fen","11_38",11101,23,2,0.25
+"NV_seedlings_edit",433,"11_11",1,"three",14,2016,"Ungrazed","no water","mono","high","C","VUMY","Vul_mic","11_46",11101,143,2,0.25
+"NV_seedlings_edit",434,"11_11",1,"three",18,2016,"Ungrazed","no water","mono","high","C","ELEL","Ely_ely","11_30",11101,183,6,0.25
+"NV_seedlings_edit",435,"11_11",1,"three",6,2016,"Ungrazed","no water","mono","high","C","ELTR","Ely_tra","11_34",11101,63,32,0.25
+"NV_seedlings_edit",436,"11_11",2,"two",3,2015,"Ungrazed","no water","mono","high","C","ELEL","Ely_ely","11_30",1102,32,3,0.125
+"NV_seedlings_edit",437,"11_11",2,"two",4,2015,"Ungrazed","no water","mono","high","C","ELTR","Ely_tra","11_34",1102,42,25,0.125
+"NV_seedlings_edit",438,"11_11",2,"two",1,2015,"Ungrazed","no water","mono","high","C","POFE","Poa_fen","11_38",1102,12,0,0.125
+"NV_seedlings_edit",439,"11_11",2,"two",2,2015,"Ungrazed","no water","mono","high","C","POSE","Pse_rup","11_42",1102,22,2,0.125
+"NV_seedlings_edit",440,"11_11",2,"two",5,2015,"Ungrazed","no water","mono","high","C","VUMI","Vul_mic","11_46",1102,52,24,0.125
+"NV_seedlings_edit",441,"11_11",3,"two",4,2015,"Ungrazed","no water","mono","high","C","ELEL","Ely_ely","11_30",1103,42,7,0.125
+"NV_seedlings_edit",442,"11_11",3,"two",2,2015,"Ungrazed","no water","mono","high","C","ELTR","Ely_tra","11_34",1103,22,32,0.125
+"NV_seedlings_edit",443,"11_11",3,"two",3,2015,"Ungrazed","no water","mono","high","C","POFE","Poa_fen","11_38",1103,32,2,0.125
+"NV_seedlings_edit",444,"11_11",3,"two",1,2015,"Ungrazed","no water","mono","high","C","POSE","Pse_rup","11_42",1103,12,0,0.125
+"NV_seedlings_edit",445,"11_11",3,"two",5,2015,"Ungrazed","no water","mono","high","C","VUMI","Vul_mic","11_46",1103,52,0,0.125
+"NV_seedlings_edit",446,"11_11",4,"three",15,2015,"Ungrazed","no water","mono","high","C","ELEL","Ely_ely","11_30",1104,153,6,0.125
+"NV_seedlings_edit",447,"11_11",4,"three",13,2015,"Ungrazed","no water","mono","high","C","ELTR","Ely_tra","11_34",1104,133,27,0.125
+"NV_seedlings_edit",448,"11_11",4,"three",14,2015,"Ungrazed","no water","mono","high","C","POFE","Poa_fen","11_38",1104,143,5,0.125
+"NV_seedlings_edit",449,"11_11",4,"three",12,2015,"Ungrazed","no water","mono","high","C","POSE","Pse_rup","11_42",1104,123,0,0.125
+"NV_seedlings_edit",450,"11_11",4,"three",11,2015,"Ungrazed","no water","mono","high","C","VUMI","Vul_mic","11_46",1104,113,4,0.125
+"NV_seedlings_edit",451,"11_11",5,"one",2,2015,"Ungrazed","no water","mono","high","C","ELEL","Ely_ely","11_30",1105,21,14,0.125
+"NV_seedlings_edit",452,"11_11",5,"one",1,2015,"Ungrazed","no water","mono","high","C","ELTR","Ely_tra","11_34",1105,11,16,0.125
+"NV_seedlings_edit",453,"11_11",5,"one",5,2015,"Ungrazed","no water","mono","high","C","POFE","Poa_fen","11_38",1105,51,1,0.125
+"NV_seedlings_edit",454,"11_11",5,"one",4,2015,"Ungrazed","no water","mono","high","C","POSE","Pse_rup","11_42",1105,41,6,0.125
+"NV_seedlings_edit",455,"11_11",5,"one",3,2015,"Ungrazed","no water","mono","high","C","VUMI","Vul_mic","11_46",1105,31,5,0.125
+"NV_seedlings_edit",456,"11_11",6,"three",15,2015,"Ungrazed","no water","mono","high","C","ELEL","Ely_ely","11_30",1106,153,15,0.125
+"NV_seedlings_edit",457,"11_11",6,"three",11,2015,"Ungrazed","no water","mono","high","C","ELTR","Ely_tra","11_34",1106,113,17,0.125
+"NV_seedlings_edit",458,"11_11",6,"three",14,2015,"Ungrazed","no water","mono","high","C","POFE","Poa_fen","11_38",1106,143,1,0.125
+"NV_seedlings_edit",459,"11_11",6,"three",13,2015,"Ungrazed","no water","mono","high","C","POSE","Pse_rup","11_42",1106,133,2,0.125
+"NV_seedlings_edit",460,"11_11",6,"three",12,2015,"Ungrazed","no water","mono","high","C","VUMI","Vul_mic","11_46",1106,123,8,0.125
+"NV_seedlings_edit",461,"11_11",7,"two",5,2015,"Ungrazed","no water","mono","high","C","ELEL","Ely_ely","11_30",1107,52,29,0.125
+"NV_seedlings_edit",462,"11_11",7,"two",3,2015,"Ungrazed","no water","mono","high","C","ELTR","Ely_tra","11_34",1107,32,30,0.125
+"NV_seedlings_edit",463,"11_11",7,"two",4,2015,"Ungrazed","no water","mono","high","C","POFE","Poa_fen","11_38",1107,42,4,0.125
+"NV_seedlings_edit",464,"11_11",7,"two",2,2015,"Ungrazed","no water","mono","high","C","POSE","Pse_rup","11_42",1107,22,7,0.125
+"NV_seedlings_edit",465,"11_11",7,"two",1,2015,"Ungrazed","no water","mono","high","C","VUMI","Vul_mic","11_46",1107,12,2,0.125
+"NV_seedlings_edit",466,"11_11",7,"two",14,2016,"Ungrazed","no water","mono","high","C","POFE","Poa_fen","11_38",11107,142,0,0.25
+"NV_seedlings_edit",467,"11_11",7,"two",18,2016,"Ungrazed","no water","mono","high","C","ELEL","Ely_ely","11_30",11107,182,0,0.25
+"NV_seedlings_edit",468,"11_11",7,"two",2,2016,"Ungrazed","no water","mono","high","C","VUMY","Vul_mic","11_46",11107,22,1,0.25
+"NV_seedlings_edit",469,"11_11",7,"two",6,2016,"Ungrazed","no water","mono","high","C","POSE","Pse_rup","11_42",11107,62,4,0.25
+"NV_seedlings_edit",470,"11_11",7,"two",10,2016,"Ungrazed","no water","mono","high","C","ELTR","Ely_tra","11_34",11107,102,10,0.25
+"NV_seedlings_edit",471,"11_11",8,"one",3,2015,"Ungrazed","no water","mono","high","C","ELEL","Ely_ely","11_30",1108,31,9,0.125
+"NV_seedlings_edit",472,"11_11",8,"one",5,2015,"Ungrazed","no water","mono","high","C","ELTR","Ely_tra","11_34",1108,51,11,0.125
+"NV_seedlings_edit",473,"11_11",8,"one",4,2015,"Ungrazed","no water","mono","high","C","POFE","Poa_fen","11_38",1108,41,0,0.125
+"NV_seedlings_edit",474,"11_11",8,"one",1,2015,"Ungrazed","no water","mono","high","C","POSE","Pse_rup","11_42",1108,11,2,0.125
+"NV_seedlings_edit",475,"11_11",8,"one",2,2015,"Ungrazed","no water","mono","high","C","VUMI","Vul_mic","11_46",1108,21,0,0.125
+"NV_seedlings_edit",476,"11_11",8,"one",10,2016,"Ungrazed","no water","mono","high","C","ELEL","Ely_ely","11_30",11108,101,1,0.25
+"NV_seedlings_edit",477,"11_11",8,"one",2,2016,"Ungrazed","no water","mono","high","C","POSE","Pse_rup","11_42",11108,21,7,0.25
+"NV_seedlings_edit",478,"11_11",8,"one",6,2016,"Ungrazed","no water","mono","high","C","VUMY","Vul_mic","11_46",11108,61,7,0.25
+"NV_seedlings_edit",479,"11_11",8,"one",14,2016,"Ungrazed","no water","mono","high","C","POFE","Poa_fen","11_38",11108,141,9,0.25
+"NV_seedlings_edit",480,"11_11",8,"one",18,2016,"Ungrazed","no water","mono","high","C","ELTR","Ely_tra","11_34",11108,181,19,0.25
+"NV_seedlings_edit",481,"11_11",9,"one",3,2015,"Ungrazed","no water","mono","high","C","ELEL","Ely_ely","11_30",1109,31,8,0.125
+"NV_seedlings_edit",482,"11_11",9,"one",2,2015,"Ungrazed","no water","mono","high","C","ELTR","Ely_tra","11_34",1109,21,10,0.125
+"NV_seedlings_edit",483,"11_11",9,"one",4,2015,"Ungrazed","no water","mono","high","C","POFE","Poa_fen","11_38",1109,41,1,0.125
+"NV_seedlings_edit",484,"11_11",9,"one",5,2015,"Ungrazed","no water","mono","high","C","POSE","Pse_rup","11_42",1109,51,3,0.125
+"NV_seedlings_edit",485,"11_11",9,"one",1,2015,"Ungrazed","no water","mono","high","C","VUMI","Vul_mic","11_46",1109,11,2,0.125
+"NV_seedlings_edit",486,"11_11",10,"three",1,2015,"Ungrazed","no water","mono","low","C","ELEL","Ely_ely","11_32",1110,13,0,0.125
+"NV_seedlings_edit",487,"11_11",10,"three",5,2015,"Ungrazed","no water","mono","low","C","ELTR","Ely_tra","11_36",1110,53,1,0.125
+"NV_seedlings_edit",488,"11_11",10,"three",4,2015,"Ungrazed","no water","mono","low","C","POFE","Poa_fen","11_40",1110,43,0,0.125
+"NV_seedlings_edit",489,"11_11",10,"three",2,2015,"Ungrazed","no water","mono","low","C","POSE","Pse_rup","11_44",1110,23,0,0.125
+"NV_seedlings_edit",490,"11_11",10,"three",3,2015,"Ungrazed","no water","mono","low","C","VUMI","Vul_mic","11_48",1110,33,0,0.125
+"NV_seedlings_edit",491,"11_11",10,"three",6,2016,"Ungrazed","no water","mono","low","C","POSE","Pse_rup","11_44",11110,63,2,0.25
+"NV_seedlings_edit",492,"11_11",10,"three",14,2016,"Ungrazed","no water","mono","low","C","POFE","Poa_fen","11_40",11110,143,2,0.25
+"NV_seedlings_edit",493,"11_11",10,"three",2,2016,"Ungrazed","no water","mono","low","C","ELEL","Ely_ely","11_32",11110,23,5,0.25
+"NV_seedlings_edit",494,"11_11",10,"three",10,2016,"Ungrazed","no water","mono","low","C","VUMY","Vul_mic","11_48",11110,103,9,0.25
+"NV_seedlings_edit",495,"11_11",10,"three",18,2016,"Ungrazed","no water","mono","low","C","ELTR","Ely_tra","11_36",11110,183,16,0.25
+"NV_seedlings_edit",496,"11_11",11,"two",1,2015,"Ungrazed","no water","mono","low","C","ELEL","Ely_ely","11_32",1111,12,2,0.125
+"NV_seedlings_edit",497,"11_11",11,"two",2,2015,"Ungrazed","no water","mono","low","C","ELTR","Ely_tra","11_36",1111,22,10,0.125
+"NV_seedlings_edit",498,"11_11",11,"two",3,2015,"Ungrazed","no water","mono","low","C","POFE","Poa_fen","11_40",1111,32,1,0.125
+"NV_seedlings_edit",499,"11_11",11,"two",4,2015,"Ungrazed","no water","mono","low","C","POSE","Pse_rup","11_44",1111,42,9,0.125
+"NV_seedlings_edit",500,"11_11",11,"two",5,2015,"Ungrazed","no water","mono","low","C","VUMI","Vul_mic","11_48",1111,52,1,0.125
+"NV_seedlings_edit",501,"11_11",12,"two",2,2015,"Ungrazed","no water","mono","low","C","ELEL","Ely_ely","11_32",1112,22,3,0.125
+"NV_seedlings_edit",502,"11_11",12,"two",5,2015,"Ungrazed","no water","mono","low","C","ELTR","Ely_tra","11_36",1112,52,9,0.125
+"NV_seedlings_edit",503,"11_11",12,"two",4,2015,"Ungrazed","no water","mono","low","C","POFE","Poa_fen","11_40",1112,42,1,0.125
+"NV_seedlings_edit",504,"11_11",12,"two",3,2015,"Ungrazed","no water","mono","low","C","POSE","Pse_rup","11_44",1112,32,2,0.125
+"NV_seedlings_edit",505,"11_11",12,"two",1,2015,"Ungrazed","no water","mono","low","C","VUMI","Vul_mic","11_48",1112,12,3,0.125
+"NV_seedlings_edit",506,"11_11",13,"three",4,2015,"Ungrazed","no water","mono","low","C","ELEL","Ely_ely","11_32",1113,43,3,0.125
+"NV_seedlings_edit",507,"11_11",13,"three",2,2015,"Ungrazed","no water","mono","low","C","ELTR","Ely_tra","11_36",1113,23,2,0.125
+"NV_seedlings_edit",508,"11_11",13,"three",5,2015,"Ungrazed","no water","mono","low","C","POFE","Poa_fen","11_40",1113,53,0,0.125
+"NV_seedlings_edit",509,"11_11",13,"three",3,2015,"Ungrazed","no water","mono","low","C","POSE","Pse_rup","11_44",1113,33,0,0.125
+"NV_seedlings_edit",510,"11_11",13,"three",1,2015,"Ungrazed","no water","mono","low","C","VUMI","Vul_mic","11_48",1113,13,0,0.125
+"NV_seedlings_edit",511,"11_11",14,"one",2,2015,"Ungrazed","no water","mono","low","C","ELEL","Ely_ely","11_32",1114,21,1,0.125
+"NV_seedlings_edit",512,"11_11",14,"one",4,2015,"Ungrazed","no water","mono","low","C","ELTR","Ely_tra","11_36",1114,41,9,0.125
+"NV_seedlings_edit",513,"11_11",14,"one",5,2015,"Ungrazed","no water","mono","low","C","POFE","Poa_fen","11_40",1114,51,2,0.125
+"NV_seedlings_edit",514,"11_11",14,"one",3,2015,"Ungrazed","no water","mono","low","C","POSE","Pse_rup","11_44",1114,31,1,0.125
+"NV_seedlings_edit",515,"11_11",14,"one",1,2015,"Ungrazed","no water","mono","low","C","VUMI","Vul_mic","11_48",1114,11,0,0.125
+"NV_seedlings_edit",516,"11_11",15,"three",5,2015,"Ungrazed","no water","mono","low","C","ELEL","Ely_ely","11_32",1115,53,4,0.125
+"NV_seedlings_edit",517,"11_11",15,"three",4,2015,"Ungrazed","no water","mono","low","C","ELTR","Ely_tra","11_36",1115,43,19,0.125
+"NV_seedlings_edit",518,"11_11",15,"three",3,2015,"Ungrazed","no water","mono","low","C","POFE","Poa_fen","11_40",1115,33,0,0.125
+"NV_seedlings_edit",519,"11_11",15,"three",2,2015,"Ungrazed","no water","mono","low","C","POSE","Pse_rup","11_44",1115,23,0,0.125
+"NV_seedlings_edit",520,"11_11",15,"three",1,2015,"Ungrazed","no water","mono","low","C","VUMI","Vul_mic","11_48",1115,13,0,0.125
+"NV_seedlings_edit",521,"11_11",16,"two",4,2015,"Ungrazed","no water","mono","low","C","ELEL","Ely_ely","11_32",1116,42,5,0.125
+"NV_seedlings_edit",522,"11_11",16,"two",3,2015,"Ungrazed","no water","mono","low","C","ELTR","Ely_tra","11_36",1116,32,21,0.125
+"NV_seedlings_edit",523,"11_11",16,"two",2,2015,"Ungrazed","no water","mono","low","C","POFE","Poa_fen","11_40",1116,22,5,0.125
+"NV_seedlings_edit",524,"11_11",16,"two",1,2015,"Ungrazed","no water","mono","low","C","POSE","Pse_rup","11_44",1116,12,2,0.125
+"NV_seedlings_edit",525,"11_11",16,"two",5,2015,"Ungrazed","no water","mono","low","C","VUMI","Vul_mic","11_48",1116,52,0,0.125
+"NV_seedlings_edit",526,"11_11",16,"two",6,2016,"Ungrazed","no water","mono","low","C","POFE","Poa_fen","11_40",11116,62,0,0.25
+"NV_seedlings_edit",527,"11_11",16,"two",18,2016,"Ungrazed","no water","mono","low","C","VUMY","Vul_mic","11_48",11116,182,0,0.25
+"NV_seedlings_edit",528,"11_11",16,"two",2,2016,"Ungrazed","no water","mono","low","C","POSE","Pse_rup","11_44",11116,22,1,0.25
+"NV_seedlings_edit",529,"11_11",16,"two",14,2016,"Ungrazed","no water","mono","low","C","ELEL","Ely_ely","11_32",11116,142,7,0.25
+"NV_seedlings_edit",530,"11_11",16,"two",10,2016,"Ungrazed","no water","mono","low","C","ELTR","Ely_tra","11_36",11116,102,19,0.25
+"NV_seedlings_edit",531,"11_11",17,"one",12,2015,"Ungrazed","no water","mono","low","C","ELEL","Ely_ely","11_32",1117,121,0,0.125
+"NV_seedlings_edit",532,"11_11",17,"one",15,2015,"Ungrazed","no water","mono","low","C","ELTR","Ely_tra","11_36",1117,151,11,0.125
+"NV_seedlings_edit",533,"11_11",17,"one",11,2015,"Ungrazed","no water","mono","low","C","POFE","Poa_fen","11_40",1117,111,3,0.125
+"NV_seedlings_edit",534,"11_11",17,"one",14,2015,"Ungrazed","no water","mono","low","C","POSE","Pse_rup","11_44",1117,141,4,0.125
+"NV_seedlings_edit",535,"11_11",17,"one",13,2015,"Ungrazed","no water","mono","low","C","VUMI","Vul_mic","11_48",1117,131,1,0.125
+"NV_seedlings_edit",536,"11_11",17,"one",50,2016,"Ungrazed","no water","mono","low","C","VUMY","Vul_mic","11_48",11117,501,0,0.25
+"NV_seedlings_edit",537,"11_11",17,"one",48,2016,"Ungrazed","no water","mono","low","C","ELEL","Ely_ely","11_32",11117,481,4,0.25
+"NV_seedlings_edit",538,"11_11",17,"one",54,2016,"Ungrazed","no water","mono","low","C","POSE","Pse_rup","11_44",11117,541,6,0.25
+"NV_seedlings_edit",539,"11_11",17,"one",42,2016,"Ungrazed","no water","mono","low","C","POFE","Poa_fen","11_40",11117,421,9,0.25
+"NV_seedlings_edit",540,"11_11",17,"one",58,2016,"Ungrazed","no water","mono","low","C","ELTR","Ely_tra","11_36",11117,581,14,0.25
+"NV_seedlings_edit",541,"11_11",18,"one",12,2015,"Ungrazed","no water","mono","low","C","ELEL","Ely_ely","11_32",1118,121,14,0.125
+"NV_seedlings_edit",542,"11_11",18,"one",15,2015,"Ungrazed","no water","mono","low","C","ELTR","Ely_tra","11_36",1118,151,7,0.125
+"NV_seedlings_edit",543,"11_11",18,"one",13,2015,"Ungrazed","no water","mono","low","C","POFE","Poa_fen","11_40",1118,131,0,0.125
+"NV_seedlings_edit",544,"11_11",18,"one",11,2015,"Ungrazed","no water","mono","low","C","POSE","Pse_rup","11_44",1118,111,0,0.125
+"NV_seedlings_edit",545,"11_11",18,"one",14,2015,"Ungrazed","no water","mono","low","C","VUMI","Vul_mic","11_48",1118,141,6,0.125
+"NV_seedlings_edit",546,"11_12",1,"three",5,2015,"Ungrazed","water","mono","high","C","ELEL","Ely_ely","11_30",1201,53,1,0.125
+"NV_seedlings_edit",547,"11_12",1,"three",2,2015,"Ungrazed","water","mono","high","C","ELTR","Ely_tra","11_34",1201,23,6,0.125
+"NV_seedlings_edit",548,"11_12",1,"three",4,2015,"Ungrazed","water","mono","high","C","POFE","Poa_fen","11_38",1201,43,0,0.125
+"NV_seedlings_edit",549,"11_12",1,"three",3,2015,"Ungrazed","water","mono","high","C","POSE","Pse_rup","11_42",1201,33,0,0.125
+"NV_seedlings_edit",550,"11_12",1,"three",1,2015,"Ungrazed","water","mono","high","C","VUMI","Vul_mic","11_46",1201,13,1,0.125
+"NV_seedlings_edit",551,"11_12",1,"three",13,2016,"Ungrazed","water","mono","high","C","POFE","Poa_fen","11_38",11201,133,0,0.25
+"NV_seedlings_edit",552,"11_12",1,"three",9,2016,"Ungrazed","water","mono","high","C","POSE","Pse_rup","11_42",11201,93,2,0.25
+"NV_seedlings_edit",553,"11_12",1,"three",17,2016,"Ungrazed","water","mono","high","C","ELEL","Ely_ely","11_30",11201,173,6,0.25
+"NV_seedlings_edit",554,"11_12",1,"three",2,2016,"Ungrazed","water","mono","high","C","VUMY","Vul_mic","11_46",11201,23,8,0.25
+"NV_seedlings_edit",555,"11_12",1,"three",6,2016,"Ungrazed","water","mono","high","C","ELTR","Ely_tra","11_34",11201,63,23,0.25
+"NV_seedlings_edit",556,"11_12",2,"two",3,2015,"Ungrazed","water","mono","high","C","ELEL","Ely_ely","11_30",1202,32,14,0.125
+"NV_seedlings_edit",557,"11_12",2,"two",2,2015,"Ungrazed","water","mono","high","C","ELTR","Ely_tra","11_34",1202,22,36,0.125
+"NV_seedlings_edit",558,"11_12",2,"two",4,2015,"Ungrazed","water","mono","high","C","POFE","Poa_fen","11_38",1202,42,1,0.125
+"NV_seedlings_edit",559,"11_12",2,"two",5,2015,"Ungrazed","water","mono","high","C","POSE","Pse_rup","11_42",1202,52,8,0.125
+"NV_seedlings_edit",560,"11_12",2,"two",1,2015,"Ungrazed","water","mono","high","C","VUMI","Vul_mic","11_46",1202,12,7,0.125
+"NV_seedlings_edit",561,"11_12",3,"two",1,2015,"Ungrazed","water","mono","high","C","ELEL","Ely_ely","11_30",1203,12,4,0.125
+"NV_seedlings_edit",562,"11_12",3,"two",2,2015,"Ungrazed","water","mono","high","C","ELTR","Ely_tra","11_34",1203,22,16,0.125
+"NV_seedlings_edit",563,"11_12",3,"two",4,2015,"Ungrazed","water","mono","high","C","POFE","Poa_fen","11_38",1203,42,0,0.125
+"NV_seedlings_edit",564,"11_12",3,"two",5,2015,"Ungrazed","water","mono","high","C","POSE","Pse_rup","11_42",1203,52,0,0.125
+"NV_seedlings_edit",565,"11_12",3,"two",3,2015,"Ungrazed","water","mono","high","C","VUMI","Vul_mic","11_46",1203,32,6,0.125
+"NV_seedlings_edit",566,"11_12",4,"three",1,2015,"Ungrazed","water","mono","high","C","ELEL","Ely_ely","11_30",1204,13,14,0.125
+"NV_seedlings_edit",567,"11_12",4,"three",4,2015,"Ungrazed","water","mono","high","C","ELTR","Ely_tra","11_34",1204,43,5,0.125
+"NV_seedlings_edit",568,"11_12",4,"three",3,2015,"Ungrazed","water","mono","high","C","POFE","Poa_fen","11_38",1204,33,1,0.125
+"NV_seedlings_edit",569,"11_12",4,"three",2,2015,"Ungrazed","water","mono","high","C","POSE","Pse_rup","11_42",1204,23,0,0.125
+"NV_seedlings_edit",570,"11_12",4,"three",5,2015,"Ungrazed","water","mono","high","C","VUMI","Vul_mic","11_46",1204,53,4,0.125
+"NV_seedlings_edit",571,"11_12",5,"one",11,2015,"Ungrazed","water","mono","high","C","ELEL","Ely_ely","11_30",1205,111,6,0.125
+"NV_seedlings_edit",572,"11_12",5,"one",15,2015,"Ungrazed","water","mono","high","C","ELTR","Ely_tra","11_34",1205,151,13,0.125
+"NV_seedlings_edit",573,"11_12",5,"one",12,2015,"Ungrazed","water","mono","high","C","POFE","Poa_fen","11_38",1205,121,4,0.125
+"NV_seedlings_edit",574,"11_12",5,"one",14,2015,"Ungrazed","water","mono","high","C","POSE","Pse_rup","11_42",1205,141,14,0.125
+"NV_seedlings_edit",575,"11_12",5,"one",13,2015,"Ungrazed","water","mono","high","C","VUMI","Vul_mic","11_46",1205,131,1,0.125
+"NV_seedlings_edit",576,"11_12",6,"three",4,2015,"Ungrazed","water","mono","high","C","ELEL","Ely_ely","11_30",1206,43,5,0.125
+"NV_seedlings_edit",577,"11_12",6,"three",3,2015,"Ungrazed","water","mono","high","C","ELTR","Ely_tra","11_34",1206,33,24,0.125
+"NV_seedlings_edit",578,"11_12",6,"three",1,2015,"Ungrazed","water","mono","high","C","POFE","Poa_fen","11_38",1206,13,0,0.125
+"NV_seedlings_edit",579,"11_12",6,"three",5,2015,"Ungrazed","water","mono","high","C","POSE","Pse_rup","11_42",1206,53,0,0.125
+"NV_seedlings_edit",580,"11_12",6,"three",2,2015,"Ungrazed","water","mono","high","C","VUMI","Vul_mic","11_46",1206,23,5,0.125
+"NV_seedlings_edit",581,"11_12",7,"two",5,2015,"Ungrazed","water","mono","high","C","ELEL","Ely_ely","11_30",1207,52,19,0.125
+"NV_seedlings_edit",582,"11_12",7,"two",3,2015,"Ungrazed","water","mono","high","C","ELTR","Ely_tra","11_34",1207,32,48,0.125
+"NV_seedlings_edit",583,"11_12",7,"two",2,2015,"Ungrazed","water","mono","high","C","POFE","Poa_fen","11_38",1207,22,5,0.125
+"NV_seedlings_edit",584,"11_12",7,"two",1,2015,"Ungrazed","water","mono","high","C","POSE","Pse_rup","11_42",1207,12,3,0.125
+"NV_seedlings_edit",585,"11_12",7,"two",4,2015,"Ungrazed","water","mono","high","C","VUMI","Vul_mic","11_46",1207,42,16,0.125
+"NV_seedlings_edit",586,"11_12",7,"two",2,2016,"Ungrazed","water","mono","high","C","POSE","Pse_rup","11_42",11207,22,0,0.25
+"NV_seedlings_edit",587,"11_12",7,"two",18,2016,"Ungrazed","water","mono","high","C","ELEL","Ely_ely","11_30",11207,182,0,0.25
+"NV_seedlings_edit",588,"11_12",7,"two",6,2016,"Ungrazed","water","mono","high","C","POFE","Poa_fen","11_38",11207,62,1,0.25
+"NV_seedlings_edit",589,"11_12",7,"two",14,2016,"Ungrazed","water","mono","high","C","VUMY","Vul_mic","11_46",11207,142,6,0.25
+"NV_seedlings_edit",590,"11_12",7,"two",10,2016,"Ungrazed","water","mono","high","C","ELTR","Ely_tra","11_34",11207,102,10,0.25
+"NV_seedlings_edit",591,"11_12",8,"one",1,2015,"Ungrazed","water","mono","high","C","ELEL","Ely_ely","11_30",1208,11,10,0.125
+"NV_seedlings_edit",592,"11_12",8,"one",5,2015,"Ungrazed","water","mono","high","C","ELTR","Ely_tra","11_34",1208,51,39,0.125
+"NV_seedlings_edit",593,"11_12",8,"one",4,2015,"Ungrazed","water","mono","high","C","POFE","Poa_fen","11_38",1208,41,0,0.125
+"NV_seedlings_edit",594,"11_12",8,"one",3,2015,"Ungrazed","water","mono","high","C","POSE","Pse_rup","11_42",1208,31,16,0.125
+"NV_seedlings_edit",595,"11_12",8,"one",2,2015,"Ungrazed","water","mono","high","C","VUMI","Vul_mic","11_46",1208,21,24,0.125
+"NV_seedlings_edit",596,"11_12",8,"one",2,2016,"Ungrazed","water","mono","high","C","ELEL","Ely_ely","11_30",11208,21,0,0.25
+"NV_seedlings_edit",597,"11_12",8,"one",6,2016,"Ungrazed","water","mono","high","C","VUMY","Vul_mic","11_46",11208,61,4,0.25
+"NV_seedlings_edit",598,"11_12",8,"one",14,2016,"Ungrazed","water","mono","high","C","POFE","Poa_fen","11_38",11208,141,9,0.25
+"NV_seedlings_edit",599,"11_12",8,"one",10,2016,"Ungrazed","water","mono","high","C","POSE","Pse_rup","11_42",11208,101,13,0.25
+"NV_seedlings_edit",600,"11_12",8,"one",18,2016,"Ungrazed","water","mono","high","C","ELTR","Ely_tra","11_34",11208,181,21,0.25
+"NV_seedlings_edit",601,"11_12",9,"one",3,2015,"Ungrazed","water","mono","high","C","ELEL","Ely_ely","11_30",1209,31,1,0.125
+"NV_seedlings_edit",602,"11_12",9,"one",1,2015,"Ungrazed","water","mono","high","C","ELTR","Ely_tra","11_34",1209,11,20,0.125
+"NV_seedlings_edit",603,"11_12",9,"one",2,2015,"Ungrazed","water","mono","high","C","POFE","Poa_fen","11_38",1209,21,1,0.125
+"NV_seedlings_edit",604,"11_12",9,"one",4,2015,"Ungrazed","water","mono","high","C","POSE","Pse_rup","11_42",1209,41,0,0.125
+"NV_seedlings_edit",605,"11_12",9,"one",5,2015,"Ungrazed","water","mono","high","C","VUMI","Vul_mic","11_46",1209,51,8,0.125
+"NV_seedlings_edit",606,"11_12",10,"three",14,2015,"Ungrazed","water","mono","low","C","ELEL","Ely_ely","11_32",1210,143,0,0.125
+"NV_seedlings_edit",607,"11_12",10,"three",15,2015,"Ungrazed","water","mono","low","C","ELTR","Ely_tra","11_36",1210,153,15,0.125
+"NV_seedlings_edit",608,"11_12",10,"three",12,2015,"Ungrazed","water","mono","low","C","POFE","Poa_fen","11_40",1210,123,0,0.125
+"NV_seedlings_edit",609,"11_12",10,"three",11,2015,"Ungrazed","water","mono","low","C","POSE","Pse_rup","11_44",1210,113,1,0.125
+"NV_seedlings_edit",610,"11_12",10,"three",13,2015,"Ungrazed","water","mono","low","C","VUMI","Vul_mic","11_48",1210,133,2,0.125
+"NV_seedlings_edit",611,"11_12",10,"three",54,2016,"Ungrazed","water","mono","low","C","ELEL","Ely_ely","11_32",11210,543,0,0.25
+"NV_seedlings_edit",612,"11_12",10,"three",42,2016,"Ungrazed","water","mono","low","C","POSE","Pse_rup","11_44",11210,423,1,0.25
+"NV_seedlings_edit",613,"11_12",10,"three",46,2016,"Ungrazed","water","mono","low","C","POFE","Poa_fen","11_40",11210,463,1,0.25
+"NV_seedlings_edit",614,"11_12",10,"three",50,2016,"Ungrazed","water","mono","low","C","VUMY","Vul_mic","11_48",11210,503,7,0.25
+"NV_seedlings_edit",615,"11_12",10,"three",58,2016,"Ungrazed","water","mono","low","C","ELTR","Ely_tra","11_36",11210,583,19,0.25
+"NV_seedlings_edit",616,"11_12",11,"two",13,2015,"Ungrazed","water","mono","low","C","ELEL","Ely_ely","11_32",1211,132,3,0.125
+"NV_seedlings_edit",617,"11_12",11,"two",11,2015,"Ungrazed","water","mono","low","C","ELTR","Ely_tra","11_36",1211,112,9,0.125
+"NV_seedlings_edit",618,"11_12",11,"two",14,2015,"Ungrazed","water","mono","low","C","POFE","Poa_fen","11_40",1211,142,0,0.125
+"NV_seedlings_edit",619,"11_12",11,"two",15,2015,"Ungrazed","water","mono","low","C","POSE","Pse_rup","11_44",1211,152,0,0.125
+"NV_seedlings_edit",620,"11_12",11,"two",12,2015,"Ungrazed","water","mono","low","C","VUMI","Vul_mic","11_48",1211,122,1,0.125
+"NV_seedlings_edit",621,"11_12",12,"two",15,2015,"Ungrazed","water","mono","low","C","ELEL","Ely_ely","11_32",1212,152,11,0.125
+"NV_seedlings_edit",622,"11_12",12,"two",12,2015,"Ungrazed","water","mono","low","C","ELTR","Ely_tra","11_36",1212,122,10,0.125
+"NV_seedlings_edit",623,"11_12",12,"two",13,2015,"Ungrazed","water","mono","low","C","POFE","Poa_fen","11_40",1212,132,0,0.125
+"NV_seedlings_edit",624,"11_12",12,"two",11,2015,"Ungrazed","water","mono","low","C","POSE","Pse_rup","11_44",1212,112,2,0.125
+"NV_seedlings_edit",625,"11_12",12,"two",14,2015,"Ungrazed","water","mono","low","C","VUMI","Vul_mic","11_48",1212,142,0,0.125
+"NV_seedlings_edit",626,"11_12",13,"three",15,2015,"Ungrazed","water","mono","low","C","ELEL","Ely_ely","11_32",1213,153,6,0.125
+"NV_seedlings_edit",627,"11_12",13,"three",13,2015,"Ungrazed","water","mono","low","C","ELTR","Ely_tra","11_36",1213,133,8,0.125
+"NV_seedlings_edit",628,"11_12",13,"three",11,2015,"Ungrazed","water","mono","low","C","POFE","Poa_fen","11_40",1213,113,0,0.125
+"NV_seedlings_edit",629,"11_12",13,"three",14,2015,"Ungrazed","water","mono","low","C","POSE","Pse_rup","11_44",1213,143,2,0.125
+"NV_seedlings_edit",630,"11_12",13,"three",12,2015,"Ungrazed","water","mono","low","C","VUMI","Vul_mic","11_48",1213,123,0,0.125
+"NV_seedlings_edit",631,"11_12",14,"one",2,2015,"Ungrazed","water","mono","low","C","ELEL","Ely_ely","11_32",1214,21,1,0.125
+"NV_seedlings_edit",632,"11_12",14,"one",4,2015,"Ungrazed","water","mono","low","C","ELTR","Ely_tra","11_36",1214,41,13,0.125
+"NV_seedlings_edit",633,"11_12",14,"one",1,2015,"Ungrazed","water","mono","low","C","POFE","Poa_fen","11_40",1214,11,1,0.125
+"NV_seedlings_edit",634,"11_12",14,"one",5,2015,"Ungrazed","water","mono","low","C","POSE","Pse_rup","11_44",1214,51,4,0.125
+"NV_seedlings_edit",635,"11_12",14,"one",3,2015,"Ungrazed","water","mono","low","C","VUMI","Vul_mic","11_48",1214,31,0,0.125
+"NV_seedlings_edit",636,"11_12",15,"three",1,2015,"Ungrazed","water","mono","low","C","ELEL","Ely_ely","11_32",1215,13,0,0.125
+"NV_seedlings_edit",637,"11_12",15,"three",2,2015,"Ungrazed","water","mono","low","C","ELTR","Ely_tra","11_36",1215,23,4,0.125
+"NV_seedlings_edit",638,"11_12",15,"three",3,2015,"Ungrazed","water","mono","low","C","POFE","Poa_fen","11_40",1215,33,1,0.125
+"NV_seedlings_edit",639,"11_12",15,"three",5,2015,"Ungrazed","water","mono","low","C","POSE","Pse_rup","11_44",1215,53,1,0.125
+"NV_seedlings_edit",640,"11_12",15,"three",4,2015,"Ungrazed","water","mono","low","C","VUMI","Vul_mic","11_48",1215,43,0,0.125
+"NV_seedlings_edit",641,"11_12",16,"two",1,2015,"Ungrazed","water","mono","low","C","ELEL","Ely_ely","11_32",1216,12,18,0.125
+"NV_seedlings_edit",642,"11_12",16,"two",4,2015,"Ungrazed","water","mono","low","C","ELTR","Ely_tra","11_36",1216,42,15,0.125
+"NV_seedlings_edit",643,"11_12",16,"two",5,2015,"Ungrazed","water","mono","low","C","POFE","Poa_fen","11_40",1216,52,5,0.125
+"NV_seedlings_edit",644,"11_12",16,"two",3,2015,"Ungrazed","water","mono","low","C","POSE","Pse_rup","11_44",1216,32,3,0.125
+"NV_seedlings_edit",645,"11_12",16,"two",2,2015,"Ungrazed","water","mono","low","C","VUMI","Vul_mic","11_48",1216,22,2,0.125
+"NV_seedlings_edit",646,"11_12",16,"two",10,2016,"Ungrazed","water","mono","low","C","POSE","Pse_rup","11_44",11216,102,0,0.25
+"NV_seedlings_edit",647,"11_12",16,"two",18,2016,"Ungrazed","water","mono","low","C","POFE","Poa_fen","11_40",11216,182,0,0.25
+"NV_seedlings_edit",648,"11_12",16,"two",2,2016,"Ungrazed","water","mono","low","C","ELEL","Ely_ely","11_32",11216,22,1,0.25
+"NV_seedlings_edit",649,"11_12",16,"two",6,2016,"Ungrazed","water","mono","low","C","VUMY","Vul_mic","11_48",11216,62,2,0.25
+"NV_seedlings_edit",650,"11_12",16,"two",14,2016,"Ungrazed","water","mono","low","C","ELTR","Ely_tra","11_36",11216,142,9,0.25
+"NV_seedlings_edit",651,"11_12",17,"one",11,2015,"Ungrazed","water","mono","low","C","ELEL","Ely_ely","11_32",1217,111,4,0.125
+"NV_seedlings_edit",652,"11_12",17,"one",15,2015,"Ungrazed","water","mono","low","C","ELTR","Ely_tra","11_36",1217,151,6,0.125
+"NV_seedlings_edit",653,"11_12",17,"one",13,2015,"Ungrazed","water","mono","low","C","POFE","Poa_fen","11_40",1217,131,5,0.125
+"NV_seedlings_edit",654,"11_12",17,"one",12,2015,"Ungrazed","water","mono","low","C","POSE","Pse_rup","11_44",1217,121,0,0.125
+"NV_seedlings_edit",655,"11_12",17,"one",14,2015,"Ungrazed","water","mono","low","C","VUMI","Vul_mic","11_48",1217,141,0,0.125
+"NV_seedlings_edit",656,"11_12",17,"one",42,2016,"Ungrazed","water","mono","low","C","ELEL","Ely_ely","11_32",11217,421,0,0.25
+"NV_seedlings_edit",657,"11_12",17,"one",50,2016,"Ungrazed","water","mono","low","C","POFE","Poa_fen","11_40",11217,501,6,0.25
+"NV_seedlings_edit",658,"11_12",17,"one",54,2016,"Ungrazed","water","mono","low","C","VUMY","Vul_mic","11_48",11217,541,6,0.25
+"NV_seedlings_edit",659,"11_12",17,"one",46,2016,"Ungrazed","water","mono","low","C","POSE","Pse_rup","11_44",11217,461,14,0.25
+"NV_seedlings_edit",660,"11_12",17,"one",58,2016,"Ungrazed","water","mono","low","C","ELTR","Ely_tra","11_36",11217,581,36,0.25
+"NV_seedlings_edit",661,"11_12",18,"one",2,2015,"Ungrazed","water","mono","low","C","ELEL","Ely_ely","11_32",1218,21,6,0.125
+"NV_seedlings_edit",662,"11_12",18,"one",3,2015,"Ungrazed","water","mono","low","C","ELTR","Ely_tra","11_36",1218,31,3,0.125
+"NV_seedlings_edit",663,"11_12",18,"one",5,2015,"Ungrazed","water","mono","low","C","POFE","Poa_fen","11_40",1218,51,2,0.125
+"NV_seedlings_edit",664,"11_12",18,"one",4,2015,"Ungrazed","water","mono","low","C","POSE","Pse_rup","11_44",1218,41,1,0.125
+"NV_seedlings_edit",665,"11_12",18,"one",1,2015,"Ungrazed","water","mono","low","C","VUMI","Vul_mic","11_48",1218,11,0,0.125
+"NV_seedlings_edit",666,"11_13",1,"two",54,2016,"Fall","no water","mono","high","UC","VUMY","Vul_mic","11_22",11301,542,0,0.25
+"NV_seedlings_edit",667,"11_13",1,"two",42,2016,"Fall","no water","mono","high","UC","POSE","Pse_rup","11_18",11301,422,4,0.25
+"NV_seedlings_edit",668,"11_13",1,"two",50,2016,"Fall","no water","mono","high","UC","POFE","Poa_fen","11_14",11301,502,4,0.25
+"NV_seedlings_edit",669,"11_13",1,"two",58,2016,"Fall","no water","mono","high","UC","ELEL","Ely_ely","11_6",11301,582,6,0.25
+"NV_seedlings_edit",670,"11_13",1,"two",46,2016,"Fall","no water","mono","high","UC","ELTR","Ely_tra","11_10",11301,462,8,0.25
+"NV_seedlings_edit",671,"11_13",2,"one",54,2016,"Fall","no water","mono","high","UC","VUMY","Vul_mic","11_22",11302,541,0,0.25
+"NV_seedlings_edit",672,"11_13",2,"one",46,2016,"Fall","no water","mono","high","UC","ELEL","Ely_ely","11_6",11302,461,4,0.25
+"NV_seedlings_edit",673,"11_13",2,"one",50,2016,"Fall","no water","mono","high","UC","POSE","Pse_rup","11_18",11302,501,4,0.25
+"NV_seedlings_edit",674,"11_13",2,"one",42,2016,"Fall","no water","mono","high","UC","POFE","Poa_fen","11_14",11302,421,9,0.25
+"NV_seedlings_edit",675,"11_13",2,"one",58,2016,"Fall","no water","mono","high","UC","ELTR","Ely_tra","11_10",11302,581,21,0.25
+"NV_seedlings_edit",676,"11_13",3,"three",2,2016,"Fall","no water","mono","high","UC","ELTR","Ely_tra","11_10",11303,23,0,0.25
+"NV_seedlings_edit",677,"11_13",3,"three",6,2016,"Fall","no water","mono","high","UC","POFE","Poa_fen","11_14",11303,63,0,0.25
+"NV_seedlings_edit",678,"11_13",3,"three",14,2016,"Fall","no water","mono","high","UC","ELEL","Ely_ely","11_6",11303,143,0,0.25
+"NV_seedlings_edit",679,"11_13",3,"three",18,2016,"Fall","no water","mono","high","UC","POSE","Pse_rup","11_18",11303,183,1,0.25
+"NV_seedlings_edit",680,"11_13",3,"three",10,2016,"Fall","no water","mono","high","UC","VUMY","Vul_mic","11_22",11303,103,15,0.25
+"NV_seedlings_edit",681,"11_13",4,"two",42,2016,"Fall","no water","mono","low","UC","POSE","Pse_rup","11_20",11304,422,0,0.25
+"NV_seedlings_edit",682,"11_13",4,"two",46,2016,"Fall","no water","mono","low","UC","POFE","Poa_fen","11_16",11304,462,0,0.25
+"NV_seedlings_edit",683,"11_13",4,"two",58,2016,"Fall","no water","mono","low","UC","VUMY","Vul_mic","11_24",11304,582,0,0.25
+"NV_seedlings_edit",684,"11_13",4,"two",54,2016,"Fall","no water","mono","low","UC","ELTR","Ely_tra","11_12",11304,542,4,0.25
+"NV_seedlings_edit",685,"11_13",4,"two",50,2016,"Fall","no water","mono","low","UC","ELEL","Ely_ely","11_8",11304,502,14,0.25
+"NV_seedlings_edit",686,"11_13",5,"one",42,2016,"Fall","no water","mono","low","UC","POFE","Poa_fen","11_16",11305,421,0,0.25
+"NV_seedlings_edit",687,"11_13",5,"one",58,2016,"Fall","no water","mono","low","UC","POSE","Pse_rup","11_20",11305,581,0,0.25
+"NV_seedlings_edit",688,"11_13",5,"one",54,2016,"Fall","no water","mono","low","UC","ELEL","Ely_ely","11_8",11305,541,1,0.25
+"NV_seedlings_edit",689,"11_13",5,"one",50,2016,"Fall","no water","mono","low","UC","ELTR","Ely_tra","11_12",11305,501,3,0.25
+"NV_seedlings_edit",690,"11_13",5,"one",46,2016,"Fall","no water","mono","low","UC","VUMY","Vul_mic","11_24",11305,461,6,0.25
+"NV_seedlings_edit",691,"11_13",6,"three",52,2016,"Fall","no water","mono","low","UC","POFE","Poa_fen","11_16",11306,523,0,0.25
+"NV_seedlings_edit",692,"11_13",6,"three",41,2016,"Fall","no water","mono","low","UC","POSE","Pse_rup","11_20",11306,413,1,0.25
+"NV_seedlings_edit",693,"11_13",6,"three",56,2016,"Fall","no water","mono","low","UC","ELEL","Ely_ely","11_8",11306,563,1,0.25
+"NV_seedlings_edit",694,"11_13",6,"three",45,2016,"Fall","no water","mono","low","UC","VUMY","Vul_mic","11_24",11306,453,3,0.25
+"NV_seedlings_edit",695,"11_13",6,"three",48,2016,"Fall","no water","mono","low","UC","ELTR","Ely_tra","11_12",11306,483,5,0.25
+"NV_seedlings_edit",696,"11_13",7,"two",42,2016,"Spring","no water","mono","high","UC","ELEL","Ely_ely","11_56",11307,422,0,0.25
+"NV_seedlings_edit",697,"11_13",7,"two",46,2016,"Spring","no water","mono","high","UC","VUMY","Vul_mic","11_72",11307,462,1,0.25
+"NV_seedlings_edit",698,"11_13",7,"two",50,2016,"Spring","no water","mono","high","UC","POFE","Poa_fen","11_64",11307,502,1,0.25
+"NV_seedlings_edit",699,"11_13",7,"two",58,2016,"Spring","no water","mono","high","UC","POSE","Pse_rup","11_68",11307,582,2,0.25
+"NV_seedlings_edit",700,"11_13",7,"two",54,2016,"Spring","no water","mono","high","UC","ELTR","Ely_tra","11_60",11307,542,4,0.25
+"NV_seedlings_edit",701,"11_13",8,"three",6,2016,"Spring","no water","mono","high","UC","VUMY","Vul_mic","11_72",11308,63,3,0.25
+"NV_seedlings_edit",702,"11_13",8,"three",14,2016,"Spring","no water","mono","high","UC","ELEL","Ely_ely","11_56",11308,143,3,0.25
+"NV_seedlings_edit",703,"11_13",8,"three",18,2016,"Spring","no water","mono","high","UC","POSE","Pse_rup","11_68",11308,183,7,0.25
+"NV_seedlings_edit",704,"11_13",8,"three",10,2016,"Spring","no water","mono","high","UC","POFE","Poa_fen","11_64",11308,103,8,0.25
+"NV_seedlings_edit",705,"11_13",8,"three",2,2016,"Spring","no water","mono","high","UC","ELTR","Ely_tra","11_60",11308,23,27,0.25
+"NV_seedlings_edit",706,"11_13",9,"one",46,2016,"Spring","no water","mono","high","UC","POFE","Poa_fen","11_64",11309,461,0,0.25
+"NV_seedlings_edit",707,"11_13",9,"one",50,2016,"Spring","no water","mono","high","UC","ELEL","Ely_ely","11_56",11309,501,0,0.25
+"NV_seedlings_edit",708,"11_13",9,"one",58,2016,"Spring","no water","mono","high","UC","POSE","Pse_rup","11_68",11309,581,1,0.25
+"NV_seedlings_edit",709,"11_13",9,"one",62,2016,"Spring","no water","mono","high","UC","VUMY","Vul_mic","11_72",11309,621,1,0.25
+"NV_seedlings_edit",710,"11_13",9,"one",54,2016,"Spring","no water","mono","high","UC","ELTR","Ely_tra","11_60",11309,541,11,0.25
+"NV_seedlings_edit",711,"11_13",10,"two",42,2016,"Spring","no water","mono","low","UC","VUMY","Vul_mic","11_74",11310,422,0,0.25
+"NV_seedlings_edit",712,"11_13",10,"two",58,2016,"Spring","no water","mono","low","UC","POFE","Poa_fen","11_66",11310,582,0,0.25
+"NV_seedlings_edit",713,"11_13",10,"two",54,2016,"Spring","no water","mono","low","UC","ELEL","Ely_ely","11_58",11310,542,2,0.25
+"NV_seedlings_edit",714,"11_13",10,"two",46,2016,"Spring","no water","mono","low","UC","POSE","Pse_rup","11_70",11310,462,4,0.25
+"NV_seedlings_edit",715,"11_13",10,"two",50,2016,"Spring","no water","mono","low","UC","ELTR","Ely_tra","11_62",11310,502,10,0.25
+"NV_seedlings_edit",716,"11_13",11,"three",58,2016,"Spring","no water","mono","low","UC","POSE","Pse_rup","11_70",11311,583,0,0.25
+"NV_seedlings_edit",717,"11_13",11,"three",46,2016,"Spring","no water","mono","low","UC","VUMY","Vul_mic","11_74",11311,463,1,0.25
+"NV_seedlings_edit",718,"11_13",11,"three",54,2016,"Spring","no water","mono","low","UC","ELEL","Ely_ely","11_58",11311,543,1,0.25
+"NV_seedlings_edit",719,"11_13",11,"three",42,2016,"Spring","no water","mono","low","UC","ELTR","Ely_tra","11_62",11311,423,2,0.25
+"NV_seedlings_edit",720,"11_13",11,"three",50,2016,"Spring","no water","mono","low","UC","POFE","Poa_fen","11_66",11311,503,3,0.25
+"NV_seedlings_edit",721,"11_13",12,"one",10,2016,"Spring","no water","mono","low","UC","VUMY","Vul_mic","11_74",11312,101,0,0.25
+"NV_seedlings_edit",722,"11_13",12,"one",14,2016,"Spring","no water","mono","low","UC","ELTR","Ely_tra","11_62",11312,141,1,0.25
+"NV_seedlings_edit",723,"11_13",12,"one",18,2016,"Spring","no water","mono","low","UC","ELEL","Ely_ely","11_58",11312,181,1,0.25
+"NV_seedlings_edit",724,"11_13",12,"one",2,2016,"Spring","no water","mono","low","UC","POFE","Poa_fen","11_66",11312,21,2,0.25
+"NV_seedlings_edit",725,"11_13",12,"one",6,2016,"Spring","no water","mono","low","UC","POSE","Pse_rup","11_70",11312,61,18,0.25
+"NV_seedlings_edit",726,"11_14",1,"two",50,2016,"Fall","water","mono","high","UC","POFE","Poa_fen","11_14",11401,502,1,0.25
+"NV_seedlings_edit",727,"11_14",1,"two",46,2016,"Fall","water","mono","high","UC","ELEL","Ely_ely","11_6",11401,462,3,0.25
+"NV_seedlings_edit",728,"11_14",1,"two",42,2016,"Fall","water","mono","high","UC","VUMY","Vul_mic","11_22",11401,422,6,0.25
+"NV_seedlings_edit",729,"11_14",1,"two",58,2016,"Fall","water","mono","high","UC","ELTR","Ely_tra","11_10",11401,582,9,0.25
+"NV_seedlings_edit",730,"11_14",1,"two",54,2016,"Fall","water","mono","high","UC","POSE","Pse_rup","11_18",11401,542,17,0.25
+"NV_seedlings_edit",731,"11_14",2,"one",2,2016,"Fall","water","mono","high","UC","ELEL","Ely_ely","11_6",11402,21,0,0.25
+"NV_seedlings_edit",732,"11_14",2,"one",6,2016,"Fall","water","mono","high","UC","VUMY","Vul_mic","11_22",11402,61,0,0.25
+"NV_seedlings_edit",733,"11_14",2,"one",10,2016,"Fall","water","mono","high","UC","POFE","Poa_fen","11_14",11402,101,7,0.25
+"NV_seedlings_edit",734,"11_14",2,"one",18,2016,"Fall","water","mono","high","UC","POSE","Pse_rup","11_18",11402,181,7,0.25
+"NV_seedlings_edit",735,"11_14",2,"one",14,2016,"Fall","water","mono","high","UC","ELTR","Ely_tra","11_10",11402,141,23,0.25
+"NV_seedlings_edit",736,"11_14",3,"three",46,2016,"Fall","water","mono","high","UC","POFE","Poa_fen","11_14",11403,463,0,0.25
+"NV_seedlings_edit",737,"11_14",3,"three",50,2016,"Fall","water","mono","high","UC","ELEL","Ely_ely","11_6",11403,503,0,0.25
+"NV_seedlings_edit",738,"11_14",3,"three",54,2016,"Fall","water","mono","high","UC","POSE","Pse_rup","11_18",11403,543,0,0.25
+"NV_seedlings_edit",739,"11_14",3,"three",58,2016,"Fall","water","mono","high","UC","VUMY","Vul_mic","11_22",11403,583,2,0.25
+"NV_seedlings_edit",740,"11_14",3,"three",42,2016,"Fall","water","mono","high","UC","ELTR","Ely_tra","11_10",11403,423,3,0.25
+"NV_seedlings_edit",741,"11_14",4,"two",6,2016,"Fall","water","mono","low","UC","ELTR","Ely_tra","11_12",11404,62,0,0.25
+"NV_seedlings_edit",742,"11_14",4,"two",10,2016,"Fall","water","mono","low","UC","POFE","Poa_fen","11_16",11404,102,0,0.25
+"NV_seedlings_edit",743,"11_14",4,"two",14,2016,"Fall","water","mono","low","UC","ELEL","Ely_ely","11_8",11404,142,0,0.25
+"NV_seedlings_edit",744,"11_14",4,"two",2,2016,"Fall","water","mono","low","UC","VUMY","Vul_mic","11_24",11404,22,1,0.25
+"NV_seedlings_edit",745,"11_14",4,"two",18,2016,"Fall","water","mono","low","UC","POSE","Pse_rup","11_20",11404,182,1,0.25
+"NV_seedlings_edit",746,"11_14",5,"one",46,2016,"Fall","water","mono","low","UC","POFE","Poa_fen","11_16",11405,461,0,0.25
+"NV_seedlings_edit",747,"11_14",5,"one",50,2016,"Fall","water","mono","low","UC","POSE","Pse_rup","11_20",11405,501,0,0.25
+"NV_seedlings_edit",748,"11_14",5,"one",58,2016,"Fall","water","mono","low","UC","ELEL","Ely_ely","11_8",11405,581,0,0.25
+"NV_seedlings_edit",749,"11_14",5,"one",54,2016,"Fall","water","mono","low","UC","ELTR","Ely_tra","11_12",11405,541,1,0.25
+"NV_seedlings_edit",750,"11_14",5,"one",42,2016,"Fall","water","mono","low","UC","VUMY","Vul_mic","11_24",11405,421,2,0.25
+"NV_seedlings_edit",751,"11_14",6,"three",42,2016,"Fall","water","mono","low","UC","VUMY","Vul_mic","11_24",11406,423,1,0.25
+"NV_seedlings_edit",752,"11_14",6,"three",46,2016,"Fall","water","mono","low","UC","ELTR","Ely_tra","11_12",11406,463,1,0.25
+"NV_seedlings_edit",753,"11_14",6,"three",58,2016,"Fall","water","mono","low","UC","POFE","Poa_fen","11_16",11406,583,1,0.25
+"NV_seedlings_edit",754,"11_14",6,"three",50,2016,"Fall","water","mono","low","UC","POSE","Pse_rup","11_20",11406,503,2,0.25
+"NV_seedlings_edit",755,"11_14",6,"three",54,2016,"Fall","water","mono","low","UC","ELEL","Ely_ely","11_8",11406,543,2,0.25
+"NV_seedlings_edit",756,"11_14",7,"two",50,2016,"Spring","water","mono","high","UC","VUMY","Vul_mic","11_72",11407,502,0,0.25
+"NV_seedlings_edit",757,"11_14",7,"two",42,2016,"Spring","water","mono","high","UC","POFE","Poa_fen","11_64",11407,422,2,0.25
+"NV_seedlings_edit",758,"11_14",7,"two",54,2016,"Spring","water","mono","high","UC","ELEL","Ely_ely","11_56",11407,542,3,0.25
+"NV_seedlings_edit",759,"11_14",7,"two",46,2016,"Spring","water","mono","high","UC","ELTR","Ely_tra","11_60",11407,462,5,0.25
+"NV_seedlings_edit",760,"11_14",7,"two",58,2016,"Spring","water","mono","high","UC","POSE","Pse_rup","11_68",11407,582,6,0.25
+"NV_seedlings_edit",761,"11_14",8,"three",42,2016,"Spring","water","mono","high","UC","VUMY","Vul_mic","11_72",11408,423,0,0.25
+"NV_seedlings_edit",762,"11_14",8,"three",46,2016,"Spring","water","mono","high","UC","ELTR","Ely_tra","11_60",11408,463,0,0.25
+"NV_seedlings_edit",763,"11_14",8,"three",58,2016,"Spring","water","mono","high","UC","ELEL","Ely_ely","11_56",11408,583,0,0.25
+"NV_seedlings_edit",764,"11_14",8,"three",54,2016,"Spring","water","mono","high","UC","POSE","Pse_rup","11_68",11408,543,3,0.25
+"NV_seedlings_edit",765,"11_14",8,"three",50,2016,"Spring","water","mono","high","UC","POFE","Poa_fen","11_64",11408,503,4,0.25
+"NV_seedlings_edit",766,"11_14",9,"one",58,2016,"Spring","water","mono","high","UC","ELEL","Ely_ely","11_56",11409,581,0,0.25
+"NV_seedlings_edit",767,"11_14",9,"one",46,2016,"Spring","water","mono","high","UC","POFE","Poa_fen","11_64",11409,461,1,0.25
+"NV_seedlings_edit",768,"11_14",9,"one",50,2016,"Spring","water","mono","high","UC","ELTR","Ely_tra","11_60",11409,501,1,0.25
+"NV_seedlings_edit",769,"11_14",9,"one",54,2016,"Spring","water","mono","high","UC","VUMY","Vul_mic","11_72",11409,541,3,0.25
+"NV_seedlings_edit",770,"11_14",9,"one",42,2016,"Spring","water","mono","high","UC","POSE","Pse_rup","11_68",11409,421,5,0.25
+"NV_seedlings_edit",771,"11_14",10,"two",13,2016,"Spring","water","mono","low","UC","ELEL","Ely_ely","11_58",11410,132,0,0.25
+"NV_seedlings_edit",772,"11_14",10,"two",10,2016,"Spring","water","mono","low","UC","VUMY","Vul_mic","11_74",11410,102,1,0.25
+"NV_seedlings_edit",773,"11_14",10,"two",6,2016,"Spring","water","mono","low","UC","POSE","Pse_rup","11_70",11410,62,4,0.25
+"NV_seedlings_edit",774,"11_14",10,"two",2,2016,"Spring","water","mono","low","UC","POFE","Poa_fen","11_66",11410,22,7,0.25
+"NV_seedlings_edit",775,"11_14",10,"two",17,2016,"Spring","water","mono","low","UC","ELTR","Ely_tra","11_62",11410,172,11,0.25
+"NV_seedlings_edit",776,"11_14",11,"three",2,2016,"Spring","water","mono","low","UC","POFE","Poa_fen","11_66",11411,23,0,0.25
+"NV_seedlings_edit",777,"11_14",11,"three",10,2016,"Spring","water","mono","low","UC","POSE","Pse_rup","11_70",11411,103,0,0.25
+"NV_seedlings_edit",778,"11_14",11,"three",18,2016,"Spring","water","mono","low","UC","VUMY","Vul_mic","11_74",11411,183,0,0.25
+"NV_seedlings_edit",779,"11_14",11,"three",6,2016,"Spring","water","mono","low","UC","ELEL","Ely_ely","11_58",11411,63,4,0.25
+"NV_seedlings_edit",780,"11_14",11,"three",23,2016,"Spring","water","mono","low","UC","ELTR","Ely_tra","11_62",11411,233,8,0.25
+"NV_seedlings_edit",781,"11_14",12,"one",46,2016,"Spring","water","mono","low","UC","VUMY","Vul_mic","11_74",11412,461,0,0.25
+"NV_seedlings_edit",782,"11_14",12,"one",42,2016,"Spring","water","mono","low","UC","POFE","Poa_fen","11_66",11412,421,2,0.25
+"NV_seedlings_edit",783,"11_14",12,"one",54,2016,"Spring","water","mono","low","UC","ELEL","Ely_ely","11_58",11412,541,2,0.25
+"NV_seedlings_edit",784,"11_14",12,"one",50,2016,"Spring","water","mono","low","UC","POSE","Pse_rup","11_70",11412,501,6,0.25
+"NV_seedlings_edit",785,"11_14",12,"one",58,2016,"Spring","water","mono","low","UC","ELTR","Ely_tra","11_62",11412,581,23,0.25
+"NV_seedlings_edit",786,"11_15",1,"three",12,2015,"Ungrazed","no water","mono","high","UC","ELEL","Ely_ely","11_31",1501,123,3,0.125
+"NV_seedlings_edit",787,"11_15",1,"three",15,2015,"Ungrazed","no water","mono","high","UC","ELTR","Ely_tra","11_35",1501,153,5,0.125
+"NV_seedlings_edit",788,"11_15",1,"three",13,2015,"Ungrazed","no water","mono","high","UC","POFE","Poa_fen","11_39",1501,133,0,0.125
+"NV_seedlings_edit",789,"11_15",1,"three",11,2015,"Ungrazed","no water","mono","high","UC","POSE","Pse_rup","11_43",1501,113,0,0.125
+"NV_seedlings_edit",790,"11_15",1,"three",14,2015,"Ungrazed","no water","mono","high","UC","VUMI","Vul_mic","11_47",1501,143,0,0.125
+"NV_seedlings_edit",791,"11_15",1,"three",54,2016,"Ungrazed","no water","mono","high","UC","VUMY","Vul_mic","11_47",11501,543,0,0.25
+"NV_seedlings_edit",792,"11_15",1,"three",42,2016,"Ungrazed","no water","mono","high","UC","POSE","Pse_rup","11_43",11501,423,1,0.25
+"NV_seedlings_edit",793,"11_15",1,"three",50,2016,"Ungrazed","no water","mono","high","UC","POFE","Poa_fen","11_39",11501,503,1,0.25
+"NV_seedlings_edit",794,"11_15",1,"three",46,2016,"Ungrazed","no water","mono","high","UC","ELEL","Ely_ely","11_31",11501,463,6,0.25
+"NV_seedlings_edit",795,"11_15",1,"three",58,2016,"Ungrazed","no water","mono","high","UC","ELTR","Ely_tra","11_35",11501,583,13,0.25
+"NV_seedlings_edit",796,"11_15",2,"two",15,2015,"Ungrazed","no water","mono","high","UC","ELEL","Ely_ely","11_31",1502,152,14,0.125
+"NV_seedlings_edit",797,"11_15",2,"two",12,2015,"Ungrazed","no water","mono","high","UC","ELTR","Ely_tra","11_35",1502,122,23,0.125
+"NV_seedlings_edit",798,"11_15",2,"two",13,2015,"Ungrazed","no water","mono","high","UC","POFE","Poa_fen","11_39",1502,132,3,0.125
+"NV_seedlings_edit",799,"11_15",2,"two",11,2015,"Ungrazed","no water","mono","high","UC","POSE","Pse_rup","11_43",1502,112,17,0.125
+"NV_seedlings_edit",800,"11_15",2,"two",14,2015,"Ungrazed","no water","mono","high","UC","VUMI","Vul_mic","11_47",1502,142,20,0.125
+"NV_seedlings_edit",801,"11_15",3,"two",11,2015,"Ungrazed","no water","mono","high","UC","ELEL","Ely_ely","11_31",1503,112,6,0.125
+"NV_seedlings_edit",802,"11_15",3,"two",14,2015,"Ungrazed","no water","mono","high","UC","ELTR","Ely_tra","11_35",1503,142,9,0.125
+"NV_seedlings_edit",803,"11_15",3,"two",13,2015,"Ungrazed","no water","mono","high","UC","POFE","Poa_fen","11_39",1503,132,0,0.125
+"NV_seedlings_edit",804,"11_15",3,"two",15,2015,"Ungrazed","no water","mono","high","UC","POSE","Pse_rup","11_43",1503,152,0,0.125
+"NV_seedlings_edit",805,"11_15",3,"two",12,2015,"Ungrazed","no water","mono","high","UC","VUMI","Vul_mic","11_47",1503,122,1,0.125
+"NV_seedlings_edit",806,"11_15",4,"three",4,2015,"Ungrazed","no water","mono","high","UC","ELEL","Ely_ely","11_31",1504,43,5,0.125
+"NV_seedlings_edit",807,"11_15",4,"three",1,2015,"Ungrazed","no water","mono","high","UC","ELTR","Ely_tra","11_35",1504,13,0,0.125
+"NV_seedlings_edit",808,"11_15",4,"three",3,2015,"Ungrazed","no water","mono","high","UC","POFE","Poa_fen","11_39",1504,33,0,0.125
+"NV_seedlings_edit",809,"11_15",4,"three",5,2015,"Ungrazed","no water","mono","high","UC","POSE","Pse_rup","11_43",1504,53,0,0.125
+"NV_seedlings_edit",810,"11_15",4,"three",2,2015,"Ungrazed","no water","mono","high","UC","VUMI","Vul_mic","11_47",1504,23,0,0.125
+"NV_seedlings_edit",811,"11_15",5,"one",12,2015,"Ungrazed","no water","mono","high","UC","ELEL","Ely_ely","11_31",1505,121,1,0.125
+"NV_seedlings_edit",812,"11_15",5,"one",15,2015,"Ungrazed","no water","mono","high","UC","ELTR","Ely_tra","11_35",1505,151,23,0.125
+"NV_seedlings_edit",813,"11_15",5,"one",11,2015,"Ungrazed","no water","mono","high","UC","POFE","Poa_fen","11_39",1505,111,1,0.125
+"NV_seedlings_edit",814,"11_15",5,"one",13,2015,"Ungrazed","no water","mono","high","UC","POSE","Pse_rup","11_43",1505,131,0,0.125
+"NV_seedlings_edit",815,"11_15",5,"one",14,2015,"Ungrazed","no water","mono","high","UC","VUMI","Vul_mic","11_47",1505,141,2,0.125
+"NV_seedlings_edit",816,"11_15",6,"three",4,2015,"Ungrazed","no water","mono","high","UC","ELEL","Ely_ely","11_31",1506,43,22,0.125
+"NV_seedlings_edit",817,"11_15",6,"three",1,2015,"Ungrazed","no water","mono","high","UC","ELTR","Ely_tra","11_35",1506,13,9,0.125
+"NV_seedlings_edit",818,"11_15",6,"three",2,2015,"Ungrazed","no water","mono","high","UC","POFE","Poa_fen","11_39",1506,23,0,0.125
+"NV_seedlings_edit",819,"11_15",6,"three",5,2015,"Ungrazed","no water","mono","high","UC","POSE","Pse_rup","11_43",1506,53,5,0.125
+"NV_seedlings_edit",820,"11_15",6,"three",3,2015,"Ungrazed","no water","mono","high","UC","VUMI","Vul_mic","11_47",1506,33,2,0.125
+"NV_seedlings_edit",821,"11_15",7,"two",14,2015,"Ungrazed","no water","mono","high","UC","ELEL","Ely_ely","11_31",1507,142,31,0.125
+"NV_seedlings_edit",822,"11_15",7,"two",13,2015,"Ungrazed","no water","mono","high","UC","ELTR","Ely_tra","11_35",1507,132,2,0.125
+"NV_seedlings_edit",823,"11_15",7,"two",15,2015,"Ungrazed","no water","mono","high","UC","POFE","Poa_fen","11_39",1507,152,0,0.125
+"NV_seedlings_edit",824,"11_15",7,"two",12,2015,"Ungrazed","no water","mono","high","UC","POSE","Pse_rup","11_43",1507,122,2,0.125
+"NV_seedlings_edit",825,"11_15",7,"two",11,2015,"Ungrazed","no water","mono","high","UC","VUMI","Vul_mic","11_47",1507,112,0,0.125
+"NV_seedlings_edit",826,"11_15",7,"two",42,2016,"Ungrazed","no water","mono","high","UC","VUMY","Vul_mic","11_47",11507,422,0,0.25
+"NV_seedlings_edit",827,"11_15",7,"two",46,2016,"Ungrazed","no water","mono","high","UC","POSE","Pse_rup","11_43",11507,462,0,0.25
+"NV_seedlings_edit",828,"11_15",7,"two",54,2016,"Ungrazed","no water","mono","high","UC","ELEL","Ely_ely","11_31",11507,542,1,0.25
+"NV_seedlings_edit",829,"11_15",7,"two",58,2016,"Ungrazed","no water","mono","high","UC","POFE","Poa_fen","11_39",11507,582,1,0.25
+"NV_seedlings_edit",830,"11_15",7,"two",50,2016,"Ungrazed","no water","mono","high","UC","ELTR","Ely_tra","11_35",11507,502,13,0.25
+"NV_seedlings_edit",831,"11_15",8,"one",13,2015,"Ungrazed","no water","mono","high","UC","ELEL","Ely_ely","11_31",1508,131,5,0.125
+"NV_seedlings_edit",832,"11_15",8,"one",11,2015,"Ungrazed","no water","mono","high","UC","ELTR","Ely_tra","11_35",1508,111,4,0.125
+"NV_seedlings_edit",833,"11_15",8,"one",14,2015,"Ungrazed","no water","mono","high","UC","POFE","Poa_fen","11_39",1508,141,0,0.125
+"NV_seedlings_edit",834,"11_15",8,"one",15,2015,"Ungrazed","no water","mono","high","UC","POSE","Pse_rup","11_43",1508,151,0,0.125
+"NV_seedlings_edit",835,"11_15",8,"one",12,2015,"Ungrazed","no water","mono","high","UC","VUMI","Vul_mic","11_47",1508,121,0,0.125
+"NV_seedlings_edit",836,"11_15",8,"one",46,2016,"Ungrazed","no water","mono","high","UC","VUMY","Vul_mic","11_47",11508,461,1,0.25
+"NV_seedlings_edit",837,"11_15",8,"one",50,2016,"Ungrazed","no water","mono","high","UC","ELEL","Ely_ely","11_31",11508,501,10,0.25
+"NV_seedlings_edit",838,"11_15",8,"one",54,2016,"Ungrazed","no water","mono","high","UC","POFE","Poa_fen","11_39",11508,541,23,0.25
+"NV_seedlings_edit",839,"11_15",8,"one",58,2016,"Ungrazed","no water","mono","high","UC","POSE","Pse_rup","11_43",11508,581,23,0.25
+"NV_seedlings_edit",840,"11_15",8,"one",42,2016,"Ungrazed","no water","mono","high","UC","ELTR","Ely_tra","11_35",11508,421,26,0.25
+"NV_seedlings_edit",841,"11_15",9,"one",12,2015,"Ungrazed","no water","mono","high","UC","ELEL","Ely_ely","11_31",1509,121,15,0.125
+"NV_seedlings_edit",842,"11_15",9,"one",13,2015,"Ungrazed","no water","mono","high","UC","ELTR","Ely_tra","11_35",1509,131,3,0.125
+"NV_seedlings_edit",843,"11_15",9,"one",11,2015,"Ungrazed","no water","mono","high","UC","POFE","Poa_fen","11_39",1509,111,1,0.125
+"NV_seedlings_edit",844,"11_15",9,"one",14,2015,"Ungrazed","no water","mono","high","UC","POSE","Pse_rup","11_43",1509,141,2,0.125
+"NV_seedlings_edit",845,"11_15",9,"one",15,2015,"Ungrazed","no water","mono","high","UC","VUMI","Vul_mic","11_47",1509,151,0,0.125
+"NV_seedlings_edit",846,"11_15",10,"three",15,2015,"Ungrazed","no water","mono","low","UC","ELEL","Ely_ely","11_33",1510,153,0,0.125
+"NV_seedlings_edit",847,"11_15",10,"three",11,2015,"Ungrazed","no water","mono","low","UC","ELTR","Ely_tra","11_37",1510,113,4,0.125
+"NV_seedlings_edit",848,"11_15",10,"three",14,2015,"Ungrazed","no water","mono","low","UC","POFE","Poa_fen","11_41",1510,143,0,0.125
+"NV_seedlings_edit",849,"11_15",10,"three",13,2015,"Ungrazed","no water","mono","low","UC","POSE","Pse_rup","11_45",1510,133,0,0.125
+"NV_seedlings_edit",850,"11_15",10,"three",12,2015,"Ungrazed","no water","mono","low","UC","VUMI","Vul_mic","11_49",1510,123,0,0.125
+"NV_seedlings_edit",851,"11_15",10,"three",54,2016,"Ungrazed","no water","mono","low","UC","POFE","Poa_fen","11_41",11510,543,0,0.25
+"NV_seedlings_edit",852,"11_15",10,"three",46,2016,"Ungrazed","no water","mono","low","UC","VUMY","Vul_mic","11_49",11510,463,1,0.25
+"NV_seedlings_edit",853,"11_15",10,"three",50,2016,"Ungrazed","no water","mono","low","UC","POSE","Pse_rup","11_45",11510,503,2,0.25
+"NV_seedlings_edit",854,"11_15",10,"three",58,2016,"Ungrazed","no water","mono","low","UC","ELEL","Ely_ely","11_33",11510,583,2,0.25
+"NV_seedlings_edit",855,"11_15",10,"three",42,2016,"Ungrazed","no water","mono","low","UC","ELTR","Ely_tra","11_37",11510,423,2,0.25
+"NV_seedlings_edit",856,"11_15",11,"two",13,2015,"Ungrazed","no water","mono","low","UC","ELEL","Ely_ely","11_33",1511,132,3,0.125
+"NV_seedlings_edit",857,"11_15",11,"two",14,2015,"Ungrazed","no water","mono","low","UC","ELTR","Ely_tra","11_37",1511,142,2,0.125
+"NV_seedlings_edit",858,"11_15",11,"two",12,2015,"Ungrazed","no water","mono","low","UC","POFE","Poa_fen","11_41",1511,122,1,0.125
+"NV_seedlings_edit",859,"11_15",11,"two",11,2015,"Ungrazed","no water","mono","low","UC","POSE","Pse_rup","11_45",1511,112,3,0.125
+"NV_seedlings_edit",860,"11_15",11,"two",15,2015,"Ungrazed","no water","mono","low","UC","VUMI","Vul_mic","11_49",1511,152,0,0.125
+"NV_seedlings_edit",861,"11_15",12,"two",14,2015,"Ungrazed","no water","mono","low","UC","ELEL","Ely_ely","11_33",1512,142,1,0.125
+"NV_seedlings_edit",862,"11_15",12,"two",13,2015,"Ungrazed","no water","mono","low","UC","ELTR","Ely_tra","11_37",1512,132,3,0.125
+"NV_seedlings_edit",863,"11_15",12,"two",15,2015,"Ungrazed","no water","mono","low","UC","POFE","Poa_fen","11_41",1512,152,0,0.125
+"NV_seedlings_edit",864,"11_15",12,"two",12,2015,"Ungrazed","no water","mono","low","UC","POSE","Pse_rup","11_45",1512,122,0,0.125
+"NV_seedlings_edit",865,"11_15",12,"two",11,2015,"Ungrazed","no water","mono","low","UC","VUMI","Vul_mic","11_49",1512,112,0,0.125
+"NV_seedlings_edit",866,"11_15",13,"three",14,2015,"Ungrazed","no water","mono","low","UC","ELEL","Ely_ely","11_33",1513,143,1,0.125
+"NV_seedlings_edit",867,"11_15",13,"three",11,2015,"Ungrazed","no water","mono","low","UC","ELTR","Ely_tra","11_37",1513,113,16,0.125
+"NV_seedlings_edit",868,"11_15",13,"three",13,2015,"Ungrazed","no water","mono","low","UC","POFE","Poa_fen","11_41",1513,133,0,0.125
+"NV_seedlings_edit",869,"11_15",13,"three",15,2015,"Ungrazed","no water","mono","low","UC","POSE","Pse_rup","11_45",1513,153,10,0.125
+"NV_seedlings_edit",870,"11_15",13,"three",12,2015,"Ungrazed","no water","mono","low","UC","VUMI","Vul_mic","11_49",1513,123,3,0.125
+"NV_seedlings_edit",871,"11_15",14,"one",14,2015,"Ungrazed","no water","mono","low","UC","ELEL","Ely_ely","11_33",1514,141,15,0.125
+"NV_seedlings_edit",872,"11_15",14,"one",13,2015,"Ungrazed","no water","mono","low","UC","ELTR","Ely_tra","11_37",1514,131,10,0.125
+"NV_seedlings_edit",873,"11_15",14,"one",11,2015,"Ungrazed","no water","mono","low","UC","POFE","Poa_fen","11_41",1514,111,0,0.125
+"NV_seedlings_edit",874,"11_15",14,"one",15,2015,"Ungrazed","no water","mono","low","UC","POSE","Pse_rup","11_45",1514,151,0,0.125
+"NV_seedlings_edit",875,"11_15",14,"one",12,2015,"Ungrazed","no water","mono","low","UC","VUMI","Vul_mic","11_49",1514,121,4,0.125
+"NV_seedlings_edit",876,"11_15",15,"three",15,2015,"Ungrazed","no water","mono","low","UC","ELEL","Ely_ely","11_33",1515,153,10,0.125
+"NV_seedlings_edit",877,"11_15",15,"three",13,2015,"Ungrazed","no water","mono","low","UC","ELTR","Ely_tra","11_37",1515,133,5,0.125
+"NV_seedlings_edit",878,"11_15",15,"three",14,2015,"Ungrazed","no water","mono","low","UC","POFE","Poa_fen","11_41",1515,143,1,0.125
+"NV_seedlings_edit",879,"11_15",15,"three",11,2015,"Ungrazed","no water","mono","low","UC","POSE","Pse_rup","11_45",1515,113,2,0.125
+"NV_seedlings_edit",880,"11_15",15,"three",12,2015,"Ungrazed","no water","mono","low","UC","VUMI","Vul_mic","11_49",1515,123,0,0.125
+"NV_seedlings_edit",881,"11_15",16,"two",15,2015,"Ungrazed","no water","mono","low","UC","ELEL","Ely_ely","11_33",1516,152,11,0.125
+"NV_seedlings_edit",882,"11_15",16,"two",11,2015,"Ungrazed","no water","mono","low","UC","ELTR","Ely_tra","11_37",1516,112,0,0.125
+"NV_seedlings_edit",883,"11_15",16,"two",13,2015,"Ungrazed","no water","mono","low","UC","POFE","Poa_fen","11_41",1516,132,1,0.125
+"NV_seedlings_edit",884,"11_15",16,"two",12,2015,"Ungrazed","no water","mono","low","UC","POSE","Pse_rup","11_45",1516,122,2,0.125
+"NV_seedlings_edit",885,"11_15",16,"two",14,2015,"Ungrazed","no water","mono","low","UC","VUMI","Vul_mic","11_49",1516,142,2,0.125
+"NV_seedlings_edit",886,"11_15",16,"two",50,2016,"Ungrazed","no water","mono","low","UC","POFE","Poa_fen","11_41",11516,502,0,0.25
+"NV_seedlings_edit",887,"11_15",16,"two",54,2016,"Ungrazed","no water","mono","low","UC","VUMY","Vul_mic","11_49",11516,542,0,0.25
+"NV_seedlings_edit",888,"11_15",16,"two",58,2016,"Ungrazed","no water","mono","low","UC","ELEL","Ely_ely","11_33",11516,582,2,0.25
+"NV_seedlings_edit",889,"11_15",16,"two",46,2016,"Ungrazed","no water","mono","low","UC","POSE","Pse_rup","11_45",11516,462,7,0.25
+"NV_seedlings_edit",890,"11_15",16,"two",42,2016,"Ungrazed","no water","mono","low","UC","ELTR","Ely_tra","11_37",11516,422,36,0.25
+"NV_seedlings_edit",891,"11_15",17,"one",1,2015,"Ungrazed","no water","mono","low","UC","ELEL","Ely_ely","11_33",1517,11,15,0.125
+"NV_seedlings_edit",892,"11_15",17,"one",3,2015,"Ungrazed","no water","mono","low","UC","ELTR","Ely_tra","11_37",1517,31,8,0.125
+"NV_seedlings_edit",893,"11_15",17,"one",2,2015,"Ungrazed","no water","mono","low","UC","POFE","Poa_fen","11_41",1517,21,8,0.125
+"NV_seedlings_edit",894,"11_15",17,"one",5,2015,"Ungrazed","no water","mono","low","UC","POSE","Pse_rup","11_45",1517,51,0,0.125
+"NV_seedlings_edit",895,"11_15",17,"one",4,2015,"Ungrazed","no water","mono","low","UC","VUMI","Vul_mic","11_49",1517,41,8,0.125
+"NV_seedlings_edit",896,"11_15",17,"one",2,2016,"Ungrazed","no water","mono","low","UC","ELEL","Ely_ely","11_33",11517,21,0,0.25
+"NV_seedlings_edit",897,"11_15",17,"one",14,2016,"Ungrazed","no water","mono","low","UC","VUMY","Vul_mic","11_49",11517,141,0,0.25
+"NV_seedlings_edit",898,"11_15",17,"one",6,2016,"Ungrazed","no water","mono","low","UC","POFE","Poa_fen","11_41",11517,61,2,0.25
+"NV_seedlings_edit",899,"11_15",17,"one",10,2016,"Ungrazed","no water","mono","low","UC","ELTR","Ely_tra","11_37",11517,101,9,0.25
+"NV_seedlings_edit",900,"11_15",17,"one",18,2016,"Ungrazed","no water","mono","low","UC","POSE","Pse_rup","11_45",11517,181,22,0.25
+"NV_seedlings_edit",901,"11_15",18,"one",5,2015,"Ungrazed","no water","mono","low","UC","ELEL","Ely_ely","11_33",1518,51,12,0.125
+"NV_seedlings_edit",902,"11_15",18,"one",4,2015,"Ungrazed","no water","mono","low","UC","ELTR","Ely_tra","11_37",1518,41,4,0.125
+"NV_seedlings_edit",903,"11_15",18,"one",1,2015,"Ungrazed","no water","mono","low","UC","POFE","Poa_fen","11_41",1518,11,2,0.125
+"NV_seedlings_edit",904,"11_15",18,"one",2,2015,"Ungrazed","no water","mono","low","UC","POSE","Pse_rup","11_45",1518,21,11,0.125
+"NV_seedlings_edit",905,"11_15",18,"one",3,2015,"Ungrazed","no water","mono","low","UC","VUMI","Vul_mic","11_49",1518,31,1,0.125
+"NV_seedlings_edit",906,"11_16",1,"three",15,2015,"Ungrazed","water","mono","high","UC","ELEL","Ely_ely","11_31",1601,153,1,0.125
+"NV_seedlings_edit",907,"11_16",1,"three",11,2015,"Ungrazed","water","mono","high","UC","ELTR","Ely_tra","11_35",1601,113,7,0.125
+"NV_seedlings_edit",908,"11_16",1,"three",13,2015,"Ungrazed","water","mono","high","UC","POFE","Poa_fen","11_39",1601,133,0,0.125
+"NV_seedlings_edit",909,"11_16",1,"three",12,2015,"Ungrazed","water","mono","high","UC","POSE","Pse_rup","11_43",1601,123,0,0.125
+"NV_seedlings_edit",910,"11_16",1,"three",14,2015,"Ungrazed","water","mono","high","UC","VUMI","Vul_mic","11_47",1601,143,1,0.125
+"NV_seedlings_edit",911,"11_16",1,"three",50,2016,"Ungrazed","water","mono","high","UC","POFE","Poa_fen","11_39",11601,503,0,0.25
+"NV_seedlings_edit",912,"11_16",1,"three",46,2016,"Ungrazed","water","mono","high","UC","POSE","Pse_rup","11_43",11601,463,4,0.25
+"NV_seedlings_edit",913,"11_16",1,"three",58,2016,"Ungrazed","water","mono","high","UC","ELEL","Ely_ely","11_31",11601,583,9,0.25
+"NV_seedlings_edit",914,"11_16",1,"three",54,2016,"Ungrazed","water","mono","high","UC","VUMY","Vul_mic","11_47",11601,543,11,0.25
+"NV_seedlings_edit",915,"11_16",1,"three",42,2016,"Ungrazed","water","mono","high","UC","ELTR","Ely_tra","11_35",11601,423,37,0.25
+"NV_seedlings_edit",916,"11_16",2,"two",12,2015,"Ungrazed","water","mono","high","UC","ELEL","Ely_ely","11_31",1602,122,6,0.125
+"NV_seedlings_edit",917,"11_16",2,"two",15,2015,"Ungrazed","water","mono","high","UC","ELTR","Ely_tra","11_35",1602,152,28,0.125
+"NV_seedlings_edit",918,"11_16",2,"two",13,2015,"Ungrazed","water","mono","high","UC","POFE","Poa_fen","11_39",1602,132,0,0.125
+"NV_seedlings_edit",919,"11_16",2,"two",14,2015,"Ungrazed","water","mono","high","UC","POSE","Pse_rup","11_43",1602,142,9,0.125
+"NV_seedlings_edit",920,"11_16",2,"two",11,2015,"Ungrazed","water","mono","high","UC","VUMI","Vul_mic","11_47",1602,112,3,0.125
+"NV_seedlings_edit",921,"11_16",3,"two",14,2015,"Ungrazed","water","mono","high","UC","ELEL","Ely_ely","11_31",1603,142,0,0.125
+"NV_seedlings_edit",922,"11_16",3,"two",12,2015,"Ungrazed","water","mono","high","UC","ELTR","Ely_tra","11_35",1603,122,14,0.125
+"NV_seedlings_edit",923,"11_16",3,"two",11,2015,"Ungrazed","water","mono","high","UC","POFE","Poa_fen","11_39",1603,112,0,0.125
+"NV_seedlings_edit",924,"11_16",3,"two",15,2015,"Ungrazed","water","mono","high","UC","POSE","Pse_rup","11_43",1603,152,0,0.125
+"NV_seedlings_edit",925,"11_16",3,"two",13,2015,"Ungrazed","water","mono","high","UC","VUMI","Vul_mic","11_47",1603,132,1,0.125
+"NV_seedlings_edit",926,"11_16",4,"three",11,2015,"Ungrazed","water","mono","high","UC","ELEL","Ely_ely","11_31",1604,113,5,0.125
+"NV_seedlings_edit",927,"11_16",4,"three",13,2015,"Ungrazed","water","mono","high","UC","ELTR","Ely_tra","11_35",1604,133,25,0.125
+"NV_seedlings_edit",928,"11_16",4,"three",12,2015,"Ungrazed","water","mono","high","UC","POFE","Poa_fen","11_39",1604,123,0,0.125
+"NV_seedlings_edit",929,"11_16",4,"three",15,2015,"Ungrazed","water","mono","high","UC","POSE","Pse_rup","11_43",1604,153,0,0.125
+"NV_seedlings_edit",930,"11_16",4,"three",14,2015,"Ungrazed","water","mono","high","UC","VUMI","Vul_mic","11_47",1604,143,5,0.125
+"NV_seedlings_edit",931,"11_16",5,"one",1,2015,"Ungrazed","water","mono","high","UC","ELEL","Ely_ely","11_31",1605,11,12,0.125
+"NV_seedlings_edit",932,"11_16",5,"one",4,2015,"Ungrazed","water","mono","high","UC","ELTR","Ely_tra","11_35",1605,41,13,0.125
+"NV_seedlings_edit",933,"11_16",5,"one",3,2015,"Ungrazed","water","mono","high","UC","POFE","Poa_fen","11_39",1605,31,6,0.125
+"NV_seedlings_edit",934,"11_16",5,"one",5,2015,"Ungrazed","water","mono","high","UC","POSE","Pse_rup","11_43",1605,51,2,0.125
+"NV_seedlings_edit",935,"11_16",5,"one",2,2015,"Ungrazed","water","mono","high","UC","VUMI","Vul_mic","11_47",1605,21,0,0.125
+"NV_seedlings_edit",936,"11_16",6,"three",13,2015,"Ungrazed","water","mono","high","UC","ELEL","Ely_ely","11_31",1606,133,29,0.125
+"NV_seedlings_edit",937,"11_16",6,"three",11,2015,"Ungrazed","water","mono","high","UC","ELTR","Ely_tra","11_35",1606,113,9,0.125
+"NV_seedlings_edit",938,"11_16",6,"three",12,2015,"Ungrazed","water","mono","high","UC","POFE","Poa_fen","11_39",1606,123,4,0.125
+"NV_seedlings_edit",939,"11_16",6,"three",14,2015,"Ungrazed","water","mono","high","UC","POSE","Pse_rup","11_43",1606,143,0,0.125
+"NV_seedlings_edit",940,"11_16",6,"three",15,2015,"Ungrazed","water","mono","high","UC","VUMI","Vul_mic","11_47",1606,153,6,0.125
+"NV_seedlings_edit",941,"11_16",7,"two",13,2015,"Ungrazed","water","mono","high","UC","ELEL","Ely_ely","11_31",1607,132,11,0.125
+"NV_seedlings_edit",942,"11_16",7,"two",14,2015,"Ungrazed","water","mono","high","UC","ELTR","Ely_tra","11_35",1607,142,35,0.125
+"NV_seedlings_edit",943,"11_16",7,"two",11,2015,"Ungrazed","water","mono","high","UC","POFE","Poa_fen","11_39",1607,112,1,0.125
+"NV_seedlings_edit",944,"11_16",7,"two",15,2015,"Ungrazed","water","mono","high","UC","POSE","Pse_rup","11_43",1607,152,0,0.125
+"NV_seedlings_edit",945,"11_16",7,"two",12,2015,"Ungrazed","water","mono","high","UC","VUMI","Vul_mic","11_47",1607,122,0,0.125
+"NV_seedlings_edit",946,"11_16",7,"two",42,2016,"Ungrazed","water","mono","high","UC","POFE","Poa_fen","11_39",11607,422,0,0.25
+"NV_seedlings_edit",947,"11_16",7,"two",50,2016,"Ungrazed","water","mono","high","UC","ELEL","Ely_ely","11_31",11607,502,0,0.25
+"NV_seedlings_edit",948,"11_16",7,"two",58,2016,"Ungrazed","water","mono","high","UC","POSE","Pse_rup","11_43",11607,582,0,0.25
+"NV_seedlings_edit",949,"11_16",7,"two",46,2016,"Ungrazed","water","mono","high","UC","VUMY","Vul_mic","11_47",11607,462,15,0.25
+"NV_seedlings_edit",950,"11_16",7,"two",54,2016,"Ungrazed","water","mono","high","UC","ELTR","Ely_tra","11_35",11607,542,36,0.25
+"NV_seedlings_edit",951,"11_16",8,"one",14,2015,"Ungrazed","water","mono","high","UC","ELEL","Ely_ely","11_31",1608,141,1,0.125
+"NV_seedlings_edit",952,"11_16",8,"one",11,2015,"Ungrazed","water","mono","high","UC","ELTR","Ely_tra","11_35",1608,111,7,0.125
+"NV_seedlings_edit",953,"11_16",8,"one",15,2015,"Ungrazed","water","mono","high","UC","POFE","Poa_fen","11_39",1608,151,1,0.125
+"NV_seedlings_edit",954,"11_16",8,"one",12,2015,"Ungrazed","water","mono","high","UC","POSE","Pse_rup","11_43",1608,121,16,0.125
+"NV_seedlings_edit",955,"11_16",8,"one",13,2015,"Ungrazed","water","mono","high","UC","VUMI","Vul_mic","11_47",1608,131,13,0.125
+"NV_seedlings_edit",956,"11_16",8,"one",54,2016,"Ungrazed","water","mono","high","UC","ELEL","Ely_ely","11_31",11608,541,1,0.25
+"NV_seedlings_edit",957,"11_16",8,"one",57,2016,"Ungrazed","water","mono","high","UC","POFE","Poa_fen","11_39",11608,571,1,0.25
+"NV_seedlings_edit",958,"11_16",8,"one",46,2016,"Ungrazed","water","mono","high","UC","POSE","Pse_rup","11_43",11608,461,9,0.25
+"NV_seedlings_edit",959,"11_16",8,"one",50,2016,"Ungrazed","water","mono","high","UC","VUMY","Vul_mic","11_47",11608,501,9,0.25
+"NV_seedlings_edit",960,"11_16",8,"one",42,2016,"Ungrazed","water","mono","high","UC","ELTR","Ely_tra","11_35",11608,421,28,0.25
+"NV_seedlings_edit",961,"11_16",9,"one",15,2015,"Ungrazed","water","mono","high","UC","ELEL","Ely_ely","11_31",1609,151,9,0.125
+"NV_seedlings_edit",962,"11_16",9,"one",13,2015,"Ungrazed","water","mono","high","UC","ELTR","Ely_tra","11_35",1609,131,5,0.125
+"NV_seedlings_edit",963,"11_16",9,"one",12,2015,"Ungrazed","water","mono","high","UC","POFE","Poa_fen","11_39",1609,121,0,0.125
+"NV_seedlings_edit",964,"11_16",9,"one",11,2015,"Ungrazed","water","mono","high","UC","POSE","Pse_rup","11_43",1609,111,0,0.125
+"NV_seedlings_edit",965,"11_16",9,"one",14,2015,"Ungrazed","water","mono","high","UC","VUMI","Vul_mic","11_47",1609,141,0,0.125
+"NV_seedlings_edit",966,"11_16",10,"three",5,2015,"Ungrazed","water","mono","low","UC","ELEL","Ely_ely","11_33",1610,53,1,0.125
+"NV_seedlings_edit",967,"11_16",10,"three",2,2015,"Ungrazed","water","mono","low","UC","ELTR","Ely_tra","11_37",1610,23,0,0.125
+"NV_seedlings_edit",968,"11_16",10,"three",4,2015,"Ungrazed","water","mono","low","UC","POFE","Poa_fen","11_41",1610,43,0,0.125
+"NV_seedlings_edit",969,"11_16",10,"three",3,2015,"Ungrazed","water","mono","low","UC","POSE","Pse_rup","11_45",1610,33,0,0.125
+"NV_seedlings_edit",970,"11_16",10,"three",1,2015,"Ungrazed","water","mono","low","UC","VUMI","Vul_mic","11_49",1610,13,1,0.125
+"NV_seedlings_edit",971,"11_16",10,"three",10,2016,"Ungrazed","water","mono","low","UC","POSE","Pse_rup","11_45",11610,103,0,0.25
+"NV_seedlings_edit",972,"11_16",10,"three",14,2016,"Ungrazed","water","mono","low","UC","POFE","Poa_fen","11_41",11610,143,0,0.25
+"NV_seedlings_edit",973,"11_16",10,"three",2,2016,"Ungrazed","water","mono","low","UC","VUMY","Vul_mic","11_49",11610,23,1,0.25
+"NV_seedlings_edit",974,"11_16",10,"three",18,2016,"Ungrazed","water","mono","low","UC","ELEL","Ely_ely","11_33",11610,183,5,0.25
+"NV_seedlings_edit",975,"11_16",10,"three",6,2016,"Ungrazed","water","mono","low","UC","ELTR","Ely_tra","11_37",11610,63,8,0.25
+"NV_seedlings_edit",976,"11_16",11,"two",4,2015,"Ungrazed","water","mono","low","UC","ELEL","Ely_ely","11_33",1611,42,2,0.125
+"NV_seedlings_edit",977,"11_16",11,"two",2,2015,"Ungrazed","water","mono","low","UC","ELTR","Ely_tra","11_37",1611,22,2,0.125
+"NV_seedlings_edit",978,"11_16",11,"two",3,2015,"Ungrazed","water","mono","low","UC","POFE","Poa_fen","11_41",1611,32,0,0.125
+"NV_seedlings_edit",979,"11_16",11,"two",5,2015,"Ungrazed","water","mono","low","UC","POSE","Pse_rup","11_45",1611,52,0,0.125
+"NV_seedlings_edit",980,"11_16",11,"two",1,2015,"Ungrazed","water","mono","low","UC","VUMI","Vul_mic","11_49",1611,12,0,0.125
+"NV_seedlings_edit",981,"11_16",12,"two",4,2015,"Ungrazed","water","mono","low","UC","ELEL","Ely_ely","11_33",1612,42,22,0.125
+"NV_seedlings_edit",982,"11_16",12,"two",5,2015,"Ungrazed","water","mono","low","UC","ELTR","Ely_tra","11_37",1612,52,13,0.125
+"NV_seedlings_edit",983,"11_16",12,"two",1,2015,"Ungrazed","water","mono","low","UC","POFE","Poa_fen","11_41",1612,12,0,0.125
+"NV_seedlings_edit",984,"11_16",12,"two",2,2015,"Ungrazed","water","mono","low","UC","POSE","Pse_rup","11_45",1612,22,4,0.125
+"NV_seedlings_edit",985,"11_16",12,"two",3,2015,"Ungrazed","water","mono","low","UC","VUMI","Vul_mic","11_49",1612,32,0,0.125
+"NV_seedlings_edit",986,"11_16",13,"three",2,2015,"Ungrazed","water","mono","low","UC","ELEL","Ely_ely","11_33",1613,23,1,0.125
+"NV_seedlings_edit",987,"11_16",13,"three",4,2015,"Ungrazed","water","mono","low","UC","ELTR","Ely_tra","11_37",1613,43,8,0.125
+"NV_seedlings_edit",988,"11_16",13,"three",1,2015,"Ungrazed","water","mono","low","UC","POFE","Poa_fen","11_41",1613,13,0,0.125
+"NV_seedlings_edit",989,"11_16",13,"three",3,2015,"Ungrazed","water","mono","low","UC","POSE","Pse_rup","11_45",1613,33,0,0.125
+"NV_seedlings_edit",990,"11_16",13,"three",5,2015,"Ungrazed","water","mono","low","UC","VUMI","Vul_mic","11_49",1613,53,0,0.125
+"NV_seedlings_edit",991,"11_16",14,"one",15,2015,"Ungrazed","water","mono","low","UC","ELEL","Ely_ely","11_33",1614,151,7,0.125
+"NV_seedlings_edit",992,"11_16",14,"one",14,2015,"Ungrazed","water","mono","low","UC","ELTR","Ely_tra","11_37",1614,141,5,0.125
+"NV_seedlings_edit",993,"11_16",14,"one",12,2015,"Ungrazed","water","mono","low","UC","POFE","Poa_fen","11_41",1614,121,0,0.125
+"NV_seedlings_edit",994,"11_16",14,"one",13,2015,"Ungrazed","water","mono","low","UC","POSE","Pse_rup","11_45",1614,131,0,0.125
+"NV_seedlings_edit",995,"11_16",14,"one",11,2015,"Ungrazed","water","mono","low","UC","VUMI","Vul_mic","11_49",1614,111,0,0.125
+"NV_seedlings_edit",996,"11_16",15,"three",14,2015,"Ungrazed","water","mono","low","UC","ELEL","Ely_ely","11_33",1615,143,11,0.125
+"NV_seedlings_edit",997,"11_16",15,"three",12,2015,"Ungrazed","water","mono","low","UC","ELTR","Ely_tra","11_37",1615,123,11,0.125
+"NV_seedlings_edit",998,"11_16",15,"three",15,2015,"Ungrazed","water","mono","low","UC","POFE","Poa_fen","11_41",1615,153,0,0.125
+"NV_seedlings_edit",999,"11_16",15,"three",13,2015,"Ungrazed","water","mono","low","UC","POSE","Pse_rup","11_45",1615,133,0,0.125
+"NV_seedlings_edit",1000,"11_16",15,"three",11,2015,"Ungrazed","water","mono","low","UC","VUMI","Vul_mic","11_49",1615,113,0,0.125
+"NV_seedlings_edit",1001,"11_16",16,"two",14,2015,"Ungrazed","water","mono","low","UC","ELEL","Ely_ely","11_33",1616,142,10,0.125
+"NV_seedlings_edit",1002,"11_16",16,"two",12,2015,"Ungrazed","water","mono","low","UC","ELTR","Ely_tra","11_37",1616,122,7,0.125
+"NV_seedlings_edit",1003,"11_16",16,"two",11,2015,"Ungrazed","water","mono","low","UC","POFE","Poa_fen","11_41",1616,112,11,0.125
+"NV_seedlings_edit",1004,"11_16",16,"two",13,2015,"Ungrazed","water","mono","low","UC","POSE","Pse_rup","11_45",1616,132,16,0.125
+"NV_seedlings_edit",1005,"11_16",16,"two",15,2015,"Ungrazed","water","mono","low","UC","VUMI","Vul_mic","11_49",1616,152,0,0.125
+"NV_seedlings_edit",1006,"11_16",16,"two",58,2016,"Ungrazed","water","mono","low","UC","VUMY","Vul_mic","11_49",11616,582,0,0.25
+"NV_seedlings_edit",1007,"11_16",16,"two",42,2016,"Ungrazed","water","mono","low","UC","POFE","Poa_fen","11_41",11616,422,0,0.25
+"NV_seedlings_edit",1008,"11_16",16,"two",50,2016,"Ungrazed","water","mono","low","UC","POSE","Pse_rup","11_45",11616,502,0,0.25
+"NV_seedlings_edit",1009,"11_16",16,"two",54,2016,"Ungrazed","water","mono","low","UC","ELEL","Ely_ely","11_33",11616,542,2,0.25
+"NV_seedlings_edit",1010,"11_16",16,"two",46,2016,"Ungrazed","water","mono","low","UC","ELTR","Ely_tra","11_37",11616,462,10,0.25
+"NV_seedlings_edit",1011,"11_16",17,"one",5,2015,"Ungrazed","water","mono","low","UC","ELEL","Ely_ely","11_33",1617,51,6,0.125
+"NV_seedlings_edit",1012,"11_16",17,"one",2,2015,"Ungrazed","water","mono","low","UC","ELTR","Ely_tra","11_37",1617,21,3,0.125
+"NV_seedlings_edit",1013,"11_16",17,"one",1,2015,"Ungrazed","water","mono","low","UC","POFE","Poa_fen","11_41",1617,11,3,0.125
+"NV_seedlings_edit",1014,"11_16",17,"one",3,2015,"Ungrazed","water","mono","low","UC","POSE","Pse_rup","11_45",1617,31,2,0.125
+"NV_seedlings_edit",1015,"11_16",17,"one",4,2015,"Ungrazed","water","mono","low","UC","VUMI","Vul_mic","11_49",1617,41,2,0.125
+"NV_seedlings_edit",1016,"11_16",17,"one",14,2016,"Ungrazed","water","mono","low","UC","VUMY","Vul_mic","11_49",11617,141,2,0.25
+"NV_seedlings_edit",1017,"11_16",17,"one",6,2016,"Ungrazed","water","mono","low","UC","ELTR","Ely_tra","11_37",11617,61,9,0.25
+"NV_seedlings_edit",1018,"11_16",17,"one",10,2016,"Ungrazed","water","mono","low","UC","POSE","Pse_rup","11_45",11617,101,9,0.25
+"NV_seedlings_edit",1019,"11_16",17,"one",18,2016,"Ungrazed","water","mono","low","UC","ELEL","Ely_ely","11_33",11617,181,9,0.25
+"NV_seedlings_edit",1020,"11_16",17,"one",2,2016,"Ungrazed","water","mono","low","UC","POFE","Poa_fen","11_41",11617,21,14,0.25
+"NV_seedlings_edit",1021,"11_16",18,"one",14,2015,"Ungrazed","water","mono","low","UC","ELEL","Ely_ely","11_33",1618,141,5,0.125
+"NV_seedlings_edit",1022,"11_16",18,"one",15,2015,"Ungrazed","water","mono","low","UC","ELTR","Ely_tra","11_37",1618,151,4,0.125
+"NV_seedlings_edit",1023,"11_16",18,"one",11,2015,"Ungrazed","water","mono","low","UC","POFE","Poa_fen","11_41",1618,111,0,0.125
+"NV_seedlings_edit",1024,"11_16",18,"one",13,2015,"Ungrazed","water","mono","low","UC","POSE","Pse_rup","11_45",1618,131,0,0.125
+"NV_seedlings_edit",1025,"11_16",18,"one",12,2015,"Ungrazed","water","mono","low","UC","VUMI","Vul_mic","11_49",1618,121,0,0.125

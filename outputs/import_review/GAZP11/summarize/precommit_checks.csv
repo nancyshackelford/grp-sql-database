@@ -1,0 +1,13 @@
+check,value,status
+id_drift_area,3115,pass
+id_drift_treatment,542,pass
+id_drift_location,6,pass
+id_drift_paper,4,pass
+id_drift_author,6,pass
+id_drift_seed_mix,353,pass
+id_drift_seeding,4610,pass
+existing_GAZP11_project,0,pass
+build_validation_issue_rows,0,pass
+vegetation_rows_to_insert,1220,pass
+area_treatment_rows_to_insert,1566,pass
+seeding_rows_to_insert,120,pass

@@ -1,0 +1,8 @@
+id_type,expected_max,live_max,status
+max_areaid,3115,3115,pass
+max_treatmentid,542,542,pass
+max_locationid,6,6,pass
+max_paperid,4,4,pass
+max_authorid,6,6,pass
+max_seedmixid,353,353,pass
+max_seedingid,4610,4610,pass

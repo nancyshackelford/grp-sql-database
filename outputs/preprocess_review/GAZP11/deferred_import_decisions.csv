@@ -1,0 +1,4 @@
+"item","harmonized_preprocessing_action","sql_import_action"
+"passive treatment meaning","Retain 11_25 and 11_50, divide their standardized responses by 16, and do not infer herbicide identity.","Herbicide is reported in the paper but cannot be mapped to a passive ID from retained data; do not assign an herbicide event without new source evidence."
+"applicationmethod = none","Retain source token for provenance; it is not an applied method.","Omit the application-detail row when the source token means no application."
+"seed pretreatment","Retain coated/blank values in trtrates.","Validate vocabulary and route coated values to the seeding-pretreatment structure."

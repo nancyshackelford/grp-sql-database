@@ -1,0 +1,15 @@
+check,value,status
+source vegetation rows retained,1220,pass
+unique treatment events,122,pass
+seeding events,72,information
+grazing events,48,information
+passive reference events,2,information
+child sampling areas,1220,information
+area-event links,1566,pass
+parent block treatment links,0,pass
+seed trtrate rows routed to seeding events,120,pass
+false none application details retained,0,pass
+absent application details omitted,2,information
+unready vegetation rows,0,pass
+species requiring review,0,pass
+treatment-event decisions requiring review,0,pass
